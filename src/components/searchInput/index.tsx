@@ -1,7 +1,8 @@
 import React from 'react';
 import styled from "@emotion/styled";
+import {COLORS} from "../../config/styles";
 
-const CommonInput = () => {
+const SearchInput = () => {
   return (
     <InputField>
       <StyledInput />
@@ -11,19 +12,27 @@ const CommonInput = () => {
 };
 
 const InputField = styled.div`
-  width: 207px;
+  position: relative;
+  width: auto;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  background: ${COLORS.LIGHT_GRAY};
+  border-radius: 4px;
 `
 
 const StyledInput = styled.input`
-  width: 100%;
+  width: calc(100% - 15px);
+  padding: 14px;
 `
 
 const Icon = styled.img`
   position: absolute;
-  width: 24px;
-  height: 24px;
-  left: 12px;
-  top: 12px;
+  width: 12px;
+  height: 12px;
+  top: 14px;
+  right: 14px;
+  cursor: pointer;
 `
 
-export default CommonInput;
+export default SearchInput;
