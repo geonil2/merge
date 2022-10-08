@@ -3,7 +3,7 @@ import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import styled from "@emotion/styled";
-import {COLORS, SHADOW} from "../../../config/styles";
+import {COLORS, SHADOWS} from "../../../config/styles";
 
 const settings = {
   slide: 'div',
@@ -35,7 +35,7 @@ const SliderContainer = styled.section`
   align-items: center;
   background-color: ${COLORS.WHITE};
   padding: 0px 24px;
-  box-shadow: ${SHADOW.basic};
+  box-shadow: ${SHADOWS.basic};
 
   > p {
     font-weight: 800;

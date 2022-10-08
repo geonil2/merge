@@ -1,21 +1,31 @@
 import type { NextPage } from 'next'
-import Head from 'next/head'
-import Image from 'next/image'
-import styles from '../../styles/Home.module.css'
 import styled from "@emotion/styled";
 import VerticalSlideTable from "../components/tables/verticalSlideTable";
 import TwoRowTable from "../components/tables/twoRowTable";
 import BigImageTable from "../components/tables/bigImageTable";
 import VerticalListTable from "../components/tables/verticalListTable";
+import {GetServerSidePropsContext} from "next";
+import {useQuery} from "@tanstack/react-query";
+import {newsListQueryKey} from "../services/types";
+import {getNewsListApi} from "../services/api";
 
 const Home: NextPage = () => {
+  const news = useQuery([newsListQueryKey], () => getNewsListApi(), {
+    staleTime: Infinity,
+  });
+
   return (
     <HomeContainer>
       <TableContainer>
         <VerticalSlideTable />
         <TwoRowTable />
+        {news.data?.data && (
+          <VerticalListTable
+            title='업계 기사'
+            lists={news.data.data}
+          />
+        )}
         <BigImageTable />
-        <VerticalListTable />
       </TableContainer>
       <Aside>
         <div></div>
@@ -55,4 +65,9 @@ const Aside = styled.aside`
   grid-auto-rows: max-content;
   gap: 14px 0px;
 `
+
 export default Home
+
+export async function getServerSideProps(context: GetServerSidePropsContext) {
+  return { props : {}}
+}
