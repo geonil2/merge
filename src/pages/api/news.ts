@@ -32,12 +32,13 @@ const handler = async (
     })
 
     const ProcessedData = data.items.map((list: OriginalNewsData, index: number) => {
-      const { title, originallink, pubDate } = list;
+      const { title, description, originallink, pubDate } = list;
       return {
         id: index,
         title,
+        description,
         url: originallink,
-        date: pubDate
+        created_at: pubDate
       }
     })
     res.status(200).json({ data: ProcessedData })

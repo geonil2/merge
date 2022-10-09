@@ -1,13 +1,15 @@
 export const newsListQueryKey = 'getNewsList'
 
-
-
-export interface VerticalTableList {
-  id: number,
+export interface boardList {
+  id: string,
   title: string,
+  description: string,
   image?: string,
   url: string,
+  category?: string,
+  owner?: string,
   views?: string,
-  userName?: string,
-  date: string,
+  likes?: string,
+  created_at: string,
+  updated_at?: string,
 }

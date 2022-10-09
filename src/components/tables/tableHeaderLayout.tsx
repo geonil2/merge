@@ -24,8 +24,6 @@ const TableHeader = styled.div`
   > p {
     color: ${COLORS.PRIMARY};
     font-weight: 800;
-    border-right: 1px solid ${COLORS.DARK_GRAY};
-    cursor: pointer;
   }
 `
 

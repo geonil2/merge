@@ -4,12 +4,12 @@ import styled from "@emotion/styled";
 import {COLORS, SHADOWS} from "../../../config/styles";
 import VerticalList from "./verticalList";
 import {useQuery} from "@tanstack/react-query";
-import {newsListQueryKey, VerticalTableList} from "../../../services/types";
+import {boardList} from "../../../services/types";
 import {getNewsListApi} from "../../../services/api";
 
 interface Props {
   title: string,
-  lists: VerticalTableList[],
+  lists: boardList[],
 }
 
 const VerticalListTable: FC<Props> = ({ title, lists }) => {

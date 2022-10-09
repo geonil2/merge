@@ -38,10 +38,10 @@ const TwoRowTableList: FC<Props> = ({
 const Container = styled.li`
   display: flex;
   align-items: center;
-  border-bottom: 1px solid ${COLORS.DARK_GRAY};
+  border-bottom: 1px solid ${COLORS.GRAY};
   padding: 10px 24px;
   &:nth-child(odd) {
-    border-right: 1px solid ${COLORS.DARK_GRAY};
+    border-right: 1px solid ${COLORS.GRAY};
   }
 `
 
