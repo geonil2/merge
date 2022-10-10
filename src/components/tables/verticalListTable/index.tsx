@@ -15,7 +15,7 @@ interface Props {
 const VerticalListTable: FC<Props> = ({ title, lists }) => {
   return (
     <Container>
-      <TableHeaderLayout title="업계 기사" />
+      <TableHeaderLayout title={title} />
       {lists.map(list => <VerticalList key={list.id} list={list} />)}
     </Container>
   );

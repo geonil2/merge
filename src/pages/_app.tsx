@@ -9,12 +9,14 @@ import {QueryClientProvider} from "@tanstack/react-query";
 import {ReactQueryDevtools} from "@tanstack/react-query-devtools";
 import {Hydrate} from "@tanstack/react-query";
 import Header from "../components/header/headerWrap/header";
+import {SessionProvider} from "next-auth/react";
 
 function MyApp({ Component, pageProps }: AppProps) {
   const queryClient = useRef(generateQueryClient());
 
   return (
-      <RecoilRoot>
+      <SessionProvider session={pageProps.session}>
+        <RecoilRoot>
             <QueryClientProvider client={queryClient.current}>
                 <Hydrate state={pageProps.dehydratedState}>
                     <Head>
@@ -33,7 +35,8 @@ function MyApp({ Component, pageProps }: AppProps) {
                     <ReactQueryDevtools initialIsOpen={false} />
                 </Hydrate>
             </QueryClientProvider>
-      </RecoilRoot>
+        </RecoilRoot>
+      </SessionProvider>
   )
 }
 

@@ -1,7 +1,7 @@
 export const MENUS = [
   {
     name: 'Q&A',
-    url: '/questions'
+    url: '/question'
   },
   {
     name: '개발정보',

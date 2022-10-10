@@ -4,10 +4,11 @@ import styled from "@emotion/styled";
 import {COLORS, MEDIA} from "../../../config/styles";
 import HeaderSearchForm from "../headerSearchForm";
 import {MENUS} from "../../../config/menus";
-
-const LOGIN_STATUS = false;
+import {signIn, useSession} from "next-auth/react";
 
 const DesktopHeader = () => {
+  const { data: session, status } = useSession();
+
   return (
     <Header>
       <HeaderContentsContainer>
@@ -25,16 +26,17 @@ const DesktopHeader = () => {
         </Nav>
       </HeaderContentsContainer>
       <HeaderContentsContainer>
-        {LOGIN_STATUS ?
+        {status === 'authenticated' && session?.user ?
           <Link href="/login" passHref>
             <a>
-              <ProfileThum src="/images/icons/profile.svg" alt="Logo" />
+              <ProfileThum
+                src={session.user.image = '/images/icons/profile.svg'}
+                alt="Logo"
+              />
             </a>
           </Link>
           :
-          <Link href="/login" passHref>
-            <LoginButton>Login</LoginButton>
-          </Link>
+          <LoginButton onClick={() => signIn('google')}>Login</LoginButton>
         }
         <SearchInputContainer>
           <HeaderSearchForm />

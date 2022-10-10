@@ -55,6 +55,7 @@ const TextTopArea = styled.div`
   display: flex;
   font-weight: 700;
   font-size: 14px;
+  line-height: 120%;
   padding: 3px 0px;
   margin-bottom: 8px;
 `

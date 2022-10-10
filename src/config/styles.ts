@@ -1,7 +1,7 @@
 export const COLORS = {
     PRIMARY: '#CA7EFA',
     SUB: '#C06BF4',
-    DARK_GRAY: '#F4F4F4',
+    DARK_GRAY: '#949494',
     LIGHT_GRAY: '#F8F8F8',
     GRAY: '#D9D9D9',
 
