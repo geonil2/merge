@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useEffect} from 'react';
 import AuthTable from "../tables/AuthTable";
 import BannerTable from "../tables/bannerTable";
 import VerticalListTable from "../tables/verticalListTable";
@@ -8,7 +8,7 @@ import {newsListQueryKey} from "../../services/types";
 import {getNewsListApi} from "../../services/api";
 
 const asideBar = () => {
-  const news = useQuery([newsListQueryKey], () => getNewsListApi(), {
+  const { data } = useQuery([newsListQueryKey], () => getNewsListApi(), {
     staleTime: Infinity,
   });
 
@@ -16,10 +16,10 @@ const asideBar = () => {
     <Aside>
       <AuthTable />
       <BannerTable />
-      {news.data?.data && (
+      {data?.data && (
         <VerticalListTable
           title='업계 기사'
-          lists={news.data.data}
+          lists={data.data}
         />
       )}
     </Aside>

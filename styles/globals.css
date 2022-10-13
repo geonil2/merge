@@ -91,13 +91,3 @@ button {
   color: #525252;
 }
 
-.global-layout {
-  width: 1280px;
-  box-sizing: border-box;
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: 14px;
-  align-items: flex-end;
-  padding: 20px 40px;
-  margin: 0px auto;
-}

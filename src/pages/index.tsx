@@ -5,6 +5,7 @@ import TwoRowTable from "../components/tables/twoRowTable";
 import VerticalListTable from "../components/tables/verticalListTable";
 import {GetServerSidePropsContext} from "next";
 import AsideBar from "../components/asideBar";
+import TableLayout from "../TableLayout";
 
 const QnA_mock = [
   { id: 1, title: "React에서 useState사용법", description: "React에서 useState의 사용법을 알려주세요.", url: '/', category: "question", owner: "geonil@gmail.com", likes: 100, created_at: "2022-10-05 11:24:32", updated_at: "2022-10-05 11:24:32"},
@@ -16,7 +17,7 @@ const QnA_mock = [
 
 const Home: NextPage = () => {
   return (
-    <>
+    <TableLayout>
       <TableContainer>
         <VerticalSlideTable />
         <TwoRowTable />
@@ -39,7 +40,7 @@ const Home: NextPage = () => {
         {/*<BigImageTable />*/}
       </TableContainer>
       <AsideBar />
-    </>
+    </TableLayout>
   )
 }
 

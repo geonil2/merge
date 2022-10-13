@@ -29,9 +29,7 @@ function MyApp({ Component, pageProps }: AppProps) {
                     </Head>
 
                     <Header />
-                    <div className="global-layout">
-                        <Component {...pageProps} />
-                    </div>
+                    <Component {...pageProps} />
                     <ReactQueryDevtools initialIsOpen={false} />
                 </Hydrate>
             </QueryClientProvider>
