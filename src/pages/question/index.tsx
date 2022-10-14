@@ -36,10 +36,10 @@ const Question = () => {
           lists={QnA_mock}
         />
       </TableContainer>
-      <AsideBar />
     </TableLayout>
   );
 };
+
 const TableContainer = styled.div`
   width: 766px;
   height: fit-content;

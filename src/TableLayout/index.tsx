@@ -1,5 +1,6 @@
 import React, {ReactNode} from 'react';
 import styled from "@emotion/styled";
+import AsideBar from "../components/asideBar";
 
 interface Props {
   children: ReactNode
@@ -9,6 +10,7 @@ const Index = (props: Props) => {
   return (
     <TableLayout>
       {props.children}
+      <AsideBar />
     </TableLayout>
   );
 };

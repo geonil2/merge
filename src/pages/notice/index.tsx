@@ -36,7 +36,6 @@ const Question = () => {
           lists={QnA_mock}
         />
       </TableContainer>
-      <AsideBar />
     </TableLayout>
   );
 };

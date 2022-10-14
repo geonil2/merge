@@ -1,13 +1,26 @@
-import React from 'react';
+import React, {useEffect} from 'react';
 import Link from "next/link";
 import styled from "@emotion/styled";
 import {COLORS, MEDIA} from "../../../config/styles";
 import HeaderSearchForm from "../headerSearchForm";
 import {MENUS} from "../../../config/menus";
 import {signIn, useSession} from "next-auth/react";
+import CommonButton from "../../commonButton";
+// import useLogin from "../../../hooks/useLogin";
+import {LoginRequestBody} from "../../../services/auth/types";
+import {useMutation, useQueryClient} from "@tanstack/react-query";
+import {loginApi} from "../../../services/auth/api";
 
 const DesktopHeader = () => {
   const { data: session, status } = useSession();
+  const login = useMutation(loginApi);
+
+
+  useEffect(() => {
+    if (session) {
+      login.mutate(session as LoginRequestBody)
+    }
+  }, [session])
 
   return (
     <Header>
@@ -30,13 +43,13 @@ const DesktopHeader = () => {
           <Link href="/login" passHref>
             <a>
               <ProfileThum
-                src={session.user.image = '/images/icons/profile.svg'}
+                src='/images/icons/profile.svg'
                 alt="Logo"
               />
             </a>
           </Link>
           :
-          <LoginButton onClick={() => signIn('google')}>Login</LoginButton>
+          <CommonButton title="Login" width={72} onClick={() => signIn('google')} />
         }
         <SearchInputContainer>
           <HeaderSearchForm />

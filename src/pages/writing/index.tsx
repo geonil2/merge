@@ -5,6 +5,8 @@ import styled from "@emotion/styled";
 import {COLORS, SHADOWS} from "../../config/styles";
 import {useForm} from "react-hook-form";
 import {EditorType} from "@toast-ui/editor/types/editor";
+import {signIn} from "next-auth/react";
+import CommonButton from "../../components/commonButton";
 
 const TextEditor = dynamic(() => import('../../components/textEditor'), {
   ssr: false,
@@ -18,7 +20,6 @@ const Index = () => {
   const editor = useRef(null);
 
   const onChangeEditValue = useCallback((htmlVal: EditorType) => {
-    // console.log(htmlVal, 'htmlVal')
     if (!editor.current) return
     console.log(editor.current.getInstance().getHTML(), 'bb')
     setHtml(() => htmlVal)
@@ -47,8 +48,13 @@ const Index = () => {
                 </ul>
               ) : null}
           </Category>
-          <Title {...register("firstName")} placeholder='Enter a title' />
-          <TextEditor onChangeEditValue={onChangeEditValue} editor={editor} />
+          <Title {...register("title")} placeholder='제목을 입력해주세요.' />
+          <TextEditorWrap>
+            <TextEditor onChangeEditValue={onChangeEditValue} editor={editor} />
+          </TextEditorWrap>
+          <ButtonWrap>
+              <CommonButton title="Post" width={180} onClick={() => signIn('google')} />
+          </ButtonWrap>
         </form>
       </Container>
     </Layout>
@@ -77,6 +83,7 @@ const Category = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: center;
+  font-size: 14px;
   color: ${(props: { category: string }) => (props.category === 'Category' ? COLORS.GRAY : COLORS.BLACK )};
   border: 1px solid ${COLORS.GRAY};
   border-radius: 4px;
@@ -102,7 +109,6 @@ const Category = styled.div`
 `
 
 const SelectedLi = styled.p`
-  
 `
 
 const ArrowImg = styled.img`
@@ -111,7 +117,26 @@ const ArrowImg = styled.img`
 `
 
 const Title = styled.input`
+  width: 100%;
+  height: 40px;
+  border: 1px solid ${COLORS.GRAY};
+  border-radius: 4px;
+  padding: 13px 14px;
   margin-top: 14px;
+  &::placeholder {
+    color: ${COLORS.GRAY};
+  }
+`
+
+const TextEditorWrap = styled.div`
+  margin-top: 14px;
+`
+
+const ButtonWrap = styled.div`
+  display: flex;
+  justify-content: flex-end;
+  padding-bottom: 22px;
+  margin-top: 40px;
 `
 
 export default Index;

@@ -1,5 +1,5 @@
 import React from 'react';
-import MediaOnlyDiv from "../../mediaOnlyDiv/mediaOnlyDiv";
+import Index from "../../mediaOnlyDiv";
 import Link from "next/link";
 import styled from "@emotion/styled";
 import {COLORS} from "../../../config/styles";
@@ -10,9 +10,9 @@ import DesktopHeader from "../desktopHeader";
 const Header = () => {
   return (
     <>
-      <MediaOnlyDiv media="desktop">
+      <Index media="desktop">
         <DesktopHeader />
-      </MediaOnlyDiv>
+      </Index>
     </>
   );
 };

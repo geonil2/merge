@@ -6,7 +6,7 @@ interface Props {
   media: 'desktop' | 'mobile';
 }
 
-const MediaOnlyDiv = styled.div<Props>`
+const Index = styled.div<Props>`
   justify-content: center;
   background-color: ${COLORS.WHITE};
   box-shadow: ${SHADOWS.basic};
@@ -18,4 +18,4 @@ ${MEDIA.mobile} {
 }
 `
 
-export default MediaOnlyDiv;
+export default Index;

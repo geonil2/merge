@@ -13,7 +13,7 @@ const AuthTable = () => {
         <AuthenticatedUI>
           <Profile>
             <Image
-              src={session.user.image = '/images/icons/profile.svg'}
+              src='/images/icons/profile.svg'
               width="60"
               height="60"
             />
