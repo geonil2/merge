@@ -3,6 +3,7 @@ import {NextPage} from "next";
 import TableLayout from "../../TableLayout";
 import React from "react";
 import styled from "@emotion/styled";
+import ContentsDetail from "../../components/contentsDetail";
 
 const QuestionDetailPage: NextPage = () => {
   const router = useRouter()
@@ -11,7 +12,7 @@ const QuestionDetailPage: NextPage = () => {
   return (
     <TableLayout>
       <Container>
-        ContentsDetails
+        <ContentsDetail />
       </Container>
     </TableLayout>
   );

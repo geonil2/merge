@@ -1,6 +1,8 @@
 import React from 'react';
 import styled from "@emotion/styled";
 import {COLORS} from "../../config/styles";
+import {Simulate} from "react-dom/test-utils";
+import input = Simulate.input;
 
 const SearchInput = () => {
   return (
