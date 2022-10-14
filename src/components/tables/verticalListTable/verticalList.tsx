@@ -15,10 +15,10 @@ import {polyfill} from "interweave-ssr";
 polyfill();
 
 const VerticalList= ({ list } : { list : boardList }) => {
-  const { title, image, url, views, owner, created_at } = list;
+  const { id, title, image, category, url, views, owner, created_at } = list;
   return (
-    <Link href={url} passHref>
-      <a target="_blank" rel="noopener noreferrer">
+    <Link href={`/${category}/${id}`} passHref>
+      <a>
         <List>
           {image && <Image src={image} alt="Contents thumbnail image"/>}
           <div>

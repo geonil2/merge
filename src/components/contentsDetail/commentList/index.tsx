@@ -66,6 +66,7 @@ const Thumbnail = styled.img`
 `
 
 const CommentInfoWrap = styled.div`
+  width: 100%;
   margin-left: 20px;
 `
 

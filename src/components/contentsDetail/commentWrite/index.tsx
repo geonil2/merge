@@ -14,7 +14,7 @@ const CommentWrite = () => {
       <CommentWriteBody>
         <textarea name="" id="" maxLength={200} placeholder="댓글을 남겨주세요."></textarea>
         <ButtonWrap>
-          <CommonButton title="Write" width={110} onClick={() => signIn('google')} />
+          <CommonButton title="작성" width={110} onClick={() => signIn('google')} />
         </ButtonWrap>
       </CommentWriteBody>
     </Container>
@@ -46,6 +46,7 @@ const CommentWriteBody = styled.div`
    width: 100%;
    max-width: 100%;
    border: none;
+   resize: none;
  }  
 `
 
