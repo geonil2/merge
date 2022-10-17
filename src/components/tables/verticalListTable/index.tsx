@@ -5,7 +5,7 @@ import {COLORS, SHADOWS} from "../../../config/styles";
 import VerticalList from "./verticalList";
 import {useQuery} from "@tanstack/react-query";
 import {boardList} from "../../../services/types";
-import {getNewsListApi} from "../../../services/api";
+import {getNewsListApi} from "../../../services/news/api";
 
 interface Props {
   title: string,

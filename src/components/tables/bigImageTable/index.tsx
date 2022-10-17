@@ -1,7 +1,7 @@
 import React, {useEffect} from 'react';
 import {useQuery} from "@tanstack/react-query";
 import {newsListQueryKey} from "../../../services/types";
-import {getNewsListApi} from "../../../services/api";
+import {getNewsListApi} from "../../../services/news/api";
 import TableHeaderLayout from "../tableHeaderLayout";
 import styled from "@emotion/styled";
 import {COLORS, SHADOWS} from "../../../config/styles";
@@ -17,7 +17,7 @@ interface NewsList {
 const BigImageTable = () => {
   return (
     <Container>
-      <TableHeaderLayout title="몰라" />
+      <TableHeaderLayout title="올해의 핫 이슈" />
       <BigImageTableBody>
         {/*{news.data?.news?.map((list: NewsList) =>*/}
         {/*  <BigImageTableList*/}

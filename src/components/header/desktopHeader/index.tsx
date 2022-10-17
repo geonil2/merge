@@ -27,7 +27,7 @@ const DesktopHeader = () => {
       <HeaderContentsContainer>
         <Link href="/" passHref>
           <a>
-            <Logo src="/vercel.svg" alt="Logo" />
+            <Logo src="/images/logo/merge.svg" alt="Logo" />
           </a>
         </Link>
         <Nav>
@@ -77,7 +77,7 @@ const HeaderContentsContainer = styled.div`
 `
 
 const Logo = styled.img`
-  width: 142px;
+  width: 120px;
   margin-right: 40px;
   ${MEDIA.tablet} {
     margin-right: 20px;

@@ -5,7 +5,7 @@ import VerticalListTable from "../tables/verticalListTable";
 import styled from "@emotion/styled";
 import {useQuery} from "@tanstack/react-query";
 import {newsListQueryKey} from "../../services/types";
-import {getNewsListApi} from "../../services/api";
+import {getNewsListApi} from "../../services/news/api";
 
 const asideBar = () => {
   const { data } = useQuery([newsListQueryKey], () => getNewsListApi(), {

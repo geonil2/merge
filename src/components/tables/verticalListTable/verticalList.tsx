@@ -17,8 +17,8 @@ polyfill();
 const VerticalList= ({ list } : { list : boardList }) => {
   const { id, title, image, category, url, views, owner, created_at } = list;
   return (
-    <Link href={`/${category}/${id}`} passHref>
-      <a>
+    <Link href={category ? `/${category}/${id}` : url} passHref>
+      <a target={category ? "_self" : "_blank"}>
         <List>
           {image && <Image src={image} alt="Contents thumbnail image"/>}
           <div>
