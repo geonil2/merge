@@ -5,15 +5,15 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="2eabddc1-1714-45aa-9a47-e3e67c011340" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/services/hotIssue/api.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/pages/api/conference.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/services/conference/api.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/asideBar/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/asideBar/index.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/header/desktopHeader/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/header/desktopHeader/index.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/images/logo/merge.svg" beforeDir="false" afterPath="$PROJECT_DIR$/public/images/logo/merge2.svg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/tables/bigImageTable/bigImageTableList.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/tables/bigImageTable/bigImageTableList.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/tables/bigImageTable/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/tables/bigImageTable/index.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/tables/verticalListTable/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/tables/verticalListTable/index.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/tables/verticalListTable/verticalList.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/tables/verticalListTable/verticalList.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pages/api/news.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/api/news.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/pages/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/index.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/services/api.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/services/news/api.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/services/hotIssue/api.ts" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -36,7 +36,7 @@
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "WebServerToolWindowFactoryState": "false",
-    "last_opened_file_path": "/Users/kimgeonil/Desktop/project/Merge/Merge-frontend",
+    "last_opened_file_path": "/Users/kimgeonil/Desktop/project/Merge/Merge-frontend/src/pages/api",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
@@ -47,6 +47,9 @@
   }
 }]]></component>
   <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/src/pages/api" />
+    </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/src/services/news" />
       <recent name="$PROJECT_DIR$/src/components/contentsDetail" />
@@ -62,7 +65,7 @@
       <option name="presentableId" value="Default" />
       <updated>1665562666069</updated>
       <workItem from="1665562667466" duration="42000" />
-      <workItem from="1665562733100" duration="40536000" />
+      <workItem from="1665562733100" duration="52718000" />
     </task>
     <servers />
   </component>
@@ -79,5 +82,29 @@
         </entry>
       </map>
     </option>
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="javascript">
+          <url>file://$PROJECT_DIR$/src/pages/api/conference.ts</url>
+          <line>127</line>
+          <properties lambdaOrdinal="-1" />
+          <option name="timeStamp" value="3" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="javascript">
+          <url>file://$PROJECT_DIR$/src/components/tables/bigImageTable/index.tsx</url>
+          <line>8</line>
+          <properties lambdaOrdinal="-1" />
+          <option name="timeStamp" value="4" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="javascript">
+          <url>file://$PROJECT_DIR$/src/components/tables/bigImageTable/bigImageTableList.tsx</url>
+          <line>17</line>
+          <properties lambdaOrdinal="-1" />
+          <option name="timeStamp" value="5" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
   </component>
 </project>

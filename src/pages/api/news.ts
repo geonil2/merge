@@ -2,7 +2,7 @@ import {NextApiRequest, NextApiResponse} from "next";
 import axios from "axios";
 import {isAxiosError} from "../../config/api";
 
-type Data = any
+export type Data = any
 
 interface OriginalNewsData {
   title: string,

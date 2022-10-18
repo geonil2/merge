@@ -1,19 +1,16 @@
-import type {GetServerSidePropsResult, GetStaticPropsContext, NextPage} from 'next'
+import type {GetServerSidePropsResult, NextPage} from 'next'
 import styled from "@emotion/styled";
 import VerticalSlideTable from "../components/tables/verticalSlideTable";
 import TwoRowTable from "../components/tables/twoRowTable";
 import VerticalListTable from "../components/tables/verticalListTable";
 import {GetServerSidePropsContext} from "next";
-import AsideBar from "../components/asideBar";
 import TableLayout from "../TableLayout";
 import BigImageTable from "../components/tables/bigImageTable";
-import axios, { AxiosRequestConfig } from 'axios';
 import {dehydrate, QueryClient} from "@tanstack/query-core";
 import {ParsedUrlQuery} from "querystring";
-import {getHotIssueApi} from "../services/hotIssue/api";
+import {getConferenceListApi} from "../services/conference/api";
 import {useQuery} from "@tanstack/react-query";
 import {useEffect} from "react";
-import {api} from "../config/api";
 
 const QnA_mock = [
   { id: 1, title: "React에서 useState사용법", description: "React에서 useState의 사용법을 알려주세요.", url: '/', category: "question", owner: "geonil@gmail.com", likes: 100, created_at: "2022-10-05 11:24:32", updated_at: "2022-10-05 11:24:32"},
@@ -23,25 +20,25 @@ const QnA_mock = [
   { id: 5, title: "React에서 useState사용법", description: "React에서 useState의 사용법을 알려주세요.", url: '/', category: "question", owner: "geonil@gmail.com", likes: 100, created_at: "2022-10-05 11:24:32", updated_at: "2022-10-05 11:24:32"},
 ]
 
-const Home: NextPage = ({ data } : { data : any }) => {
-  // const hotIssue = useQuery(['HotIssue'], () => getHotIssueApi(), {
-  //   staleTime: Infinity,
-  // })
+const Home: NextPage = () => {
+  const conference = useQuery(['HotIssue'], () => getConferenceListApi(), {
+    staleTime: Infinity,
+  })
 
   useEffect(() => {
-    console.log(data,'data')
-  }, [data])
+    console.log(conference.data,'data')
+  }, [conference])
 
   return (
     <TableLayout>
       <TableContainer>
         <VerticalSlideTable />
         <TwoRowTable />
+        {conference.data?.data && <BigImageTable lists={conference.data.data} />}
         <VerticalListTable
           title='Q&A'
           lists={QnA_mock}
         />
-        <BigImageTable />
         <VerticalListTable
           title='개발정보'
           lists={QnA_mock}
@@ -54,7 +51,6 @@ const Home: NextPage = ({ data } : { data : any }) => {
           title='구인구직'
           lists={QnA_mock}
         />
-        {/*<BigImageTable />*/}
       </TableContainer>
     </TableLayout>
   )
@@ -94,28 +90,12 @@ type Callback<
 // }
 
 export const getServerSideProps = async (context: GetServerSidePropsContext) => {
-  // const queryClient = new QueryClient()
-  // await queryClient.prefetchQuery(['HotIssue'], getHotIssueApi)
-  // return {
-  //   props: {
-  //     dehydratedState: dehydrate(queryClient),
-  // },
-  // }
-  // console.log(process.env.NOTION_DATABASE_ID)
-  // const { data } = await api.post(`/v1/databases/${process.env.NOTION_DATABASE_ID}/query`, {
-  //   baseURL: 'https://api.notion.com',
-  //   headers: {
-  //     "Authorization" : `Bearer ${process.env.NOTION_TOKEN}`,
-  //     "Notion-Version": "2022-02-22",
-  //   }
-  // });
-  return { props: {  } }
+  const queryClient = new QueryClient()
+  await queryClient.prefetchQuery(['HotIssue'], getConferenceListApi)
+  return {
+    props: {
+      dehydratedState: dehydrate(queryClient),
+  },
+  }
 };
 
-
-
-// export async function getServerSideProps(context: GetServerSidePropsContext) {
-//   return {
-//     props : {}
-//   }
-// }
