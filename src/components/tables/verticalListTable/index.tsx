@@ -4,7 +4,7 @@ import styled from "@emotion/styled";
 import {COLORS, SHADOWS} from "../../../config/styles";
 import VerticalList from "./verticalList";
 import {useQuery} from "@tanstack/react-query";
-import {boardList} from "../../../services/types";
+import {boardList} from "../../../services/news/types";
 import {getNewsListApi} from "../../../services/news/api";
 
 interface Props {

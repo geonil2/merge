@@ -9,6 +9,7 @@ interface Props {
 }
 
 export type BigImageTableListType = {
+  id: string,
   date: string,
   tag: string[],
   title: string,
@@ -21,16 +22,12 @@ const BigImageTable: React.FC<Props> = ({ lists }) => {
     <Container>
       <TableHeaderLayout title="컨퍼런스" />
       <BigImageTableBody>
-        {lists.map((list: BigImageTableListType) =>
+        {lists.map((list: BigImageTableListType) => (
           <BigImageTableList
-            key={list.title}
-            date={list.date}
-            tag={list.tag}
-            title={list.title}
-            image={list.image}
-            url={list.url}
+            key={list.id}
+            list={list}
           />
-        )}
+        ))}
       </BigImageTableBody>
     </Container>
   );
@@ -44,8 +41,6 @@ const Container = styled.section`
 const BigImageTableBody = styled.section`
   display: flex;
   justify-content: space-between;
-  //grid-template-rows: repeat(1, 1fr);
-  //grid-template-columns: repeat(3, 1fr);
   margin: 0px 24px;
   padding-bottom: 24px;
 `

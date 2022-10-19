@@ -4,7 +4,7 @@ import BannerTable from "../tables/bannerTable";
 import VerticalListTable from "../tables/verticalListTable";
 import styled from "@emotion/styled";
 import {useQuery} from "@tanstack/react-query";
-import {newsListQueryKey} from "../../services/types";
+import {newsListQueryKey} from "../../services/news/types";
 import {getNewsListApi} from "../../services/news/api";
 
 const asideBar = () => {

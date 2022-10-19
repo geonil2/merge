@@ -3,18 +3,12 @@ import styled from "@emotion/styled";
 import {BigImageTableListType} from "./index";
 import {COLORS} from "../../../config/styles";
 
-const BigImageTableList: React.FC<BigImageTableListType> = ({
-  date,
-  tag,
-  title,
-  image,
-  url
-}) => {
-  console.log(  date, tag,
-    title,
-    image,
-    url
-  )
+interface Props {
+  list: BigImageTableListType
+}
+
+const BigImageTableList: React.FC<Props> = ({ list }) => {
+  const { date, tag, title, image, url } = list;
   return (
     <A href={url} target='_blank'>
       <img src={image} width={230} height={140} style={{ borderRadius: "6px" }} />

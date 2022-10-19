@@ -10,17 +10,10 @@ import CommonButton from "../../commonButton";
 import {LoginRequestBody} from "../../../services/auth/types";
 import {useMutation, useQueryClient} from "@tanstack/react-query";
 import {loginApi} from "../../../services/auth/api";
+import useUser from "../../../hooks/useUser";
 
 const DesktopHeader = () => {
-  const { data: session, status } = useSession();
-  const login = useMutation(loginApi);
-
-
-  useEffect(() => {
-    if (session) {
-      login.mutate(session as LoginRequestBody)
-    }
-  }, [session])
+  const { data } = useUser();
 
   return (
     <Header>
@@ -39,15 +32,13 @@ const DesktopHeader = () => {
         </Nav>
       </HeaderContentsContainer>
       <HeaderContentsContainer>
-        {status === 'authenticated' && session?.user ?
-          <Link href="/login" passHref>
-            <a>
-              <ProfileThum
-                src='/images/icons/profile.svg'
-                alt="Logo"
-              />
-            </a>
-          </Link>
+        {data ?
+          <div onClick={() => signIn('google')}>
+            <ProfileThum
+              src={data.image}
+              alt="Logo"
+            />
+          </div>
           :
           <CommonButton title="Login" width={72} onClick={() => signIn('google')} />
         }
@@ -107,7 +98,9 @@ const Nav = styled.nav`
 const ProfileThum = styled.img`
   width: 40px;
   height: 40px;
+  border-radius: 50%;
   margin-right: 10px;
+  cursor: pointer;
 `
 
 const LoginButton = styled.button`

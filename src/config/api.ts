@@ -1,8 +1,8 @@
 import axios, {AxiosError} from "axios";
 
-export const api = axios.create();
+export const API = axios.create();
 
-api.defaults.baseURL = process.env.NEXT_PUBLIC_API_HOST
+API.defaults.baseURL = process.env.NEXT_PUBLIC_API_HOST
 
 export const isAxiosError = (error: any): error is AxiosError => {
     return error?.isAxiosError;

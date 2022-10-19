@@ -3,7 +3,7 @@ import Image from "next/image";
 import styled from "@emotion/styled";
 import ReactTimeago from "react-timeago";
 import Link from "next/link";
-import {boardList} from "../../../services/types";
+import {boardList} from "../../../services/news/types";
 import {COLORS} from "../../../config/styles";
 import {Interweave} from "interweave";
 import {polyfill} from "interweave-ssr";
