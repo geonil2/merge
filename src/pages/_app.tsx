@@ -10,9 +10,19 @@ import {ReactQueryDevtools} from "@tanstack/react-query-devtools";
 import {Hydrate} from "@tanstack/react-query";
 import Header from "../components/header/headerWrap/header";
 import {SessionProvider} from "next-auth/react";
+import TableLayout from "../TableLayout";
+import {useRouter} from "next/router";
 
 function MyApp({ Component, pageProps }: AppProps) {
   const queryClient = useRef(generateQueryClient());
+  const router = useRouter();
+
+  const requiredLayout = () => {
+    if (router.pathname === '/writing') {
+      return <Component {...pageProps} />
+    }
+    return <TableLayout><Component {...pageProps} /></TableLayout>
+  }
 
   return (
       <SessionProvider session={pageProps.session}>
@@ -29,7 +39,8 @@ function MyApp({ Component, pageProps }: AppProps) {
                     </Head>
 
                     <Header />
-                    <Component {...pageProps} />
+                    {requiredLayout()}
+
                     <ReactQueryDevtools initialIsOpen={false} />
                 </Hydrate>
             </QueryClientProvider>

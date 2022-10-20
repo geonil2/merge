@@ -10,11 +10,11 @@ interface Props {
 
 const CommonButton: React.FC<Props> = ({ title, width, onClick }) => {
   return (
-    <LoginButton width={width} onClick={onClick}>{title}</LoginButton>
+    <Button width={width} onClick={onClick}>{title}</Button>
   );
 };
 
-const LoginButton = styled.button`
+const Button = styled.button`
   display: flex;
   justify-content: center;
   align-items: center;

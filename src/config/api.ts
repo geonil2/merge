@@ -1,8 +1,13 @@
 import axios, {AxiosError} from "axios";
+import {isServer} from "../services/utils";
 
 export const API = axios.create();
 
+const getToken = !isServer ? localStorage.getItem('accessToken') : ''
+// const accessToken = getToken ? JSON.parse(getToken) : '';
+
 API.defaults.baseURL = process.env.NEXT_PUBLIC_API_HOST
+API.defaults.headers.common['Authorization'] = `Bearer ${getToken}`
 
 export const isAxiosError = (error: any): error is AxiosError => {
     return error?.isAxiosError;

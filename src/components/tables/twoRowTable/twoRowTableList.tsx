@@ -40,7 +40,7 @@ const Container = styled.li`
   align-items: center;
   border-bottom: 1px solid ${COLORS.GRAY};
   padding: 10px 24px;
-  &:nth-child(odd) {
+  &:nth-of-type(odd) {
     border-right: 1px solid ${COLORS.GRAY};
   }
 `

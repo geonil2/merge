@@ -4,25 +4,26 @@ import {COLORS, SHADOWS} from "../../../config/styles";
 import {signIn, signOut, useSession} from "next-auth/react";
 import useUser from "../../../hooks/useUser";
 import Link from "next/link";
+import {redirect} from "next/dist/server/api-utils";
 
 const AuthTable = () => {
-  const { data } = useUser();
+  const { user } = useUser();
 
   return (
     <Container>
-      {data ?
+      {user ?
         <>
           <AuthenticatedUI>
             <Profile>
               <ProfileThumb
-                src={data.image}
+                src={user.image}
               />
               <UserText>
-                <UserName>{data.name}</UserName>
-                <Email>{data.email}</Email>
+                <UserName>{user.name}</UserName>
+                <Email>{user.email}</Email>
               </UserText>
             </Profile>
-            <LogoutButton onClick={() => signOut()}>
+            <LogoutButton onClick={() => signOut({ redirect: false })}>
               Log out
             </LogoutButton>
           </AuthenticatedUI>

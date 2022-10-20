@@ -13,8 +13,8 @@ const BigImageTableList: React.FC<Props> = ({ list }) => {
     <A href={url} target='_blank'>
       <img src={image} width={230} height={140} style={{ borderRadius: "6px" }} />
       <Tag>
-        {tag.map((tagList: string) => (
-          <p>{tagList}</p>
+        {tag.map((tagList: string, index) => (
+          <p key={index}>{tagList}</p>
         ))}
       </Tag>
       <Title>{title}</Title>

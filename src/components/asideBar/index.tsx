@@ -37,4 +37,4 @@ const Aside = styled.aside`
   gap: 14px 0px;
 `
 
-export default asideBar;
+export default React.memo(asideBar);

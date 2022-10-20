@@ -13,7 +13,7 @@ import {loginApi} from "../../../services/auth/api";
 import useUser from "../../../hooks/useUser";
 
 const DesktopHeader = () => {
-  const { data } = useUser();
+  const { user } = useUser();
 
   return (
     <Header>
@@ -32,10 +32,10 @@ const DesktopHeader = () => {
         </Nav>
       </HeaderContentsContainer>
       <HeaderContentsContainer>
-        {data ?
+        {user ?
           <div onClick={() => signIn('google')}>
             <ProfileThum
-              src={data.image}
+              src={user.image}
               alt="Logo"
             />
           </div>

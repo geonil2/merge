@@ -10,11 +10,11 @@ const QuestionDetailPage: NextPage = () => {
   const { pid } = router.query
 
   return (
-    <TableLayout>
+    // <TableLayout>
       <Container>
         <ContentsDetail />
       </Container>
-    </TableLayout>
+    // </TableLayout>
   );
 };
 

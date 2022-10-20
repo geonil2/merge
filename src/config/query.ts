@@ -1,5 +1,6 @@
 import {isAxiosError} from "./api";
-import {QueryClient} from "@tanstack/query-core";
+import {QueryCache, QueryClient} from "@tanstack/query-core";
+import {removeTokenInStorage} from "../services/auth/api";
 
 const retry = (failCount: number, error: unknown): boolean => {
     if (isAxiosError(error)) {
@@ -14,7 +15,12 @@ const retry = (failCount: number, error: unknown): boolean => {
 * QueryClient default setting
  */
 export const generateQueryClient = () => {
-    const queryClient = new QueryClient();
+    const queryClient = new QueryClient({
+      queryCache: new QueryCache({
+        onError: (error) =>
+          removeTokenInStorage()
+      }),
+    });
 
     queryClient.setDefaultOptions({
         queries: {

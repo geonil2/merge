@@ -29,14 +29,14 @@ export const QnA_mock = [
 
 const Question = () => {
   return (
-    <TableLayout>
+    // <TableLayout>
       <TableContainer>
         <VerticalListTable
           title='Q&A'
           lists={QnA_mock}
         />
       </TableContainer>
-    </TableLayout>
+    // </TableLayout>
   );
 };
 const TableContainer = styled.div`

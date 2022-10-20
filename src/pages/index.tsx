@@ -27,7 +27,7 @@ const Home: NextPage = () => {
   })
 
   return (
-    <TableLayout>
+    // <TableLayout>
       <TableContainer>
         <VerticalSlideTable />
         <TwoRowTable />
@@ -49,7 +49,7 @@ const Home: NextPage = () => {
           lists={QnA_mock}
         />
       </TableContainer>
-    </TableLayout>
+    // </TableLayout>
   )
 }
 

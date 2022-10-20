@@ -22,12 +22,7 @@ const BigImageTable: React.FC<Props> = ({ lists }) => {
     <Container>
       <TableHeaderLayout title="컨퍼런스" />
       <BigImageTableBody>
-        {lists.map((list: BigImageTableListType) => (
-          <BigImageTableList
-            key={list.id}
-            list={list}
-          />
-        ))}
+        {lists.map(list => <BigImageTableList key={list.id} list={list} />)}
       </BigImageTableBody>
     </Container>
   );

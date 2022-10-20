@@ -3,34 +3,56 @@ import dynamic from "next/dynamic";
 import {MENUS} from "../../config/menus";
 import styled from "@emotion/styled";
 import {COLORS, SHADOWS} from "../../config/styles";
-import {useForm} from "react-hook-form";
+import {SubmitHandler, useForm} from "react-hook-form";
 import {EditorType} from "@toast-ui/editor/types/editor";
 import {signIn} from "next-auth/react";
 import CommonButton from "../../components/commonButton";
+import {useMutation} from "@tanstack/react-query";
+import {postBoardApi} from "../../services/board/api";
+import {postBoardRequestBody} from "../../services/board/types";
+import useUser from "../../hooks/useUser";
 
 const TextEditor = dynamic(() => import('../../components/textEditor'), {
   ssr: false,
 })
 
+type WritingInputValue = {
+  title?: string
+}
+
+const descriptionPlaceholder = '내용을 입력해주세요.'
+
 const Index = () => {
   const [showCategory, setShowCategory] = useState(false);
   const [selectedCategory, setSelectedCategory] = useState('Category');
+  const [description, setDescription] = useState(`<p>${descriptionPlaceholder}</p>`);
   const { register, handleSubmit } = useForm();
-  const [htmlValue, setHtml] = useState('')
   const editor = useRef(null);
+  const { mutate } = useMutation(postBoardApi);
+  const { user } = useUser();
 
   const onChangeEditValue = useCallback((htmlVal: EditorType) => {
     if (!editor.current) return
-    console.log(editor.current.getInstance().getHTML(), 'bb')
-    setHtml(() => htmlVal)
-
+    setDescription(editor.current.getInstance().getHTML());
   }, [])
+
+  const onSubmit: SubmitHandler<WritingInputValue> = (data, event) => {
+    event?.preventDefault()
+    console.log({ category: selectedCategory, description, ...data, })
+    console.log(user, 'user')
+    mutate({
+      ...data,
+      category: selectedCategory === 'Q&A' ? 'question' : selectedCategory,
+      description,
+      email: user.email
+    } as postBoardRequestBody)
+  }
 
   return (
     <Layout>
       <Container>
         <p>Write Article</p>
-        <form onSubmit={handleSubmit((data) => alert(JSON.stringify(data)))}>
+        <form onSubmit={handleSubmit(onSubmit)}>
           <Category
             onClick={() => setShowCategory(!showCategory)}
             category={selectedCategory}
@@ -48,12 +70,12 @@ const Index = () => {
                 </ul>
               ) : null}
           </Category>
-          <Title {...register("title")} placeholder='제목을 입력해주세요.' />
+          <Title {...register("title")} placeholder={descriptionPlaceholder} />
           <TextEditorWrap>
             <TextEditor onChangeEditValue={onChangeEditValue} editor={editor} />
           </TextEditorWrap>
           <ButtonWrap>
-              <CommonButton title="Post" width={180} onClick={() => signIn('google')} />
+              <CommonButton title="Post" width={180} />
           </ButtonWrap>
         </form>
       </Container>
