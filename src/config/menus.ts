@@ -1,27 +1,40 @@
 export const MENUS = [
   {
     id: 1,
-    name: 'Q&A',
+    name: 'question',
+    title: 'Q&A',
     url: '/question'
   },
   {
     id: 2,
-    name: '개발정보',
+    name: 'info',
+    title: '개발정보',
     url: '/info'
   },
   {
     id: 3,
-    name: '커뮤니티',
+    name: 'community',
+    title: '커뮤니티',
     url: '/community'
   },
   {
     id: 4,
-    name: '구인구직',
+    name: 'recruit',
+    title: '구인구직',
     url: '/recruit'
   },
   {
     id: 5,
-    name: '공지사항',
+    name: 'notice',
+    title: '공지사항',
     url: '/notice'
   }
 ]
+
+
+export type Menu = {
+  id: number,
+  name: string,
+  title: string,
+  url: string
+}

@@ -13,6 +13,7 @@ export const loginApi = async (userData: nextAuthLoginResponseData) => {
 
 export const setTokenInStorage = (token: string) => {
   if (!isServer) {
+    console.log(token, 'set token in storage')
     window.localStorage.setItem(TOKEN_STORAGE_KEY, token);
   }
 }

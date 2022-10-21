@@ -1,13 +1,19 @@
 import axios, {AxiosError} from "axios";
 import {isServer} from "../services/utils";
+import useUser from "../hooks/useUser";
 
 export const API = axios.create();
 
-const getToken = !isServer ? localStorage.getItem('accessToken') : ''
-// const accessToken = getToken ? JSON.parse(getToken) : '';
-
 API.defaults.baseURL = process.env.NEXT_PUBLIC_API_HOST
-API.defaults.headers.common['Authorization'] = `Bearer ${getToken}`
+API.interceptors.request.use(
+  (config) => {
+    const token = !isServer ? localStorage.getItem('accessToken') : '';
+    if (config.headers) {
+      config.headers.Authorization = `Bearer ${token}`;
+    }
+    return config;
+  }, undefined
+);
 
 export const isAxiosError = (error: any): error is AxiosError => {
     return error?.isAxiosError;
@@ -20,7 +26,7 @@ const globalErrorHandler = async (error?: any) => {
       if (status >= 500) {
         alert('Something went wrong')
       } else {
-        if (status === 403) {
+        if (status === 401) {
 
         }
       }

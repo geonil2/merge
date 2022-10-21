@@ -26,7 +26,7 @@ const DesktopHeader = () => {
         <Nav>
           <ul>
             {MENUS.map(menu => (
-              <li key={menu.url}><Link href={menu.url}>{menu.name}</Link></li>
+              <li key={menu.url}><Link href={menu.url}>{menu.title}</Link></li>
             ))}
           </ul>
         </Nav>

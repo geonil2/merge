@@ -1,4 +1,4 @@
-export const conferenceListQueryKey = 'getConferenceList'
+export const ConferenceListQueryKey = 'getConferenceList'
 
 export interface OriginalConferenceData {
   object: string,

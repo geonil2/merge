@@ -3,7 +3,7 @@ import Image from "next/image";
 import styled from "@emotion/styled";
 import ReactTimeago from "react-timeago";
 import Link from "next/link";
-import {boardList} from "../../../services/news/types";
+import {boardList} from "../../../services/board/types";
 import {COLORS} from "../../../config/styles";
 import {Interweave} from "interweave";
 import {polyfill} from "interweave-ssr";
@@ -15,9 +15,9 @@ import {polyfill} from "interweave-ssr";
 polyfill();
 
 const VerticalList= ({ list } : { list : boardList }) => {
-  const { id, title, image, category, url, views, owner, created_at } = list;
+  const { _id, title, image, category, url, views, owner, createdAt } = list;
   return (
-    <Link href={category ? `/${category}/${id}` : url} passHref>
+    <Link href={category ? `/${category}/${_id}` : url} passHref>
       <a target={category ? "_self" : "_blank"}>
         <List>
           {image && <Image src={image} alt="Contents thumbnail image"/>}
@@ -26,9 +26,9 @@ const VerticalList= ({ list } : { list : boardList }) => {
               <p><Interweave content={title} /></p>
             </TextTopArea>
             <TextBotArea>
-              {owner && <Owner>{owner}</Owner>}
+              {owner && <Owner>{owner.email}</Owner>}
               {views && <Likes>Likes {views}</Likes>}
-              <ReactTimeago date={created_at} />
+              <ReactTimeago date={createdAt} />
             </TextBotArea>
           </div>
         </List>

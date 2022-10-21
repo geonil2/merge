@@ -1,16 +1,16 @@
 import React, {useCallback, useRef, useState} from 'react';
 import dynamic from "next/dynamic";
-import {MENUS} from "../../config/menus";
+import {Menu, MENUS} from "../../config/menus";
 import styled from "@emotion/styled";
 import {COLORS, SHADOWS} from "../../config/styles";
 import {SubmitHandler, useForm} from "react-hook-form";
 import {EditorType} from "@toast-ui/editor/types/editor";
-import {signIn} from "next-auth/react";
 import CommonButton from "../../components/commonButton";
 import {useMutation} from "@tanstack/react-query";
 import {postBoardApi} from "../../services/board/api";
 import {postBoardRequestBody} from "../../services/board/types";
 import useUser from "../../hooks/useUser";
+import {useRouter} from "next/router";
 
 const TextEditor = dynamic(() => import('../../components/textEditor'), {
   ssr: false,
@@ -20,16 +20,24 @@ type WritingInputValue = {
   title?: string
 }
 
+const defaultCategoryMenu = {
+  id: 0,
+  name: 'Category',
+  title: 'Category',
+  url: '/'
+}
+
 const descriptionPlaceholder = '내용을 입력해주세요.'
 
 const Index = () => {
   const [showCategory, setShowCategory] = useState(false);
-  const [selectedCategory, setSelectedCategory] = useState('Category');
+  const [selectedCategory, setSelectedCategory] = useState<Menu>(defaultCategoryMenu);
   const [description, setDescription] = useState(`<p>${descriptionPlaceholder}</p>`);
   const { register, handleSubmit } = useForm();
   const editor = useRef(null);
   const { mutate } = useMutation(postBoardApi);
   const { user } = useUser();
+  const router = useRouter();
 
   const onChangeEditValue = useCallback((htmlVal: EditorType) => {
     if (!editor.current) return
@@ -42,10 +50,14 @@ const Index = () => {
     console.log(user, 'user')
     mutate({
       ...data,
-      category: selectedCategory === 'Q&A' ? 'question' : selectedCategory,
+      category: selectedCategory.name,
       description,
-      email: user.email
-    } as postBoardRequestBody)
+      email: user?.email
+    } as postBoardRequestBody, {
+      onSuccess: (data) => {
+        router.push(`${selectedCategory.url}`)
+      }
+    })
   }
 
   return (
@@ -55,17 +67,17 @@ const Index = () => {
         <form onSubmit={handleSubmit(onSubmit)}>
           <Category
             onClick={() => setShowCategory(!showCategory)}
-            category={selectedCategory}
+            category={selectedCategory.title}
           >
-            <SelectedLi>{selectedCategory}</SelectedLi>
+            <SelectedLi>{selectedCategory.title}</SelectedLi>
             <ArrowImg src={showCategory ? '/images/icons/up_arrow.svg' : '/images/icons/down_arrow.svg'}></ArrowImg>
             {showCategory ? (
                 <ul>
                   {MENUS.map(list => (
                     <li
                       key={list.id}
-                      onClick={() => setSelectedCategory(list.name)}
-                    >{list.name}</li>
+                      onClick={() => setSelectedCategory(list)}
+                    >{list.title}</li>
                   ))}
                 </ul>
               ) : null}

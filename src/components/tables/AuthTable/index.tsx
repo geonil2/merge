@@ -5,9 +5,15 @@ import {signIn, signOut, useSession} from "next-auth/react";
 import useUser from "../../../hooks/useUser";
 import Link from "next/link";
 import {redirect} from "next/dist/server/api-utils";
+import {removeTokenInStorage} from "../../../services/auth/api";
 
 const AuthTable = () => {
   const { user } = useUser();
+
+  const logOut = () => {
+    signOut({ redirect: false })
+    removeTokenInStorage()
+  }
 
   return (
     <Container>
@@ -23,7 +29,7 @@ const AuthTable = () => {
                 <Email>{user.email}</Email>
               </UserText>
             </Profile>
-            <LogoutButton onClick={() => signOut({ redirect: false })}>
+            <LogoutButton onClick={() => logOut()}>
               Log out
             </LogoutButton>
           </AuthenticatedUI>

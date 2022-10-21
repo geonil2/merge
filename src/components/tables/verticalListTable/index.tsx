@@ -4,8 +4,9 @@ import styled from "@emotion/styled";
 import {COLORS, SHADOWS} from "../../../config/styles";
 import VerticalList from "./verticalList";
 import {useQuery} from "@tanstack/react-query";
-import {boardList} from "../../../services/news/types";
 import {getNewsListApi} from "../../../services/news/api";
+import {boardList} from "../../../services/board/types";
+import Pagination from "../../pagination";
 
 interface Props {
   title: string,
@@ -16,7 +17,9 @@ const VerticalListTable: FC<Props> = ({ title, lists }) => {
   return (
     <Container>
       <TableHeaderLayout title={title} />
-      {lists.map(list => <VerticalList key={list.id} list={list} />)}
+      {lists.map(list => <VerticalList key={list._id} list={list} />)}
+
+      <Pagination />
     </Container>
   );
 };
