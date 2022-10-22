@@ -17,7 +17,7 @@ function MyApp({ Component, pageProps }: AppProps) {
   const queryClient = useRef(generateQueryClient());
   const router = useRouter();
 
-  const requiredLayout = () => {
+  const layout = () => {
     if (router.pathname === '/writing') {
       return <Component {...pageProps} />
     }
@@ -37,10 +37,8 @@ function MyApp({ Component, pageProps }: AppProps) {
                         <meta property="og:image" content="/images/og_image.png" />
                         <meta property="og:image:alt" content="Merge" />
                     </Head>
-
                     <Header />
-                    {requiredLayout()}
-
+                    {layout()}
                     <ReactQueryDevtools initialIsOpen={false} />
                 </Hydrate>
             </QueryClientProvider>

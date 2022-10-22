@@ -1,9 +1,11 @@
-import React, {useState} from 'react';
+import React, {useEffect, useState} from 'react';
 import AsideBar from "../../components/asideBar";
 import VerticalListTable from "../../components/tables/verticalListTable";
 import styled from "@emotion/styled";
 import TableLayout from "../../TableLayout";
 import useBoardByCategory from "../../hooks/useBoardListByCateogry";
+import {useRecoilState} from "recoil";
+import {offsetAtom} from "../../recoil/offset";
 
 export const QnA_mock = [
   { id: 1, title: "React에서 useState사용법", description: "React에서 useState의 사용법을 알려주세요.", url: '/', category: "question", owner: "geonil@gmail.com", likes: 100, created_at: "2022-10-05 11:24:32", updated_at: "2022-10-05 11:24:32"},
@@ -29,16 +31,25 @@ export const QnA_mock = [
 ]
 
 const Question = () => {
-  // const [limit, of]useState()
-  const questionBoard = useBoardByCategory({ category: 'question', limit: 20 })
+  const [limit, setLimit] = useRecoilState(offsetAtom);
+  const [offset, setOffset] = useRecoilState(offsetAtom);
+  const { data } = useBoardByCategory({ category: 'question', limit, offset })
+
+  useEffect(() => {
+    console.log(data, 'data')
+  }, [data])
 
   return (
     // <TableLayout>
       <TableContainer>
-        <VerticalListTable
-          title='Q&A'
-          lists={QnA_mock}
-        />
+        {!!data?.lists.length &&
+          <VerticalListTable
+            title='Q&A'
+            lists={data.lists}
+            showPagination={true}
+            totalCount={data.total}
+          />
+        }
       </TableContainer>
     // </TableLayout>
   );
@@ -50,6 +61,7 @@ const TableContainer = styled.div`
   display: grid;
   grid-template-columns: repeat(1, 1fr);
   grid-template-rows: auto;
+  align-self: flex-start;
   gap: 14px 0px;
 `
 

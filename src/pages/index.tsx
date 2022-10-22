@@ -47,24 +47,28 @@ const Home: NextPage = () => {
           <VerticalListTable
             title='Q&A'
             lists={questionBoard.data.lists}
+            showPagination={false}
           />
         }
         {!!infoBoard.data?.lists && infoBoard.data.lists.length !== 0 &&
           <VerticalListTable
             title='개발정보'
             lists={infoBoard.data.lists}
+            showPagination={false}
           />
         }
         {!!communityBoard.data?.lists && communityBoard.data.lists.length !== 0 &&
           <VerticalListTable
             title='커뮤니티'
             lists={communityBoard.data.lists}
+            showPagination={false}
           />
         }
         {!!recruitBoard.data?.lists && recruitBoard.data.lists.length !== 0 &&
           <VerticalListTable
             title='구인구직'
             lists={recruitBoard.data.lists}
+            showPagination={false}
           />
         }
       </TableContainer>

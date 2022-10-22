@@ -6,6 +6,10 @@ import styled from "@emotion/styled";
 import {useQuery} from "@tanstack/react-query";
 import {newsListQueryKey} from "../../services/news/types";
 import {getNewsListApi} from "../../services/news/api";
+import dynamic from "next/dynamic";
+// const BannerTable = dynamic(import('../tables/bannerTable'), {
+//   ssr: false
+// })
 
 const asideBar = () => {
   const { data } = useQuery([newsListQueryKey], () => getNewsListApi(), {
@@ -20,6 +24,7 @@ const asideBar = () => {
         <VerticalListTable
           title='업계 기사'
           lists={data.data}
+          showPagination={false}
         />
       )}
     </Aside>

@@ -11,15 +11,17 @@ import Pagination from "../../pagination";
 interface Props {
   title: string,
   lists: boardList[],
+  showPagination: boolean,
+  totalCount?: number,
 }
 
-const VerticalListTable: FC<Props> = ({ title, lists }) => {
+const VerticalListTable: FC<Props> = ({ title, lists, showPagination, totalCount }) => {
+  console.log(lists.length,' lists')
   return (
     <Container>
       <TableHeaderLayout title={title} />
       {lists.map(list => <VerticalList key={list._id} list={list} />)}
-
-      <Pagination />
+      {showPagination && <Pagination totalCount={totalCount} />}
     </Container>
   );
 };

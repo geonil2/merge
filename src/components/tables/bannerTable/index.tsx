@@ -42,6 +42,10 @@ const Container = styled.section`
   .slick-list {
     width: 100%;
     max-width: 420px;  
+    overflow: hidden;
+    > .slick-track {
+      display: flex;
+    }
   }
 `
 
