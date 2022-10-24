@@ -1,27 +1,35 @@
 import React from 'react';
 import styled from "@emotion/styled";
 import {COLORS, SHADOWS} from "../../../config/styles";
+import {BoardList} from "../../../services/board/types";
+import ReactTimeago from "react-timeago";
+import nl2br from "react-nl2br";
+import {Interweave} from "interweave";
 
-const Contents = () => {
+interface Props {
+  contents: BoardList
+}
+
+const Contents: React.FC<Props> = ({ contents }) => {
   return (
     <Container>
       <p>Question</p>
       <ContentsHeader>
         <Owner>
-          <Thumbnail src="/images/icons/profile.svg" />
+          <Thumbnail src={contents.owner?.image} />
           <UserText>
-            <p>name</p>
-            <p>email</p>
+            <p>{contents.owner?.name}</p>
+            <Email>{contents.owner?.email}</Email>
           </UserText>
         </Owner>
-        <Likes>Likes 100</Likes>
+        <Likes>Likes {contents.likes}</Likes>
       </ContentsHeader>
       <ContentsBody>
         <TitleWrap>
-          <Title>Title</Title>
-          <Date>2022-10-10 11:30</Date>
+          <Title>{contents.title}</Title>
+          <Date><ReactTimeago date={contents.createdAt} /></Date>
         </TitleWrap>
-        <Description>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed placerat nulla sed ex interdum bibendum. Mauris nisl velit, varius ac tincidunt rutrum, faucibus nec sem. Mauris facilisis turpis nisi, sit amet tempor lacus blandit nec. Vestibulum commodo interdum sem, sed posuere dui ultricies sit amet. Suspendisse volutpat felis id ex viverra, eu feugiat tortor egestas. Morbi elementum ut mi at laoreet. Cras consectetur vulputate augue, vel tempor mi aliquam quis. Curabitur in neque ac diam congue volutpat ac vitae neque. Pellentesque bibendum dapibus ligula quis pharetra. Pellentesque dictum, quam aliquam eleifend dictum, leo lacus viverra ipsum, eu vulputate odio erat vitae orci. Duis eget lacinia libero, nec pretium enim. Ut pulvinar neque a felis mattis finibus. Nulla a faucibus ante. Vestibulum tristique, purus eu rhoncus viverra, velit mauris tristique velit, quis fringilla quam sem et felis. Maecenas bibendum sodales rutrum. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae; Ut elementum, est at lobortis mollis, tortor tellus maximus felis, a commodo nisi magna nec sem. Quisque eget libero finibus, tristique ligula faucibus, efficitur nunc. Maecenas consectetur ornare leo at sodales. Integer molestie, augue non tempus blandit, risus nulla ornare dui, nec viverra nisl purus a quam.</Description>
+        <Description><Interweave content={contents.description} /></Description>
       </ContentsBody>
     </Container>
   );
@@ -55,16 +63,18 @@ const Owner = styled.div`
 const Thumbnail = styled.img`
   width: 32px;
   height: 32px;
+  border-radius: 50%;
 `
 
 const UserText = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  margin-left: 10px
-  > p {
-    color: ${COLORS.GRAY};
-  }
+  margin-left: 10px;
+`
+
+const Email = styled.p`
+  color: ${COLORS.GRAY};
 `
 
 const Likes = styled.div`

@@ -4,8 +4,10 @@ import VerticalListTable from "../../components/tables/verticalListTable";
 import styled from "@emotion/styled";
 import TableLayout from "../../TableLayout";
 import useBoardByCategory from "../../hooks/useBoardListByCateogry";
-import {useRecoilState} from "recoil";
+import {useRecoilValue} from "recoil";
 import {offsetAtom} from "../../recoil/offset";
+import {DEFAULT_LISTS_COUNT} from "../../components/pagination";
+import {NextPage} from "next";
 
 export const QnA_mock = [
   { id: 1, title: "React에서 useState사용법", description: "React에서 useState의 사용법을 알려주세요.", url: '/', category: "question", owner: "geonil@gmail.com", likes: 100, created_at: "2022-10-05 11:24:32", updated_at: "2022-10-05 11:24:32"},
@@ -30,28 +32,21 @@ export const QnA_mock = [
   { id: 20, title: "React에서 useState사용법", description: "React에서 useState의 사용법을 알려주세요.", url: '/', category: "question", owner: "geonil@gmail.com", likes: 100, created_at: "2022-10-05 11:24:32", updated_at: "2022-10-05 11:24:32"},
 ]
 
-const Question = () => {
-  const [limit, setLimit] = useRecoilState(offsetAtom);
-  const [offset, setOffset] = useRecoilState(offsetAtom);
-  const { data } = useBoardByCategory({ category: 'question', limit, offset })
-
-  useEffect(() => {
-    console.log(data, 'data')
-  }, [data])
+const Question: NextPage = () => {
+  const offset = useRecoilValue(offsetAtom);
+  const { data } = useBoardByCategory({ category: 'question', offset, limit: DEFAULT_LISTS_COUNT })
 
   return (
-    // <TableLayout>
-      <TableContainer>
-        {!!data?.lists.length &&
-          <VerticalListTable
-            title='Q&A'
-            lists={data.lists}
-            showPagination={true}
-            totalCount={data.total}
-          />
-        }
-      </TableContainer>
-    // </TableLayout>
+    <TableContainer>
+      {!!data?.lists.length &&
+        <VerticalListTable
+          title='Q&A'
+          lists={data.lists}
+          showPagination={true}
+          totalCount={data.total}
+        />
+      }
+    </TableContainer>
   );
 };
 

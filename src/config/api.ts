@@ -8,7 +8,7 @@ API.defaults.baseURL = process.env.NEXT_PUBLIC_API_HOST
 API.interceptors.request.use(
   (config) => {
     const token = !isServer ? localStorage.getItem('accessToken') : '';
-    if (config.headers) {
+    if (config.headers && token) {
       config.headers.Authorization = `Bearer ${token}`;
     }
     return config;

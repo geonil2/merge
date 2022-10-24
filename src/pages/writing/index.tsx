@@ -87,7 +87,7 @@ const Index = () => {
             <TextEditor onChangeEditValue={onChangeEditValue} editor={editor} />
           </TextEditorWrap>
           <ButtonWrap>
-              <CommonButton title="Post" width={180} />
+              <CommonButton title="작성" width={180} />
           </ButtonWrap>
         </form>
       </Container>

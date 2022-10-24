@@ -5,18 +5,22 @@ import {COLORS, SHADOWS} from "../../../config/styles";
 import VerticalList from "./verticalList";
 import {useQuery} from "@tanstack/react-query";
 import {getNewsListApi} from "../../../services/news/api";
-import {boardList} from "../../../services/board/types";
+import {BoardList} from "../../../services/board/types";
 import Pagination from "../../pagination";
 
 interface Props {
   title: string,
-  lists: boardList[],
+  lists: BoardList[],
   showPagination: boolean,
   totalCount?: number,
 }
 
-const VerticalListTable: FC<Props> = ({ title, lists, showPagination, totalCount }) => {
-  console.log(lists.length,' lists')
+const VerticalListTable: FC<Props> = ({
+  title,
+  lists,
+  showPagination,
+  totalCount
+}) => {
   return (
     <Container>
       <TableHeaderLayout title={title} />

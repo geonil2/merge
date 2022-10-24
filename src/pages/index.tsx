@@ -81,6 +81,7 @@ const TableContainer = styled.div`
   display: grid;
   grid-template-columns: repeat(1, 1fr);
   grid-template-rows: auto;
+  align-self: flex-start;
   gap: 14px 0px;
 `
 

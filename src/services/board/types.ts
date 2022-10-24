@@ -1,4 +1,7 @@
+import {User} from "../auth/types";
+
 export const BoardByCategoryQueryKey = 'getBoardListByCategory'
+export const BoardByIdQueryKey = 'getBoardById'
 
 type Category = "question" | "info" | "community" | "recruit" | "notice"
 
@@ -15,20 +18,16 @@ export interface BoardByCategoryRequestQuery {
   limit?: number
 }
 
-export interface boardList {
+export interface BoardList {
   _id: string,
   title: string,
   description: string,
   image?: string,
   url: string,
   category?: string,
-  owner?: Owner,
+  owner?: User,
   views?: string,
   likes?: string,
   createdAt: string,
   updatedAt?: string,
-}
-type Owner = {
-  _id: string,
-  email: string
 }

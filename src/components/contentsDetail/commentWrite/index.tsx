@@ -3,18 +3,45 @@ import CommonButton from "../../commonButton";
 import {signIn} from "next-auth/react";
 import styled from "@emotion/styled";
 import {COLORS, SHADOWS} from "../../../config/styles";
+import {SubmitHandler, useForm} from "react-hook-form";
+import useUser from "../../../hooks/useUser";
+import {CommentTextareaValue} from "../index";
+import {useMutation} from "@tanstack/react-query";
+import {postCommentApi} from "../../../services/comment/api";
 
-const CommentWrite = () => {
+interface Prop {
+  userId: string
+  boardId: string,
+  name: string,
+}
+
+const CommentWrite: React.FC<Prop> = ({ userId, boardId, name }) => {
+  const { register, handleSubmit, reset } = useForm();
+  const { mutate } = useMutation(postCommentApi);
+
+  const onSubmit: SubmitHandler<CommentTextareaValue> = (data, event) => {
+    event?.preventDefault();
+    mutate({
+      ...data,
+      userId,
+      boardId,
+    }, {
+      onSuccess: (data) => {
+        reset();
+      }
+    })
+  }
+
   return (
     <Container>
       <p>Write a comment</p>
       <CommentWriteHeader>
-        <UserName>Username</UserName>
+        <UserName>{name}</UserName>
       </CommentWriteHeader>
-      <CommentWriteBody>
-        <textarea name="" id="" maxLength={200} placeholder="댓글을 남겨주세요."></textarea>
+      <CommentWriteBody onSubmit={handleSubmit(onSubmit)}>
+        <textarea {...register("contents")} maxLength={200} placeholder="댓글을 남겨주세요."></textarea>
         <ButtonWrap>
-          <CommonButton title="작성" width={110} onClick={() => signIn('google')} />
+          <CommonButton title="작성" width={110} />
         </ButtonWrap>
       </CommentWriteBody>
     </Container>
@@ -37,10 +64,11 @@ const CommentWriteHeader = styled.div`
 `
 
 const UserName = styled.div`
+  font-weight: 700;
   font-size: 14px;
 `
 
-const CommentWriteBody = styled.div`
+const CommentWriteBody = styled.form`
   margin-top: 20px;
  > textarea {
    width: 100%;

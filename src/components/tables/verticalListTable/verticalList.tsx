@@ -3,7 +3,7 @@ import Image from "next/image";
 import styled from "@emotion/styled";
 import ReactTimeago from "react-timeago";
 import Link from "next/link";
-import {boardList} from "../../../services/board/types";
+import {BoardList} from "../../../services/board/types";
 import {COLORS} from "../../../config/styles";
 import {Interweave} from "interweave";
 import {polyfill} from "interweave-ssr";
@@ -14,7 +14,7 @@ import {polyfill} from "interweave-ssr";
  */
 polyfill();
 
-const VerticalList= ({ list } : { list : boardList }) => {
+const VerticalList= ({ list } : { list : BoardList }) => {
   const { _id, title, image, category, url, views, owner, createdAt } = list;
   return (
     <Link href={category ? `/${category}/${_id}` : url} passHref>

@@ -1,6 +1,7 @@
 import React from 'react';
 import styled from "@emotion/styled";
 import {COLORS} from "../../config/styles";
+import useUser from "../../hooks/useUser";
 
 interface Props {
   title: string,
@@ -9,8 +10,10 @@ interface Props {
 }
 
 const CommonButton: React.FC<Props> = ({ title, width, onClick }) => {
+  const { user } = useUser()
+
   return (
-    <Button width={width} onClick={onClick}>{title}</Button>
+    <Button width={width} onClick={onClick} disabled={!user}>{title}</Button>
   );
 };
 
