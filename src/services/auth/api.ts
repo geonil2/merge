@@ -4,13 +4,12 @@ import {isServer} from "../utils";
 
 export const loginApi = async (userData: nextAuthLoginResponseData) => {
   console.log(userData.accessToken, 'userData?')
-  const response = await API.post('/api/auth/login', userData.user, {
+  const { data } = await API.post('/api/auth/login', userData.user, {
     headers: {
       Authorization: `Bearer ${userData.accessToken}`
     }
   })
-  console.log(response.data,'로인데이터')
-  return response.data
+  return data.data
 }
 
 export const setTokenInStorage = (token: string) => {

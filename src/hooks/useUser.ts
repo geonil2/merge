@@ -3,7 +3,6 @@ import {loginApi, removeTokenInStorage, setTokenInStorage} from "../services/aut
 import {signOut, useSession} from "next-auth/react";
 import {useEffect} from "react";
 import {nextAuthLoginResponseData} from "../services/auth/types";
-import {redirect} from "next/dist/server/api-utils";
 
 const useUser = () => {
   const { data: session, status } = useSession();
@@ -29,7 +28,7 @@ const useUser = () => {
     }
   }, [session])
 
-  return { user: data?.data };
+  return { user: data };
 };
 
 export default useUser;

@@ -5,8 +5,11 @@ import React, {useEffect} from "react";
 import styled from "@emotion/styled";
 import ContentsDetail from "../../components/contentsDetail";
 import {useQuery} from "@tanstack/react-query";
-import {BoardByIdQueryKey} from "../../services/board/types";
-import {getBoardById} from "../../services/board/api";
+import {BoardByCategoryQueryKey, BoardByIdQueryKey} from "../../services/board/types";
+import {getBoardByCategory, getBoardById} from "../../services/board/api";
+import {dehydrate, QueryClient} from "@tanstack/query-core";
+import {CommentByBoardIdQueryKey} from "../../services/comment/types";
+import {getCommentByBoardId} from "../../services/comment/api";
 
 interface Prop {
   id: string
@@ -26,19 +29,27 @@ const Container = styled.div`
   display: grid;
   grid-template-columns: repeat(1, 1fr);
   grid-template-rows: auto;
+  align-self: flex-start;
   gap: 14px 0px;
 `
 
 export default QuestionDetailPage
 
-
 export const getServerSideProps = async (context: GetServerSidePropsContext) => {
   const { query } = context;
   const { id } = query;
+  const queryClient = new QueryClient()
+
+  await queryClient.prefetchQuery([BoardByIdQueryKey, { boardId: id }], () => getBoardById(id as string), {
+    staleTime: Infinity
+  })
+  await queryClient.prefetchQuery([CommentByBoardIdQueryKey, { boardId: id }], () => getCommentByBoardId(id as string))
+
   return {
     props: {
       id,
-    },
+      dehydratedState: dehydrate(queryClient),
+    }
   };
 };
 

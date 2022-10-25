@@ -11,7 +11,7 @@ const useBoardByCategory = ({ category, offset = 0, limit = 5 } : BoardByCategor
     category,
     offset,
     limit,
-  }))
+  }), { staleTime: Infinity })
 
   return { data };
 };

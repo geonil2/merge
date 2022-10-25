@@ -11,6 +11,7 @@ interface Props {
 }
 
 const Contents: React.FC<Props> = ({ contents }) => {
+  console.log(contents, 'contents')
   return (
     <Container>
       <p>Question</p>
@@ -27,7 +28,7 @@ const Contents: React.FC<Props> = ({ contents }) => {
       <ContentsBody>
         <TitleWrap>
           <Title>{contents.title}</Title>
-          <Date><ReactTimeago date={contents.createdAt} /></Date>
+          <Date><ReactTimeago date={contents.updatedAt ? contents.updatedAt : contents.createdAt} /></Date>
         </TitleWrap>
         <Description><Interweave content={contents.description} /></Description>
       </ContentsBody>

@@ -16,6 +16,7 @@ interface Prop {
 }
 
 const CommentWrite: React.FC<Prop> = ({ userId, boardId, name }) => {
+  const { user } = useUser();
   const { register, handleSubmit, reset } = useForm();
   const { mutate } = useMutation(postCommentApi);
 

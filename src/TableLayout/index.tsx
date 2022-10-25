@@ -1,21 +1,20 @@
-import React, {ReactNode} from 'react';
+import React, {HTMLAttributes, ReactNode} from 'react';
 import styled from "@emotion/styled";
 import AsideBar from "../components/asideBar";
 
-interface Props {
-  children: ReactNode
+interface Props extends HTMLAttributes<HTMLDivElement> {
 }
 
-const Index = (props: Props) => {
+const TableLayout: React.FC<Props> = ({ children }) => {
   return (
-    <TableLayout>
-      {props.children}
+    <Layout>
+      {children}
       <AsideBar />
-    </TableLayout>
+    </Layout>
   );
 };
 
-const TableLayout = styled.div`
+const Layout = styled.div`
   width: 1280px;
   box-sizing: border-box;
   display: grid;
@@ -27,4 +26,4 @@ const TableLayout = styled.div`
 `
 
 
-export default Index;
+export default TableLayout;

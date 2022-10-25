@@ -7,7 +7,14 @@ import useBoardByCategory from "../../hooks/useBoardListByCateogry";
 import {useRecoilValue} from "recoil";
 import {offsetAtom} from "../../recoil/offset";
 import {DEFAULT_LISTS_COUNT} from "../../components/pagination";
-import {NextPage} from "next";
+import {GetServerSidePropsContext, NextPage} from "next";
+import TableLeftWrapper from "../../components/tables/tableLeftWrapper";
+import {dehydrate, QueryClient} from "@tanstack/query-core";
+import {ConferenceListQueryKey} from "../../services/conference/types";
+import {getConferenceListApi} from "../../services/conference/api";
+import {BoardByCategoryQueryKey, BoardByIdQueryKey} from "../../services/board/types";
+import {getBoardByCategory, getBoardById} from "../../services/board/api";
+import {useQuery} from "@tanstack/react-query";
 
 export const QnA_mock = [
   { id: 1, title: "React에서 useState사용법", description: "React에서 useState의 사용법을 알려주세요.", url: '/', category: "question", owner: "geonil@gmail.com", likes: 100, created_at: "2022-10-05 11:24:32", updated_at: "2022-10-05 11:24:32"},
@@ -37,7 +44,7 @@ const Question: NextPage = () => {
   const { data } = useBoardByCategory({ category: 'question', offset, limit: DEFAULT_LISTS_COUNT })
 
   return (
-    <TableContainer>
+    <Container>
       {!!data?.lists.length &&
         <VerticalListTable
           title='Q&A'
@@ -46,18 +53,27 @@ const Question: NextPage = () => {
           totalCount={data.total}
         />
       }
-    </TableContainer>
+    </Container>
   );
 };
 
-const TableContainer = styled.div`
-  width: 766px;
+const Container = styled(TableLeftWrapper)`
   height: fit-content;
-  display: grid;
-  grid-template-columns: repeat(1, 1fr);
-  grid-template-rows: auto;
-  align-self: flex-start;
-  gap: 14px 0px;
 `
 
 export default Question;
+
+export const getServerSideProps = async (context: GetServerSidePropsContext) => {
+  const queryClient = new QueryClient()
+  await queryClient.prefetchQuery([BoardByCategoryQueryKey, { category: 'question', offset: 0, limit: DEFAULT_LISTS_COUNT }], () => getBoardByCategory({
+    category: 'question',
+    offset: 0,
+    limit: DEFAULT_LISTS_COUNT
+  }), { staleTime: Infinity })
+
+  return {
+    props: {
+      dehydratedState: dehydrate(queryClient),
+    },
+  }
+};
