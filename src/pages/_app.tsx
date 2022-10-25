@@ -10,7 +10,7 @@ import {ReactQueryDevtools} from "@tanstack/react-query-devtools";
 import {Hydrate} from "@tanstack/react-query";
 import Header from "../components/header/headerWrap/header";
 import {SessionProvider} from "next-auth/react";
-import TableLayout from "../TableLayout";
+import TableLayout from "../components/TableLayout";
 import {useRouter} from "next/router";
 
 function MyApp({ Component, pageProps }: AppProps) {

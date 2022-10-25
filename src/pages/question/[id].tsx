@@ -1,6 +1,6 @@
 import { useRouter } from 'next/router'
 import {GetServerSidePropsContext, NextPage} from "next";
-import TableLayout from "../../TableLayout";
+import TableLayout from "../../components/TableLayout";
 import React, {useEffect} from "react";
 import styled from "@emotion/styled";
 import ContentsDetail from "../../components/contentsDetail";

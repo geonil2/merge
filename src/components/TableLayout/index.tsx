@@ -1,6 +1,6 @@
 import React, {HTMLAttributes, ReactNode} from 'react';
 import styled from "@emotion/styled";
-import AsideBar from "../components/asideBar";
+import AsideBar from "../asideBar";
 
 interface Props extends HTMLAttributes<HTMLDivElement> {
 }
