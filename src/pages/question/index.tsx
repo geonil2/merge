@@ -65,11 +65,14 @@ export default Question;
 
 export const getServerSideProps = async (context: GetServerSidePropsContext) => {
   const queryClient = new QueryClient()
-  await queryClient.prefetchQuery([BoardByCategoryQueryKey, { category: 'question', offset: 0, limit: DEFAULT_LISTS_COUNT }], () => getBoardByCategory({
+  await queryClient.prefetchQuery([
+    BoardByCategoryQueryKey,
+    { category: 'question', offset: 0, limit: DEFAULT_LISTS_COUNT }
+  ], () => getBoardByCategory({
     category: 'question',
     offset: 0,
     limit: DEFAULT_LISTS_COUNT
-  }), { staleTime: Infinity })
+  }))
 
   return {
     props: {

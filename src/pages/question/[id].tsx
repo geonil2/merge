@@ -40,9 +40,7 @@ export const getServerSideProps = async (context: GetServerSidePropsContext) => 
   const { id } = query;
   const queryClient = new QueryClient()
 
-  await queryClient.prefetchQuery([BoardByIdQueryKey, { boardId: id }], () => getBoardById(id as string), {
-    staleTime: Infinity
-  })
+  await queryClient.prefetchQuery([BoardByIdQueryKey, { boardId: id }], () => getBoardById(id as string))
   await queryClient.prefetchQuery([CommentByBoardIdQueryKey, { boardId: id }], () => getCommentByBoardId(id as string))
 
   return {

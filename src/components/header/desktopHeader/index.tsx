@@ -40,7 +40,7 @@ const DesktopHeader = () => {
             />
           </div>
           :
-          <CommonButton title="Login" width={72} onClick={() => signIn('google')} />
+          <Button title="Login" onClick={() => signIn('google')} />
         }
         <SearchInputContainer>
           <HeaderSearchForm />
@@ -118,6 +118,10 @@ const LoginButton = styled.button`
   &:hover {
     background-color: ${COLORS.SUB};
   }
+`
+
+const Button = styled(CommonButton)`
+  width: 72px;
 `
 
 const SearchInputContainer = styled.div`

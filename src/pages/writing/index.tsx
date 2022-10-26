@@ -87,7 +87,7 @@ const Index = () => {
             <TextEditor onChangeEditValue={onChangeEditValue} editor={editor} />
           </TextEditorWrap>
           <ButtonWrap>
-              <CommonButton title="작성" width={180} />
+              <Button title="작성" />
           </ButtonWrap>
         </form>
       </Container>
@@ -171,6 +171,10 @@ const ButtonWrap = styled.div`
   justify-content: flex-end;
   padding-bottom: 22px;
   margin-top: 40px;
+`
+
+const Button = styled(CommonButton)`
+  width: 180px;
 `
 
 export default Index;

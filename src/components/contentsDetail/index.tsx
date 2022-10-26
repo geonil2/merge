@@ -23,14 +23,9 @@ export type CommentTextareaValue = {
 
 const ContentsDetail: React.FC<Prop> = ({ boardId }) => {
   const { user } = useUser();
-  const contents = useQuery([BoardByIdQueryKey, { boardId }], () => getBoardById(boardId), {
-    staleTime: Infinity
-  });
-  const comment = useQuery([CommentByBoardIdQueryKey, { boardId }], () => getCommentByBoardId(boardId), {
-    cacheTime: 10000,
-    staleTime: 10000
-  })
-  console.log(contents, 'contents')
+  const contents = useQuery([BoardByIdQueryKey, { boardId }], () => getBoardById(boardId));
+  const comment = useQuery([CommentByBoardIdQueryKey, { boardId }], () => getCommentByBoardId(boardId))
+  
   return (
     <>
       {contents.data && <Contents contents={contents.data} />}

@@ -1,19 +1,29 @@
-import React from 'react';
+import React, {HTMLAttributes} from 'react';
 import styled from "@emotion/styled";
 import {COLORS} from "../../config/styles";
 import useUser from "../../hooks/useUser";
 
-interface Props {
+// interface Props {
+//   title: string,
+//   width: number,
+//   onClick?: any,
+// }
+
+interface Props extends HTMLAttributes<HTMLButtonElement> {
   title: string,
-  width: number,
   onClick?: any,
 }
 
-const CommonButton: React.FC<Props> = ({ title, width, onClick }) => {
+
+const CommonButton: React.FC<Props> = ({
+  title,
+  onClick,
+  ...props
+}) => {
   const { user } = useUser()
 
   return (
-    <Button width={width} onClick={onClick} disabled={!user}>{title}</Button>
+    <Button {...props} onClick={onClick} disabled={!user}>{title}</Button>
   );
 };
 
@@ -21,7 +31,6 @@ const Button = styled.button`
   display: flex;
   justify-content: center;
   align-items: center;
-  width: ${(props: { width: number }) => props.width }px;
   height: 40px;
   background-color: ${COLORS.PRIMARY};
   color: ${COLORS.WHITE};

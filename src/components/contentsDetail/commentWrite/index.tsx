@@ -42,7 +42,7 @@ const CommentWrite: React.FC<Prop> = ({ userId, boardId, name }) => {
       <CommentWriteBody onSubmit={handleSubmit(onSubmit)}>
         <textarea {...register("contents")} maxLength={200} placeholder="댓글을 남겨주세요."></textarea>
         <ButtonWrap>
-          <CommonButton title="작성" width={110} />
+          <Button title="작성" />
         </ButtonWrap>
       </CommentWriteBody>
     </Container>
@@ -86,5 +86,8 @@ const ButtonWrap = styled.div`
   margin-top: 20px;
 `
 
+const Button = styled(CommonButton)`
+  width: 110px;
+`
 
 export default CommentWrite;

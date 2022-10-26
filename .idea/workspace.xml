@@ -5,22 +5,19 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="2eabddc1-1714-45aa-9a47-e3e67c011340" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/components/contentsDetail/commentList/commentListContainer.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/tables/tableLeftWrapper.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/dropdownMenu/index.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/hooks/useOutsideClick.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/TableLayout/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/TableLayout/index.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/contentsDetail/commentList/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/contentsDetail/commentList/commentList.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/commonButton/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/commonButton/index.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/contentsDetail/commentList/commentList.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/contentsDetail/commentList/commentList.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/contentsDetail/commentWrite/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/contentsDetail/commentWrite/index.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/contentsDetail/contents/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/contentsDetail/contents/index.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/contentsDetail/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/contentsDetail/index.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/header/desktopHeader/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/header/desktopHeader/index.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/hooks/useBoardListByCateogry.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/hooks/useBoardListByCateogry.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/hooks/useUser.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/hooks/useUser.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/pages/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/index.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/pages/question/[id].tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/question/[id].tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/pages/question/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/question/index.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/services/auth/api.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/services/auth/api.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pages/writing/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/writing/index.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/services/board/api.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/services/board/api.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/services/comment/api.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/services/comment/api.ts" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -58,6 +55,7 @@
       <recent name="$PROJECT_DIR$/src/pages/api" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/src/components" />
       <recent name="$PROJECT_DIR$/src/services/news" />
       <recent name="$PROJECT_DIR$/src/components/contentsDetail" />
       <recent name="$PROJECT_DIR$/src/components/commonButton" />
@@ -76,7 +74,7 @@
       <workItem from="1666228804273" duration="137000" />
       <workItem from="1666229069362" duration="46999000" />
       <workItem from="1666581369707" duration="1529000" />
-      <workItem from="1666584913771" duration="38486000" />
+      <workItem from="1666584913771" duration="56405000" />
     </task>
     <servers />
   </component>
@@ -107,6 +105,12 @@
           <line>8</line>
           <properties lambdaOrdinal="-1" />
           <option name="timeStamp" value="6" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="javascript">
+          <url>file://$PROJECT_DIR$/src/services/board/api.ts</url>
+          <line>8</line>
+          <properties lambdaOrdinal="-1" />
+          <option name="timeStamp" value="7" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
