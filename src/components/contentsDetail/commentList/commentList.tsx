@@ -2,10 +2,15 @@ import React, {useEffect, useRef, useState} from 'react';
 import styled from "@emotion/styled";
 import {COLORS, SHADOWS} from "../../../config/styles";
 import ReactTimeago from "react-timeago";
-import {Comment} from "../../../services/comment/types";
+import {Comment, CommentByBoardIdQueryKey} from "../../../services/comment/types";
 import CommonButton from "../../commonButton";
 import DropdownMenu from "../../dropdownMenu";
 import useOutsideClick from "../../../hooks/useOutsideClick";
+import {useMutation, useQueryClient} from "@tanstack/react-query";
+import {deleteCommentApi, updateCommentApi} from "../../../services/comment/api";
+import {useRouter} from "next/router";
+import {useRecoilState} from "recoil";
+import {showModalAtom} from "../../../recoil/modal";
 
 interface Prop {
   comment: Comment,
@@ -17,6 +22,13 @@ const CommentList: React.FC<Prop> = ({ comment, userId }) => {
   const dropdownMenuRef = useRef<HTMLUListElement>(null);
   const [isActive, setIsActive] = useOutsideClick(dropdownMenuRef, false);
   const [isDisabledTextarea, setIsDisabledTextarea] = useState(true);
+  const [textareaData, setTextareaData] = useState(comment.contents);
+  const updateComment = useMutation(updateCommentApi);
+  const deleteComment = useMutation(deleteCommentApi);
+  const router = useRouter();
+  const { id } = router.query;
+  const queryClient = useQueryClient();
+  const [showModal, setShowModal] = useRecoilState(showModalAtom)
 
   const onClickUpdateComment = () => {
     setIsDisabledTextarea(false);
@@ -24,8 +36,31 @@ const CommentList: React.FC<Prop> = ({ comment, userId }) => {
   }
 
   const onClickDeleteComment = () => {
+    setShowModal(true);
     setIsActive(false);
   }
+
+  const onClickCancelButton = () => {
+    setTextareaData(comment.contents)
+    setIsDisabledTextarea(true)
+  }
+
+  const onClickUpdateButton = () => {
+    updateComment.mutate({
+      boardId: id as string,
+      commentId: comment._id,
+      contents: textareaData,
+    }, {
+      onSuccess: (data) => {
+        queryClient.invalidateQueries([CommentByBoardIdQueryKey,{boardId: id}])
+        setIsDisabledTextarea(true)
+      },
+      onError: () => {
+        alert('문제가 발생했습니다. 다시 시도해주세요.')
+      }
+    })
+  }
+
 
   const dropdownMenus = [{title: '수정 하기', onClick: onClickUpdateComment}, {title: '삭제 하기', onClick: onClickDeleteComment}]
 
@@ -61,12 +96,20 @@ const CommentList: React.FC<Prop> = ({ comment, userId }) => {
           }
         </CommentInfo>
         <Commentarea>
-          <textarea maxLength={200} disabled={isDisabledTextarea} ref={textareaRef}>{comment.contents}</textarea>
+          <textarea
+            maxLength={200}
+            disabled={isDisabledTextarea}
+            ref={textareaRef}
+            onChange={(e) => setTextareaData(e.target.value)}
+            value={textareaData}
+          ></textarea>
         </Commentarea>
-        <UpdateButtonWrap>
-          <CancelButton title="취소" />
-          <UpdateButton title="수정" />
-        </UpdateButtonWrap>
+        {userId === comment.user._id && !isDisabledTextarea &&
+          <UpdateButtonWrap>
+            <CancelButton title="취소" onClick={onClickCancelButton} />
+            <UpdateButton title="수정" onClick={onClickUpdateButton}/>
+          </UpdateButtonWrap>
+        }
       </CommentInfoWrap>
     </CommentWrap>
   );

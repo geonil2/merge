@@ -5,7 +5,20 @@ export const postCommentApi = async ({ boardId, contents, userId }: { boardId: s
   return data.data
 }
 
-export const getCommentByBoardId = async (boardId: string) => {
+export const getCommentByBoardIdApi = async (boardId: string) => {
   const { data } = await API.get(`/api/comments/${boardId}`)
+  return data.data
+}
+
+
+// /api/comments/:board_id/:reple_id
+export const updateCommentApi = async ({ boardId, commentId, contents} : { boardId: string, commentId: string, contents: string }) => {
+  console.log(boardId, commentId, '123123')
+  const { data } = await API.put(`/api/comments/${boardId}/${commentId}`, { contents })
+  return data.data
+}
+
+export const deleteCommentApi = async ({ boardId, commentId } : { boardId: string, commentId: string }) => {
+  const { data } = await API.put(`/api/comments/${boardId}/${commentId}`)
   return data.data
 }

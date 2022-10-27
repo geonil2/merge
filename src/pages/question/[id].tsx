@@ -9,7 +9,7 @@ import {BoardByCategoryQueryKey, BoardByIdQueryKey} from "../../services/board/t
 import {getBoardByCategory, getBoardById} from "../../services/board/api";
 import {dehydrate, QueryClient} from "@tanstack/query-core";
 import {CommentByBoardIdQueryKey} from "../../services/comment/types";
-import {getCommentByBoardId} from "../../services/comment/api";
+import {getCommentByBoardIdApi} from "../../services/comment/api";
 
 interface Prop {
   id: string
@@ -41,7 +41,7 @@ export const getServerSideProps = async (context: GetServerSidePropsContext) => 
   const queryClient = new QueryClient()
 
   await queryClient.prefetchQuery([BoardByIdQueryKey, { boardId: id }], () => getBoardById(id as string))
-  await queryClient.prefetchQuery([CommentByBoardIdQueryKey, { boardId: id }], () => getCommentByBoardId(id as string))
+  await queryClient.prefetchQuery([CommentByBoardIdQueryKey, { boardId: id }], () => getCommentByBoardIdApi(id as string))
 
   return {
     props: {

@@ -8,7 +8,7 @@ import {getBoardById, postBoardApi} from "../../services/board/api";
 import {GetServerSidePropsContext} from "next";
 import {SubmitHandler, useForm} from "react-hook-form";
 import useUser from "../../hooks/useUser";
-import {getCommentByBoardId, postCommentApi} from "../../services/comment/api";
+import {getCommentByBoardIdApi, postCommentApi} from "../../services/comment/api";
 import {CommentByBoardIdQueryKey} from "../../services/comment/types";
 import CommentListContainer from "./commentList/commentListContainer";
 
@@ -24,7 +24,7 @@ export type CommentTextareaValue = {
 const ContentsDetail: React.FC<Prop> = ({ boardId }) => {
   const { user } = useUser();
   const contents = useQuery([BoardByIdQueryKey, { boardId }], () => getBoardById(boardId));
-  const comment = useQuery([CommentByBoardIdQueryKey, { boardId }], () => getCommentByBoardId(boardId))
+  const comment = useQuery([CommentByBoardIdQueryKey, { boardId }], () => getCommentByBoardIdApi(boardId))
   
   return (
     <>

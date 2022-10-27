@@ -1,6 +1,6 @@
 import {User} from "../auth/types";
 
-export const CommentByBoardIdQueryKey = 'getCommentByBoardId'
+export const CommentByBoardIdQueryKey = 'getCommentByBoardIdApi'
 
 export interface Comment {
   _id: string,

@@ -12,6 +12,7 @@ import Header from "../components/header/headerWrap/header";
 import {SessionProvider} from "next-auth/react";
 import TableLayout from "../components/TableLayout";
 import {useRouter} from "next/router";
+import Modal from "../components/modal";
 
 function MyApp({ Component, pageProps }: AppProps) {
   const queryClient = useRef(generateQueryClient());
@@ -39,6 +40,7 @@ function MyApp({ Component, pageProps }: AppProps) {
                     </Head>
                     <Header />
                     {layout()}
+                    <Modal />
                     <ReactQueryDevtools initialIsOpen={false} />
                 </Hydrate>
             </QueryClientProvider>
