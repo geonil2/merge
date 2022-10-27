@@ -11,7 +11,7 @@ import dynamic from "next/dynamic";
 //   ssr: false
 // })
 
-const asideBar = () => {
+const AsideBar = () => {
   const { data } = useQuery([newsListQueryKey], () => getNewsListApi(), {
     staleTime: Infinity,
   });
@@ -42,4 +42,4 @@ const Aside = styled.aside`
   gap: 14px 0px;
 `
 
-export default React.memo(asideBar);
+export default AsideBar;

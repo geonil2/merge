@@ -14,10 +14,11 @@ interface List {
 const DropdownMenu = forwardRef<HTMLUListElement, React.PropsWithChildren<Prop>>(({ menuLists }: Prop, ref) => {
   return (
     <Container ref={ref}>
-      {menuLists.map(list => <li onClick={() => list.onClick()}>{list.title}</li>)}
+      {menuLists.map(list => <li key={list.title} onClick={() => list.onClick()}>{list.title}</li>)}
     </Container>
   );
 });
+DropdownMenu.displayName = "DropdownMenu";
 
 const Container = styled.ul`
   position: absolute;

@@ -6,7 +6,7 @@ import {useRouter} from "next/router";
 import {useMutation, useQuery} from "@tanstack/react-query";
 import {getBoardById, postBoardApi} from "../../services/board/api";
 import {GetServerSidePropsContext} from "next";
-import {SubmitHandler, useForm} from "react-hook-form";
+import {FieldValues, SubmitHandler, useForm} from "react-hook-form";
 import useUser from "../../hooks/useUser";
 import {getCommentByBoardIdApi, postCommentApi} from "../../services/comment/api";
 import {CommentByBoardIdQueryKey} from "../../services/comment/types";

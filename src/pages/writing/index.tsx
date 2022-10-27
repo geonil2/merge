@@ -8,13 +8,14 @@ import {EditorType} from "@toast-ui/editor/types/editor";
 import CommonButton from "../../components/commonButton";
 import {useMutation} from "@tanstack/react-query";
 import {postBoardApi} from "../../services/board/api";
-import {postBoardRequestBody} from "../../services/board/types";
+import {PostBoardRequestBody} from "../../services/board/types";
 import useUser from "../../hooks/useUser";
 import {useRouter} from "next/router";
+import {Editor} from "@toast-ui/react-editor";
 
 const TextEditor = dynamic(() => import('../../components/textEditor'), {
   ssr: false,
-})
+});
 
 type WritingInputValue = {
   title?: string
@@ -34,7 +35,7 @@ const Index = () => {
   const [selectedCategory, setSelectedCategory] = useState<Menu>(defaultCategoryMenu);
   const [description, setDescription] = useState(`<p>${descriptionPlaceholder}</p>`);
   const { register, handleSubmit } = useForm();
-  const editor = useRef(null);
+  const editor = useRef<Editor>(null);
   const { mutate } = useMutation(postBoardApi);
   const { user } = useUser();
   const router = useRouter();
@@ -53,7 +54,7 @@ const Index = () => {
       category: selectedCategory.name,
       description,
       email: user?.email
-    } as postBoardRequestBody, {
+    } as PostBoardRequestBody, {
       onSuccess: (data) => {
         router.push(`${selectedCategory.url}`)
       }

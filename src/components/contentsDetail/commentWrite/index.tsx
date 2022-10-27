@@ -17,13 +17,13 @@ interface Prop {
 
 const CommentWrite: React.FC<Prop> = ({ userId, boardId, name }) => {
   const { user } = useUser();
-  const { register, handleSubmit, reset } = useForm();
+  const { register, handleSubmit, reset } = useForm<CommentTextareaValue>();
   const { mutate } = useMutation(postCommentApi);
 
-  const onSubmit: SubmitHandler<CommentTextareaValue> = (data, event) => {
+  const onSubmit: SubmitHandler<CommentTextareaValue> = (values, event) => {
     event?.preventDefault();
     mutate({
-      ...data,
+      ...values,
       userId,
       boardId,
     }, {

@@ -5,7 +5,7 @@ import '../../styles/globals.css'
 import {generateQueryClient} from "../config/query";
 import {COLORS} from "../config/styles";
 import {RecoilRoot} from "recoil";
-import {QueryClientProvider} from "@tanstack/react-query";
+import {QueryClientProvider, DehydratedState} from "@tanstack/react-query";
 import {ReactQueryDevtools} from "@tanstack/react-query-devtools";
 import {Hydrate} from "@tanstack/react-query";
 import Header from "../components/header/headerWrap/header";
@@ -13,8 +13,12 @@ import {SessionProvider} from "next-auth/react";
 import TableLayout from "../components/TableLayout";
 import {useRouter} from "next/router";
 import Modal from "../components/modal";
+import {Session} from "next-auth";
 
-function MyApp({ Component, pageProps }: AppProps) {
+function MyApp({ Component, pageProps }: AppProps<{
+  session: Session,
+  dehydratedState: DehydratedState
+}>) {
   const queryClient = useRef(generateQueryClient());
   const router = useRouter();
 

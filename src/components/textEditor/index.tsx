@@ -5,7 +5,7 @@ import colorSyntax from '@toast-ui/editor-plugin-color-syntax';
 import {EditorType} from "@toast-ui/editor/types/editor";
 
 interface Props {
-  editor: React.MutableRefObject<null>,
+  editor: React.RefObject<Editor>,
   onChangeEditValue: (htmlVal: EditorType) => void
 }
 

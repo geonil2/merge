@@ -32,10 +32,10 @@ const Question: NextPage = () => {
   return (
     // <TableLayout>
       <TableContainer>
-        <VerticalListTable
-          title='Q&A'
-          lists={QnA_mock}
-        />
+        {/*<VerticalListTable*/}
+        {/*  title='Q&A'*/}
+        {/*  lists={QnA_mock}*/}
+        {/*/>*/}
       </TableContainer>
     // </TableLayout>
   );

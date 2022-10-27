@@ -7,7 +7,6 @@ import {MENUS} from "../../../config/menus";
 import {signIn, useSession} from "next-auth/react";
 import CommonButton from "../../commonButton";
 // import useLogin from "../../../hooks/useLogin";
-import {LoginRequestBody} from "../../../services/auth/types";
 import {useMutation, useQueryClient} from "@tanstack/react-query";
 import {loginApi} from "../../../services/auth/api";
 import useUser from "../../../hooks/useUser";

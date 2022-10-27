@@ -5,19 +5,24 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="2eabddc1-1714-45aa-9a47-e3e67c011340" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/components/modal/index.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/hooks/useVisibleFade.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/recoil/modal.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.dockerignore" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Dockerfile" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/images/logo/merge.svg" beforeDir="false" afterPath="$PROJECT_DIR$/public/images/logo/grom2.svg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/contentsDetail/commentList/commentList.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/contentsDetail/commentList/commentList.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/asideBar/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/asideBar/index.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/contentsDetail/commentWrite/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/contentsDetail/commentWrite/index.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/contentsDetail/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/contentsDetail/index.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/dropdownMenu/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/dropdownMenu/index.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/header/desktopHeader/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/header/desktopHeader/index.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/textEditor/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/textEditor/index.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/pages/_app.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/_app.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/pages/api/news.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/api/news.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/pages/question/[id].tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/question/[id].tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/recoil/offset.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/recoil/offset.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/services/comment/api.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/services/comment/api.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/services/comment/types.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/services/comment/types.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pages/api/auth/[...nextauth].ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/api/auth/[...nextauth].ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pages/api/conference.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pages/community/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/community/index.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pages/info/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/info/index.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pages/notice/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/notice/index.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pages/recruit/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/recruit/index.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pages/writing/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/writing/index.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/services/conference/api.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/services/conference/api.ts" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -75,7 +80,7 @@
       <workItem from="1666228804273" duration="137000" />
       <workItem from="1666229069362" duration="46999000" />
       <workItem from="1666581369707" duration="1529000" />
-      <workItem from="1666584913771" duration="65387000" />
+      <workItem from="1666584913771" duration="74514000" />
     </task>
     <servers />
   </component>
@@ -112,6 +117,12 @@
           <line>8</line>
           <properties lambdaOrdinal="-1" />
           <option name="timeStamp" value="7" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="javascript">
+          <url>file://$PROJECT_DIR$/src/services/board/types.ts</url>
+          <line>20</line>
+          <properties lambdaOrdinal="-1" />
+          <option name="timeStamp" value="8" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>

@@ -1,5 +1,4 @@
 import axios from "axios";
-import {api} from "../../config/api";
 import {OriginalConferenceData, Tag} from "./types";
 
 export const getConferenceListApi = async () => {
