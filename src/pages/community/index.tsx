@@ -2,7 +2,7 @@ import React from 'react';
 import AsideBar from "../../components/asideBar";
 import VerticalListTable from "../../components/tables/verticalListTable";
 import styled from "@emotion/styled";
-import TableLayout from "../../components/TableLayout";
+import TableLayout from "../../components/tableLayout";
 import {NextPage} from "next";
 
 export const QnA_mock = [

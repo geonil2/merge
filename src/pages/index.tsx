@@ -4,7 +4,7 @@ import VerticalSlideTable from "../components/tables/verticalSlideTable";
 import TwoRowTable from "../components/tables/twoRowTable";
 import VerticalListTable from "../components/tables/verticalListTable";
 import {GetServerSidePropsContext} from "next";
-import TableLayout from "../components/TableLayout";
+import TableLayout from "../components/tableLayout";
 import BigImageTable from "../components/tables/bigImageTable";
 import {dehydrate, QueryClient} from "@tanstack/query-core";
 import {ParsedUrlQuery} from "querystring";

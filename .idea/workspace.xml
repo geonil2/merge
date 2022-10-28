@@ -5,24 +5,38 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="2eabddc1-1714-45aa-9a47-e3e67c011340" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/.dockerignore" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Dockerfile" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/clientOnlyPortal/index.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/commonModals/index.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/header/headerWrap/index.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/modal/popupModal/index.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/resources/popup.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/resources/types.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/asideBar/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/asideBar/index.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/TableLayout/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/tableLayout/index.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/contentsDetail/commentList/commentList.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/contentsDetail/commentList/commentList.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/contentsDetail/commentWrite/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/contentsDetail/commentWrite/index.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/contentsDetail/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/contentsDetail/index.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/dropdownMenu/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/dropdownMenu/index.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/header/desktopHeader/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/header/desktopHeader/index.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/textEditor/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/textEditor/index.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/header/headerWrap/header.tsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/mediaOnlyDiv/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/mediaOnlyDiv/index.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/modal/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/modal/index.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/config/menus.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/resources/menu.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/config/styles.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/config/styles.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/hooks/useOutsideClick.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/hooks/useOutsideClick.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/pages/_app.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/_app.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/pages/api/auth/[...nextauth].ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/api/auth/[...nextauth].ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/pages/api/conference.ts" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/pages/community/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/community/index.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pages/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/index.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/pages/info/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/info/index.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/pages/notice/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/notice/index.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pages/question/[id].tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/question/[id].tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pages/question/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/question/index.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/pages/recruit/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/recruit/index.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/pages/writing/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/writing/index.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/services/conference/api.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/services/conference/api.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/recoil/modal.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/recoil/modal.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/services/comment/api.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/services/comment/api.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/yarn.lock" beforeDir="false" afterPath="$PROJECT_DIR$/yarn.lock" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -45,7 +59,7 @@
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "WebServerToolWindowFactoryState": "false",
-    "last_opened_file_path": "/Users/kimgeonil/Desktop/project/Merge/Merge-frontend/src/hooks",
+    "last_opened_file_path": "/Users/kimgeonil/Desktop/project/Merge/Merge-frontend/src/components",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
@@ -57,14 +71,16 @@
 }]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/src/components" />
       <recent name="$PROJECT_DIR$/src/hooks" />
       <recent name="$PROJECT_DIR$/src/pages/api" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/src" />
+      <recent name="$PROJECT_DIR$/resources" />
       <recent name="$PROJECT_DIR$/src/components" />
       <recent name="$PROJECT_DIR$/src/services/news" />
       <recent name="$PROJECT_DIR$/src/components/contentsDetail" />
-      <recent name="$PROJECT_DIR$/src/components/commonButton" />
     </key>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
@@ -80,7 +96,7 @@
       <workItem from="1666228804273" duration="137000" />
       <workItem from="1666229069362" duration="46999000" />
       <workItem from="1666581369707" duration="1529000" />
-      <workItem from="1666584913771" duration="74514000" />
+      <workItem from="1666584913771" duration="94831000" />
     </task>
     <servers />
   </component>
@@ -117,12 +133,6 @@
           <line>8</line>
           <properties lambdaOrdinal="-1" />
           <option name="timeStamp" value="7" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="javascript">
-          <url>file://$PROJECT_DIR$/src/services/board/types.ts</url>
-          <line>20</line>
-          <properties lambdaOrdinal="-1" />
-          <option name="timeStamp" value="8" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>

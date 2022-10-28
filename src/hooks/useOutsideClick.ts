@@ -9,8 +9,9 @@ const useOutsideClick: UseOutsideClickType = (el, initialState) => {
   const [isActive, setIsActive] = useState(initialState);
 
   useEffect(() => {
-    const handleClickOutside = (event: MouseEvent) => {
+    console.log(isActive, '1231233')
       console.log(el.current, '123123')
+    const handleClickOutside = (event: MouseEvent) => {
       if (el.current !== null && !el.current.contains(event.target as Element)) {
         setIsActive(!isActive)
       }

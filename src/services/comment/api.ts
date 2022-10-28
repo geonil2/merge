@@ -19,6 +19,6 @@ export const updateCommentApi = async ({ boardId, commentId, contents} : { board
 }
 
 export const deleteCommentApi = async ({ boardId, commentId } : { boardId: string, commentId: string }) => {
-  const { data } = await API.put(`/api/comments/${boardId}/${commentId}`)
+  const { data } = await API.delete(`/api/comments/${boardId}/${commentId}`)
   return data.data
 }

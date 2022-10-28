@@ -1,4 +1,11 @@
-export const MENUS = [
+export type Menu = {
+  id: number,
+  name: string,
+  title: string,
+  url: string
+}
+
+export const MENU = [
   {
     id: 1,
     name: 'question',
@@ -30,11 +37,3 @@ export const MENUS = [
     url: '/notice'
   }
 ]
-
-
-export type Menu = {
-  id: number,
-  name: string,
-  title: string,
-  url: string
-}

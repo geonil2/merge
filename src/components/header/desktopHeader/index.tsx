@@ -3,12 +3,9 @@ import Link from "next/link";
 import styled from "@emotion/styled";
 import {COLORS, MEDIA} from "../../../config/styles";
 import HeaderSearchForm from "../headerSearchForm";
-import {MENUS} from "../../../config/menus";
+import {MENU} from "../../../resources/menu";
 import {signIn, useSession} from "next-auth/react";
 import CommonButton from "../../commonButton";
-// import useLogin from "../../../hooks/useLogin";
-import {useMutation, useQueryClient} from "@tanstack/react-query";
-import {loginApi} from "../../../services/auth/api";
 import useUser from "../../../hooks/useUser";
 
 const DesktopHeader = () => {
@@ -24,7 +21,7 @@ const DesktopHeader = () => {
         </Link>
         <Nav>
           <ul>
-            {MENUS.map(menu => (
+            {MENU.map(menu => (
               <li key={menu.url}><Link href={menu.url}>{menu.title}</Link></li>
             ))}
           </ul>

@@ -1,0 +1,8 @@
+{
+  "deleteCommentError" : {
+    "title": "해당 댓글을 삭제합니까?",
+    "description": "삭제 후 해당 댓글을 다시 복구할 수 없습니다.",
+    "secondButton": true
+  }
+
+}

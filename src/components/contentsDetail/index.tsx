@@ -20,7 +20,6 @@ export type CommentTextareaValue = {
   contents: string
 }
 
-
 const ContentsDetail: React.FC<Prop> = ({ boardId }) => {
   const { user } = useUser();
   const contents = useQuery([BoardByIdQueryKey, { boardId }], () => getBoardById(boardId));
@@ -38,7 +37,6 @@ const ContentsDetail: React.FC<Prop> = ({ boardId }) => {
         userId={user?._id}
         comments={comment.data}
       />}
-
     </>
   );
 };

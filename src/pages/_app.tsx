@@ -8,9 +8,9 @@ import {RecoilRoot} from "recoil";
 import {QueryClientProvider, DehydratedState} from "@tanstack/react-query";
 import {ReactQueryDevtools} from "@tanstack/react-query-devtools";
 import {Hydrate} from "@tanstack/react-query";
-import Header from "../components/header/headerWrap/header";
+import Header from "../components/header/headerWrap";
 import {SessionProvider} from "next-auth/react";
-import TableLayout from "../components/TableLayout";
+import TableLayout from "../components/tableLayout";
 import {useRouter} from "next/router";
 import Modal from "../components/modal";
 import {Session} from "next-auth";
@@ -44,7 +44,7 @@ function MyApp({ Component, pageProps }: AppProps<{
                     </Head>
                     <Header />
                     {layout()}
-                    <Modal />
+                    <div id="modal" />
                     <ReactQueryDevtools initialIsOpen={false} />
                 </Hydrate>
             </QueryClientProvider>

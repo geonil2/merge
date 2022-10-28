@@ -2,7 +2,7 @@ import React, {useEffect, useState} from 'react';
 import AsideBar from "../../components/asideBar";
 import VerticalListTable from "../../components/tables/verticalListTable";
 import styled from "@emotion/styled";
-import TableLayout from "../../components/TableLayout";
+import TableLayout from "../../components/tableLayout";
 import useBoardByCategory from "../../hooks/useBoardListByCateogry";
 import {useRecoilValue} from "recoil";
 import {offsetAtom} from "../../recoil/offset";

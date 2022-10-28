@@ -1,6 +1,6 @@
 import React, {useCallback, useRef, useState} from 'react';
 import dynamic from "next/dynamic";
-import {Menu, MENUS} from "../../config/menus";
+import {Menu, MENU} from "../../resources/menu";
 import styled from "@emotion/styled";
 import {COLORS, SHADOWS} from "../../config/styles";
 import {SubmitHandler, useForm} from "react-hook-form";
@@ -74,7 +74,7 @@ const Index = () => {
             <ArrowImg src={showCategory ? '/images/icons/up_arrow.svg' : '/images/icons/down_arrow.svg'}></ArrowImg>
             {showCategory ? (
                 <ul>
-                  {MENUS.map(list => (
+                  {MENU.map(list => (
                     <li
                       key={list.id}
                       onClick={() => setSelectedCategory(list)}
