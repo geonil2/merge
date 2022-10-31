@@ -1,15 +1,19 @@
 import {User} from "../auth/types";
 
 export const BoardByCategoryQueryKey = 'getBoardListByCategory'
-export const BoardByIdQueryKey = 'getBoardById'
+export const BoardByIdQueryKey = 'getBoardByIdApi'
 
-type Category = "question" | "info" | "community" | "recruit" | "notice"
+export type Category = "question" | "info" | "community" | "recruit" | "notice"
 
 export interface PostBoardRequestBody {
   title: string,
   description: string,
   category: Category,
   email: string
+}
+
+export interface PutBoardRequestBody extends PostBoardRequestBody {
+  boardId: string
 }
 
 export interface BoardByCategoryRequestQuery {
@@ -27,7 +31,7 @@ export interface BoardList {
   category?: string,
   owner?: User,
   views?: string,
-  likes?: string,
+  likes?: string[],
   createdAt: string,
   updatedAt?: string,
 }

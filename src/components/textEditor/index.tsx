@@ -6,17 +6,18 @@ import {EditorType} from "@toast-ui/editor/types/editor";
 
 interface Props {
   editor: React.RefObject<Editor>,
+  defaultValue?: string
   onChangeEditValue: (htmlVal: EditorType) => void
 }
 
-const TextEditor: React.FC<Props> = ({editor, onChangeEditValue}) => {
+const TextEditor: React.FC<Props> = ({editor, defaultValue, onChangeEditValue}) => {
   return (
     <Editor
       ref={editor}
       height="485px"
       initialEditType="wysiwyg"
-      initialValue="내용을 입력해주세요."
-      // placeholder="내용을 입력해주세요."
+      initialValue={defaultValue ? defaultValue : undefined}
+      placeholder="내용을 입력해주세요."
       onChange={onChangeEditValue}
       plugins={[colorSyntax]}
       toolbarItems={[

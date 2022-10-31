@@ -13,7 +13,7 @@ import {dehydrate, QueryClient} from "@tanstack/query-core";
 import {ConferenceListQueryKey} from "../../services/conference/types";
 import {getConferenceListApi} from "../../services/conference/api";
 import {BoardByCategoryQueryKey, BoardByIdQueryKey} from "../../services/board/types";
-import {getBoardByCategory, getBoardById} from "../../services/board/api";
+import {getBoardByCategoryApi, getBoardByIdApiApi} from "../../services/board/api";
 import {useQuery} from "@tanstack/react-query";
 
 export const QnA_mock = [
@@ -68,7 +68,7 @@ export const getServerSideProps = async (context: GetServerSidePropsContext) => 
   await queryClient.prefetchQuery([
     BoardByCategoryQueryKey,
     { category: 'question', offset: 0, limit: DEFAULT_LISTS_COUNT }
-  ], () => getBoardByCategory({
+  ], () => getBoardByCategoryApi({
     category: 'question',
     offset: 0,
     limit: DEFAULT_LISTS_COUNT

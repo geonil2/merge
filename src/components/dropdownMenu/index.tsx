@@ -24,6 +24,7 @@ const Container = styled.ul`
   position: absolute;
   top: 100%;
   left: -12px;
+  z-index: 100;
   width: max-content;
   font-size: 14px;
   line-height: 22px;

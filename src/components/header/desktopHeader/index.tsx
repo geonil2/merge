@@ -3,10 +3,10 @@ import Link from "next/link";
 import styled from "@emotion/styled";
 import {COLORS, MEDIA} from "../../../config/styles";
 import HeaderSearchForm from "../headerSearchForm";
-import {MENU} from "../../../resources/menu";
 import {signIn, useSession} from "next-auth/react";
 import CommonButton from "../../commonButton";
 import useUser from "../../../hooks/useUser";
+import {menuList} from "../../../resources/types";
 
 const DesktopHeader = () => {
   const { user } = useUser();
@@ -21,7 +21,7 @@ const DesktopHeader = () => {
         </Link>
         <Nav>
           <ul>
-            {MENU.map(menu => (
+            {menuList.map(menu => (
               <li key={menu.url}><Link href={menu.url}>{menu.title}</Link></li>
             ))}
           </ul>

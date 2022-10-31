@@ -3,13 +3,14 @@ import {GetServerSidePropsContext, NextPage} from "next";
 import TableLayout from "../../components/tableLayout";
 import React, {useEffect} from "react";
 import styled from "@emotion/styled";
-import ContentsDetail from "../../components/contentsDetail";
+import ContentsDetail from "../../components/boardDetail";
 import {useQuery} from "@tanstack/react-query";
 import {BoardByCategoryQueryKey, BoardByIdQueryKey} from "../../services/board/types";
-import {getBoardByCategory, getBoardById} from "../../services/board/api";
+import {getBoardByCategoryApi, getBoardByIdApi} from "../../services/board/api";
 import {dehydrate, QueryClient} from "@tanstack/query-core";
 import {CommentByBoardIdQueryKey} from "../../services/comment/types";
 import {getCommentByBoardIdApi} from "../../services/comment/api";
+import BoardDetail from "../../components/boardDetail";
 
 interface Prop {
   id: string
@@ -18,7 +19,7 @@ interface Prop {
 const QuestionDetailPage: NextPage<Prop> = ({ id }) => {
   return (
     <Container>
-      <ContentsDetail boardId={id} />
+      <BoardDetail boardId={id} />
     </Container>
   );
 };
@@ -40,7 +41,7 @@ export const getServerSideProps = async (context: GetServerSidePropsContext) => 
   const { id } = query;
   const queryClient = new QueryClient()
 
-  await queryClient.prefetchQuery([BoardByIdQueryKey, { boardId: id }], () => getBoardById(id as string))
+  await queryClient.prefetchQuery([BoardByIdQueryKey, { boardId: id }], () => getBoardByIdApi(id as string))
   await queryClient.prefetchQuery([CommentByBoardIdQueryKey, { boardId: id }], () => getCommentByBoardIdApi(id as string))
 
   return {

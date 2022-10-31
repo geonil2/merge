@@ -37,7 +37,7 @@ const CommentList: React.FC<Prop> = ({ comment, userId }) => {
   }
 
   const onClickDeleteComment = () => {
-    setPopupModalContents({...popupModalContents.deleteCommentError, onClick: removeComment})
+    setPopupModalContents({...popupModalContents.deleteComment, onClick: removeComment})
     setIsActive(false);
   }
 

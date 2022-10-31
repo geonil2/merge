@@ -1,27 +1,31 @@
 import {API} from "../../config/api";
-import {BoardByCategoryRequestQuery, PostBoardRequestBody} from "./types";
+import {BoardByCategoryRequestQuery, PostBoardRequestBody, putBoardRequestBody} from "./types";
 
 export const postBoardApi = async (body: PostBoardRequestBody) => {
   const { data } = await API.post('/api/boards', body)
   return data.data
 }
 
-const params = new URLSearchParams();
-
-export const getBoardByCategory = async ({ category, offset, limit }: BoardByCategoryRequestQuery) => {
+export const getBoardByCategoryApi = async ({ category, offset, limit }: BoardByCategoryRequestQuery) => {
   console.log(`/api/boards?category=${category}&offset=${offset}&limit=${limit}`, 'parameter!')
-  const { data } = await API.get(`/api/boards`, {params: {category, offset, limit}})
+  const { data } = await API.get(`/api/boards`, { params: { category, offset, limit }})
   return data.data
-  // const url = `/api/boards?category=${category}&offset=${offset}&limit=${limit}`;
-  // axios.get('https://localhost:4000/sendlist/todo', {params: {userId: userId}})
-  //
-  // console.log(url, 'url')
-  // const { data } = await API.post(url);
-  // return data.data
 }
 
-export const getBoardById = async (id: string) => {
+export const getBoardByIdApi = async (id: string) => {
   console.log(id, 'id')
   const { data } = await API.get(`/api/boards/${id}`)
+  return data.data
+}
+
+export const updateBoardByIdApi = async (boardInfo: putBoardRequestBody) => {
+  const { boardId, title, description, category, email } = boardInfo
+  const { data } = await API.put(`/api/boards/${boardId}`, { title, description, category, email })
+  return data.data
+}
+
+export const deleteBoardByIdApi = async (id: string) => {
+  console.log(id, 'id')
+  const { data } = await API.delete(`/api/boards/${id}`)
   return data.data
 }

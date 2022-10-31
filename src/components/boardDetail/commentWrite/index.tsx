@@ -5,7 +5,6 @@ import styled from "@emotion/styled";
 import {COLORS, SHADOWS} from "../../../config/styles";
 import {SubmitHandler, useForm} from "react-hook-form";
 import useUser from "../../../hooks/useUser";
-import {CommentTextareaValue} from "../index";
 import {useMutation, useQueryClient} from "@tanstack/react-query";
 import {postCommentApi} from "../../../services/comment/api";
 import {CommentByBoardIdQueryKey} from "../../../services/comment/types";
@@ -15,6 +14,10 @@ interface Prop {
   userId: string
   boardId: string,
   name: string,
+}
+
+export type CommentTextareaValue = {
+  contents: string
 }
 
 const CommentWrite: React.FC<Prop> = ({ userId, boardId, name }) => {

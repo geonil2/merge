@@ -89,5 +89,6 @@ button {
 #__next {
   font-family: 'Nanum Gothic', sans-serif;
   color: #525252;
+  word-break: keep-all;
 }
 

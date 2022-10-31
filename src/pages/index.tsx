@@ -13,7 +13,7 @@ import {useQuery} from "@tanstack/react-query";
 import {useEffect} from "react";
 import {ConferenceListQueryKey} from "../services/conference/types";
 import {BoardByCategoryQueryKey} from "../services/board/types";
-import {getBoardByCategory} from "../services/board/api";
+import {getBoardByCategoryApi} from "../services/board/api";
 import useBoardListByCategory from "../hooks/useBoardListByCateogry";
 import useBoardByCategory from "../hooks/useBoardListByCateogry";
 import TableLeftWrapper from "../components/tables/tableLeftWrapper";
