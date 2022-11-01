@@ -1,10 +1,10 @@
-import {useRef} from "react";
+import {useEffect, useRef} from "react";
 import type { AppProps } from 'next/app'
 import Head from "next/head";
 import '../../styles/globals.css'
 import {generateQueryClient} from "../config/query";
 import {COLORS} from "../config/styles";
-import {RecoilRoot} from "recoil";
+import {RecoilRoot, useRecoilState, useResetRecoilState, useSetRecoilState} from "recoil";
 import {QueryClientProvider, DehydratedState} from "@tanstack/react-query";
 import {ReactQueryDevtools} from "@tanstack/react-query-devtools";
 import {Hydrate} from "@tanstack/react-query";

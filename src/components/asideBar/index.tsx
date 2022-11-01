@@ -23,7 +23,7 @@ const AsideBar = () => {
       {data?.data && (
         <VerticalListTable
           title='업계 기사'
-          lists={data.data}
+          list={data.data}
           showPagination={false}
         />
       )}

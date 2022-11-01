@@ -13,7 +13,6 @@ import {useRouter} from "next/router";
 import {BoardList, PostBoardRequestBody, PutBoardRequestBody} from "../../services/board/types";
 import dynamic from "next/dynamic";
 import {Menu, menuList} from "../../resources/types";
-
 const TextEditor = dynamic(() => import('../../components/textEditor'), {
   ssr: false,
 });
@@ -21,8 +20,6 @@ const TextEditor = dynamic(() => import('../../components/textEditor'), {
 type WritingInputValue = {
   title?: string
 }
-
-const descriptionPlaceholder = '내용을 입력해주세요.'
 
 interface Prop {
   type: 'create' | 'update',
@@ -36,9 +33,17 @@ export type UpdateBoardInfo = {
   description: string
 }
 
+const descriptionPlaceholder = '내용을 입력해주세요.'
+const defaultCategoryMenu = {
+  id: 0,
+  name: 'Category',
+  title: 'Category',
+  url: '/'
+}
+
 const BoardForm: React.FC<Prop> = ({ type, board }) => {
   const [showCategory, setShowCategory] = useState(false);
-  const [selectedCategory, setSelectedCategory] = useState<Menu>(menuList[0]);
+  const [selectedCategory, setSelectedCategory] = useState<Menu>(defaultCategoryMenu);
   const [description, setDescription] = useState(`<p>${descriptionPlaceholder}</p>`);
   const { register, handleSubmit } = useForm();
   const editor = useRef<Editor>(null);
@@ -64,7 +69,8 @@ const BoardForm: React.FC<Prop> = ({ type, board }) => {
         email: user?.email
       } as PostBoardRequestBody, {
         onSuccess: (data) => {
-          router.push(`${selectedCategory.url}`)
+          console.log(data, 'data!!!')
+          router.push(`/${selectedCategory.url}/${data._id}`)
         }
       })
     } else {
@@ -76,7 +82,7 @@ const BoardForm: React.FC<Prop> = ({ type, board }) => {
         email: user?.email
       } as PutBoardRequestBody, {
         onSuccess: (data) => {
-          router.push(`${selectedCategory.url}`)
+          router.push(`/${selectedCategory.url}/${board?.id}`)
         }
       })
     }

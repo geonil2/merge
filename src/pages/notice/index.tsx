@@ -34,7 +34,7 @@ const Question: NextPage = () => {
       <TableContainer>
         {/*<VerticalListTable*/}
         {/*  title='Q&A'*/}
-        {/*  lists={QnA_mock}*/}
+        {/*  list={QnA_mock}*/}
         {/*/>*/}
       </TableContainer>
     // </TableLayout>

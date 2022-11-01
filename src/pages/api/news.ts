@@ -34,7 +34,7 @@ const handler = async (
     const ProcessedData = data.items.map((list: OriginalNewsData, index: number) => {
       const { title, description, originallink, pubDate } = list;
       return {
-        id: index,
+        _id: index,
         title,
         description,
         url: originallink,

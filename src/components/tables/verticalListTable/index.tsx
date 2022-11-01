@@ -10,21 +10,22 @@ import Pagination from "../../pagination";
 
 interface Props {
   title: string,
-  lists: BoardList[],
+  list: BoardList[],
   showPagination: boolean,
   totalCount?: number,
 }
 
 const VerticalListTable: FC<Props> = ({
   title,
-  lists,
+  list,
   showPagination,
   totalCount
 }) => {
+  console.log(list, 'list')
   return (
     <Container>
       <TableHeaderLayout title={title} />
-      {lists.map(list => <VerticalList key={list._id} list={list} />)}
+      {list.map(list => <ListLayout><VerticalList key={list._id} list={list} /></ListLayout>)}
       {showPagination && <Pagination totalCount={totalCount} />}
     </Container>
   );
@@ -33,6 +34,14 @@ const VerticalListTable: FC<Props> = ({
 const Container = styled.section`
   background: ${COLORS.WHITE};
   box-shadow: ${SHADOWS.basic};
+  padding-bottom: 22px;
+`
+const ListLayout = styled.div`
+  border-bottom: 1px solid ${COLORS.GRAY};
+  margin: 0px 24px;
+  &:last-of-type {
+    border: none;
+  }
 `
 
 export default VerticalListTable;

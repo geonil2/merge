@@ -18,14 +18,6 @@ import useBoardListByCategory from "../hooks/useBoardListByCateogry";
 import useBoardByCategory from "../hooks/useBoardListByCateogry";
 import TableLeftWrapper from "../components/tables/tableLeftWrapper";
 
-const QnA_mock = [
-  { id: 1, title: "React에서 useState사용법", description: "React에서 useState의 사용법을 알려주세요.", url: '/', category: "question", owner: "geonil@gmail.com", likes: 100, created_at: "2022-10-05 11:24:32", updated_at: "2022-10-05 11:24:32"},
-  { id: 2, title: "DNS란 무엇인가요?", description: "React에서 useState의 사용법을 알려주세요.", url: '/', category: "question", owner: "geonil@gmail.com", likes: 100, created_at: "2022-10-05 11:24:32", updated_at: "2022-10-05 11:24:32"},
-  { id: 3, title: "GET과 POST의 차이는?", description: "React에서 useState의 사용법을 알려주세요.", url: '/', category: "question", owner: "geonil@gmail.com", likes: 100, created_at: "2022-10-05 11:24:32", updated_at: "2022-10-05 11:24:32"},
-  { id: 4, title: "객체 지향 프로그래밍?", description: "React에서 useState의 사용법을 알려주세요.", url: '/', category: "question", owner: "geonil@gmail.com", likes: 100, created_at: "2022-10-05 11:24:32", updated_at: "2022-10-05 11:24:32"},
-  { id: 5, title: "React에서 useState사용법", description: "React에서 useState의 사용법을 알려주세요.", url: '/', category: "question", owner: "geonil@gmail.com", likes: 100, created_at: "2022-10-05 11:24:32", updated_at: "2022-10-05 11:24:32"},
-]
-
 const Home: NextPage = () => {
   const conference = useQuery([ConferenceListQueryKey], () => getConferenceListApi(), {
     staleTime: Infinity,
@@ -40,32 +32,32 @@ const Home: NextPage = () => {
     <TableLeftWrapper>
       <VerticalSlideTable />
       <TwoRowTable />
-      {!!conference.data && <BigImageTable lists={conference.data} />}
-      {!!questionBoard.data?.lists && questionBoard.data.lists.length !== 0 &&
+      {!!conference.data && <BigImageTable list={conference.data} />}
+      {!!questionBoard.data?.list && questionBoard.data.list.length !== 0 &&
         <VerticalListTable
           title='Q&A'
-          lists={questionBoard.data.lists}
+          list={questionBoard.data.list}
           showPagination={false}
         />
       }
-      {!!infoBoard.data?.lists && infoBoard.data.lists.length !== 0 &&
+      {!!infoBoard.data?.list && infoBoard.data.list.length !== 0 &&
         <VerticalListTable
           title='개발정보'
-          lists={infoBoard.data.lists}
+          list={infoBoard.data.list}
           showPagination={false}
         />
       }
-      {!!communityBoard.data?.lists && communityBoard.data.lists.length !== 0 &&
+      {!!communityBoard.data?.list && communityBoard.data.list.length !== 0 &&
         <VerticalListTable
           title='커뮤니티'
-          lists={communityBoard.data.lists}
+          list={communityBoard.data.list}
           showPagination={false}
         />
       }
-      {!!recruitBoard.data?.lists && recruitBoard.data.lists.length !== 0 &&
+      {!!recruitBoard.data?.list && recruitBoard.data.list.length !== 0 &&
         <VerticalListTable
           title='구인구직'
-          lists={recruitBoard.data.lists}
+          list={recruitBoard.data.list}
           showPagination={false}
         />
       }

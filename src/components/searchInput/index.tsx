@@ -3,12 +3,22 @@ import styled from "@emotion/styled";
 import {COLORS} from "../../config/styles";
 import {Simulate} from "react-dom/test-utils";
 import input = Simulate.input;
+import {useSetRecoilState} from "recoil";
+import {SubmitHandler, useForm, UseFormReturn} from "react-hook-form";
+import {CommentTextareaValue} from "../boardDetail/commentWrite";
 
-const SearchInput = () => {
+interface Prop {
+  register: UseFormReturn['register'];
+}
+
+const SearchInput: React.FC<Prop> = ({ register }) => {
+
   return (
     <InputField>
-      <StyledInput />
-      <Icon src="/images/icons/search_icon.svg" alt="Search" />
+      <StyledInput {...register('keyword')} />
+      <SubmitButton>
+        <Icon src="/images/icons/search_icon.svg" alt="Search" />
+      </SubmitButton>
     </InputField>
   );
 };
@@ -26,6 +36,9 @@ const InputField = styled.div`
 const StyledInput = styled.input`
   width: calc(100% - 15px);
   padding: 14px;
+`
+
+const SubmitButton = styled.button`
 `
 
 const Icon = styled.img`

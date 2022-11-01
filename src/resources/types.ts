@@ -9,7 +9,7 @@ export interface popupContents {
 
 export type Menu = {
   id: number,
-  name: Category,
+  name: Category | string,
   title: string,
   url: string
 }

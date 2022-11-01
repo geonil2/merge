@@ -60,13 +60,6 @@ const CommentWrite: React.FC<Prop> = ({ userId, boardId, name }) => {
             maxLength: 400,
           })}
         />
-        {/*<textarea*/}
-        {/*  {...register("contents", {*/}
-        {/*    required: "댓글을 입력해주세요.",*/}
-        {/*    maxLength: 200,*/}
-        {/*  })}*/}
-        {/*  maxLength={200}*/}
-        {/*  placeholder="댓글을 남겨주세요."></textarea>*/}
         <ButtonWrap>
           <Button title="작성" />
         </ButtonWrap>

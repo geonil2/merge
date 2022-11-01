@@ -5,7 +5,7 @@ import {COLORS, SHADOWS} from "../../../config/styles";
 import BigImageTableList from "./bigImageTableList";
 
 interface Props {
-  lists: BigImageTableListType[]
+  list: BigImageTableListType[]
 }
 
 export type BigImageTableListType = {
@@ -17,12 +17,12 @@ export type BigImageTableListType = {
   url: string
 }
 
-const BigImageTable: React.FC<Props> = ({ lists }) => {
+const BigImageTable: React.FC<Props> = ({ list }) => {
   return (
     <Container>
       <TableHeaderLayout title="컨퍼런스" />
       <BigImageTableBody>
-        {lists.map(list => <BigImageTableList key={list.id} list={list} />)}
+        {list.map(list => <BigImageTableList key={list.id} list={list} />)}
       </BigImageTableBody>
     </Container>
   );

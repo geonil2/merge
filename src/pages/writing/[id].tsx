@@ -6,10 +6,6 @@ import {useRouter} from "next/router";
 const UpdateBoardPage = () => {
   const { query } = useRouter();
 
-  useEffect(() => {
-    console.log(query, '123123')
-  }, [query])
-
   return (
     <WritingPageWrapper>
       <p>수정하기</p>

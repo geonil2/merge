@@ -1,5 +1,5 @@
 import {API} from "../../config/api";
-import {BoardByCategoryRequestQuery, PostBoardRequestBody, putBoardRequestBody} from "./types";
+import {BoardByCategoryRequestQuery, PostBoardRequestBody, PutBoardRequestBody} from "./types";
 
 export const postBoardApi = async (body: PostBoardRequestBody) => {
   const { data } = await API.post('/api/boards', body)
@@ -18,7 +18,7 @@ export const getBoardByIdApi = async (id: string) => {
   return data.data
 }
 
-export const updateBoardByIdApi = async (boardInfo: putBoardRequestBody) => {
+export const updateBoardByIdApi = async (boardInfo: PutBoardRequestBody) => {
   const { boardId, title, description, category, email } = boardInfo
   const { data } = await API.put(`/api/boards/${boardId}`, { title, description, category, email })
   return data.data

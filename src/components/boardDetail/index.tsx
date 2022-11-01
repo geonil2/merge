@@ -20,7 +20,11 @@ const boardDetail: React.FC<Prop> = ({ boardId }) => {
   const { user } = useUser();
   const contents = useQuery([BoardByIdQueryKey, { boardId }], () => getBoardByIdApi(boardId));
   const comment = useQuery([CommentByBoardIdQueryKey, { boardId }], () => getCommentByBoardIdApi(boardId))
-  
+
+  useEffect(() => {
+    console.log(comment.data)
+  }, [comment.data])
+
   return (
     <>
       {contents.data && <BoardContents
@@ -32,7 +36,7 @@ const boardDetail: React.FC<Prop> = ({ boardId }) => {
         boardId={boardId}
         name={user.name}
       />}
-      {comment.data && <CommentListContainer
+      {comment.data.length !== 0 && <CommentListContainer
         userId={user?._id}
         comments={comment.data}
       />}

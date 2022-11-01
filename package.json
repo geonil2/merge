@@ -16,6 +16,7 @@
     "@toast-ui/react-editor": "^3.2.2",
     "axios": "^1.0.0",
     "interweave": "^13.0.0",
+    "lodash": "^4.17.21",
     "next": "12.3.1",
     "next-auth": "^4.13.0",
     "react": "^18.2.0",
@@ -31,6 +32,7 @@
     "slick-carousel": "^1.8.1"
   },
   "devDependencies": {
+    "@types/lodash": "^4.14.187",
     "@types/node": "18.8.2",
     "@types/react": "18.0.21",
     "@types/react-dom": "18.0.6",

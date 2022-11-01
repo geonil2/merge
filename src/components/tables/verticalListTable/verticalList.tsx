@@ -41,9 +41,7 @@ const List = styled.div`
   display: flex;
   justify-content: flex-start;
   align-items: center;
-  border-bottom: 1px solid ${COLORS.GRAY};
   padding: 10px 0px;
-  margin: 0px 24px;
   > img {
     width: 55px;
     height: 55px;

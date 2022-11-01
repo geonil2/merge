@@ -13,7 +13,7 @@ import {dehydrate, QueryClient} from "@tanstack/query-core";
 import {ConferenceListQueryKey} from "../../services/conference/types";
 import {getConferenceListApi} from "../../services/conference/api";
 import {BoardByCategoryQueryKey, BoardByIdQueryKey} from "../../services/board/types";
-import {getBoardByCategoryApi, getBoardByIdApiApi} from "../../services/board/api";
+import {getBoardByCategoryApi, getBoardByIdApi} from "../../services/board/api";
 import {useQuery} from "@tanstack/react-query";
 
 export const QnA_mock = [
@@ -45,11 +45,11 @@ const Question: NextPage = () => {
 
   return (
     <Container>
-      {!!data?.lists.length &&
+      {!!data?.list.length &&
         <VerticalListTable
           title='Q&A'
-          lists={data.lists}
-          showPagination={true}
+          list={data.list}
+          showPagination={data.total > DEFAULT_LISTS_COUNT}
           totalCount={data.total}
         />
       }
