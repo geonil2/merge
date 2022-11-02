@@ -8,7 +8,8 @@ import {redirect} from "next/dist/server/api-utils";
 import {removeTokenInStorage} from "../../../services/auth/api";
 
 const AuthTable = () => {
-  const { user } = useUser();
+
+  const { data: session, status } = useSession();
 
   const logOut = () => {
     signOut({ redirect: false })
@@ -17,16 +18,16 @@ const AuthTable = () => {
 
   return (
     <Container>
-      {user ?
+      {session ?
         <>
           <AuthenticatedUI>
             <Profile>
               <ProfileThumb
-                src={user.image}
+                src={session.user?.image as string}
               />
               <UserText>
-                <UserName>{user.name}</UserName>
-                <Email>{user.email}</Email>
+                <UserName>{session.user?.name}</UserName>
+                <Email>{session.user?.email}</Email>
               </UserText>
             </Profile>
             <LogoutButton onClick={() => logOut()}>
@@ -45,7 +46,7 @@ const AuthTable = () => {
           </Link>
       </>
       :
-      <LoginButton onClick={() => signIn('google')}>
+      <LoginButton onClick={() => signIn("google", { prompt: "login" })}>
         <GoogleLogo src="/images/icons/google.svg" />
       </LoginButton>
       }

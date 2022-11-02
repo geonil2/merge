@@ -5,37 +5,20 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="2eabddc1-1714-45aa-9a47-e3e67c011340" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/components/PrivateRoute/index.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/searchTitle/index.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/pages/search/index.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/services/search/api.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/services/search/types.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.env.production" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/pages/api/auth/lib/dbConnect.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/pages/api/auth/lib/mongodb.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/asideBar/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/asideBar/index.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/boardDetail/commentWrite/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/boardDetail/commentWrite/index.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/boardDetail/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/boardDetail/index.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/PrivateRoute/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/PrivateRoute/index.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/boardForm/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/boardForm/index.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/header/headerSearchForm/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/header/headerSearchForm/index.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/header/headerWrap/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/header/headerWrap/index.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/searchInput/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/searchInput/index.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/tables/bigImageTable/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/tables/bigImageTable/index.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/tables/verticalListTable/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/tables/verticalListTable/index.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/tables/verticalListTable/verticalList.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/tables/verticalListTable/verticalList.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/config/styles.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/config/styles.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/pages/_app.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/_app.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/pages/api/news.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/api/news.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/pages/community/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/community/index.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/pages/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/index.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/pages/info/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/info/index.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/pages/notice/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/notice/index.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/pages/question/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/question/index.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/pages/recruit/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/recruit/index.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/pages/writing/[id].tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/writing/[id].tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/pages/writing/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/writing/index.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/resources/types.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/resources/types.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/services/board/api.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/services/board/api.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/tables/AuthTable/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/tables/AuthTable/index.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/config/api.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/config/api.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pages/api/auth/[...nextauth].ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/api/auth/[...nextauth].ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/services/auth/types.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/services/auth/types.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/types/global.d.ts" beforeDir="false" afterPath="$PROJECT_DIR$/types/global.d.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/types/next-auth.d.ts" beforeDir="false" afterPath="$PROJECT_DIR$/types/next-auth.d.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/yarn.lock" beforeDir="false" afterPath="$PROJECT_DIR$/yarn.lock" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -98,7 +81,7 @@
       <workItem from="1666581369707" duration="1529000" />
       <workItem from="1666584913771" duration="96089000" />
       <workItem from="1667178096773" duration="15921000" />
-      <workItem from="1667204627323" duration="25298000" />
+      <workItem from="1667204627323" duration="48385000" />
     </task>
     <servers />
   </component>

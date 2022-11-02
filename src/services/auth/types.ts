@@ -6,8 +6,8 @@ export interface User {
   email: string,
   name: string,
   image: string,
-  createdAt: string,
-  updatedAt: string
+  createdAt?: string,
+  updatedAt?: string
 }
 
 export interface nextAuthLoginResponseData {

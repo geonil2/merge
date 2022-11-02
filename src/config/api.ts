@@ -1,12 +1,16 @@
 import axios, {AxiosError} from "axios";
 import {isServer} from "../services/utils";
 import useUser from "../hooks/useUser";
+import { getSession } from 'next-auth/react'
+
 
 export const API = axios.create();
 
 API.defaults.baseURL = process.env.NEXT_PUBLIC_API_HOST
 API.interceptors.request.use(
-  (config) => {
+  async (config) => {
+    const session = await getSession()
+    console.log(session, 'session!!!!!!!!!')
     const token = !isServer ? localStorage.getItem('accessToken') : '';
     if (config.headers && token) {
       config.headers.Authorization = `Bearer ${token}`;

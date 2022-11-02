@@ -13,6 +13,7 @@ import {useRouter} from "next/router";
 import {BoardList, PostBoardRequestBody, PutBoardRequestBody} from "../../services/board/types";
 import dynamic from "next/dynamic";
 import {Menu, menuList} from "../../resources/types";
+import {useSession} from "next-auth/react";
 const TextEditor = dynamic(() => import('../../components/textEditor'), {
   ssr: false,
 });
@@ -49,7 +50,7 @@ const BoardForm: React.FC<Prop> = ({ type, board }) => {
   const editor = useRef<Editor>(null);
   const postBoard = useMutation(postBoardApi)
   const updateBoard = useMutation(updateBoardByIdApi);
-  const { user } = useUser();
+  const { data: session, status } = useSession();
   const router = useRouter();
 
   const onChangeEditValue = useCallback((htmlVal: EditorType) => {
@@ -60,13 +61,13 @@ const BoardForm: React.FC<Prop> = ({ type, board }) => {
   const onSubmit: SubmitHandler<WritingInputValue> = (data, event) => {
     event?.preventDefault()
     console.log({ category: selectedCategory, description, ...data, })
-    console.log(user, 'user')
+    console.log(session?.user, 'user')
     if (type === 'create') {
       postBoard.mutate({
         ...data,
         category: selectedCategory.name,
         description,
-        email: user?.email
+        email: session?.user?.email
       } as PostBoardRequestBody, {
         onSuccess: (data) => {
           console.log(data, 'data!!!')
@@ -79,7 +80,7 @@ const BoardForm: React.FC<Prop> = ({ type, board }) => {
         ...data,
         category: selectedCategory.name,
         description,
-        email: user?.email
+        email: session?.user?.email
       } as PutBoardRequestBody, {
         onSuccess: (data) => {
           router.push(`/${selectedCategory.url}/${board?.id}`)
