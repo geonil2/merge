@@ -34,11 +34,11 @@ const handler = async (
     const ProcessedData = data.items.map((list: OriginalNewsData, index: number) => {
       const { title, description, originallink, pubDate } = list;
       return {
-        _id: index,
+        _id: index.toString(),
         title,
         description,
         url: originallink,
-        created_at: pubDate
+        createdAt: pubDate
       }
     })
     res.status(200).json({ data: ProcessedData })

@@ -1,29 +1,22 @@
 import React, {HTMLAttributes} from 'react';
 import styled from "@emotion/styled";
 import {COLORS} from "../../config/styles";
-import useUser from "../../hooks/useUser";
-
-// interface Props {
-//   title: string,
-//   width: number,
-//   onClick?: any,
-// }
+import {useSession} from "next-auth/react";
 
 interface Props extends HTMLAttributes<HTMLButtonElement> {
   title: string,
   onClick?: any,
 }
 
-
 const CommonButton: React.FC<Props> = ({
   title,
   onClick,
   ...props
 }) => {
-  const { user } = useUser()
+  const { data: session } = useSession();
 
   return (
-    <Button {...props} onClick={onClick} disabled={!user}>{title}</Button>
+    <Button {...props} onClick={onClick} disabled={!session}>{title}</Button>
   );
 };
 

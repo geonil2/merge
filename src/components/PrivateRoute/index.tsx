@@ -1,6 +1,5 @@
 import React from 'react';
 import {NextPage} from "next";
-import useUser from "../../hooks/useUser";
 import {useRouter} from "next/router";
 import {isServer} from "../../services/utils";
 import {useSession} from "next-auth/react";

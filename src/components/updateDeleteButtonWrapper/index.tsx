@@ -1,9 +1,9 @@
 import React, {useEffect, useRef} from 'react';
 import DropdownMenu from "../dropdownMenu";
 import useOutsideClick from "../../hooks/useOutsideClick";
-import useUser from "../../hooks/useUser";
 import styled from "@emotion/styled";
 import {COLORS} from "../../config/styles";
+import {useSession} from "next-auth/react";
 
 interface Props {
   owner?: string,
@@ -16,18 +16,14 @@ const UpdateDeleteButtonWrapper: React.FC<Props> = ({
   onClickUpdateButton,
   onClickDeleteButton
 }) => {
-  const { user } = useUser();
+  const { data: session, status } = useSession();
   const dropdownMenuRef = useRef<HTMLUListElement>(null);
   const [isActive, setIsActive] = useOutsideClick(dropdownMenuRef, false);
   const dropdownMENU = [{title: '수정 하기', onClick: onClickUpdateButton}, {title: '삭제 하기', onClick: onClickDeleteButton}]
 
-  useEffect(() => {
-    console.log(user, owner, '!@')
-  }, [user])
-
   return (
     <>
-      {user?._id === owner &&
+      {session?.user._id === owner &&
         <ActiveButton
           isActive={isActive}
         >

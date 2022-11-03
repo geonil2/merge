@@ -2,7 +2,6 @@ import React, {useEffect} from 'react';
 import styled from "@emotion/styled";
 import {COLORS, SHADOWS} from "../../../config/styles";
 import {signIn, signOut, useSession} from "next-auth/react";
-import useUser from "../../../hooks/useUser";
 import Link from "next/link";
 import {redirect} from "next/dist/server/api-utils";
 import {removeTokenInStorage} from "../../../services/auth/api";

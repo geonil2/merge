@@ -5,11 +5,10 @@ import {COLORS, MEDIA} from "../../../config/styles";
 import HeaderSearchForm from "../headerSearchForm";
 import {signIn, useSession} from "next-auth/react";
 import CommonButton from "../../commonButton";
-import useUser from "../../../hooks/useUser";
 import {menuList} from "../../../resources/types";
 
 const DesktopHeader = () => {
-  const { user } = useUser();
+  const { data: session } = useSession();
 
   return (
     <Header>
@@ -28,10 +27,10 @@ const DesktopHeader = () => {
         </Nav>
       </HeaderContentsContainer>
       <HeaderContentsContainer>
-        {user ?
+        {session ?
           <div onClick={() => signIn('google')}>
             <ProfileThum
-              src={user.image}
+              src={session?.user.image}
               alt="Logo"
             />
           </div>

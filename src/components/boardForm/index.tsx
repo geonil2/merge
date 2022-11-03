@@ -8,7 +8,6 @@ import {EditorType} from "@toast-ui/editor/types/editor";
 import {Editor} from "@toast-ui/react-editor";
 import {useMutation} from "@tanstack/react-query";
 import {postBoardApi, updateBoardByIdApi} from "../../services/board/api";
-import useUser from "../../hooks/useUser";
 import {useRouter} from "next/router";
 import {BoardList, PostBoardRequestBody, PutBoardRequestBody} from "../../services/board/types";
 import dynamic from "next/dynamic";
@@ -87,15 +86,13 @@ const BoardForm: React.FC<Prop> = ({ type, board }) => {
         }
       })
     }
-
   }
 
   useEffect(() => {
     if (board?.category) {
-      const category = menuList.find(menu => (menu.name === board.category)) as Menu;
-      setSelectedCategory(category)
+      const category = menuList.find(menu => (menu.name === board.category));
+      category ? setSelectedCategory(category) : null
     }
-
   }, [board])
 
   return (

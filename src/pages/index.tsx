@@ -12,8 +12,8 @@ import {getConferenceListApi} from "../services/conference/api";
 import {useQuery} from "@tanstack/react-query";
 import {useEffect} from "react";
 import {ConferenceListQueryKey} from "../services/conference/types";
-import {BoardByCategoryQueryKey} from "../services/board/types";
-import {getBoardByCategoryApi} from "../services/board/api";
+import {BestBoardQueryKey, BoardByCategoryQueryKey} from "../services/board/types";
+import {getBestBoard, getBoardByCategoryApi} from "../services/board/api";
 import useBoardListByCategory from "../hooks/useBoardListByCateogry";
 import useBoardByCategory from "../hooks/useBoardListByCateogry";
 import TableLeftWrapper from "../components/tables/tableLeftWrapper";
@@ -21,17 +21,18 @@ import TableLeftWrapper from "../components/tables/tableLeftWrapper";
 const Home: NextPage = () => {
   const conference = useQuery([ConferenceListQueryKey], () => getConferenceListApi(), {
     staleTime: Infinity,
-  })
-  const questionBoard = useBoardByCategory({ category: 'question' })
-  const infoBoard = useBoardByCategory({ category: 'info' })
-  const communityBoard = useBoardByCategory({ category: 'community' })
-  const recruitBoard = useBoardByCategory({ category: 'recruit' })
-  const noticeBoard = useBoardByCategory({ category: 'notice' })
+  });
+  const bestBoard = useQuery([BestBoardQueryKey], () => getBestBoard());
+  const questionBoard = useBoardByCategory({ category: 'question' });
+  const infoBoard = useBoardByCategory({ category: 'info' });
+  const communityBoard = useBoardByCategory({ category: 'community' });
+  const recruitBoard = useBoardByCategory({ category: 'recruit' });
+  const noticeBoard = useBoardByCategory({ category: 'notice' });
 
   return (
     <TableLeftWrapper>
       <VerticalSlideTable />
-      <TwoRowTable />
+      {!!bestBoard.data && <TwoRowTable list={bestBoard.data} />}
       {!!conference.data && <BigImageTable list={conference.data} />}
       {!!questionBoard.data?.list && questionBoard.data.list.length !== 0 &&
         <VerticalListTable

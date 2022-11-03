@@ -4,7 +4,6 @@ import {signIn} from "next-auth/react";
 import styled from "@emotion/styled";
 import {COLORS, SHADOWS} from "../../../config/styles";
 import {SubmitHandler, useForm} from "react-hook-form";
-import useUser from "../../../hooks/useUser";
 import {useMutation, useQueryClient} from "@tanstack/react-query";
 import {postCommentApi} from "../../../services/comment/api";
 import {CommentByBoardIdQueryKey} from "../../../services/comment/types";
@@ -21,7 +20,6 @@ export type CommentTextareaValue = {
 }
 
 const CommentWrite: React.FC<Prop> = ({ userId, boardId, name }) => {
-  const { user } = useUser();
   const { register, handleSubmit, formState, reset } = useForm<CommentTextareaValue>();
   const { mutate } = useMutation(postCommentApi);
   const queryClient = useQueryClient();

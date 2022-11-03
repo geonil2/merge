@@ -1,6 +1,5 @@
 import axios, {AxiosError} from "axios";
 import {isServer} from "../services/utils";
-import useUser from "../hooks/useUser";
 import { getSession } from 'next-auth/react'
 
 
@@ -11,7 +10,8 @@ API.interceptors.request.use(
   async (config) => {
     const session = await getSession()
     console.log(session, 'session!!!!!!!!!')
-    const token = !isServer ? localStorage.getItem('accessToken') : '';
+    // const token = !isServer ? localStorage.getItem('accessToken') : '';
+    const token = !isServer ? session?.accessToken : '';
     if (config.headers && token) {
       config.headers.Authorization = `Bearer ${token}`;
     }

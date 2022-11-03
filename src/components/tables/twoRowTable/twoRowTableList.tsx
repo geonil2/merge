@@ -2,24 +2,19 @@ import React, {FC} from 'react';
 import Image from "next/image";
 import styled from "@emotion/styled";
 import {COLORS} from "../../../config/styles";
+import {Board} from "../../../services/board/types";
 
-interface Props {
-  key: number
-  id: number,
-  url: string,
-  title: string,
-  count: number,
+interface Props extends Board{
 }
 
 const TwoRowTableList: FC<Props> = ({
-  id,
-  url,
+  _id,
   title,
-  count
+  description,
 }) => {
   return (
     <Container>
-      <ListIndex>{id.toString().length === 1 ? `0${id}` : id}</ListIndex>
+      <ListIndex>{_id.length === 1 ? `0${_id}` : _id}</ListIndex>
       <Thum src={url} alt="Best Popular Articles image"/>
       <TextWrap>
         <p>{title}</p>

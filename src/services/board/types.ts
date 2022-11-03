@@ -2,6 +2,7 @@ import {User} from "../auth/types";
 
 export const BoardByCategoryQueryKey = 'getBoardListByCategory'
 export const BoardByIdQueryKey = 'getBoardByIdApi'
+export const BestBoardQueryKey = 'getBestBoardApi'
 
 export type Category = "question" | "info" | "community" | "recruit" | "notice"
 
@@ -22,16 +23,22 @@ export interface BoardByCategoryRequestQuery {
   limit?: number
 }
 
-export interface BoardList {
+interface BaseModel {
   _id: string,
   title: string,
   description: string,
-  image?: string,
-  url: string,
-  category?: string,
-  owner?: User,
-  views?: string,
-  likes?: string[],
   createdAt: string,
-  updatedAt?: string,
 }
+
+export interface Board extends BaseModel {
+  category: string,
+  owner: User,
+  likes: string[],
+  updatedAt: string,
+}
+
+export interface newsBoard extends BaseModel {
+  url: string
+}
+
+

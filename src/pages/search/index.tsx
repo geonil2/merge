@@ -15,14 +15,11 @@ const Search = () => {
   const router = useRouter();
   const searchKeyword = router.query.p;
 
-  const { data } = useQuery([SearchQueryKey, searchKeyword, offset, DEFAULT_LISTS_COUNT],
-    () => getSearchApi(searchKeyword, offset, DEFAULT_LISTS_COUNT), {
-    enabled: !!searchKeyword,
-  });
-
-  useEffect(() => {
-    console.log(data, 'datadatadata')
-  }, [data])
+  const { data } = useQuery(
+    [SearchQueryKey, searchKeyword, offset, DEFAULT_LISTS_COUNT],
+    () => getSearchApi(searchKeyword, offset, DEFAULT_LISTS_COUNT),
+    { enabled: !!searchKeyword }
+  );
 
   return (
     <TableLeftWrapper>
