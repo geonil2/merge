@@ -4,7 +4,7 @@ export const getNewsListApi = async () => {
   const { data } = await API.get('/news', {
     baseURL: '/api'
   });
-  return data;
+  return data.data;
 }
 
 

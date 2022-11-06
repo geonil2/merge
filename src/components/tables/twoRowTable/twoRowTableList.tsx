@@ -3,32 +3,48 @@ import Image from "next/image";
 import styled from "@emotion/styled";
 import {COLORS} from "../../../config/styles";
 import {Board} from "../../../services/board/types";
+import Link from "next/link";
+import {Interweave} from "interweave";
+import ListThumbnail from "../../listThumbnail";
 
-interface Props extends Board{
+interface Props extends Board {
+  index: number
 }
 
 const TwoRowTableList: FC<Props> = ({
+  index,
   _id,
   title,
+  category,
   description,
+  comment,
 }) => {
   return (
-    <Container>
-      <ListIndex>{_id.length === 1 ? `0${_id}` : _id}</ListIndex>
-      <Thum src={url} alt="Best Popular Articles image"/>
-      <TextWrap>
-        <p>{title}</p>
-        <span>({count})</span>
-        <Image
-          src='/images/icons/popular.svg'
-          width={20}
-          height={20}
-          alt="Best Popular icon"
-        />
-      </TextWrap>
-    </Container>
+    <Link href={`/${category}/${_id}`}>
+      <ATagWrap>
+        <Container>
+          <ListIndex>{index == 9 ? index+1  : `0${index+1}`}</ListIndex>
+          <ListThumbnail description={description} width={40} />
+          <TextWrap>
+            <p>{title}</p>
+            <span>({comment})</span>
+            <Image
+              src='/images/icons/popular.svg'
+              width={20}
+              height={20}
+              alt="Best Popular icon"
+            />
+          </TextWrap>
+        </Container>
+      </ATagWrap>
+    </Link>
   );
 };
+
+const ATagWrap = styled.a`
+  height: 60px;
+  cursor: pointer;
+`
 
 const Container = styled.li`
   display: flex;
@@ -43,11 +59,6 @@ const Container = styled.li`
 const ListIndex = styled.span`
   width: 42px;
   font-weight: 700;
-`
-
-const Thum = styled.img`
-  width: 40px;
-  height: 40px;
 `
 
 const TextWrap = styled.div`

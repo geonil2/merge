@@ -3,14 +3,13 @@ import {keyframes} from "@emotion/react";
 export const COLORS = {
     PRIMARY: '#CA7EFA',
     SUB: '#C06BF4',
+    BLACK: '#525252',
+    WHITE: '#FFFFFF',
     DARK_GRAY: '#949494',
     LIGHT_GRAY: '#EBEBEB',
     GRAY: '#D9D9D9',
-
     RED: '#FF3C4B',
     BLUE: '#6993FF',
-    BLACK: '#525252',
-    WHITE: '#FFFFFF',
 }
 
 export const MEDIA = {

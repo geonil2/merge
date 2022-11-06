@@ -6,6 +6,15 @@ export const postBoardApi = async (body: PostBoardRequestBody) => {
   return data.data
 }
 
+export const postBoardImageApi = async (formData: FormData) => {
+  const { data } = await API.post('/api/boards/upload/image', formData, {
+    headers: {
+      'Content-Type': 'multipart/form-data'
+    }
+  })
+  return data.data
+}
+
 export const getBoardByCategoryApi = async ({ category, offset, limit }: BoardByCategoryRequestQuery) => {
   console.log(`/api/boards?category=${category}&offset=${offset}&limit=${limit}`, 'parameter!')
   const { data } = await API.get(`/api/boards`, { params: { category, offset, limit }})
@@ -19,7 +28,7 @@ export const getBoardByIdApi = async (id: string) => {
 }
 
 export const getBestBoard = async () => {
-  const { data } = await API.get(`/api/boards/best`)
+  const { data } = await API.get(`/api/boards/all/best`)
   return data.data
 }
 

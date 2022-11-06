@@ -1,7 +1,7 @@
 import React, {useEffect} from 'react';
 import BoardContents from "./boardContents";
 import CommentWrite from "./commentWrite";
-import {BoardByIdQueryKey, BoardList} from "../../services/board/types";
+import {BoardByIdQueryKey} from "../../services/board/types";
 import {useRouter} from "next/router";
 import {useMutation, useQuery} from "@tanstack/react-query";
 import {getBoardByIdApi, postBoardApi} from "../../services/board/api";
@@ -22,7 +22,7 @@ const boardDetail: React.FC<Prop> = ({ boardId }) => {
   const comment = useQuery([CommentByBoardIdQueryKey, { boardId }], () => getCommentByBoardIdApi(boardId))
 
   useEffect(() => {
-    console.log(comment.data)
+    console.log(comment.data, '1231323')
   }, [comment.data])
 
   return (

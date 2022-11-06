@@ -14,7 +14,6 @@ import {useEffect} from "react";
 import {ConferenceListQueryKey} from "../services/conference/types";
 import {BestBoardQueryKey, BoardByCategoryQueryKey} from "../services/board/types";
 import {getBestBoard, getBoardByCategoryApi} from "../services/board/api";
-import useBoardListByCategory from "../hooks/useBoardListByCateogry";
 import useBoardByCategory from "../hooks/useBoardListByCateogry";
 import TableLeftWrapper from "../components/tables/tableLeftWrapper";
 
@@ -70,8 +69,15 @@ export default Home
 
 export const getServerSideProps = async (context: GetServerSidePropsContext) => {
   const queryClient = new QueryClient()
-  await queryClient.prefetchQuery([ConferenceListQueryKey], () => getConferenceListApi())
-
+  await Promise.all([
+    queryClient.prefetchQuery([ConferenceListQueryKey], () => getConferenceListApi()),
+    queryClient.prefetchQuery([BestBoardQueryKey], () => getBestBoard()),
+    queryClient.prefetchQuery([BoardByCategoryQueryKey, { category: 'question', offset: 0, limit: 5}], () => getBoardByCategoryApi({ category: 'question', offset: 0, limit: 5})),
+    queryClient.prefetchQuery([BoardByCategoryQueryKey, { category: 'info', offset: 0, limit: 5}], () => getBoardByCategoryApi({ category: 'info', offset: 0, limit: 5})),
+    queryClient.prefetchQuery([BoardByCategoryQueryKey, { category: 'community', offset: 0, limit: 5}], () => getBoardByCategoryApi({ category: 'community', offset: 0, limit: 5})),
+    queryClient.prefetchQuery([BoardByCategoryQueryKey, { category: 'recruit', offset: 0, limit: 5}], () => getBoardByCategoryApi({ category: 'recruit', offset: 0, limit: 5})),
+    queryClient.prefetchQuery([BoardByCategoryQueryKey, { category: 'notice', offset: 0, limit: 5}], () => getBoardByCategoryApi({ category: 'notice', offset: 0, limit: 5}))
+  ])
   return {
     props: {
       dehydratedState: dehydrate(queryClient),

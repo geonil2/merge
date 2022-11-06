@@ -84,14 +84,14 @@ const CommentList: React.FC<Prop> = ({ comment, userId }) => {
 
   return (
     <CommentWrap>
-      <Thumbnail src={comment.user.image} />
+      <Thumbnail src={comment.owner.image} />
       <CommentInfoWrap>
         <CommentInfo>
           <CommentInfoLeft>
-            <UserName>{comment.user.name}</UserName>
+            <UserName>{comment.owner.name}</UserName>
             <ReactTimeago date={comment.updatedAt} />
           </CommentInfoLeft>
-          {userId === comment.user._id &&
+          {userId === comment.owner._id &&
             <ActiveButton
               isActive={isActive}
             >
@@ -116,7 +116,7 @@ const CommentList: React.FC<Prop> = ({ comment, userId }) => {
             value={textareaData}
           ></textarea>
         </Commentarea>
-        {userId === comment.user._id && !isDisabledTextarea &&
+        {userId === comment.owner._id && !isDisabledTextarea &&
           <UpdateButtonWrap>
             <CancelButton title="취소" onClick={onClickCancelButton} />
             <UpdateButton title="수정" onClick={onClickUpdateButton}/>

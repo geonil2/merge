@@ -3,10 +3,11 @@ import Image from "next/image";
 import styled from "@emotion/styled";
 import ReactTimeago from "react-timeago";
 import Link from "next/link";
-import {BoardList} from "../../../services/board/types";
+import {Board} from "../../../services/board/types";
 import {COLORS} from "../../../config/styles";
 import {Interweave} from "interweave";
 import {polyfill} from "interweave-ssr";
+import ListThumbnail from "../../listThumbnail";
 
 /*
 * For server side rendering
@@ -14,23 +15,29 @@ import {polyfill} from "interweave-ssr";
  */
 polyfill();
 
-const VerticalList= ({ list } : { list : BoardList }) => {
-  const { _id, title, image, category, url, views, owner, createdAt } = list;
+interface Prop {
+  list: Board
+}
+
+const VerticalList: React.FC<Prop> = ({ list }) => {
+  const { _id, title, description, category, url, owner, createdAt } = list;
+
   return (
-    <Link href={category ? `/${category}/${_id}` : url} passHref>
-      <a target={category ? "_self" : "_blank"}>
+    <Link href={url ? url : `/${category}/${_id}`} passHref>
+      <a target={url ? "_blank" : "_self"}>
         <List>
-          {image && <Image src={image} alt="Contents thumbnail image"/>}
-          <div>
+          {/*{image && <Image src={image} alt="Contents thumbnail image"/>}*/}
+          <ListThumbnail description={description} width={50} />
+          <TextArea>
             <TextTopArea>
               <p><Interweave content={title} /></p>
             </TextTopArea>
             <TextBotArea>
               {owner && <Owner>{owner.email}</Owner>}
-              {views && <Likes>Likes {views}</Likes>}
+              {/*{views && <Likes>Likes {views}</Likes>}*/}
               <ReactTimeago date={createdAt} />
             </TextBotArea>
-          </div>
+          </TextArea>
         </List>
       </a>
     </Link>
@@ -42,11 +49,16 @@ const List = styled.div`
   justify-content: flex-start;
   align-items: center;
   padding: 10px 0px;
-  > img {
-    width: 55px;
-    height: 55px;
+  
+  img {
+    width: 50px;
+    height: 50px;
     margin-right: 10px;
   }
+`
+
+const TextArea = styled.div`
+  margin-left: 10px;
 `
 
 const TextTopArea = styled.div`
@@ -66,9 +78,6 @@ const TextBotArea = styled.div`
 const Owner = styled.span`
   font-weight: 700;
   margin-right: 10px;
-`
-
-const Likes = styled.span`
 `
 
 export default VerticalList;

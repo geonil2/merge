@@ -1,7 +1,6 @@
 import React from 'react';
 import BoardForm from "../../components/boardForm";
 import WritingPageWrapper from "../../components/writingPageWrapper";
-import PrivateRoute from "../../components/PrivateRoute";
 
 const Writing = () => {
   return (
@@ -12,4 +11,4 @@ const Writing = () => {
   );
 };
 
-export default PrivateRoute(Writing);
+export default Writing;

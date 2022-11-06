@@ -9,7 +9,7 @@ import {Editor} from "@toast-ui/react-editor";
 import {useMutation} from "@tanstack/react-query";
 import {postBoardApi, updateBoardByIdApi} from "../../services/board/api";
 import {useRouter} from "next/router";
-import {BoardList, PostBoardRequestBody, PutBoardRequestBody} from "../../services/board/types";
+import {PostBoardRequestBody, PutBoardRequestBody} from "../../services/board/types";
 import dynamic from "next/dynamic";
 import {Menu, menuList} from "../../resources/types";
 import {useSession} from "next-auth/react";

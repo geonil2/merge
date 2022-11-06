@@ -1,5 +1,3 @@
-export const TOKEN_STORAGE_KEY = 'accessToken';
-
 export interface User {
   _id: string,
   accessToken?: string,

@@ -1,7 +1,7 @@
-import React from 'react';
+import React, {useCallback} from 'react';
 import styled from "@emotion/styled";
 import {COLORS, SHADOWS} from "../../../config/styles";
-import {BoardByIdQueryKey, BoardList} from "../../../services/board/types";
+import {Board, BoardByIdQueryKey} from "../../../services/board/types";
 import ReactTimeago from "react-timeago";
 import nl2br from "react-nl2br";
 import {Interweave} from "interweave";
@@ -15,9 +15,10 @@ import {popupModalContentsAtom} from "../../../recoil/modal";
 import {CommentByBoardIdQueryKey} from "../../../services/comment/types";
 import {useRouter} from "next/router";
 import UpdateDeleteButtonWrapper from "../../updateDeleteButtonWrapper";
+import {debounce} from "lodash";
 
 interface Props {
-  contents: BoardList,
+  contents: Board,
   userId?: string
 }
 
@@ -28,14 +29,13 @@ const boardContents: React.FC<Props> = ({ contents, userId }) => {
   const setPopupModalContents = useSetRecoilState(popupModalContentsAtom);
   const router = useRouter();
 
-
-  const onClickLike = () => {
+  const onClickLike = useCallback(debounce(() => {
     updateLike.mutate(contents._id, {
       onSuccess: () => {
         queryClient.invalidateQueries([BoardByIdQueryKey, { boardId: contents._id }]);
       }
     })
-  }
+  }, 200), [updateLike.data])
 
   const removeBoard = () => {
     deleteBoard.mutate(contents._id, {

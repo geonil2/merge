@@ -5,12 +5,12 @@ import {COLORS, SHADOWS} from "../../../config/styles";
 import VerticalList from "./verticalList";
 import {useQuery} from "@tanstack/react-query";
 import {getNewsListApi} from "../../../services/news/api";
-import {BoardList} from "../../../services/board/types";
+import {Board} from "../../../services/board/types";
 import Pagination from "../../pagination";
 
 interface Props {
   title: string,
-  list: BoardList[],
+  list: Board[],
   showPagination: boolean,
   totalCount?: number,
 }

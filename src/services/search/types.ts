@@ -1,1 +1,1 @@
-export const SearchQueryKey = 'getSearchApi'
+export const SearchQueryKey = 'getSearch'

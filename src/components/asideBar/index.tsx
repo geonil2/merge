@@ -12,7 +12,7 @@ import dynamic from "next/dynamic";
 // })
 
 const AsideBar = () => {
-  const { data } = useQuery([newsListQueryKey], () => getNewsListApi(), {
+  const newsList = useQuery([newsListQueryKey], () => getNewsListApi(), {
     staleTime: Infinity,
   });
 
@@ -20,10 +20,10 @@ const AsideBar = () => {
     <Aside>
       <AuthTable />
       <BannerTable />
-      {data?.data && (
+      {newsList.data && (
         <VerticalListTable
           title='업계 기사'
-          list={data.data}
+          list={newsList.data}
           showPagination={false}
         />
       )}

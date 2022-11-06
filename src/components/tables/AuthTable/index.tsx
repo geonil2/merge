@@ -5,6 +5,7 @@ import {signIn, signOut, useSession} from "next-auth/react";
 import Link from "next/link";
 import {redirect} from "next/dist/server/api-utils";
 import {removeTokenInStorage} from "../../../services/auth/api";
+import {Skeleton} from "@mui/material";
 
 const AuthTable = () => {
 
@@ -15,15 +16,21 @@ const AuthTable = () => {
     removeTokenInStorage()
   }
 
+  useEffect(() => {
+    console.log(status, 'status')
+  }, [status])
+
   return (
     <Container>
       {session ?
         <>
           <AuthenticatedUI>
             <Profile>
-              <ProfileThumb
-                src={session.user?.image as string}
-              />
+              {
+                status === 'authenticated' ? <ProfileThumb
+                  src={session.user?.image as string}
+                /> : <Skeleton variant="circular" animation="wave" width={60} height={60} />
+              }
               <UserText>
                 <UserName>{session.user?.name}</UserName>
                 <Email>{session.user?.email}</Email>
