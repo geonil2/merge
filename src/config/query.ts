@@ -1,7 +1,5 @@
 import {isAxiosError} from "./api";
 import {QueryCache, QueryClient} from "@tanstack/query-core";
-import {removeTokenInStorage} from "../services/auth/api";
-import {signOut} from "next-auth/react";
 
 const retry = (failCount: number, error: unknown): boolean => {
     if (isAxiosError(error)) {
@@ -16,19 +14,20 @@ const retry = (failCount: number, error: unknown): boolean => {
 * QueryClient default setting
  */
 export const generateQueryClient = () => {
-    const queryClient = new QueryClient({
-      queryCache: new QueryCache({
-        onError: (error) =>
-          console.log(error, 'common error')
-          // signOut({ redirect: false })
-      }),
-    });
+  const queryClient = new QueryClient({
+    queryCache: new QueryCache({
+      onError: (error) =>
+        console.log(error, 'common error')
+        // signOut({ redirect: false })
+    }),
+  });
 
-    queryClient.setDefaultOptions({
-        queries: {
-            retry: retry
-        },
-    })
+  queryClient.setDefaultOptions({
+    queries: {
+      // suspense: true,
+      retry: retry
+    },
+  })
 
-    return queryClient
+  return queryClient
 }

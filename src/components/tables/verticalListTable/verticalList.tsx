@@ -16,7 +16,7 @@ import ListThumbnail from "../../listThumbnail";
 polyfill();
 
 interface Prop {
-  list: Board
+  list: Board,
 }
 
 const VerticalList: React.FC<Prop> = ({ list }) => {
@@ -28,7 +28,7 @@ const VerticalList: React.FC<Prop> = ({ list }) => {
         <List>
           {/*{image && <Image src={image} alt="Contents thumbnail image"/>}*/}
           <ListThumbnail description={description} width={50} />
-          <TextArea>
+          <div>
             <TextTopArea>
               <p><Interweave content={title} /></p>
             </TextTopArea>
@@ -37,7 +37,7 @@ const VerticalList: React.FC<Prop> = ({ list }) => {
               {/*{views && <Likes>Likes {views}</Likes>}*/}
               <ReactTimeago date={createdAt} />
             </TextBotArea>
-          </TextArea>
+          </div>
         </List>
       </a>
     </Link>
@@ -45,20 +45,14 @@ const VerticalList: React.FC<Prop> = ({ list }) => {
 };
 
 const List = styled.div`
+  height: 100%;
   display: flex;
   justify-content: flex-start;
   align-items: center;
-  padding: 10px 0px;
-  
   img {
     width: 50px;
     height: 50px;
-    margin-right: 10px;
   }
-`
-
-const TextArea = styled.div`
-  margin-left: 10px;
 `
 
 const TextTopArea = styled.div`

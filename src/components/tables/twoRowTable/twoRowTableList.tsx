@@ -28,10 +28,8 @@ const TwoRowTableList: FC<Props> = ({
           <TextWrap>
             <p>{title}</p>
             <span>({comment})</span>
-            <Image
+            <PopularImage
               src='/images/icons/popular.svg'
-              width={20}
-              height={20}
               alt="Best Popular icon"
             />
           </TextWrap>
@@ -44,16 +42,16 @@ const TwoRowTableList: FC<Props> = ({
 const ATagWrap = styled.a`
   height: 60px;
   cursor: pointer;
+  border-bottom: 1px solid ${COLORS.GRAY};
+  &:nth-of-type(odd) {
+    border-right: 1px solid ${COLORS.GRAY};
+  }
 `
 
 const Container = styled.li`
   display: flex;
   align-items: center;
-  border-bottom: 1px solid ${COLORS.GRAY};
   padding: 10px 24px;
-  &:nth-of-type(odd) {
-    border-right: 1px solid ${COLORS.GRAY};
-  }
 `
 
 const ListIndex = styled.span`
@@ -67,7 +65,7 @@ const TextWrap = styled.div`
   align-items: center;
   font-weight: 700;
   font-size: 14px;
-  margin: 10px;
+  margin: 10px 10px 10px 0px;
   > p {
     max-width: 185px;
     overflow:hidden;
@@ -82,6 +80,11 @@ const TextWrap = styled.div`
     width: 20px;
     height: 20px;
   }
+`
+
+const PopularImage = styled.img`
+  width: 20px;
+  height: 20px;
 `
 
 export default TwoRowTableList;

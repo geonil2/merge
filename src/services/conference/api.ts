@@ -2,10 +2,6 @@ import axios from "axios";
 import {OriginalConferenceData, Tag} from "./types";
 
 export const getConferenceListApi = async () => {
-  // const { data } = await api.get('/api/conference', {
-  //   baseURL: 'http://localhost:3000'
-  // });
-  // return data;
   const headers = {
     'Authorization' : `Bearer ${process.env.NOTION_TOKEN}`,
     'Notion-Version': "2022-02-22",

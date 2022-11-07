@@ -13,19 +13,21 @@ interface Props {
   list: Board[],
   showPagination: boolean,
   totalCount?: number,
+  tab?: string
 }
 
 const VerticalListTable: FC<Props> = ({
   title,
   list,
   showPagination,
-  totalCount
+  totalCount,
+  tab
 }) => {
   console.log(list, 'list')
   return (
     <Container>
-      <TableHeaderLayout title={title} />
-      {list.map(list => <ListLayout><VerticalList key={list._id} list={list} /></ListLayout>)}
+      <TableHeaderLayout title={title} url={tab} />
+      {list.map(list => <ListLayout key={list._id}><VerticalList list={list} /></ListLayout>)}
       {showPagination && <Pagination totalCount={totalCount} />}
     </Container>
   );
@@ -36,7 +38,9 @@ const Container = styled.section`
   box-shadow: ${SHADOWS.basic};
   padding-bottom: 22px;
 `
+
 const ListLayout = styled.div`
+  height: 70px;
   border-bottom: 1px solid ${COLORS.GRAY};
   margin: 0px 24px;
   &:last-of-type {

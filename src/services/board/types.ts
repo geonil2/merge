@@ -31,11 +31,11 @@ interface BaseBoard {
 }
 
 export interface Board extends BaseBoard {
-  category: Category,
+  category?: Category,
   owner?: User,
   comment?: number,
-  likes: string[],
+  likes?: string[],
   url?: string, // only news Board
-  updatedAt: string,
+  updatedAt?: string,
 }
 

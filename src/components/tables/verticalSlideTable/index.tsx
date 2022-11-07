@@ -4,6 +4,13 @@ import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import styled from "@emotion/styled";
 import {COLORS, SHADOWS} from "../../../config/styles";
+import {Board} from "../../../services/board/types";
+import Link from "next/link";
+
+
+interface Prop {
+  list: Board[],
+}
 
 const settings = {
   slide: 'div',
@@ -16,14 +23,18 @@ const settings = {
   dot: false
 }
 
-const VerticalSlideTable = () => {
+const VerticalSlideTable: React.FC<Prop> = ({ list }) => {
   return (
     <SliderContainer>
       <p>공지사항</p>
       <Slider {...settings}>
-        <div className="slider">10월 첫째주 버그리스트 공지</div>
-        <div className="slider">10월 첫째주 버그리스트 공지</div>
-        <div className="slider">10월 첫째주 버그리스트 공지</div>
+        {list.map(board => (
+          <Link href={`/${board.category}/${board._id}`} key={board._id}>
+            <a>
+              <div className="slider">{board.title}</div>
+            </a>
+          </Link>
+        ))}
       </Slider>
     </SliderContainer>
   );

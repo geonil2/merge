@@ -2,6 +2,8 @@ import React, {FC} from 'react';
 import styled from "@emotion/styled";
 import {COLORS} from "../../config/styles";
 import {useRouter} from "next/router";
+import Link from "next/link";
+import Image from "next/image";
 
 interface Props {
   title: string,
@@ -13,7 +15,13 @@ const TableHeaderLayout: FC<Props> = ({ title, url }) => {
 
   return (
     <TableHeader>
-      <p onClick={() => router.push(url ? url : '/')}>{title}</p>
+      <p onClick={() => url && router.push(url)}>{title}</p>
+      {url &&
+        <Link href={url}>
+          <MoveToCategory src="/images/icons/right_arrow.svg" alt='Move to category page' />
+        </Link>
+      }
+
     </TableHeader>
   );
 };
@@ -25,6 +33,13 @@ const TableHeader = styled.div`
     color: ${COLORS.PRIMARY};
     font-weight: 800;
   }
+`
+
+const MoveToCategory = styled.img`
+  width: 14px;
+  height: 14px;
+  margin-left: 8px;
+  cursor: pointer;
 `
 
 export default TableHeaderLayout;
