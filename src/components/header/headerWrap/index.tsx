@@ -10,6 +10,7 @@ import {popupModalContentsAtom, visibleModalSelector} from "../../../recoil/moda
 import CommonModals, {ModalType} from "../../commonModals";
 import {useRouter} from "next/router";
 import {offsetAtom} from "../../../recoil/offset";
+import MobileHeader from "../mobileHeader";
 
 const Header = () => {
   const visibleModal = useRecoilValue(visibleModalSelector)
@@ -29,6 +30,9 @@ const Header = () => {
     <>
       <MediaOnlyDiv media="desktop">
         <DesktopHeader />
+      </MediaOnlyDiv>
+      <MediaOnlyDiv media="mobile">
+        <MobileHeader />
       </MediaOnlyDiv>
       <CommonModals
         visibleModal={visibleModal}

@@ -1,6 +1,6 @@
 import React, {FC} from 'react';
 import styled from "@emotion/styled";
-import {COLORS} from "../../config/styles";
+import {COLORS, MEDIA} from "../../config/styles";
 import {useRouter} from "next/router";
 import Link from "next/link";
 import Image from "next/image";
@@ -21,7 +21,6 @@ const TableHeaderLayout: FC<Props> = ({ title, url }) => {
           <MoveToCategory src="/images/icons/right_arrow.svg" alt='Move to category page' />
         </Link>
       }
-
     </TableHeader>
   );
 };
@@ -32,6 +31,9 @@ const TableHeader = styled.div`
   > p {
     color: ${COLORS.PRIMARY};
     font-weight: 800;
+  }
+  ${MEDIA.mobile} {
+    padding: 22px 10px;
   }
 `
 

@@ -1,18 +1,13 @@
 import React, {useEffect} from 'react';
 import styled from "@emotion/styled";
-import {COLORS, SHADOWS} from "../../../config/styles";
+import {COLORS, MEDIA, SHADOWS} from "../../../config/styles";
 import {signIn, signOut, useSession} from "next-auth/react";
 import Link from "next/link";
 import {redirect} from "next/dist/server/api-utils";
 import {Skeleton} from "@mui/material";
 
 const AuthTable = () => {
-
   const { data: session, status } = useSession();
-
-  const logOut = () => {
-    signOut({ redirect: false })
-  }
 
   return (
     <Container>
@@ -20,17 +15,13 @@ const AuthTable = () => {
         <>
           <AuthenticatedUI>
             <Profile>
-              {
-                status === 'authenticated' ? <ProfileThumb
-                  src={session.user?.image as string}
-                /> : <Skeleton variant="circular" animation="wave" width={60} height={60} />
-              }
+              <ProfileThumb src={session.user?.image as string} />
               <UserText>
                 <UserName>{session.user?.name}</UserName>
                 <Email>{session.user?.email}</Email>
               </UserText>
             </Profile>
-            <LogoutButton onClick={() => logOut()}>
+            <LogoutButton onClick={() => signOut({ redirect: false })}>
               Log out
             </LogoutButton>
           </AuthenticatedUI>
@@ -46,7 +37,7 @@ const AuthTable = () => {
           </Link>
       </>
       :
-      <LoginButton onClick={() => signIn("google", { prompt: "login" })}>
+      <LoginButton onClick={() => signIn("google")}>
         <GoogleLogo src="/images/icons/google.svg" />
       </LoginButton>
       }
@@ -57,6 +48,14 @@ const AuthTable = () => {
 const Container = styled.section`
   box-shadow: ${SHADOWS.basic};
   padding: 24px;
+  ${MEDIA.tablet} {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+  ${MEDIA.mobile} {
+    display: none;
+  }
 `
 
 const AuthenticatedUI = styled.div`

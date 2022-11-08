@@ -1,6 +1,7 @@
 import React, {HTMLAttributes, ReactNode} from 'react';
 import styled from "@emotion/styled";
 import AsideBar from "../asideBar";
+import {MEDIA} from "../../config/styles";
 
 interface Props extends HTMLAttributes<HTMLDivElement> {
 }
@@ -23,6 +24,14 @@ const Layout = styled.div`
   align-items: flex-end;
   padding: 20px 40px;
   margin: 0px auto;
+  ${MEDIA.tablet} {
+    width: 100%;
+    grid-template-columns: repeat(1, 1fr);
+    padding: 10px 20px;
+  }
+  ${MEDIA.mobile} {
+    padding: 10px 0px;
+  }
 `
 
 

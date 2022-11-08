@@ -3,7 +3,7 @@ import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import styled from "@emotion/styled";
-import {COLORS, SHADOWS} from "../../../config/styles";
+import {COLORS, MEDIA, SHADOWS} from "../../../config/styles";
 import {Board} from "../../../services/board/types";
 import Link from "next/link";
 
@@ -47,6 +47,9 @@ const SliderContainer = styled.section`
   background-color: ${COLORS.WHITE};
   padding: 0px 24px;
   box-shadow: ${SHADOWS.basic};
+  ${MEDIA.mobile} {
+    padding: 0px 10px;
+  }
 
   > p {
     font-weight: 800;

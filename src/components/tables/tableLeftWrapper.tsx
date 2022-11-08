@@ -1,5 +1,6 @@
 import React, {HTMLAttributes, ReactNode} from 'react';
 import styled from "@emotion/styled";
+import {MEDIA} from "../../config/styles";
 
 interface Props extends HTMLAttributes<HTMLDivElement> {
 }
@@ -22,6 +23,13 @@ const TableContainer = styled.div`
   grid-template-rows: auto;
   align-self: flex-start;
   gap: 14px 0px;
+  ${MEDIA.tablet} {
+    width: 100%;
+    order: 2;
+  }
+  ${MEDIA.mobile} {
+    order: 1;
+  }
 `
 
 export default TableLeftWrapper;

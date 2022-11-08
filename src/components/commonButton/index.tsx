@@ -16,7 +16,11 @@ const CommonButton: React.FC<Props> = ({
   const { data: session } = useSession();
 
   return (
-    <Button {...props} onClick={onClick} disabled={!session}>{title}</Button>
+    <Button
+      {...props}
+      onClick={onClick}
+      // disabled={!session}
+    >{title}</Button>
   );
 };
 

@@ -1,7 +1,7 @@
 import React from 'react';
 import styled from "@emotion/styled";
 import {BigImageTableListType} from "./index";
-import {COLORS} from "../../../config/styles";
+import {COLORS, MEDIA} from "../../../config/styles";
 
 interface Props {
   list: BigImageTableListType
@@ -11,7 +11,7 @@ const BigImageTableList: React.FC<Props> = ({ list }) => {
   const { date, tag, title, image, url } = list;
   return (
     <A href={url} target='_blank'>
-      <img src={image} width={230} height={140} style={{ borderRadius: "6px" }} />
+      <img src={image} />
       <Tag>
         {tag.map((tagList: string, index) => (
           <p key={index}>{tagList}</p>
@@ -24,6 +24,15 @@ const BigImageTableList: React.FC<Props> = ({ list }) => {
 };
 
 const A = styled.a`
+  width: 32%;
+  img {
+    width: 100%;
+    //height: 140px;
+    border-radius: 6px;
+  }
+  ${MEDIA.mobile} {
+    width: 48%;
+  }
 `
 
 const Tag = styled.div`
@@ -45,7 +54,7 @@ const Tag = styled.div`
 `
 
 const Title = styled.div`
-  width: 230px;
+  width: 100%;
   font-weight: 700;
   font-size: 14px;
   line-height: 120%;

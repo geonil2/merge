@@ -17,6 +17,7 @@ const NewsListTable = () => {
           title='업계 기사'
           list={newsList.data}
           showPagination={false}
+          className='newsList'
         />
       )}
     </>

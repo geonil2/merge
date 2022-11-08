@@ -1,7 +1,7 @@
 import React, {useEffect} from 'react';
 import TableHeaderLayout from "../tableHeaderLayout";
 import styled from "@emotion/styled";
-import {COLORS, SHADOWS} from "../../../config/styles";
+import {COLORS, MEDIA, SHADOWS} from "../../../config/styles";
 import BigImageTableList from "./bigImageTableList";
 
 interface Props {
@@ -38,6 +38,10 @@ const BigImageTableBody = styled.section`
   justify-content: space-between;
   margin: 0px 24px;
   padding-bottom: 24px;
+  ${MEDIA.mobile} {
+    flex-wrap: wrap;
+    margin: 0px 10px;
+  }
 `
 
 export default BigImageTable;

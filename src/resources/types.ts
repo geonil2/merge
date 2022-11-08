@@ -11,7 +11,8 @@ export type Menu = {
   id: number,
   name: Category | string,
   title: string,
-  url: string
+  url: string,
+  disabled: boolean
 }
 
 export const popupModalContents: { [key: string]: popupContents } = require("../resources/popup.json");

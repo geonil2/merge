@@ -1,7 +1,7 @@
 import React, {FC} from 'react';
 import TableHeaderLayout from "../tableHeaderLayout";
 import styled from "@emotion/styled";
-import {COLORS, SHADOWS} from "../../../config/styles";
+import {COLORS, MEDIA, SHADOWS} from "../../../config/styles";
 import VerticalList from "./verticalList";
 import {useQuery} from "@tanstack/react-query";
 import {getNewsListApi} from "../../../services/news/api";
@@ -13,7 +13,8 @@ interface Props {
   list: Board[],
   showPagination: boolean,
   totalCount?: number,
-  tab?: string
+  tab?: string,
+  className?: string
 }
 
 const VerticalListTable: FC<Props> = ({
@@ -21,11 +22,12 @@ const VerticalListTable: FC<Props> = ({
   list,
   showPagination,
   totalCount,
-  tab
+  tab,
+  className
 }) => {
   console.log(list, 'list')
   return (
-    <Container>
+    <Container className={className}>
       <TableHeaderLayout title={title} url={tab} />
       {list.map(list => <ListLayout key={list._id}><VerticalList list={list} /></ListLayout>)}
       {showPagination && <Pagination totalCount={totalCount} />}
@@ -37,6 +39,18 @@ const Container = styled.section`
   background: ${COLORS.WHITE};
   box-shadow: ${SHADOWS.basic};
   padding-bottom: 22px;
+  ${MEDIA.tablet} {
+    &.newsList {
+      grid-column-start: 1;
+      grid-column-end: 3;
+    }
+  ${MEDIA.mobile} {
+    &.newsList {
+      grid-column-start: 1;
+      grid-column-end: 2;
+    }
+  }
+  }
 `
 
 const ListLayout = styled.div`
@@ -45,6 +59,9 @@ const ListLayout = styled.div`
   margin: 0px 24px;
   &:last-of-type {
     border: none;
+  }
+  ${MEDIA.mobile} {
+    margin: 0px 10px;
   }
 `
 

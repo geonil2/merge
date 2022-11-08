@@ -14,7 +14,7 @@ export const COLORS = {
 
 export const MEDIA = {
   desktop: '@media only screen and (min-width: 769px)',
-  tablet: '@media only screen and (max-width: 1200px)',
+  tablet: '@media only screen and (max-width: 1280px)',
   mobile: '@media only screen and (max-width: 768px)',
 }
 

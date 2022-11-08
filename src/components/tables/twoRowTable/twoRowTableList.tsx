@@ -1,7 +1,7 @@
 import React, {FC} from 'react';
 import Image from "next/image";
 import styled from "@emotion/styled";
-import {COLORS} from "../../../config/styles";
+import {COLORS, MEDIA} from "../../../config/styles";
 import {Board} from "../../../services/board/types";
 import Link from "next/link";
 import {Interweave} from "interweave";
@@ -52,6 +52,9 @@ const Container = styled.li`
   display: flex;
   align-items: center;
   padding: 10px 24px;
+  ${MEDIA.mobile} {
+    padding: 10px 10px;
+  }
 `
 
 const ListIndex = styled.span`

@@ -11,7 +11,7 @@ import {Suspense} from "react";
 import AsyncBoundary from "../asyncBoundary";
 import ErrorBoundary from "../asyncBoundary/errorBoundary";
 import LoadingVerticalList from "../tables/verticalListTable/loadingVerticalList";
-import {COLORS, SHADOWS} from "../../config/styles";
+import {COLORS, MEDIA, SHADOWS} from "../../config/styles";
 // import NewsListTable from "../tables/newsListTable";
 // const BannerTable = dynamic(import('../tables/bannerTable'), {
 //   ssr: false
@@ -46,6 +46,18 @@ const Aside = styled.aside`
   grid-template-columns: repeat(1, 1fr);
   grid-auto-rows: max-content;
   gap: 14px 0px;
+  ${MEDIA.tablet} {
+    position: inherit;
+    width: 100%;
+    order: 1;
+    grid-template-columns: auto 320px;
+    gap: 14px 14px;
+  }
+  ${MEDIA.mobile} {
+    ${MEDIA.mobile} {
+      order: 2;
+    grid-template-columns: repeat(1, 1fr);
+  }
 `
 
 const ErrorElement = styled.div`

@@ -38,7 +38,8 @@ const defaultCategoryMenu = {
   id: 0,
   name: 'Category',
   title: 'Category',
-  url: '/'
+  url: '/',
+  disabled: false
 }
 
 const BoardForm: React.FC<Prop> = ({ type, board }) => {
@@ -106,10 +107,11 @@ const BoardForm: React.FC<Prop> = ({ type, board }) => {
         {showCategory ? (
           <ul>
             {menuList.map(list => (
+              !list.disabled ?
               <li
                 key={list.id}
                 onClick={() => setSelectedCategory(list)}
-              >{list.title}</li>
+              >{list.title}</li> : null
             ))}
           </ul>
         ) : null}
