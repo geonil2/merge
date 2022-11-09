@@ -1,6 +1,6 @@
 import Link from "next/link";
 import styled from "@emotion/styled";
-import {COLORS, MEDIA} from "../../../config/styles";
+import {COLORS, MEDIA, SHADOWS} from "../../../config/styles";
 import HeaderSearchForm from "../headerSearchForm";
 import {signIn, signOut, useSession} from "next-auth/react";
 import CommonButton from "../../commonButton";
@@ -71,12 +71,15 @@ const MobileHeader = () => {
 };
 
 const Header = styled.header`
-  position: relative;
+  position: fixed;
   width: 100%;
   height: 80px;
   display: flex;
   justify-content: space-between;
   align-items: center;
+  z-index: 30;
+  background: ${COLORS.WHITE};
+  box-shadow: ${SHADOWS.basic};
   padding: 0px 10px;
 `
 
@@ -96,7 +99,7 @@ const Button = styled(CommonButton)`
 `
 
 const ToggleButton = styled.div`
-  width: 22px;
+  width: 16px;
   margin-left: 10px;
   cursor: pointer;
   svg {
@@ -108,7 +111,6 @@ const Nav = styled.nav`
   position: absolute;
   top: 100%;
   left: 0%;
-  z-index: 10;
   width: 100vw;
   height: calc(100vh - 80px);
   background: ${COLORS.WHITE};

@@ -1,5 +1,4 @@
 import React, {useCallback, useEffect, useRef, useState} from 'react';
-// import {Menu, MENU} from "../../resources/menu";
 import styled from "@emotion/styled";
 import {COLORS} from "../../config/styles";
 import CommonButton from "../commonButton";
@@ -13,6 +12,9 @@ import {PostBoardRequestBody, PutBoardRequestBody} from "../../services/board/ty
 import dynamic from "next/dynamic";
 import {Menu, menuList} from "../../resources/types";
 import {useSession} from "next-auth/react";
+import {useSetRecoilState} from "recoil";
+import {basicPopupContentsAtom, toastPopupContentsAtom, visibleModalAtom} from "../../recoil/modal";
+
 const TextEditor = dynamic(() => import('../../components/textEditor'), {
   ssr: false,
 });
@@ -46,12 +48,14 @@ const BoardForm: React.FC<Prop> = ({ type, board }) => {
   const [showCategory, setShowCategory] = useState(false);
   const [selectedCategory, setSelectedCategory] = useState<Menu>(defaultCategoryMenu);
   const [description, setDescription] = useState(`<p>${descriptionPlaceholder}</p>`);
-  const { register, handleSubmit } = useForm();
+  const { register, handleSubmit, formState: { errors } } = useForm();
   const editor = useRef<Editor>(null);
   const postBoard = useMutation(postBoardApi)
   const updateBoard = useMutation(updateBoardByIdApi);
-  const { data: session, status } = useSession();
+  const { data: session } = useSession();
   const router = useRouter();
+  const setToastPopupContentsAtom = useSetRecoilState(toastPopupContentsAtom);
+  const setVisibleModal = useSetRecoilState(visibleModalAtom);
 
   const onChangeEditValue = useCallback((htmlVal: EditorType) => {
     if (!editor.current) return
@@ -60,18 +64,19 @@ const BoardForm: React.FC<Prop> = ({ type, board }) => {
 
   const onSubmit: SubmitHandler<WritingInputValue> = (data, event) => {
     event?.preventDefault()
-    console.log({ category: selectedCategory, description, ...data, })
-    console.log(session?.user, 'user')
+    console.log(description,'description')
+    console.log(selectedCategory.name,'category')
     if (type === 'create') {
       postBoard.mutate({
         ...data,
-        category: selectedCategory.name,
         description,
-        email: session?.user?.email
+        category: selectedCategory.name,
       } as PostBoardRequestBody, {
         onSuccess: (data) => {
-          console.log(data, 'data!!!')
-          router.push(`/${selectedCategory.url}/${data._id}`)
+          router.push(`${selectedCategory.url}/${data._id}`)
+        },
+        onError: () => {
+
         }
       })
     } else {
@@ -80,10 +85,9 @@ const BoardForm: React.FC<Prop> = ({ type, board }) => {
         ...data,
         category: selectedCategory.name,
         description,
-        email: session?.user?.email
       } as PutBoardRequestBody, {
         onSuccess: (data) => {
-          router.push(`/${selectedCategory.url}/${board?.id}`)
+          router.push(`${selectedCategory.url}/${data._id}`)
         }
       })
     }
@@ -95,6 +99,13 @@ const BoardForm: React.FC<Prop> = ({ type, board }) => {
       category ? setSelectedCategory(category) : null
     }
   }, [board])
+
+  useEffect(() => {
+    if (errors.title) {
+      setVisibleModal('toast')
+      setToastPopupContentsAtom(errors.title.message as string)
+    }
+  }, [errors])
 
   return (
     <form onSubmit={handleSubmit(onSubmit)}>
@@ -116,7 +127,16 @@ const BoardForm: React.FC<Prop> = ({ type, board }) => {
           </ul>
         ) : null}
       </Category>
-      <Title {...register("title")} defaultValue={board?.title} placeholder={descriptionPlaceholder} />
+      <Title
+        {...register("title", {
+          required: {
+            value: true,
+            message: '제목을 입력해주세요.'
+          }
+        })}
+        defaultValue={board?.title}
+        placeholder='제목을 입력해주세요.'
+      />
       <TextEditorWrap>
         <TextEditor onChangeEditValue={onChangeEditValue} defaultValue={board?.description} editor={editor} />
       </TextEditorWrap>

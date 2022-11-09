@@ -1,21 +1,11 @@
-import React, {useEffect} from 'react';
+import React from 'react';
 import AuthTable from "../tables/AuthTable";
 import BannerTable from "../tables/bannerTable";
-import VerticalListTable from "../tables/verticalListTable";
 import styled from "@emotion/styled";
-import {useQuery} from "@tanstack/react-query";
-import {newsListQueryKey} from "../../services/news/types";
-import {getNewsListApi} from "../../services/news/api";
 import dynamic from "next/dynamic";
-import {Suspense} from "react";
 import AsyncBoundary from "../asyncBoundary";
-import ErrorBoundary from "../asyncBoundary/errorBoundary";
 import LoadingVerticalList from "../tables/verticalListTable/loadingVerticalList";
 import {COLORS, MEDIA, SHADOWS} from "../../config/styles";
-// import NewsListTable from "../tables/newsListTable";
-// const BannerTable = dynamic(import('../tables/bannerTable'), {
-//   ssr: false
-// })
 
 const NewsListTable = dynamic(
   () => import('../tables/newsListTable'),

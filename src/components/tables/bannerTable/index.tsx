@@ -2,8 +2,6 @@ import React from 'react';
 import Slider from "react-slick";
 import styled from "@emotion/styled";
 import {MEDIA} from "../../../config/styles";
-import "slick-carousel/slick/slick.css";
-import "slick-carousel/slick/slick-theme.css";
 
 const banner = [
   {id: 1, url: '/images/banner/banner1.jpeg'},
@@ -40,7 +38,6 @@ const BannerTable = () => {
 };
 
 const Container = styled.section`
-  //width: 420px;
   width: inherit;
   display: flex;
   justify-content: flex-start;
@@ -49,11 +46,14 @@ const Container = styled.section`
      width: 100%;
      max-height: 223px;
      overflow: hidden;
+     img {
+       width: 420px;
+       height: 223px;
+     }
      ${MEDIA.tablet} {
        max-height: 175px;
-       
        img {
-         width: 320px !important;
+         width: 320px;
          height: 175px;
        }
      }
@@ -61,15 +61,6 @@ const Container = styled.section`
   ${MEDIA.mobile} {
     display: none;
   }
-  // .slick-list {
-  //   //width: 100%;
-  //   max-width: 420px;  
-  //   overflow: hidden;
-  //   > .slick-track {
-  //     display: flex;
-  //   }
-  //   
-  // }
 `
 
 const MainBanner = styled.div`

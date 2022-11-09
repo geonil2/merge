@@ -33,7 +33,7 @@ const Container = styled.section`
   box-shadow: ${SHADOWS.basic};
 `
 
-const BigImageTableBody = styled.section`
+const BigImageTableBody = styled.div`
   display: flex;
   justify-content: space-between;
   margin: 0px 24px;

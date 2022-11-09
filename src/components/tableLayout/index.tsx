@@ -22,15 +22,15 @@ const Layout = styled.div`
   grid-template-columns: repeat(2, 1fr);
   gap: 14px;
   align-items: flex-end;
-  padding: 20px 40px;
+  padding: 100px 40px 20px 40px;
   margin: 0px auto;
   ${MEDIA.tablet} {
     width: 100%;
     grid-template-columns: repeat(1, 1fr);
-    padding: 10px 20px;
+    padding: 100px 20px 10px 20px;
   }
   ${MEDIA.mobile} {
-    padding: 10px 0px;
+    padding: 100px 10px 10px 10px;
   }
 `
 

@@ -3,13 +3,13 @@ import styled from "@emotion/styled";
 import {COLORS, SHADOWS} from "../../../config/styles";
 import Modal, {ModalProps} from "../index";
 import {useRecoilValue} from "recoil";
-import {popupModalContentsAtom} from "../../../recoil/modal";
+import {basicPopupContentsAtom} from "../../../recoil/modal";
 
 interface Props extends ModalProps {
 }
 
-const PopupModal: React.FC<Props> = ({ visible, onClose }) => {
-  const popupModalContents = useRecoilValue(popupModalContentsAtom);
+const BasicPopup: React.FC<Props> = ({ visible, onClose }) => {
+  const popupModalContents = useRecoilValue(basicPopupContentsAtom);
 
   return (
     <Modal
@@ -59,4 +59,4 @@ const Button = styled.div`
   }
 `
 
-export default PopupModal;
+export default BasicPopup;

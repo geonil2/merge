@@ -11,7 +11,7 @@ import {deleteBoardByIdApi, getBoardByIdApi} from "../../../services/board/api";
 import updateDeleteButtonWrapper from "../../updateDeleteButtonWrapper";
 import {popupModalContents} from "../../../resources/types";
 import {useSetRecoilState} from "recoil";
-import {popupModalContentsAtom} from "../../../recoil/modal";
+import {basicPopupContentsAtom} from "../../../recoil/modal";
 import {CommentByBoardIdQueryKey} from "../../../services/comment/types";
 import {useRouter} from "next/router";
 import UpdateDeleteButtonWrapper from "../../updateDeleteButtonWrapper";
@@ -26,7 +26,7 @@ const boardContents: React.FC<Props> = ({ contents, userId }) => {
   const updateLike = useMutation(postLikeApi);
   const deleteBoard = useMutation(deleteBoardByIdApi);
   const queryClient = useQueryClient();
-  const setPopupModalContents = useSetRecoilState(popupModalContentsAtom);
+  const setPopupModalContents = useSetRecoilState(basicPopupContentsAtom);
   const router = useRouter();
 
   const onClickLike = useCallback(debounce(() => {
@@ -197,6 +197,7 @@ const Likes = styled.div<LikesProp>`
   align-self: flex-end;
   align-items: center;
   font-size: 14px;
+  margin-top: 10px;
   > svg {
     width: 20px;
     fill: ${(prop: LikesProp) => prop.active ? COLORS.PRIMARY: COLORS.LIGHT_GRAY};

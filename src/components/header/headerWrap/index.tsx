@@ -6,20 +6,29 @@ import {COLORS} from "../../../config/styles";
 import DesktopHeader from "../desktopHeader";
 import Modal from "../../modal";
 import {useRecoilState, useRecoilValue, useResetRecoilState, useSetRecoilState} from "recoil";
-import {popupModalContentsAtom, visibleModalSelector} from "../../../recoil/modal";
+import {
+  basicPopupContentsAtom, resetPopupSelector,
+  toastPopupContentsAtom, visibleModalAtom,
+  visibleModalSelector
+} from "../../../recoil/modal";
 import CommonModals, {ModalType} from "../../commonModals";
 import {useRouter} from "next/router";
 import {offsetAtom} from "../../../recoil/offset";
 import MobileHeader from "../mobileHeader";
 
 const Header = () => {
-  const visibleModal = useRecoilValue(visibleModalSelector)
-  const setPopupModalContents = useSetRecoilState(popupModalContentsAtom);
+  const [visibleModal, setVisibleModal] = useRecoilState(visibleModalSelector);
+  const setResetPopup = useSetRecoilState(resetPopupSelector);
+  const setBasicPopupContents = useSetRecoilState(basicPopupContentsAtom);
+  const setToastPopupContents = useSetRecoilState(toastPopupContentsAtom);
   const router = useRouter();
   const resetOffset = useResetRecoilState(offsetAtom);
 
   const closeModal = () => {
-    setPopupModalContents(null)
+    // setVisibleModal(null);
+    // setResetPopup(true);
+    setBasicPopupContents(null)
+    setToastPopupContents('')
   }
 
   useEffect(() => {

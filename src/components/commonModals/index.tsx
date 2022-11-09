@@ -1,8 +1,9 @@
 import React, {Dispatch, SetStateAction} from "react";
-import PopupModal from "../modal/popupModal";
+import BasicPopup from "../modal/basicPopup";
 import {log} from "util";
+import ToastPopup from "../modal/toastPopup";
 
-export type ModalType = 'popup'
+export type ModalType = 'basic' | 'toast'
 
 interface Props {
   visibleModal: ModalType | null
@@ -16,8 +17,12 @@ const CommonModals: React.FC<Props> = ({
 }) => {
   return (
     <>
-      <PopupModal
-        visible={visibleModal === "popup"}
+      <BasicPopup
+        visible={visibleModal === 'basic'}
+        onClose={setVisibleModal}
+      />
+      <ToastPopup
+        visible={visibleModal === 'toast'}
         onClose={setVisibleModal}
       />
     </>

@@ -8,6 +8,10 @@
     "title": "해당 글을 삭제합니까?",
     "description": "삭제 후 해당 글을 다시 복구할 수 없습니다.",
     "secondButton": true
+  },
+  "commonError" : {
+    "title": "문제가 발생했습니다.",
+    "description": "잠시 후 다시 시도해주세요.",
+    "secondButton": false
   }
-
 }

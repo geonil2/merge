@@ -11,7 +11,8 @@ const BigImageTableList: React.FC<Props> = ({ list }) => {
   const { date, tag, title, image, url } = list;
   return (
     <A href={url} target='_blank'>
-      <img src={image} />
+      <ImageWrap><img src={image} alt='Conference image' /></ImageWrap>
+
       <Tag>
         {tag.map((tagList: string, index) => (
           <p key={index}>{tagList}</p>
@@ -25,15 +26,28 @@ const BigImageTableList: React.FC<Props> = ({ list }) => {
 
 const A = styled.a`
   width: 32%;
-  img {
-    width: 100%;
-    //height: 140px;
-    border-radius: 6px;
-  }
+  display: block;
   ${MEDIA.mobile} {
     width: 48%;
+    &:nth-of-type(3) {
+      margin-top: 20px;
+    }
   }
 `
+
+const ImageWrap = styled.div`
+  width: 100%;
+  aspect-ratio: 5 / 3;
+  img {
+    object-fit: cover;
+
+    display: block;
+    width: 100%;
+    height: 100%;
+    border-radius: 6px;
+  }
+`
+
 
 const Tag = styled.div`
  display: flex;

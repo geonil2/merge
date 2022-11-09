@@ -1,7 +1,7 @@
-import React, {useEffect} from 'react';
+import React from 'react';
 import Link from "next/link";
 import styled from "@emotion/styled";
-import {COLORS, MEDIA} from "../../../config/styles";
+import {COLORS, MEDIA, SHADOWS} from "../../../config/styles";
 import HeaderSearchForm from "../headerSearchForm";
 import {signIn, useSession} from "next-auth/react";
 import CommonButton from "../../commonButton";
@@ -12,46 +12,58 @@ const DesktopHeader = () => {
 
   return (
     <Header>
-      <HeaderContentsContainer>
-        <Link href="/" passHref>
-          <a>
-            <Logo src="/images/logo/merge.svg" alt="Logo" />
-          </a>
-        </Link>
-        <Nav>
-          <ul>
-            {menuList.map(menu => (
-              <li key={menu.url}><Link href={menu.url}>{menu.title}</Link></li>
-            ))}
-          </ul>
-        </Nav>
-      </HeaderContentsContainer>
-      <HeaderContentsContainer>
-        {session ?
-          <div onClick={() => signIn('google')}>
-            <ProfileThum
-              src={session?.user.image}
-              alt="Logo"
-            />
-          </div>
-          :
-          <Button title="Login" onClick={() => signIn('google')} />
-        }
-        <SearchInputContainer>
-          <HeaderSearchForm />
-        </SearchInputContainer>
-      </HeaderContentsContainer>
+      <HeaderWrapper>
+        <HeaderContentsContainer>
+          <Link href="/" passHref>
+            <a>
+              <Logo src="/images/logo/merge.svg" alt="Logo" />
+            </a>
+          </Link>
+          <Nav>
+            <ul>
+              {menuList.map(menu => (
+                <li key={menu.url}><Link href={menu.url}>{menu.title}</Link></li>
+              ))}
+            </ul>
+          </Nav>
+        </HeaderContentsContainer>
+        <HeaderContentsContainer>
+          {session ?
+            <div onClick={() => signIn('google')}>
+              <ProfileThum
+                src={session?.user.image}
+                alt="Logo"
+              />
+            </div>
+            :
+            <Button title="Login" onClick={() => signIn('google')} />
+          }
+          <SearchInputContainer>
+            <HeaderSearchForm />
+          </SearchInputContainer>
+        </HeaderContentsContainer>
+      </HeaderWrapper>
     </Header>
   );
 };
 
 const Header = styled.header`
+  position: fixed;
+  z-index: 30;
+  width: 100%;
+  background: ${COLORS.WHITE};
+  box-shadow: ${SHADOWS.basic};
+  margin-bottom: 80px;
+`
+
+const HeaderWrapper = styled.div`
   width: 1280px;
   height: 80px;
   display: flex;
   justify-content: space-between;
   align-items: center;
   padding: 0px 40px;
+  margin: 0 auto;
   ${MEDIA.tablet} {
     width: 100%;
   }
@@ -96,23 +108,6 @@ const ProfileThum = styled.img`
   border-radius: 50%;
   margin-right: 10px;
   cursor: pointer;
-`
-
-const LoginButton = styled.button`
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 40px;
-  background-color: ${COLORS.PRIMARY};
-  color: ${COLORS.WHITE};
-  border-radius: 4px;
-  padding: 0px 20px;
-  margin-right: 10px;
-  transition-duration: 0.3s;
-  cursor: pointer;
-  &:hover {
-    background-color: ${COLORS.SUB};
-  }
 `
 
 const Button = styled(CommonButton)`

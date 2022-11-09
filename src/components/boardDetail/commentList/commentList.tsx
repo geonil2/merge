@@ -10,7 +10,7 @@ import {useMutation, useQueryClient} from "@tanstack/react-query";
 import {deleteCommentApi, updateCommentApi} from "../../../services/comment/api";
 import {useRouter} from "next/router";
 import {useSetRecoilState} from "recoil";
-import {popupModalContentsAtom} from "../../../recoil/modal";
+import {basicPopupContentsAtom} from "../../../recoil/modal";
 import {popupModalContents} from "../../../resources/types";
 
 interface Prop {
@@ -29,7 +29,7 @@ const CommentList: React.FC<Prop> = ({ comment, userId }) => {
   const router = useRouter();
   const { id } = router.query;
   const queryClient = useQueryClient();
-  const setPopupModalContents = useSetRecoilState(popupModalContentsAtom);
+  const setPopupModalContents = useSetRecoilState(basicPopupContentsAtom);
 
   const onClickUpdateComment = () => {
     setIsDisabledTextarea(false);
