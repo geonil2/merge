@@ -16,7 +16,7 @@ interface Prop {
   boardId: string
 }
 
-const boardDetail: React.FC<Prop> = ({ boardId }) => {
+const BoardDetail: React.FC<Prop> = ({ boardId }) => {
   const { data: session, status } = useSession();
   const contents = useQuery([BoardByIdQueryKey, { boardId }], () => getBoardByIdApi(boardId));
   const comment = useQuery([CommentByBoardIdQueryKey, { boardId }], () => getCommentByBoardIdApi(boardId))
@@ -45,4 +45,4 @@ const boardDetail: React.FC<Prop> = ({ boardId }) => {
 };
 
 
-export default boardDetail;
+export default BoardDetail;

@@ -22,7 +22,7 @@ interface Props {
   userId?: string
 }
 
-const boardContents: React.FC<Props> = ({ contents, userId }) => {
+const BoardContents: React.FC<Props> = ({ contents, userId }) => {
   const updateLike = useMutation(postLikeApi);
   const deleteBoard = useMutation(deleteBoardByIdApi);
   const queryClient = useQueryClient();
@@ -207,4 +207,4 @@ const Likes = styled.div<LikesProp>`
 `
 
 
-export default boardContents;
+export default BoardContents;

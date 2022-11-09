@@ -5,24 +5,12 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="2eabddc1-1714-45aa-9a47-e3e67c011340" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/components/modal/toastPopup/index.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/asideBar/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/asideBar/index.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/boardDetail/boardContents/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/boardDetail/boardContents/index.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/boardDetail/commentList/commentList.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/boardDetail/commentList/commentList.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/boardForm/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/boardForm/index.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/commonModals/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/commonModals/index.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/header/desktopHeader/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/header/desktopHeader/index.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/header/headerWrap/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/header/headerWrap/index.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/header/mobileHeader/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/header/mobileHeader/index.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/modal/popupModal/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/modal/basicPopup/index.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/tableLayout/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/tableLayout/index.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/boardDetail/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/boardDetail/index.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/searchTitle/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/searchTitle/index.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/tables/bannerTable/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/tables/bannerTable/index.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/tables/bigImageTable/bigImageTableList.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/tables/bigImageTable/bigImageTableList.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/tables/bigImageTable/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/tables/bigImageTable/index.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/writingPageWrapper/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/writingPageWrapper/index.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/recoil/modal.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/recoil/modal.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/resources/popup.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/resources/popup.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/hooks/useUser.ts" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -87,7 +75,7 @@
       <workItem from="1667204627323" duration="72126000" />
       <workItem from="1667523344281" duration="73003000" />
       <workItem from="1667958675689" duration="453000" />
-      <workItem from="1667959260318" duration="14570000" />
+      <workItem from="1667959260318" duration="15620000" />
     </task>
     <servers />
   </component>

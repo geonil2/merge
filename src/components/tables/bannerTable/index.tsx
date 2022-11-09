@@ -29,7 +29,7 @@ const BannerTable = () => {
           // <MainBanner key={list.id} >
           //   {/* Add link */}
           //   <a href="#"><img src={list.url} alt="Banner image"/></a>
-          <img src={list.url} alt="Banner image"/>
+          <img key={list.id} src={list.url} alt="Banner image"/>
           // </MainBanner>
         ))}
       </Slider>
