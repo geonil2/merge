@@ -1,52 +1,59 @@
-import React from 'react';
+import React, {useEffect, useState} from 'react';
 import AsideBar from "../../components/asideBar";
 import VerticalListTable from "../../components/tables/verticalListTable";
 import styled from "@emotion/styled";
 import TableLayout from "../../components/tableLayout";
-import {NextPage} from "next";
+import useBoardByCategory from "../../hooks/useBoardListByCateogry";
+import {useRecoilValue} from "recoil";
+import {offsetAtom} from "../../recoil/offset";
+import {DEFAULT_LISTS_COUNT} from "../../components/pagination";
+import {GetServerSidePropsContext, NextPage} from "next";
+import TableLeftWrapper from "../../components/tables/tableLeftWrapper";
+import {dehydrate, QueryClient} from "@tanstack/query-core";
+import {ConferenceListQueryKey} from "../../services/conference/types";
+import {getConferenceListApi} from "../../services/conference/api";
+import {BoardByCategoryQueryKey, BoardByIdQueryKey} from "../../services/board/types";
+import {getBoardByCategoryApi, getBoardByIdApi} from "../../services/board/api";
+import {useQuery} from "@tanstack/react-query";
 
-export const QnA_mock = [
-  { _id: 1, title: "React에서 useState사용법", description: "React에서 useState의 사용법을 알려주세요.", url: '/', category: "question", owner: "geonil@gmail.com", likes: 100, createdAt: "2022-10-05 11:24:32", updatedAt: "2022-10-05 11:24:32"},
-  { _id: 2, title: "React에서 useState사용법", description: "React에서 useState의 사용법을 알려주세요.", url: '/', category: "question", owner: "geonil@gmail.com", likes: 100, createdAt: "2022-10-05 11:24:32", updatedAt: "2022-10-05 11:24:32"},
-  { _id: 3, title: "React에서 useState사용법", description: "React에서 useState의 사용법을 알려주세요.", url: '/', category: "question", owner: "geonil@gmail.com", likes: 100, createdAt: "2022-10-05 11:24:32", updatedAt: "2022-10-05 11:24:32"},
-  { _id: 4, title: "React에서 useState사용법", description: "React에서 useState의 사용법을 알려주세요.", url: '/', category: "question", owner: "geonil@gmail.com", likes: 100, createdAt: "2022-10-05 11:24:32", updatedAt: "2022-10-05 11:24:32"},
-  { _id: 5, title: "React에서 useState사용법", description: "React에서 useState의 사용법을 알려주세요.", url: '/', category: "question", owner: "geonil@gmail.com", likes: 100, createdAt: "2022-10-05 11:24:32", updatedAt: "2022-10-05 11:24:32"},
-  { _id: 6, title: "React에서 useState사용법", description: "React에서 useState의 사용법을 알려주세요.", url: '/', category: "question", owner: "geonil@gmail.com", likes: 100, createdAt: "2022-10-05 11:24:32", updatedAt: "2022-10-05 11:24:32"},
-  { _id: 7, title: "React에서 useState사용법", description: "React에서 useState의 사용법을 알려주세요.", url: '/', category: "question", owner: "geonil@gmail.com", likes: 100, createdAt: "2022-10-05 11:24:32", updatedAt: "2022-10-05 11:24:32"},
-  { _id: 8, title: "React에서 useState사용법", description: "React에서 useState의 사용법을 알려주세요.", url: '/', category: "question", owner: "geonil@gmail.com", likes: 100, createdAt: "2022-10-05 11:24:32", updatedAt: "2022-10-05 11:24:32"},
-  { _id: 9, title: "React에서 useState사용법", description: "React에서 useState의 사용법을 알려주세요.", url: '/', category: "question", owner: "geonil@gmail.com", likes: 100, createdAt: "2022-10-05 11:24:32", updatedAt: "2022-10-05 11:24:32"},
-  { _id: 10, title: "React에서 useState사용법", description: "React에서 useState의 사용법을 알려주세요.", url: '/', category: "question", owner: "geonil@gmail.com", likes: 100, createdAt: "2022-10-05 11:24:32", updatedAt: "2022-10-05 11:24:32"},
-  { _id: 11, title: "React에서 useState사용법", description: "React에서 useState의 사용법을 알려주세요.", url: '/', category: "question", owner: "geonil@gmail.com", likes: 100, createdAt: "2022-10-05 11:24:32", updatedAt: "2022-10-05 11:24:32"},
-  { _id: 12, title: "React에서 useState사용법", description: "React에서 useState의 사용법을 알려주세요.", url: '/', category: "question", owner: "geonil@gmail.com", likes: 100, createdAt: "2022-10-05 11:24:32", updatedAt: "2022-10-05 11:24:32"},
-  { _id: 13, title: "React에서 useState사용법", description: "React에서 useState의 사용법을 알려주세요.", url: '/', category: "question", owner: "geonil@gmail.com", likes: 100, createdAt: "2022-10-05 11:24:32", updatedAt: "2022-10-05 11:24:32"},
-  { _id: 14, title: "React에서 useState사용법", description: "React에서 useState의 사용법을 알려주세요.", url: '/', category: "question", owner: "geonil@gmail.com", likes: 100, createdAt: "2022-10-05 11:24:32", updatedAt: "2022-10-05 11:24:32"},
-  { _id: 15, title: "React에서 useState사용법", description: "React에서 useState의 사용법을 알려주세요.", url: '/', category: "question", owner: "geonil@gmail.com", likes: 100, createdAt: "2022-10-05 11:24:32", updatedAt: "2022-10-05 11:24:32"},
-  { _id: 16, title: "React에서 useState사용법", description: "React에서 useState의 사용법을 알려주세요.", url: '/', category: "question", owner: "geonil@gmail.com", likes: 100, createdAt: "2022-10-05 11:24:32", updatedAt: "2022-10-05 11:24:32"},
-  { _id: 17, title: "React에서 useState사용법", description: "React에서 useState의 사용법을 알려주세요.", url: '/', category: "question", owner: "geonil@gmail.com", likes: 100, createdAt: "2022-10-05 11:24:32", updatedAt: "2022-10-05 11:24:32"},
-  { _id: 18, title: "React에서 useState사용법", description: "React에서 useState의 사용법을 알려주세요.", url: '/', category: "question", owner: "geonil@gmail.com", likes: 100, createdAt: "2022-10-05 11:24:32", updatedAt: "2022-10-05 11:24:32"},
-  { _id: 19, title: "React에서 useState사용법", description: "React에서 useState의 사용법을 알려주세요.", url: '/', category: "question", owner: "geonil@gmail.com", likes: 100, createdAt: "2022-10-05 11:24:32", updatedAt: "2022-10-05 11:24:32"},
-  { _id: 20, title: "React에서 useState사용법", description: "React에서 useState의 사용법을 알려주세요.", url: '/', category: "question", owner: "geonil@gmail.com", likes: 100, createdAt: "2022-10-05 11:24:32", updatedAt: "2022-10-05 11:24:32"},
-]
+const Community: NextPage = () => {
+  const offset = useRecoilValue(offsetAtom);
+  const { data } = useBoardByCategory({ category: 'community', offset, limit: DEFAULT_LISTS_COUNT })
 
-const Question: NextPage = () => {
   return (
-    // <TableLayout>
-      <TableContainer>
-        {/*<VerticalListTable*/}
-        {/*  title='Q&A'*/}
-        {/*  list={QnA_mock}*/}
-        {/*/>*/}
-      </TableContainer>
-    // </TableLayout>
+    <Container>
+      {!!data?.list.length &&
+        <VerticalListTable
+          title='커뮤니티'
+          list={data.list}
+          showPagination={data.total > DEFAULT_LISTS_COUNT}
+          totalCount={data.total}
+        />
+      }
+    </Container>
   );
 };
-const TableContainer = styled.div`
-  width: 766px;
+
+const Container = styled(TableLeftWrapper)`
   height: fit-content;
-  display: grid;
-  grid-template-columns: repeat(1, 1fr);
-  grid-template-rows: auto;
-  gap: 14px 0px;
 `
 
-export default Question;
+export default Community;
+
+export const getServerSideProps = async (context: GetServerSidePropsContext) => {
+  const queryClient = new QueryClient()
+  await queryClient.prefetchQuery([
+    BoardByCategoryQueryKey,
+    { category: 'community', offset: 0, limit: DEFAULT_LISTS_COUNT }
+  ], () => getBoardByCategoryApi({
+    category: 'community',
+    offset: 0,
+    limit: DEFAULT_LISTS_COUNT
+  }))
+
+  return {
+    props: {
+      dehydratedState: dehydrate(queryClient),
+    },
+  }
+};

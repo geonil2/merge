@@ -1,6 +1,6 @@
 import React, {useEffect, useRef, useState} from 'react';
 import styled from "@emotion/styled";
-import {COLORS, SHADOWS} from "../../../config/styles";
+import {COLORS, MEDIA, SHADOWS} from "../../../config/styles";
 import ReactTimeago from "react-timeago";
 import {Comment, CommentByBoardIdQueryKey} from "../../../services/comment/types";
 import CommonButton from "../../commonButton";
@@ -131,6 +131,9 @@ const CommentWrap = styled.div`
   display: flex;
   border-bottom: 1px solid ${COLORS.GRAY};
   padding: 20px 24px;
+  ${MEDIA.mobile} {
+    padding: 10px 12px;
+  }
 `
 
 const Thumbnail = styled.img`

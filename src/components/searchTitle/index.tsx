@@ -11,7 +11,7 @@ const SearchTitle: React.FC<Props> = ({ keyword= '', totalCount= 0 }) => {
   return (
     <Container>
       <InnerText>
-        <SearchKeyword>`${"${keyword}"}`</SearchKeyword>
+        <SearchKeyword>"{keyword}"</SearchKeyword>
         에 대한 Merge 통합검색
         <Total>총 {totalCount}건</Total>
       </InnerText>

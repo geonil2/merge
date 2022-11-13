@@ -1,6 +1,6 @@
 import React, {useState} from 'react';
 import styled from "@emotion/styled";
-import {COLORS, SHADOWS} from "../../../config/styles";
+import {COLORS, MEDIA, SHADOWS} from "../../../config/styles";
 import ReactTimeago from "react-timeago";
 import {Comment} from "../../../services/comment/types";
 import CommentList from "./commentList";
@@ -33,6 +33,9 @@ const Container = styled.div`
     font-size: 14px;
     line-height: 40px;
     border-bottom: 1px solid ${COLORS.GRAY};
+  }
+  ${MEDIA.mobile} {
+    padding: 0px 12px;
   }
 `
 

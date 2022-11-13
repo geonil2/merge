@@ -15,7 +15,8 @@ const AuthTable = () => {
         <>
           <AuthenticatedUI>
             <Profile>
-              <ProfileThumb src={session.user?.image as string} />
+              {/*<ProfileThumb src={session.user?.image} />*/}
+              <ProfileThumb src='/images/icons/profile.svg' />
               <UserText>
                 <UserName>{session.user?.name}</UserName>
                 <Email>{session.user?.email}</Email>
@@ -49,11 +50,6 @@ const Container = styled.section`
   box-shadow: ${SHADOWS.basic};
   padding: 24px;
   ${MEDIA.tablet} {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-  }
-  ${MEDIA.mobile} {
     display: none;
   }
 `

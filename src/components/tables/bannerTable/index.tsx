@@ -26,11 +26,7 @@ const BannerTable = () => {
     <Container>
       <Slider {...settings}>
         {banner.map(list => (
-          // <MainBanner key={list.id} >
-          //   {/* Add link */}
-          //   <a href="#"><img src={list.url} alt="Banner image"/></a>
           <img key={list.id} src={list.url} alt="Banner image"/>
-          // </MainBanner>
         ))}
       </Slider>
     </Container>
@@ -51,25 +47,9 @@ const Container = styled.section`
        height: 223px;
      }
      ${MEDIA.tablet} {
-       max-height: 175px;
-       img {
-         width: 320px;
-         height: 175px;
-       }
+       display: none;
      }
    }
-  ${MEDIA.mobile} {
-    display: none;
-  }
-`
-
-const MainBanner = styled.div`
-  //height: 220px;
-  ////height: 100%;
-  //img {
-  //  width: 100%;
-  //  height: 100%;
-  //}
 `
 
 export default BannerTable;

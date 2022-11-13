@@ -25,9 +25,6 @@ const TableContainer = styled.div`
   gap: 14px 0px;
   ${MEDIA.tablet} {
     width: 100%;
-    order: 2;
-  }
-  ${MEDIA.mobile} {
     order: 1;
   }
 `

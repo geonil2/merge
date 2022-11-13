@@ -39,7 +39,7 @@ const Aside = styled.aside`
   ${MEDIA.tablet} {
     position: inherit;
     width: 100%;
-    order: 1;
+    order: 2;
     grid-template-columns: auto 320px;
     gap: 14px 14px;
   }

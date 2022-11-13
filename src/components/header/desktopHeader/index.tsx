@@ -31,7 +31,8 @@ const DesktopHeader = () => {
           {session ?
             <div onClick={() => signIn('google')}>
               <ProfileThum
-                src={session?.user.image}
+                // src={session?.user.image}
+                src='/images/icons/profile.svg'
                 alt="Logo"
               />
             </div>

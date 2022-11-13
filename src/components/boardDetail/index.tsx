@@ -21,10 +21,6 @@ const BoardDetail: React.FC<Prop> = ({ boardId }) => {
   const contents = useQuery([BoardByIdQueryKey, { boardId }], () => getBoardByIdApi(boardId));
   const comment = useQuery([CommentByBoardIdQueryKey, { boardId }], () => getCommentByBoardIdApi(boardId))
 
-  useEffect(() => {
-    console.log(comment.data, '1231323')
-  }, [comment.data])
-
   return (
     <>
       {contents.data && <BoardContents

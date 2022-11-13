@@ -44,7 +44,7 @@ function MyApp({ Component, pageProps }: AppProps<{
                     <Header />
                     {layout()}
                     <div id="modal" />
-                    <ReactQueryDevtools initialIsOpen={false} />
+                    {/*<ReactQueryDevtools initialIsOpen={false} />*/}
                 </Hydrate>
             </QueryClientProvider>
         </RecoilRoot>

@@ -48,7 +48,8 @@ const MobileHeader = () => {
             {session &&
               <UserContainer>
                 <UserInfo>
-                  <UserImage src={session.user?.image} alt="User image" />
+                  {/*<UserImage src={session.user?.image} alt="User image" />*/}
+                  <UserImage src='/images/icons/profile.svg' alt="User image" />
                   <UserText>
                     <UserName>{session.user?.name}</UserName>
                     <Email>{session.user?.email}</Email>

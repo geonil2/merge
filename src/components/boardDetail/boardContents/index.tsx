@@ -1,6 +1,6 @@
 import React, {useCallback} from 'react';
 import styled from "@emotion/styled";
-import {COLORS, SHADOWS} from "../../../config/styles";
+import {COLORS, MEDIA, SHADOWS} from "../../../config/styles";
 import {Board, BoardByIdQueryKey} from "../../../services/board/types";
 import ReactTimeago from "react-timeago";
 import nl2br from "react-nl2br";
@@ -112,6 +112,9 @@ const Container = styled.div`
     font-weight: 700;
     border-bottom: 1px solid ${COLORS.GRAY};
   }
+  ${MEDIA.mobile} {
+    padding: 0px 12px;
+  }
 `
 
 const ContentsHeader = styled.div`
@@ -156,6 +159,9 @@ const LikesCount = styled.div`
 //Body
 const ContentsBody = styled.div`
   padding: 24px;
+  ${MEDIA.mobile} {
+    padding: 12px;
+  }
 `
 
 const TitleWrap = styled.div`
@@ -165,14 +171,16 @@ const TitleWrap = styled.div`
 `
 
 const Title = styled.div`
-  width: 80%;
+  width: calc(100% - 100px);
   line-height: 120%;
   font-weight: 700;
   font-size: 32px;
 `
 
 const Date = styled.div`
+  width: 100px;
   font-size: 14px;
+  text-align: end;
 `
 
 const Description = styled.div`

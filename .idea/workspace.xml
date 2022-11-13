@@ -5,12 +5,33 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="2eabddc1-1714-45aa-9a47-e3e67c011340" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/src/pages/community/[id].tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/pages/info/[id].tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/pages/notice/[id].tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/pages/recruit/[id].tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.env.production" beforeDir="false" afterPath="$PROJECT_DIR$/.env.production" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/asideBar/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/asideBar/index.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/boardDetail/boardContents/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/boardDetail/boardContents/index.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/boardDetail/commentList/commentList.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/boardDetail/commentList/commentList.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/boardDetail/commentList/commentListContainer.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/boardDetail/commentList/commentListContainer.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/boardDetail/commentWrite/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/boardDetail/commentWrite/index.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/boardDetail/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/boardDetail/index.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/dropdownMenu/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/dropdownMenu/index.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/header/desktopHeader/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/header/desktopHeader/index.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/header/mobileHeader/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/header/mobileHeader/index.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/searchTitle/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/searchTitle/index.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/tables/AuthTable/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/tables/AuthTable/index.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/tables/bannerTable/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/tables/bannerTable/index.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/hooks/useUser.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/tables/tableLeftWrapper.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/tables/tableLeftWrapper.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/updateDeleteButtonWrapper/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/updateDeleteButtonWrapper/index.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pages/_app.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/_app.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pages/community/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/community/index.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pages/info/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/info/index.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pages/notice/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/notice/index.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pages/question/[id].tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/question/[id].tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pages/question/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/question/index.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pages/recruit/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/recruit/index.tsx" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -28,26 +49,28 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
-    &quot;last_opened_file_path&quot;: &quot;/Users/kimgeonil/Desktop/project/Merge/Merge-frontend&quot;,
-    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
-    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
-    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
-    &quot;nodejs_package_manager_path&quot;: &quot;yarn&quot;,
-    &quot;ts.external.directory.path&quot;: &quot;/Users/kimgeonil/Desktop/project/Merge/Merge-frontend/node_modules/typescript/lib&quot;,
-    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "WebServerToolWindowFactoryState": "false",
+    "last_opened_file_path": "/Users/kimgeonil/Desktop/project/Merge/Merge-frontend/src/pages/recruit",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "yarn",
+    "ts.external.directory.path": "/Users/kimgeonil/Desktop/project/Merge/Merge-frontend/node_modules/typescript/lib",
+    "vue.rearranger.settings.migration": "true"
   }
-}</component>
+}]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/src/pages/recruit" />
+      <recent name="$PROJECT_DIR$/src/pages/notice" />
+      <recent name="$PROJECT_DIR$/src/pages/info" />
+      <recent name="$PROJECT_DIR$/src/pages/community" />
       <recent name="$PROJECT_DIR$/src/components" />
-      <recent name="$PROJECT_DIR$/src/hooks" />
-      <recent name="$PROJECT_DIR$/src/pages/api" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/src/components/asyncBoundary" />
@@ -75,7 +98,8 @@
       <workItem from="1667204627323" duration="72126000" />
       <workItem from="1667523344281" duration="73003000" />
       <workItem from="1667958675689" duration="453000" />
-      <workItem from="1667959260318" duration="15620000" />
+      <workItem from="1667959260318" duration="21643000" />
+      <workItem from="1668047539392" duration="7929000" />
     </task>
     <servers />
   </component>

@@ -1,6 +1,6 @@
 import React, {forwardRef} from "react";
 import styled from "@emotion/styled";
-import {COLORS, SHADOWS} from "../../config/styles";
+import {COLORS, MEDIA, SHADOWS} from "../../config/styles";
 
 interface Prop {
   menuLists: List[],
@@ -45,6 +45,10 @@ const Container = styled.ul`
     &:last-child {
       border: none; 
     }
+  }
+  ${MEDIA.tablet} {
+    left: auto;
+    right: 12px;
   }
 `
 

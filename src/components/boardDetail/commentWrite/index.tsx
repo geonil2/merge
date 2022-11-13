@@ -2,7 +2,7 @@ import React, {useEffect} from 'react';
 import CommonButton from "../../commonButton";
 import {signIn} from "next-auth/react";
 import styled from "@emotion/styled";
-import {COLORS, SHADOWS} from "../../../config/styles";
+import {COLORS, MEDIA, SHADOWS} from "../../../config/styles";
 import {SubmitHandler, useForm} from "react-hook-form";
 import {useMutation, useQueryClient} from "@tanstack/react-query";
 import {postCommentApi} from "../../../services/comment/api";
@@ -75,6 +75,9 @@ const Container = styled.div`
     line-height: 40px;
     border-bottom: 1px solid ${COLORS.GRAY};
   }
+  ${MEDIA.mobile} {
+    padding: 0px 12px;
+  }
 `
 
 const CommentWriteHeader = styled.div`
@@ -101,10 +104,16 @@ const ButtonWrap = styled.div`
   justify-content: flex-end;
   padding-bottom: 24px;
   margin-top: 20px;
+  ${MEDIA.mobile} {
+    padding-bottom: 12px;
+  }
 `
 
 const Button = styled(CommonButton)`
   width: 110px;
+  ${MEDIA.mobile} {
+    width: 80px;
+  }
 `
 
 export default CommentWrite;
