@@ -6,9 +6,11 @@ import HeaderSearchForm from "../headerSearchForm";
 import {signIn, useSession} from "next-auth/react";
 import CommonButton from "../../commonButton";
 import {menuList} from "../../../resources/types";
+import {useRouter} from "next/router";
 
 const DesktopHeader = () => {
   const { data: session } = useSession();
+  const router = useRouter();
 
   return (
     <Header>
@@ -29,15 +31,18 @@ const DesktopHeader = () => {
         </HeaderContentsContainer>
         <HeaderContentsContainer>
           {session ?
-            <div onClick={() => signIn('google')}>
-              <ProfileThum
-                // src={session?.user.image}
-                src='/images/icons/profile.svg'
-                alt="Logo"
-              />
-            </div>
+            <>
+              <div onClick={() => signIn('google')}>
+                <ProfileThum
+                  // src={session?.user.image}
+                  src='/images/icons/profile.svg'
+                  alt="Logo"
+                />
+              </div>
+              <WriteButton title="글쓰기" onClick={() => router.push('/writing')} />
+            </>
             :
-            <Button title="Login" onClick={() => signIn('google')} />
+            <Button title="로그인" onClick={() => signIn('google')} />
           }
           <SearchInputContainer>
             <HeaderSearchForm />
@@ -67,6 +72,7 @@ const HeaderWrapper = styled.div`
   margin: 0 auto;
   ${MEDIA.tablet} {
     width: 100%;
+    padding: 0px 20px;
   }
 `
 
@@ -113,6 +119,13 @@ const ProfileThum = styled.img`
 
 const Button = styled(CommonButton)`
   width: 72px;
+`
+
+const WriteButton = styled(CommonButton)`
+  display: none;
+  ${MEDIA.tablet} {
+    display: block;
+  }
 `
 
 const SearchInputContainer = styled.div`

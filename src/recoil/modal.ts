@@ -17,37 +17,16 @@ export const visibleModalSelector = selector<ModalType | null>({
   get: ({get}) => {
     const basicPopupContents = get(basicPopupContentsAtom);
     const toastPopupContents = get(toastPopupContentsAtom);
-
-    if (basicPopupContents) {
-      return 'basic'
-    } else if (toastPopupContents) {
-      return 'toast'
-    }
-    return null
-  },
-  set: ({get, set}, newValue) => {
-    if (!newValue) {
-      set(basicPopupContentsAtom, null)
-      set(toastPopupContentsAtom, '')
-    }
-  }
-})
-
-export const visibleModalAtom = atom<ModalType | null>({
-  key: 'visibleModalAtom',
-  default: null
-})
-
-export const resetPopupSelector = selector({
-  key: 'resetPopupSelector',
-  get: ({get}) => {
-  },
-  set: ({get, set, reset}, newValue) => {
     const visibleModal = get(visibleModalAtom);
 
-    if (!visibleModal && newValue) {
-      reset(basicPopupContentsAtom)
-      reset(toastPopupContentsAtom)
-    }
+    if (!visibleModal) return null
+    if (basicPopupContents) return 'basic'
+    if (toastPopupContents) return 'toast'
+    return null
   }
+})
+
+export const visibleModalAtom = atom({
+  key: 'visibleModalAtom',
+  default: false
 })

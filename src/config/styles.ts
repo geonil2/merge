@@ -26,5 +26,6 @@ export const ANIMATIONS = {
   fadeIn: keyframes`0% { opacity: 0; } 100% { opacity: 1; }`,
   fadeOut: keyframes`0% { opacity: 1; } 100% { opacity: 0; }`,
   fadeOutIn: keyframes`0% { opacity: 1;} 50% { opacity: 0;} 100% { opacity: 1 }`,
-  bounceDown: keyframes`0% { transform: translateY(0) } 50% { transform: translateY(8px) } 100% { transform: translateY(0) }`
+  bounceDown: keyframes`0% { transform: translateY(0) } 50% { transform: translateY(8px) } 100% { transform: translateY(0) }`,
+  bounceUp: keyframes`0% { transform: translateY(0) } 50% { transform: translateY(-8px) } 100% { transform: translateY(0) }`
 }

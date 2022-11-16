@@ -29,7 +29,7 @@ const CommentList: React.FC<Prop> = ({ comment, userId }) => {
   const router = useRouter();
   const { id } = router.query;
   const queryClient = useQueryClient();
-  const setPopupModalContents = useSetRecoilState(basicPopupContentsAtom);
+  const setBasicPopupContents = useSetRecoilState(basicPopupContentsAtom);
 
   const onClickUpdateComment = () => {
     setIsDisabledTextarea(false);
@@ -37,7 +37,7 @@ const CommentList: React.FC<Prop> = ({ comment, userId }) => {
   }
 
   const onClickDeleteComment = () => {
-    setPopupModalContents({...popupModalContents.deleteComment, onClick: removeComment})
+    setBasicPopupContents({...popupModalContents.deleteComment, onClick: removeComment})
     setIsActive(false);
   }
 

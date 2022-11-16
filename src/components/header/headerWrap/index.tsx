@@ -7,7 +7,7 @@ import DesktopHeader from "../desktopHeader";
 import Modal from "../../modal";
 import {useRecoilState, useRecoilValue, useResetRecoilState, useSetRecoilState} from "recoil";
 import {
-  basicPopupContentsAtom, resetPopupSelector,
+  basicPopupContentsAtom,
   toastPopupContentsAtom, visibleModalAtom,
   visibleModalSelector
 } from "../../../recoil/modal";
@@ -15,20 +15,22 @@ import CommonModals, {ModalType} from "../../commonModals";
 import {useRouter} from "next/router";
 import {offsetAtom} from "../../../recoil/offset";
 import MobileHeader from "../mobileHeader";
+import useVisibleFade from "../../../hooks/useVisibleFade";
 
 const Header = () => {
-  const [visibleModal, setVisibleModal] = useRecoilState(visibleModalSelector);
-  const setResetPopup = useSetRecoilState(resetPopupSelector);
-  const setBasicPopupContents = useSetRecoilState(basicPopupContentsAtom);
-  const setToastPopupContents = useSetRecoilState(toastPopupContentsAtom);
+  const visibleModal = useRecoilValue(visibleModalSelector);
+  const resetBasicPopupContents = useResetRecoilState(basicPopupContentsAtom);
+  const resetToastPopupContents = useResetRecoilState(toastPopupContentsAtom);
+  const resetVisibleModal = useResetRecoilState(visibleModalAtom);
   const router = useRouter();
   const resetOffset = useResetRecoilState(offsetAtom);
 
   const closeModal = () => {
-    // setVisibleModal(null);
-    // setResetPopup(true);
-    setBasicPopupContents(null)
-    setToastPopupContents('')
+    resetVisibleModal();
+    setTimeout(() => {
+      resetBasicPopupContents();
+      resetToastPopupContents();
+    }, 300)
   }
 
   useEffect(() => {

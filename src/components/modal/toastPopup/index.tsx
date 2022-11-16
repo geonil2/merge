@@ -12,11 +12,12 @@ const ToastPopup: React.FC<Props> = ({ visible, onClose }) => {
   const toastPopupContents = useRecoilValue(toastPopupContentsAtom);
 
   useEffect(() => {
-    if (visible && onClose) setTimeout(() => onClose(), 2000)
+    if (visible && onClose) setTimeout(() => onClose(), 1500)
   }, [visible])
 
   return (
     <Modal
+      visibleModal='toast'
       visible={visible}
       onClose={onClose}
     >

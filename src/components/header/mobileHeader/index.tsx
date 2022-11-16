@@ -25,9 +25,9 @@ const MobileHeader = () => {
       </a></Link>
       <HeaderContentsContainer>
         {session ?
-          <Link href="/writing" passHref><Button title="글쓰기" /></Link>
+          <Button title="글쓰기" onClick={() => router.push('/writing')} />
           :
-          <Button title="LogIn" onClick={() => signIn('google')} />
+          <Button title="로그인" onClick={() => signIn('google')} />
         }
         <ToggleButton onClick={() => setIsShowNav(!isShowNav)}>
           {isShowNav ?

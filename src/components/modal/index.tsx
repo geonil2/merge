@@ -5,32 +5,35 @@ import useVisibleFade from "../../hooks/useVisibleFade";
 import {useRecoilState} from "recoil";
 import ClientOnlyPortal from "../clientOnlyPortal";
 import useOutsideClick from "../../hooks/useOutsideClick";
+import {ModalType} from "../commonModals";
 
 export interface ModalProps {
-  visible: boolean;
-  className?: string;
-  onClose?: () => void;
+  visible: boolean,
+  className?: string,
+  onClose?: () => void
 }
 
-const Modal: React.FC<PropsWithChildren<ModalProps>> = ({
-  children,
-  onClose,
-  className,
-  visible,
-}) => {
-  // const modalRef = useRef<HTMLDivElement>(null);
-  const display = useVisibleFade(visible)
-  // const [isActive, setIsActive] = useOutsideClick(modalRef, !display);
+interface Props extends ModalProps {
+  visibleModal: ModalType
+}
 
-  if (!display) {
-    return null;
-  }
+const Modal: React.FC<PropsWithChildren<Props>> = ({
+  children,
+  visibleModal,
+  visible,
+  className,
+  onClose,
+}) => {
+  const display = useVisibleFade(visible)
+
+  if (!display) return null;
 
   return (
     // <>
     //   {isActive &&
         <ClientOnlyPortal selector="#modal">
           <ModalWrap
+            visibleModal={visibleModal}
             className={(!visible && display) ? 'disappear' : undefined}
             onClick={onClose}
           >
@@ -42,7 +45,11 @@ const Modal: React.FC<PropsWithChildren<ModalProps>> = ({
   );
 };
 
-const ModalWrap = styled.div`
+interface ModalWrapProp {
+  visibleModal: ModalType
+}
+
+const ModalWrap = styled.div<ModalWrapProp>`
   position: fixed;
   top: 0;
   right: 0;
@@ -51,13 +58,19 @@ const ModalWrap = styled.div`
   z-index: 9999;
   display: flex;
   justify-content: center;
-  align-items: center;
-  background-color: rgba(0,0,0,.45);
+  align-items: ${({visibleModal}) => visibleModal === 'basic' ? 'center' : 'start'};
+  background-color: ${({visibleModal}) => visibleModal === 'basic' ? 'rgba(0,0,0,.45)' : 'rgba(0,0,0,.0)'};
+  padding-top: ${({visibleModal}) => visibleModal === 'basic' ? 'none' : '10%'};
   overflow-y: scroll;
   outline: 0;
-  animation: .3s ${ANIMATIONS.fadeIn} forwards;
+  transform: translateY(0);
+  animation: ${({visibleModal}) => visibleModal === 'basic' ? ANIMATIONS.fadeIn : ANIMATIONS.bounceDown};
+  animation-duration: .3s;
+  animation-fill-mode: forwards;
   &.disappear {
-    animation: .3s ${ANIMATIONS.fadeOut} forwards;
+    animation: ${({visibleModal}) => visibleModal === 'basic' ? ANIMATIONS.fadeOut : ANIMATIONS.bounceUp};
+    animation-duration: .3s;
+    animation-fill-mode: forwards;
   }
 `
 

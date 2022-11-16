@@ -11,7 +11,7 @@ import {deleteBoardByIdApi, getBoardByIdApi} from "../../../services/board/api";
 import updateDeleteButtonWrapper from "../../updateDeleteButtonWrapper";
 import {popupModalContents} from "../../../resources/types";
 import {useSetRecoilState} from "recoil";
-import {basicPopupContentsAtom} from "../../../recoil/modal";
+import {basicPopupContentsAtom, visibleModalAtom} from "../../../recoil/modal";
 import {CommentByBoardIdQueryKey} from "../../../services/comment/types";
 import {useRouter} from "next/router";
 import UpdateDeleteButtonWrapper from "../../updateDeleteButtonWrapper";
@@ -26,7 +26,8 @@ const BoardContents: React.FC<Props> = ({ contents, userId }) => {
   const updateLike = useMutation(postLikeApi);
   const deleteBoard = useMutation(deleteBoardByIdApi);
   const queryClient = useQueryClient();
-  const setPopupModalContents = useSetRecoilState(basicPopupContentsAtom);
+  const setBasicPopupContents = useSetRecoilState(basicPopupContentsAtom);
+  const setVisibleModal = useSetRecoilState(visibleModalAtom);
   const router = useRouter();
 
   const onClickLike = useCallback(debounce(() => {
@@ -46,7 +47,8 @@ const BoardContents: React.FC<Props> = ({ contents, userId }) => {
   }
 
   const onClickDeleteButton = () => {
-    setPopupModalContents({...popupModalContents.deleteBoard, onClick: removeBoard})
+    setVisibleModal(true);
+    setBasicPopupContents({...popupModalContents.deleteBoard, onClick: removeBoard});
   }
 
   const onClickUpdateButton = () => {
@@ -66,7 +68,7 @@ const BoardContents: React.FC<Props> = ({ contents, userId }) => {
       <p>Question</p>
       <ContentsHeader>
         <Owner>
-          <Thumbnail src={contents.owner?.image} />
+          <Thumbnail src="/images/icons/profile.svg" />
           <UserText>
             <p>{contents.owner?.name}</p>
             <Email>{contents.owner?.email}</Email>
@@ -171,14 +173,14 @@ const TitleWrap = styled.div`
 `
 
 const Title = styled.div`
-  width: calc(100% - 100px);
+  width: calc(100% - 105px);
   line-height: 120%;
   font-weight: 700;
   font-size: 32px;
 `
 
 const Date = styled.div`
-  width: 100px;
+  width: 105px;
   font-size: 14px;
   text-align: end;
 `

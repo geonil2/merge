@@ -13,6 +13,7 @@ const BasicPopup: React.FC<Props> = ({ visible, onClose }) => {
 
   return (
     <Modal
+      visibleModal='basic'
       visible={visible}
       onClose={onClose}
     >

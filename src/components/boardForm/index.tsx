@@ -5,12 +5,12 @@ import CommonButton from "../commonButton";
 import {SubmitHandler, useForm} from "react-hook-form";
 import {EditorType} from "@toast-ui/editor/types/editor";
 import {Editor} from "@toast-ui/react-editor";
-import {useMutation} from "@tanstack/react-query";
+import {MutateOptions, useMutation} from "@tanstack/react-query";
 import {postBoardApi, updateBoardByIdApi} from "../../services/board/api";
 import {useRouter} from "next/router";
 import {PostBoardRequestBody, PutBoardRequestBody} from "../../services/board/types";
 import dynamic from "next/dynamic";
-import {Menu, menuList} from "../../resources/types";
+import {Menu, menuList, popupModalContents} from "../../resources/types";
 import {useSession} from "next-auth/react";
 import {useSetRecoilState} from "recoil";
 import {basicPopupContentsAtom, toastPopupContentsAtom, visibleModalAtom} from "../../recoil/modal";
@@ -21,6 +21,8 @@ const TextEditor = dynamic(() => import('../../components/textEditor'), {
 
 type WritingInputValue = {
   title?: string
+  category?: string,
+  description?: string,
 }
 
 interface Prop {
@@ -35,7 +37,6 @@ export type UpdateBoardInfo = {
   description: string
 }
 
-const descriptionPlaceholder = '내용을 입력해주세요.'
 const defaultCategoryMenu = {
   id: 0,
   name: 'Category',
@@ -47,51 +48,64 @@ const defaultCategoryMenu = {
 const BoardForm: React.FC<Prop> = ({ type, board }) => {
   const [showCategory, setShowCategory] = useState(false);
   const [selectedCategory, setSelectedCategory] = useState<Menu>(defaultCategoryMenu);
-  const [description, setDescription] = useState(`<p>${descriptionPlaceholder}</p>`);
-  const { register, handleSubmit, formState: { errors } } = useForm();
+  const {
+    register,
+    handleSubmit,
+    setValue,
+  } = useForm();
   const editor = useRef<Editor>(null);
   const postBoard = useMutation(postBoardApi)
   const updateBoard = useMutation(updateBoardByIdApi);
-  const { data: session } = useSession();
   const router = useRouter();
-  const setToastPopupContentsAtom = useSetRecoilState(toastPopupContentsAtom);
+  const setToastPopupContents = useSetRecoilState(toastPopupContentsAtom);
+  const setBasicPopupContents = useSetRecoilState(basicPopupContentsAtom);
   const setVisibleModal = useSetRecoilState(visibleModalAtom);
+  const mutateOption: MutateOptions<any, unknown, PutBoardRequestBody | PostBoardRequestBody, unknown> | undefined = {
+    onSuccess: (data) => {
+      router.push(`${selectedCategory.url}/${data._id}`)
+    },
+    onError: (data) => {
+      setVisibleModal(true)
+      setBasicPopupContents({...popupModalContents.commonError})
+    }
+  }
 
   const onChangeEditValue = useCallback((htmlVal: EditorType) => {
     if (!editor.current) return
-    setDescription(editor.current.getInstance().getHTML());
+    setValue('description', editor.current.getInstance().getHTML())
   }, [])
 
   const onSubmit: SubmitHandler<WritingInputValue> = (data, event) => {
-    event?.preventDefault()
-    console.log(description,'description')
-    console.log(selectedCategory.name,'category')
-    if (type === 'create') {
-      postBoard.mutate({
-        ...data,
-        description,
-        category: selectedCategory.name,
-      } as PostBoardRequestBody, {
-        onSuccess: (data) => {
-          router.push(`${selectedCategory.url}/${data._id}`)
-        },
-        onError: () => {
+    event?.preventDefault();
+    if (!data.category || data.category == 'Category') {
+      setVisibleModal(true)
+      setToastPopupContents('카테고리를 선택해주세요.')
+      return;
+    }
+    if (!data.title) {
+      setVisibleModal(true)
+      setToastPopupContents('제목을 입력해주세요.')
+      return;
+    }
+    if (!data.description) {
+      setVisibleModal(true)
+      setToastPopupContents('내용을 입력해주세요.')
+      return;
+    }
 
-        }
-      })
+    if (type === 'create') {
+      postBoard.mutate({ ...data } as PostBoardRequestBody, mutateOption)
     } else {
       updateBoard.mutate({
         boardId: board?.id,
         ...data,
-        category: selectedCategory.name,
-        description,
-      } as PutBoardRequestBody, {
-        onSuccess: (data) => {
-          router.push(`${selectedCategory.url}/${data._id}`)
-        }
-      })
+      } as PutBoardRequestBody, mutateOption)
     }
   }
+
+  useEffect(() => {
+    setValue('category', selectedCategory.name)
+  }, [selectedCategory])
 
   useEffect(() => {
     if (board?.category) {
@@ -100,12 +114,6 @@ const BoardForm: React.FC<Prop> = ({ type, board }) => {
     }
   }, [board])
 
-  useEffect(() => {
-    if (errors.title) {
-      setVisibleModal('toast')
-      setToastPopupContentsAtom(errors.title.message as string)
-    }
-  }, [errors])
 
   return (
     <form onSubmit={handleSubmit(onSubmit)}>
@@ -128,12 +136,7 @@ const BoardForm: React.FC<Prop> = ({ type, board }) => {
         ) : null}
       </Category>
       <Title
-        {...register("title", {
-          required: {
-            value: true,
-            message: '제목을 입력해주세요.'
-          }
-        })}
+        {...register("title")}
         defaultValue={board?.title}
         placeholder='제목을 입력해주세요.'
       />

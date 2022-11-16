@@ -1,6 +1,5 @@
 import React, {Dispatch, SetStateAction} from "react";
 import BasicPopup from "../modal/basicPopup";
-import {log} from "util";
 import ToastPopup from "../modal/toastPopup";
 
 export type ModalType = 'basic' | 'toast'
