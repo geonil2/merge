@@ -1,13 +1,10 @@
 import {
-  ComponentType,
   PropsWithChildren,
   ReactElement,
-  ReactNode,
-  Suspense,
   useCallback,
 } from 'react'
 import { useQueryErrorResetBoundary } from '@tanstack/react-query'
-import {ErrorBoundary, FallbackProps} from "react-error-boundary";
+import {ErrorBoundary} from "react-error-boundary";
 import CustomSuspense from "./customSuspense";
 
 interface Props {
@@ -27,11 +24,9 @@ const AsyncBoundary = ({
   }, [reset])
 
   return (
-    // <ErrorBoundary resetQuery={resetHandler} errorFallback={errorFallback}>
     <ErrorBoundary fallback={errorFallback}>
       <CustomSuspense fallback={suspenseFallback}>{children}</CustomSuspense>
     </ErrorBoundary>
-    // </ErrorBoundary>
   )
 }
 

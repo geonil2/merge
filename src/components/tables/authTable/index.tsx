@@ -1,13 +1,11 @@
-import React, {useEffect} from 'react';
+import React from 'react';
 import styled from "@emotion/styled";
 import {COLORS, MEDIA, SHADOWS} from "../../../config/styles";
 import {signIn, signOut, useSession} from "next-auth/react";
 import Link from "next/link";
-import {redirect} from "next/dist/server/api-utils";
-import {Skeleton} from "@mui/material";
 
 const AuthTable = () => {
-  const { data: session, status } = useSession();
+  const { data: session } = useSession();
 
   return (
     <Container>
@@ -23,7 +21,7 @@ const AuthTable = () => {
               </UserText>
             </Profile>
             <LogoutButton onClick={() => signOut({ redirect: false })}>
-              Log out
+              로그아웃
             </LogoutButton>
           </AuthenticatedUI>
           <Link href="/writing" passHref>

@@ -16,15 +16,12 @@ const retry = (failCount: number, error: unknown): boolean => {
 export const generateQueryClient = () => {
   const queryClient = new QueryClient({
     queryCache: new QueryCache({
-      onError: (error) =>
-        console.log(error, 'common error')
-        // signOut({ redirect: false })
+      onError: (error) => {}
     }),
   });
 
   queryClient.setDefaultOptions({
     queries: {
-      // suspense: true,
       retry: retry
     },
   })

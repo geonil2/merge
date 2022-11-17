@@ -1,10 +1,9 @@
 import React from 'react';
-import TwoRowTableList from "./twoRowTableList";
 import styled from "@emotion/styled";
-import {COLORS, MEDIA, SHADOWS} from "../../../config/styles";
-import TableHeaderLayout from "../tableHeaderLayout";
 import {Board} from "../../../services/board/types";
-import Link from "next/link";
+import {COLORS, MEDIA, SHADOWS} from "../../../config/styles";
+import TwoRowTableList from "./twoRowTableList";
+import TableHeaderLayout from "../tableHeaderLayout";
 
 interface Prop {
   list: Board[]

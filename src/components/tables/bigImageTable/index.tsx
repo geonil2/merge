@@ -1,4 +1,4 @@
-import React, {useEffect} from 'react';
+import React from 'react';
 import TableHeaderLayout from "../tableHeaderLayout";
 import styled from "@emotion/styled";
 import {COLORS, MEDIA, SHADOWS} from "../../../config/styles";

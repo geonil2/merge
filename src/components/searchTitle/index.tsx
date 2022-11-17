@@ -1,6 +1,6 @@
 import React from 'react';
 import styled from "@emotion/styled";
-import {COLORS, SHADOWS} from "../../config/styles";
+import {COLORS, MEDIA, SHADOWS} from "../../config/styles";
 
 interface Props {
   keyword: string | string[] | undefined,
@@ -11,8 +11,7 @@ const SearchTitle: React.FC<Props> = ({ keyword= '', totalCount= 0 }) => {
   return (
     <Container>
       <InnerText>
-        <SearchKeyword>"{keyword}"</SearchKeyword>
-        에 대한 Merge 통합검색
+        <SearchKeyword>"{keyword}" <span>에 대한 Merge 통합검색</span></SearchKeyword>
         <Total>총 {totalCount}건</Total>
       </InnerText>
     </Container>
@@ -28,13 +27,27 @@ const Container = styled.div`
 `
 
 const InnerText = styled.div`
-  font-weight: 700;
   display: flex;
   align-items: center;
+  font-weight: 700;
+  line-height: 120%;
+  
+  ${MEDIA.mobile} {
+    justify-content: space-between;
+    align-items: flex-start;
+    font-size: 14px;
+  }
 `
 
 const SearchKeyword = styled.div`
   color: ${COLORS.RED};
+  
+  > span {
+    color: ${COLORS.BLACK};
+    ${MEDIA.mobile} {
+      display: block;
+    }
+  }
 `
 
 const Total = styled.div`

@@ -1,11 +1,10 @@
-import React, { useRef } from "react";
+import React  from "react";
 import { Editor } from "@toast-ui/react-editor";
 import "@toast-ui/editor/dist/toastui-editor.css";
 import colorSyntax from '@toast-ui/editor-plugin-color-syntax';
 import {EditorType} from "@toast-ui/editor/types/editor";
-import {API} from "../../config/api";
 import {useMutation} from "@tanstack/react-query";
-import {postBoardApi, postBoardImageApi} from "../../services/board/api";
+import {postBoardImageApi} from "../../services/board/api";
 
 interface Props {
   editor: React.RefObject<Editor>,

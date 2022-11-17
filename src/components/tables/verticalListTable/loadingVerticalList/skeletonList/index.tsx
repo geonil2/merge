@@ -1,6 +1,6 @@
-import {Skeleton} from "@mui/material";
 import React from "react";
 import styled from "@emotion/styled";
+import {Skeleton} from "@mui/material";
 
 const SkeletonList = () => {
   return (

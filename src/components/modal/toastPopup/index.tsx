@@ -1,9 +1,9 @@
-import Modal, {ModalProps} from "../index";
 import React, {useEffect} from "react";
 import {useRecoilValue} from "recoil";
-import {basicPopupContentsAtom, toastPopupContentsAtom, visibleModalSelector} from "../../../recoil/modal";
 import styled from "@emotion/styled";
+import {toastPopupContentsAtom} from "../../../recoil/modal";
 import {COLORS, SHADOWS} from "../../../config/styles";
+import Modal, {ModalProps} from "../index";
 
 interface Props extends ModalProps {
 }

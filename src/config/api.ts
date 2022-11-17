@@ -1,26 +1,11 @@
 import axios, {AxiosError} from "axios";
 import {isServer} from "../services/utils";
-import { getSession } from 'next-auth/react'
-
+import { getSession, signOut } from 'next-auth/react'
 
 export const API = axios.create();
 
-API.defaults.baseURL = process.env.NEXT_PUBLIC_API_HOST
-API.interceptors.request.use(
-  async (config) => {
-    const session = await getSession()
-    console.log(session, 'session!!!!!!!!!')
-    // const token = !isServer ? localStorage.getItem('accessToken') : '';
-    const token = !isServer ? session?.accessToken : '';
-    if (config.headers && token) {
-      config.headers.Authorization = `Bearer ${token}`;
-    }
-    return config;
-  }, undefined
-);
-
 export const isAxiosError = (error: any): error is AxiosError => {
-    return error?.isAxiosError;
+  return error?.isAxiosError;
 }
 
 const globalErrorHandler = async (error?: any) => {
@@ -31,10 +16,27 @@ const globalErrorHandler = async (error?: any) => {
         alert('Something went wrong')
       } else {
         if (status === 401) {
-
+          await signOut()
         }
       }
     }
-
   }
 }
+
+API.defaults.baseURL = process.env.NEXT_PUBLIC_API_HOST
+API.interceptors.request.use(
+  async (config) => {
+    const session = await getSession()
+    const token = !isServer ? session?.accessToken : '';
+    if (config.headers && token) {
+      config.headers.Authorization = `Bearer ${token}`;
+    }
+    return config;
+  }, undefined
+);
+API.interceptors.response.use(
+  undefined,
+  globalErrorHandler,
+)
+
+

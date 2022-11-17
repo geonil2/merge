@@ -1,8 +1,8 @@
-import React, {useEffect, useRef} from 'react';
+import React, {useRef} from 'react';
 import DropdownMenu from "../dropdownMenu";
 import useOutsideClick from "../../hooks/useOutsideClick";
 import styled from "@emotion/styled";
-import {COLORS, MEDIA} from "../../config/styles";
+import {COLORS} from "../../config/styles";
 import {useSession} from "next-auth/react";
 
 interface Props {

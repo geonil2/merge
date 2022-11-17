@@ -1,8 +1,8 @@
 import React from 'react';
 import ReactPaginate from "react-paginate";
 import styled from "@emotion/styled";
-import {COLORS} from "../../config/styles";
 import {useRecoilState} from "recoil";
+import {COLORS} from "../../config/styles";
 import {offsetAtom} from "../../recoil/offset";
 
 interface Props {
@@ -28,7 +28,6 @@ const Pagination: React.FC<Props> = ({ totalCount }) => {
         breakLabel="···"
         nextLabel={arrowRight}
         onPageChange={(selectedItem) => setOffset(selectedItem.selected * DEFAULT_LISTS_COUNT)}
-        // onClick=""
         pageRangeDisplayed={4} // 표시되는 페이지 범위
         marginPagesDisplayed={1} // 표시되는 페이지 범위
         previousLabel={arrowLeft}
@@ -38,9 +37,6 @@ const Pagination: React.FC<Props> = ({ totalCount }) => {
         disabledClassName="disabledArrow"
         breakLinkClassName="" // a tage class 이름
         initialPage={initialPage}
-        // forcePage={1}
-        // onPageActive={2}
-        // renderOnZeroPageCount={null}
       />
     </PaginationWrap>
   );

@@ -10,8 +10,6 @@ export const getCommentByBoardIdApi = async (boardId: string) => {
   return data.data
 }
 
-
-// /api/comments/:board_id/:reple_id
 export const updateCommentApi = async ({ boardId, commentId, contents} : { boardId: string, commentId: string, contents: string }) => {
   const { data } = await API.put(`/api/comments/${boardId}/${commentId}`, { contents })
   return data.data

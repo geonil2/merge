@@ -1,10 +1,8 @@
 import React, {FC} from 'react';
-import Image from "next/image";
-import styled from "@emotion/styled";
-import {COLORS, MEDIA} from "../../../config/styles";
-import {Board} from "../../../services/board/types";
 import Link from "next/link";
-import {Interweave} from "interweave";
+import styled from "@emotion/styled";
+import {Board} from "../../../services/board/types";
+import {COLORS, MEDIA} from "../../../config/styles";
 import ListThumbnail from "../../listThumbnail";
 
 interface Props extends Board {

@@ -1,21 +1,17 @@
-import React, {useEffect, useState} from 'react';
-import MediaOnlyDiv from "../../mediaOnlyDiv";
-import Link from "next/link";
-import styled from "@emotion/styled";
-import {COLORS} from "../../../config/styles";
-import DesktopHeader from "../desktopHeader";
-import Modal from "../../modal";
-import {useRecoilState, useRecoilValue, useResetRecoilState, useSetRecoilState} from "recoil";
+import React, {useEffect} from 'react';
+import {useRouter} from "next/router";
+import {useRecoilValue, useResetRecoilState} from "recoil";
 import {
   basicPopupContentsAtom,
-  toastPopupContentsAtom, visibleModalAtom,
+  toastPopupContentsAtom,
+  visibleModalAtom,
   visibleModalSelector
 } from "../../../recoil/modal";
-import CommonModals, {ModalType} from "../../commonModals";
-import {useRouter} from "next/router";
 import {offsetAtom} from "../../../recoil/offset";
+import MediaOnlyDiv from "../../mediaOnlyDiv";
+import CommonModals from "../../commonModals";
+import DesktopHeader from "../desktopHeader";
 import MobileHeader from "../mobileHeader";
-import useVisibleFade from "../../../hooks/useVisibleFade";
 
 const Header = () => {
   const visibleModal = useRecoilValue(visibleModalSelector);

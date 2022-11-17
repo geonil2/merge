@@ -1,14 +1,14 @@
-import React, {useEffect} from 'react';
-import TableLeftWrapper from "../../components/tables/tableLeftWrapper";
-import VerticalListTable from "../../components/tables/verticalListTable";
+import React from 'react';
+import {useRouter} from "next/router";
+import {useRecoilValue} from "recoil";
+import {offsetAtom} from "../../recoil/offset";
 import {useQuery} from "@tanstack/react-query";
 import {SearchQueryKey} from "../../services/search/types";
 import {getSearchApi} from "../../services/search/api";
-import {useRecoilValue} from "recoil";
-import {offsetAtom} from "../../recoil/offset";
 import {DEFAULT_LISTS_COUNT} from "../../components/pagination";
-import {useRouter} from "next/router";
 import SearchTitle from "../../components/searchTitle";
+import TableLeftWrapper from "../../components/tables/tableLeftWrapper";
+import VerticalListTable from "../../components/tables/verticalListTable";
 
 const Search = () => {
   const offset = useRecoilValue(offsetAtom);

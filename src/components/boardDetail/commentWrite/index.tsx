@@ -1,13 +1,15 @@
-import React, {useEffect} from 'react';
-import CommonButton from "../../commonButton";
-import {signIn} from "next-auth/react";
+import React from 'react';
 import styled from "@emotion/styled";
-import {COLORS, MEDIA, SHADOWS} from "../../../config/styles";
-import {SubmitHandler, useForm} from "react-hook-form";
+import {useSetRecoilState} from "recoil";
+import {basicPopupContentsAtom, toastPopupContentsAtom, visibleModalAtom} from "../../../recoil/modal";
 import {useMutation, useQueryClient} from "@tanstack/react-query";
+import {SubmitHandler, useForm} from "react-hook-form";
+import TextareaAutosize from 'react-textarea-autosize';
+import {COLORS, MEDIA, SHADOWS} from "../../../config/styles";
 import {postCommentApi} from "../../../services/comment/api";
 import {CommentByBoardIdQueryKey} from "../../../services/comment/types";
-import TextareaAutosize from 'react-textarea-autosize';
+import CommonButton from "../../commonButton";
+import {popupModalContents} from "../../../resources/types";
 
 interface Prop {
   userId: string
@@ -20,12 +22,22 @@ export type CommentTextareaValue = {
 }
 
 const CommentWrite: React.FC<Prop> = ({ userId, boardId, name }) => {
-  const { register, handleSubmit, formState, reset } = useForm<CommentTextareaValue>();
+  const { register, handleSubmit, reset } = useForm<CommentTextareaValue>();
   const { mutate } = useMutation(postCommentApi);
   const queryClient = useQueryClient();
+  const setToastPopupContents = useSetRecoilState(toastPopupContentsAtom);
+  const setBasicPopupContents = useSetRecoilState(basicPopupContentsAtom);
+  const setVisibleModal = useSetRecoilState(visibleModalAtom);
 
   const onSubmit: SubmitHandler<CommentTextareaValue> = (values, event) => {
     event?.preventDefault();
+
+    if (!values.contents) {
+      setVisibleModal(true);
+      setToastPopupContents('댓글을 입력해주세요.');
+      return;
+    }
+
     mutate({
       ...values,
       userId,
@@ -34,13 +46,14 @@ const CommentWrite: React.FC<Prop> = ({ userId, boardId, name }) => {
       onSuccess: (data) => {
         queryClient.invalidateQueries([CommentByBoardIdQueryKey,{boardId}])
         reset();
+      },
+      onError: () => {
+        setVisibleModal(true);
+        setBasicPopupContents({...popupModalContents.commonError});
       }
     })
   }
-  const { errors } = formState;
-  useEffect(() => {
-    console.log(errors, 'errors')
-  }, [errors])
+
   return (
     <Container>
       <p>Write a comment</p>
@@ -53,10 +66,7 @@ const CommentWrite: React.FC<Prop> = ({ userId, boardId, name }) => {
           maxRows={6}
           maxLength={400}
           placeholder="댓글을 입력해주세요."
-          {...register("contents", {
-            required: "댓글을 입력해주세요.",
-            maxLength: 400,
-          })}
+          {...register("contents")}
         />
         <ButtonWrap>
           <Button title="작성" />

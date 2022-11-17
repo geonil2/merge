@@ -16,13 +16,11 @@ export const postBoardImageApi = async (formData: FormData) => {
 }
 
 export const getBoardByCategoryApi = async ({ category, offset, limit }: BoardByCategoryRequestQuery) => {
-  console.log(`/api/boards?category=${category}&offset=${offset}&limit=${limit}`, 'parameter!')
   const { data } = await API.get(`/api/boards`, { params: { category, offset, limit }})
   return data.data
 }
 
 export const getBoardByIdApi = async (id: string) => {
-  console.log(id, 'id')
   const { data } = await API.get(`/api/boards/${id}`)
   return data.data
 }
@@ -39,7 +37,6 @@ export const updateBoardByIdApi = async (boardInfo: PutBoardRequestBody) => {
 }
 
 export const deleteBoardByIdApi = async (id: string) => {
-  console.log(id, 'id')
   const { data } = await API.delete(`/api/boards/${id}`)
   return data.data
 }

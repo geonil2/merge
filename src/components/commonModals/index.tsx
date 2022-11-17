@@ -1,4 +1,4 @@
-import React, {Dispatch, SetStateAction} from "react";
+import React from "react";
 import BasicPopup from "../modal/basicPopup";
 import ToastPopup from "../modal/toastPopup";
 

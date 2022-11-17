@@ -1,12 +1,12 @@
 import React from 'react';
 import Link from "next/link";
+import {useRouter} from "next/router";
+import {signIn, useSession} from "next-auth/react";
 import styled from "@emotion/styled";
 import {COLORS, MEDIA, SHADOWS} from "../../../config/styles";
-import HeaderSearchForm from "../headerSearchForm";
-import {signIn, useSession} from "next-auth/react";
-import CommonButton from "../../commonButton";
 import {menuList} from "../../../resources/types";
-import {useRouter} from "next/router";
+import HeaderSearchForm from "../headerSearchForm";
+import CommonButton from "../../commonButton";
 
 const DesktopHeader = () => {
   const { data: session } = useSession();
@@ -32,7 +32,9 @@ const DesktopHeader = () => {
         <HeaderContentsContainer>
           {session ?
             <>
-              <div onClick={() => signIn('google')}>
+              <div
+                // onClick={() => signIn('google')}
+              >
                 <ProfileThum
                   // src={session?.user.image}
                   src='/images/icons/profile.svg'

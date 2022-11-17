@@ -1,11 +1,9 @@
 import React, {FC} from 'react';
-import TableHeaderLayout from "../tableHeaderLayout";
 import styled from "@emotion/styled";
 import {COLORS, MEDIA, SHADOWS} from "../../../config/styles";
-import VerticalList from "./verticalList";
-import {useQuery} from "@tanstack/react-query";
-import {getNewsListApi} from "../../../services/news/api";
 import {Board} from "../../../services/board/types";
+import VerticalList from "./verticalList";
+import TableHeaderLayout from "../tableHeaderLayout";
 import Pagination from "../../pagination";
 
 interface Props {
@@ -25,7 +23,6 @@ const VerticalListTable: FC<Props> = ({
   tab,
   className
 }) => {
-  console.log(list, 'list')
   return (
     <Container className={className}>
       <TableHeaderLayout title={title} url={tab} />

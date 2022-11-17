@@ -1,13 +1,12 @@
+import React, {useEffect, useState} from "react";
 import Link from "next/link";
+import {useRouter} from "next/router";
+import {signIn, signOut, useSession} from "next-auth/react";
 import styled from "@emotion/styled";
 import {COLORS, MEDIA, SHADOWS} from "../../../config/styles";
 import HeaderSearchForm from "../headerSearchForm";
-import {signIn, signOut, useSession} from "next-auth/react";
 import CommonButton from "../../commonButton";
 import {menuList} from "../../../resources/types";
-import React, {useEffect, useState} from "react";
-import {useRouter} from "next/router";
-import AuthTable from "../../tables/AuthTable";
 
 const MobileHeader = () => {
   const { data: session } = useSession();
@@ -55,7 +54,7 @@ const MobileHeader = () => {
                     <Email>{session.user?.email}</Email>
                   </UserText>
                 </UserInfo>
-                <LogoutButton onClick={() => (signOut({ redirect: false }), setIsShowNav(false))}>Log out</LogoutButton>
+                <LogoutButton onClick={() => (signOut({ redirect: false }), setIsShowNav(false))}>로그아웃</LogoutButton>
               </UserContainer>
             }
             <SearchInputContainer>

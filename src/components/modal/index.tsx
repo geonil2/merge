@@ -1,10 +1,8 @@
-import React, {PropsWithChildren, useRef} from 'react';
+import React, {PropsWithChildren} from 'react';
 import styled from "@emotion/styled";
-import {ANIMATIONS, COLORS, SHADOWS} from "../../config/styles";
+import {ANIMATIONS} from "../../config/styles";
 import useVisibleFade from "../../hooks/useVisibleFade";
-import {useRecoilState} from "recoil";
 import ClientOnlyPortal from "../clientOnlyPortal";
-import useOutsideClick from "../../hooks/useOutsideClick";
 import {ModalType} from "../commonModals";
 
 export interface ModalProps {
@@ -29,19 +27,15 @@ const Modal: React.FC<PropsWithChildren<Props>> = ({
   if (!display) return null;
 
   return (
-    // <>
-    //   {isActive &&
-        <ClientOnlyPortal selector="#modal">
-          <ModalWrap
-            visibleModal={visibleModal}
-            className={(!visible && display) ? 'disappear' : undefined}
-            onClick={onClose}
-          >
-            {children}
-          </ModalWrap>
-        </ClientOnlyPortal>
-      // }
-    // </>
+    <ClientOnlyPortal selector="#modal">
+      <ModalWrap
+        visibleModal={visibleModal}
+        className={(!visible && display) ? 'disappear' : undefined}
+        onClick={onClose}
+      >
+        {children}
+      </ModalWrap>
+    </ClientOnlyPortal>
   );
 };
 

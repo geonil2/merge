@@ -1,8 +1,8 @@
+import React from "react";
 import {useQuery} from "@tanstack/react-query";
 import {newsListQueryKey} from "../../../services/news/types";
 import {getNewsListApi} from "../../../services/news/api";
 import VerticalListTable from "../verticalListTable";
-import React from "react";
 
 const NewsListTable = () => {
   const newsList = useQuery([newsListQueryKey], () => getNewsListApi(), {

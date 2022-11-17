@@ -1,4 +1,4 @@
-import React, {HTMLAttributes, ReactNode} from 'react';
+import React, {HTMLAttributes} from 'react';
 import styled from "@emotion/styled";
 import {MEDIA} from "../../config/styles";
 

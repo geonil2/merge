@@ -1,18 +1,17 @@
-import {useEffect, useRef} from "react";
+import {useRef} from "react";
 import type { AppProps } from 'next/app'
 import Head from "next/head";
+import {useRouter} from "next/router";
+import {Session} from "next-auth";
 import '../../styles/globals.css'
 import {generateQueryClient} from "../config/query";
 import {COLORS} from "../config/styles";
-import {RecoilRoot, useRecoilState, useResetRecoilState, useSetRecoilState} from "recoil";
-import {QueryClientProvider, DehydratedState} from "@tanstack/react-query";
+import {QueryClientProvider, DehydratedState, Hydrate} from "@tanstack/react-query";
 import {ReactQueryDevtools} from "@tanstack/react-query-devtools";
-import {Hydrate} from "@tanstack/react-query";
-import Header from "../components/header/headerWrap";
+import {RecoilRoot} from "recoil";
 import {SessionProvider} from "next-auth/react";
+import Header from "../components/header/headerWrap";
 import TableLayout from "../components/tableLayout";
-import {useRouter} from "next/router";
-import {Session} from "next-auth";
 
 function MyApp({ Component, pageProps }: AppProps<{
   session: Session,
@@ -29,26 +28,26 @@ function MyApp({ Component, pageProps }: AppProps<{
   }
 
   return (
-      <SessionProvider session={pageProps.session}>
-        <RecoilRoot>
-            <QueryClientProvider client={queryClient.current}>
-                <Hydrate state={pageProps.dehydratedState}>
-                    <Head>
-                        <title key="title">Merge</title>
-                        <meta name="viewport" content="initial-scale=1.0, width=device-width" key="viewport" />
-                        <meta name="description" key="description" content="개발자 소통 커뮤니티" />
-                        <meta name="theme-color" content={COLORS.PRIMARY} />
-                        <meta property="og:image" content="/images/og_image.png" />
-                        <meta property="og:image:alt" content="Merge" />
-                    </Head>
-                    <Header />
-                    {layout()}
-                    <div id="modal" />
-                    {/*<ReactQueryDevtools initialIsOpen={false} />*/}
-                </Hydrate>
-            </QueryClientProvider>
-        </RecoilRoot>
-      </SessionProvider>
+    <SessionProvider session={pageProps.session}>
+      <RecoilRoot>
+          <QueryClientProvider client={queryClient.current}>
+              <Hydrate state={pageProps.dehydratedState}>
+                  <Head>
+                      <title key="title">Merge</title>
+                      <meta name="viewport" content="initial-scale=1.0, width=device-width" key="viewport" />
+                      <meta name="description" key="description" content="개발자 소통 커뮤니티" />
+                      <meta name="theme-color" content={COLORS.PRIMARY} />
+                      <meta property="og:image" content="/images/logo/merge.svg" />
+                      <meta property="og:image:alt" content="Merge" />
+                  </Head>
+                  <Header />
+                  {layout()}
+                  <div id="modal" />
+                  {process.env.NODE_ENV === 'production' ? null : <ReactQueryDevtools initialIsOpen={false} />}
+              </Hydrate>
+          </QueryClientProvider>
+      </RecoilRoot>
+    </SessionProvider>
   )
 }
 

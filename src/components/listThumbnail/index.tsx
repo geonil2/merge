@@ -31,6 +31,7 @@ const ListThumbnail: React.FC<Prop> = ({ description, width }) => {
 
 const ThumbnailWrap = styled.div`
   width: ${(prop: { width: number}) => `${prop.width}px`};
+  max-height: ${(prop: { width: number}) => `${prop.width}px`};
   border-radius: 6px;
   margin-right: 10px;
   overflow: hidden;

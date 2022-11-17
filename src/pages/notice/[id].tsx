@@ -1,17 +1,13 @@
-import { useRouter } from 'next/router'
+import React from "react";
 import {GetServerSidePropsContext, NextPage} from "next";
-import TableLayout from "../../components/tableLayout";
-import React, {useEffect} from "react";
 import styled from "@emotion/styled";
-import ContentsDetail from "../../components/boardDetail";
-import {useQuery} from "@tanstack/react-query";
-import {BoardByCategoryQueryKey, BoardByIdQueryKey} from "../../services/board/types";
-import {getBoardByCategoryApi, getBoardByIdApi} from "../../services/board/api";
 import {dehydrate, QueryClient} from "@tanstack/query-core";
+import {MEDIA} from "../../config/styles";
+import {BoardByIdQueryKey} from "../../services/board/types";
+import {getBoardByIdApi} from "../../services/board/api";
 import {CommentByBoardIdQueryKey} from "../../services/comment/types";
 import {getCommentByBoardIdApi} from "../../services/comment/api";
 import BoardDetail from "../../components/boardDetail";
-import {MEDIA} from "../../config/styles";
 
 interface Prop {
   id: string

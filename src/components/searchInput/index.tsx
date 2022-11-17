@@ -1,11 +1,7 @@
 import React from 'react';
 import styled from "@emotion/styled";
 import {COLORS} from "../../config/styles";
-import {Simulate} from "react-dom/test-utils";
-import input = Simulate.input;
-import {useSetRecoilState} from "recoil";
-import {SubmitHandler, useForm, UseFormReturn} from "react-hook-form";
-import {CommentTextareaValue} from "../boardDetail/commentWrite";
+import {UseFormReturn} from "react-hook-form";
 
 interface Prop {
   register: UseFormReturn['register'];

@@ -1,4 +1,4 @@
-import React, {cloneElement} from 'react';
+import React from 'react';
 import styled from "@emotion/styled";
 import {COLORS, SHADOWS} from "../../../../config/styles";
 import SkeletonList from "./skeletonList";

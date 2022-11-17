@@ -1,21 +1,18 @@
 import React, {useCallback} from 'react';
+import {useRouter} from "next/router";
 import styled from "@emotion/styled";
+import {useSetRecoilState} from "recoil";
+import {useMutation, useQueryClient} from "@tanstack/react-query";
+import ReactTimeago from "react-timeago";
+import {Interweave} from "interweave";
+import {debounce} from "lodash";
 import {COLORS, MEDIA, SHADOWS} from "../../../config/styles";
 import {Board, BoardByIdQueryKey} from "../../../services/board/types";
-import ReactTimeago from "react-timeago";
-import nl2br from "react-nl2br";
-import {Interweave} from "interweave";
-import {useMutation, useQueryClient} from "@tanstack/react-query";
 import {postLikeApi} from "../../../services/like/api";
-import {deleteBoardByIdApi, getBoardByIdApi} from "../../../services/board/api";
-import updateDeleteButtonWrapper from "../../updateDeleteButtonWrapper";
+import {deleteBoardByIdApi} from "../../../services/board/api";
 import {popupModalContents} from "../../../resources/types";
-import {useSetRecoilState} from "recoil";
 import {basicPopupContentsAtom, visibleModalAtom} from "../../../recoil/modal";
-import {CommentByBoardIdQueryKey} from "../../../services/comment/types";
-import {useRouter} from "next/router";
 import UpdateDeleteButtonWrapper from "../../updateDeleteButtonWrapper";
-import {debounce} from "lodash";
 
 interface Props {
   contents: Board,

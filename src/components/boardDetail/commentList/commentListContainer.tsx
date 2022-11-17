@@ -1,7 +1,6 @@
-import React, {useState} from 'react';
+import React from 'react';
 import styled from "@emotion/styled";
 import {COLORS, MEDIA, SHADOWS} from "../../../config/styles";
-import ReactTimeago from "react-timeago";
 import {Comment} from "../../../services/comment/types";
 import CommentList from "./commentList";
 

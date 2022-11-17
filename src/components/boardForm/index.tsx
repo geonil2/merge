@@ -1,19 +1,18 @@
 import React, {useCallback, useEffect, useRef, useState} from 'react';
+import {useRouter} from "next/router";
+import dynamic from "next/dynamic";
 import styled from "@emotion/styled";
 import {COLORS} from "../../config/styles";
-import CommonButton from "../commonButton";
+import {basicPopupContentsAtom, toastPopupContentsAtom, visibleModalAtom} from "../../recoil/modal";
+import {MutateOptions, useMutation} from "@tanstack/react-query";
 import {SubmitHandler, useForm} from "react-hook-form";
 import {EditorType} from "@toast-ui/editor/types/editor";
 import {Editor} from "@toast-ui/react-editor";
-import {MutateOptions, useMutation} from "@tanstack/react-query";
 import {postBoardApi, updateBoardByIdApi} from "../../services/board/api";
-import {useRouter} from "next/router";
 import {PostBoardRequestBody, PutBoardRequestBody} from "../../services/board/types";
-import dynamic from "next/dynamic";
 import {Menu, menuList, popupModalContents} from "../../resources/types";
-import {useSession} from "next-auth/react";
 import {useSetRecoilState} from "recoil";
-import {basicPopupContentsAtom, toastPopupContentsAtom, visibleModalAtom} from "../../recoil/modal";
+import CommonButton from "../commonButton";
 
 const TextEditor = dynamic(() => import('../../components/textEditor'), {
   ssr: false,

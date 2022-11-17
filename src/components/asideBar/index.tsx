@@ -1,11 +1,11 @@
 import React from 'react';
-import AuthTable from "../tables/AuthTable";
-import BannerTable from "../tables/bannerTable";
-import styled from "@emotion/styled";
 import dynamic from "next/dynamic";
-import AsyncBoundary from "../asyncBoundary";
-import LoadingVerticalList from "../tables/verticalListTable/loadingVerticalList";
+import styled from "@emotion/styled";
 import {COLORS, MEDIA, SHADOWS} from "../../config/styles";
+import AsyncBoundary from "../asyncBoundary";
+import AuthTable from "../tables/authTable";
+import BannerTable from "../tables/bannerTable";
+import LoadingVerticalList from "../tables/verticalListTable/loadingVerticalList";
 
 const NewsListTable = dynamic(
   () => import('../tables/newsListTable'),

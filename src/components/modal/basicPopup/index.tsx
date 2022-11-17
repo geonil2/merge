@@ -1,9 +1,9 @@
 import React from 'react';
 import styled from "@emotion/styled";
-import {COLORS, SHADOWS} from "../../../config/styles";
-import Modal, {ModalProps} from "../index";
 import {useRecoilValue} from "recoil";
 import {basicPopupContentsAtom} from "../../../recoil/modal";
+import {COLORS, SHADOWS} from "../../../config/styles";
+import Modal, {ModalProps} from "../index";
 
 interface Props extends ModalProps {
 }

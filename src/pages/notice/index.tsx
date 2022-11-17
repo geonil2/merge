@@ -1,20 +1,15 @@
-import React, {useEffect, useState} from 'react';
-import AsideBar from "../../components/asideBar";
-import VerticalListTable from "../../components/tables/verticalListTable";
+import React from 'react';
+import {GetServerSidePropsContext, NextPage} from "next";
 import styled from "@emotion/styled";
-import TableLayout from "../../components/tableLayout";
-import useBoardByCategory from "../../hooks/useBoardListByCateogry";
 import {useRecoilValue} from "recoil";
 import {offsetAtom} from "../../recoil/offset";
-import {DEFAULT_LISTS_COUNT} from "../../components/pagination";
-import {GetServerSidePropsContext, NextPage} from "next";
-import TableLeftWrapper from "../../components/tables/tableLeftWrapper";
 import {dehydrate, QueryClient} from "@tanstack/query-core";
-import {ConferenceListQueryKey} from "../../services/conference/types";
-import {getConferenceListApi} from "../../services/conference/api";
-import {BoardByCategoryQueryKey, BoardByIdQueryKey} from "../../services/board/types";
-import {getBoardByCategoryApi, getBoardByIdApi} from "../../services/board/api";
-import {useQuery} from "@tanstack/react-query";
+import {BoardByCategoryQueryKey} from "../../services/board/types";
+import {getBoardByCategoryApi} from "../../services/board/api";
+import useBoardByCategory from "../../hooks/useBoardListByCateogry";
+import {DEFAULT_LISTS_COUNT} from "../../components/pagination";
+import VerticalListTable from "../../components/tables/verticalListTable";
+import TableLeftWrapper from "../../components/tables/tableLeftWrapper";
 
 const Notice: NextPage = () => {
   const offset = useRecoilValue(offsetAtom);
@@ -26,7 +21,7 @@ const Notice: NextPage = () => {
         <VerticalListTable
           title='Q&A'
           list={data.list}
-          showPagination={data.total > DEFAULT_LISTS_COUNT}
+          showPagination={true}
           totalCount={data.total}
         />
       }

@@ -1,16 +1,16 @@
 import React, {useEffect, useRef, useState} from 'react';
-import styled from "@emotion/styled";
-import {COLORS, MEDIA, SHADOWS} from "../../../config/styles";
-import ReactTimeago from "react-timeago";
-import {Comment, CommentByBoardIdQueryKey} from "../../../services/comment/types";
-import CommonButton from "../../commonButton";
-import DropdownMenu from "../../dropdownMenu";
-import useOutsideClick from "../../../hooks/useOutsideClick";
-import {useMutation, useQueryClient} from "@tanstack/react-query";
-import {deleteCommentApi, updateCommentApi} from "../../../services/comment/api";
 import {useRouter} from "next/router";
+import styled from "@emotion/styled";
 import {useSetRecoilState} from "recoil";
 import {basicPopupContentsAtom} from "../../../recoil/modal";
+import {useMutation, useQueryClient} from "@tanstack/react-query";
+import ReactTimeago from "react-timeago";
+import {COLORS, MEDIA} from "../../../config/styles";
+import useOutsideClick from "../../../hooks/useOutsideClick";
+import {Comment, CommentByBoardIdQueryKey} from "../../../services/comment/types";
+import {deleteCommentApi, updateCommentApi} from "../../../services/comment/api";
+import CommonButton from "../../commonButton";
+import DropdownMenu from "../../dropdownMenu";
 import {popupModalContents} from "../../../resources/types";
 
 interface Prop {
@@ -210,6 +210,5 @@ const UpdateButton = styled(CommonButton)`
   height: 30px;
   padding: 0px 10px;
 `
-
 
 export default CommentList;

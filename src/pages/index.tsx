@@ -1,20 +1,15 @@
-import type {GetServerSidePropsResult, NextPage} from 'next'
-import styled from "@emotion/styled";
-import VerticalSlideTable from "../components/tables/verticalSlideTable";
-import TwoRowTable from "../components/tables/twoRowTable";
-import VerticalListTable from "../components/tables/verticalListTable";
-import {GetServerSidePropsContext} from "next";
-import TableLayout from "../components/tableLayout";
-import BigImageTable from "../components/tables/bigImageTable";
-import {dehydrate, QueryClient} from "@tanstack/query-core";
-import {ParsedUrlQuery} from "querystring";
-import {getConferenceListApi} from "../services/conference/api";
+import type {NextPage, GetServerSidePropsContext} from 'next'
 import {useQuery} from "@tanstack/react-query";
-import {useEffect} from "react";
+import {dehydrate, QueryClient} from "@tanstack/query-core";
+import useBoardByCategory from "../hooks/useBoardListByCateogry";
+import {getConferenceListApi} from "../services/conference/api";
 import {ConferenceListQueryKey} from "../services/conference/types";
 import {BestBoardQueryKey, BoardByCategoryQueryKey} from "../services/board/types";
 import {getBestBoard, getBoardByCategoryApi} from "../services/board/api";
-import useBoardByCategory from "../hooks/useBoardListByCateogry";
+import VerticalSlideTable from "../components/tables/verticalSlideTable";
+import TwoRowTable from "../components/tables/twoRowTable";
+import VerticalListTable from "../components/tables/verticalListTable";
+import BigImageTable from "../components/tables/bigImageTable";
 import TableLeftWrapper from "../components/tables/tableLeftWrapper";
 
 const Home: NextPage = () => {

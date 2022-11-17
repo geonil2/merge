@@ -3,7 +3,6 @@ import styled from "@emotion/styled";
 import {COLORS, MEDIA} from "../../config/styles";
 import {useRouter} from "next/router";
 import Link from "next/link";
-import Image from "next/image";
 
 interface Props {
   title: string,

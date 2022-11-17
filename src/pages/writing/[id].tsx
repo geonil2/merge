@@ -1,4 +1,4 @@
-import React, {useEffect} from 'react';
+import React from 'react';
 import BoardForm, {UpdateBoardInfo} from "../../components/boardForm";
 import WritingPageWrapper from "../../components/writingPageWrapper";
 import {useRouter} from "next/router";

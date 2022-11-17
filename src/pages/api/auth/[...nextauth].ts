@@ -3,7 +3,6 @@ import GoogleProvider from 'next-auth/providers/google';
 import { MongoDBAdapter } from "@next-auth/mongodb-adapter";
 import clientPromise from "./lib/mongodb";
 import jwt from "jsonwebtoken";
-// import dbConnect from "./lib/dbConnect";
 
 export default NextAuth({
   adapter: MongoDBAdapter(clientPromise),
