@@ -55,5 +55,9 @@ jobs:
       - name: Run build
         run: npm run build
 
+      - name: Make zip file
+        run: zip -r merge-frontend.zip ./
+
       - name: Copy files to production bucket
-        run: aws s3 sync build ${{ env.DEPLOY_BUCKET }} --cache-control 'max-age=10, must-revalidate, public'
+        run: aws s3 cp --region ap-northeast-2 ./$GITHUB_SHA.zip s3://$S3_BUCKET_NAME/$GITHUB_SHA.zip
+
