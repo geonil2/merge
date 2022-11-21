@@ -10,7 +10,7 @@ env:
   DEPLOY_BUCKET: s3://merge.immmapp.com
   CACHE_DIR: ${{ github.workspace }}/node_modules
   CODE_DEPLOY_APPLICATION_NAME: Merge-code-deploy
-  CODE_DEPLOY_DEPLOYMENT_GROUP_NAME: geonil
+  CODE_DEPLOY_DEPLOYMENT_GROUP_NAME: Merge
 
 jobs:
   build:
