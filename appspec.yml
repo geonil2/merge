@@ -4,14 +4,12 @@ files:
   - source: /
     destination: /home/ubuntu/merge-frontend
     overwrite: yes
-
 permissions:
   - object: /home/ubuntu/merge-frontend
     pattern: "**"
     owner: root
     group: root
     mode: 755
-
 hooks:
   ApplicationStart:
     - location: scripts/deploy.sh
