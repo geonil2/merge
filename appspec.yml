@@ -3,15 +3,20 @@ os: linux
 files:
   - source: /
     destination: /home/ubuntu/merge-frontend
-    overwrite: yes
+
 permissions:
-  - object: /home/ubuntu/merge-frontend
+  - object: scripts/deploy.sh
     pattern: "**"
-    owner: root
-    group: root
-    mode: 755
+    owner: ubuntu
+    group: ubuntu
+    mod: 755
+
 hooks:
   ApplicationStart:
-    - location: scripts/deploy.sh
+    - location: application_start.sh
       timeout: 300
-      runas: root
+      runas: ubuntu
+  ApplicationStop:
+    - location: application_stop.sh
+      timeout: 300
+      runas: ubuntu
