@@ -3,6 +3,7 @@ os: linux
 files:
   - source: /
     destination: /home/ubuntu/merge-frontend
+    overwrite: yes
 
 permissions:
   - object: /home/ubuntu/merge-frontend
@@ -12,11 +13,11 @@ permissions:
     mod: 755
 
 hooks:
-  ApplicationStart:
-    - location: scripts/application_start.sh
-      timeout: 300
-      runas: ubuntu
   ApplicationStop:
     - location: scripts/application_stop.sh
+      timeout: 300
+      runas: ubuntu
+  ApplicationStart:
+    - location: scripts/application_start.sh
       timeout: 300
       runas: ubuntu
