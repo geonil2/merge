@@ -1,6 +1,6 @@
 #!/bin/bash
 
-REPOSITORY=/home/ubuntu/merge-frontend
+REPOSITORY=/home/ubuntu/merge
 
 sudo chmod -R 777 REPOSITORY
 
