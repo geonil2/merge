@@ -5,6 +5,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="2eabddc1-1714-45aa-9a47-e3e67c011340" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/scripts/application_stop.sh" beforeDir="false" afterPath="$PROJECT_DIR$/scripts/application_stop.sh" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -28,7 +29,7 @@
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "WebServerToolWindowFactoryState": "false",
-    "last_opened_file_path": "/Users/kimgeonil/Desktop/project/Merge/Merge-frontend/src/pages",
+    "last_opened_file_path": "/Users/kimgeonil/Desktop/project/Merge/Merge-frontend/scripts",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
@@ -40,11 +41,11 @@
 }]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/scripts" />
       <recent name="$PROJECT_DIR$/src/pages" />
       <recent name="$PROJECT_DIR$/src/pages/recruit" />
       <recent name="$PROJECT_DIR$/src/pages/notice" />
       <recent name="$PROJECT_DIR$/src/pages/info" />
-      <recent name="$PROJECT_DIR$/src/pages/community" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/src/components/asyncBoundary" />
@@ -73,7 +74,7 @@
       <workItem from="1667523344281" duration="73003000" />
       <workItem from="1667958675689" duration="453000" />
       <workItem from="1667959260318" duration="21643000" />
-      <workItem from="1668047539392" duration="102764000" />
+      <workItem from="1668047539392" duration="104673000" />
     </task>
     <servers />
   </component>
