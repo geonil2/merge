@@ -1,4 +1,5 @@
 import React, {HTMLAttributes} from 'react';
+import {useRouter} from "next/router";
 import styled from "@emotion/styled";
 import AsideBar from "../asideBar";
 import {MEDIA} from "../../config/styles";
@@ -7,11 +8,17 @@ interface Props extends HTMLAttributes<HTMLDivElement> {
 }
 
 const TableLayout: React.FC<Props> = ({ children }) => {
+  const router = useRouter();
+
   return (
-    <Layout>
-      {children}
-      <AsideBar />
-    </Layout>
+    <>
+      {router.pathname.includes('/writing') ? children :
+        <Layout>
+          {children}
+          <AsideBar />
+        </Layout>
+      }
+    </>
   );
 };
 

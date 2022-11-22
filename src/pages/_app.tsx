@@ -18,34 +18,26 @@ function MyApp({ Component, pageProps }: AppProps<{
   dehydratedState: DehydratedState
 }>) {
   const queryClient = useRef(generateQueryClient());
-  const router = useRouter();
-
-  const layout = () => {
-    if (router.pathname.includes('/writing')) {
-      return <Component {...pageProps} />
-    }
-    return <TableLayout><Component {...pageProps} /></TableLayout>
-  }
 
   return (
     <SessionProvider session={pageProps.session}>
       <RecoilRoot>
-          <QueryClientProvider client={queryClient.current}>
-              <Hydrate state={pageProps.dehydratedState}>
-                  <Head>
-                      <title key="title">Merge</title>
-                      <meta name="viewport" content="initial-scale=1.0, width=device-width" key="viewport" />
-                      <meta name="description" key="description" content="개발자 소통 커뮤니티" />
-                      <meta name="theme-color" content={COLORS.PRIMARY} />
-                      <meta property="og:image" content="/images/logo/merge.svg" />
-                      <meta property="og:image:alt" content="Merge" />
-                  </Head>
-                  <Header />
-                  {layout()}
-                  <div id="modal" />
-                  {process.env.NODE_ENV === 'production' ? null : <ReactQueryDevtools initialIsOpen={false} />}
-              </Hydrate>
-          </QueryClientProvider>
+        <QueryClientProvider client={queryClient.current}>
+          <Hydrate state={pageProps.dehydratedState}>
+            <Head>
+              <title key="title">Merge</title>
+              <meta name="viewport" content="initial-scale=1.0, width=device-width" key="viewport" />
+              <meta name="description" key="description" content="개발자 소통 커뮤니티" />
+              <meta name="theme-color" content={COLORS.PRIMARY} />
+              <meta property="og:image" content="/images/logo/merge.svg" />
+              <meta property="og:image:alt" content="Merge" />
+            </Head>
+            <Header />
+            <TableLayout><Component {...pageProps} /></TableLayout>
+            <div id="modal" />
+            {process.env.NODE_ENV === 'production' ? null : <ReactQueryDevtools initialIsOpen={false} />}
+          </Hydrate>
+        </QueryClientProvider>
       </RecoilRoot>
     </SessionProvider>
   )
