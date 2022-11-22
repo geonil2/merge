@@ -5,7 +5,7 @@ files:
     destination: /home/ubuntu/merge-frontend
 
 permissions:
-  - object: scripts/deploy.sh
+  - object: /home/ubuntu/merge-frontend
     pattern: "**"
     owner: ubuntu
     group: ubuntu
@@ -13,10 +13,10 @@ permissions:
 
 hooks:
   ApplicationStart:
-    - location: application_start.sh
+    - location: scripts/application_start.sh
       timeout: 300
       runas: ubuntu
   ApplicationStop:
-    - location: application_stop.sh
+    - location: scripts/application_stop.sh
       timeout: 300
       runas: ubuntu
