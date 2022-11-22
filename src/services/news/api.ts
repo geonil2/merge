@@ -1,7 +1,7 @@
-import {API} from "../../config/api";
+import axios from "axios";
 
 export const getNewsListApi = async () => {
-  const { data } = await API.get('/api/news', {
+  const { data } = await axios.get('/api/news', {
     baseURL: process.env.NEXT_PUBLIC_URL
   });
   return data.data;
