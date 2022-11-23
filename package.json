@@ -5,7 +5,7 @@
   "scripts": {
     "dev": "dotenv -e .env.development next dev",
     "build": "next build",
-    "start": "next start",
+    "start": "pm2 startOrReload ecosystem.config.js --env production",
     "lint": "next lint"
   },
   "dependencies": {
