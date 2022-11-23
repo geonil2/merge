@@ -171,9 +171,9 @@ const TitleWrap = styled.div`
 
 const Title = styled.div`
   width: calc(100% - 105px);
-  line-height: 120%;
+  line-height: 130%;
   font-weight: 700;
-  font-size: 32px;
+  font-size: 20px;
 `
 
 const Date = styled.div`
