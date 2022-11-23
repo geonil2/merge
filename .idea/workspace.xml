@@ -4,9 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="2eabddc1-1714-45aa-9a47-e3e67c011340" name="Changes" comment="">
+    <list default="true" id="2eabddc1-1714-45aa-9a47-e3e67c011340" name="Changes" comment="Add middleware get secure token">
+      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/middleware.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/middleware.ts" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -75,8 +75,16 @@
       <workItem from="1667958675689" duration="453000" />
       <workItem from="1667959260318" duration="21643000" />
       <workItem from="1668047539392" duration="122705000" />
-      <workItem from="1669191316085" duration="1152000" />
+      <workItem from="1669191316085" duration="1962000" />
     </task>
+    <task id="LOCAL-00001" summary="Add middleware get secure token">
+      <created>1669194296016</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1669194296016</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -92,6 +100,10 @@
         </entry>
       </map>
     </option>
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="Add middleware get secure token" />
+    <option name="LAST_COMMIT_MESSAGE" value="Add middleware get secure token" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
