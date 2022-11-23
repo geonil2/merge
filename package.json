@@ -3,9 +3,9 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "dev": "dotenv -e .env.local next dev",
+    "dev": "dotenv -e .env.development next dev",
     "build": "next build",
-    "start": "pm2 startOrReload ecosystem.config.js --env production",
+    "start": "next start",
     "lint": "next lint"
   },
   "dependencies": {
