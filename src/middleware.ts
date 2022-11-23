@@ -3,7 +3,7 @@ import { NextResponse } from "next/server";
 
 export const middleware = async (request: NextRequest) => {
   if (request.nextUrl.pathname.startsWith('/writing')) {
-    if (!request.cookies.get('next-auth.session-token')) {
+    if (!request.cookies.get('next-auth.session-token' || '__Secure-next-auth.session-token')) {
       return NextResponse.rewrite(new URL("/", request.url));
     }
   }
