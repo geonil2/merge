@@ -9,6 +9,8 @@ import {DEFAULT_LISTS_COUNT} from "../../components/pagination";
 import SearchTitle from "../../components/searchTitle";
 import TableLeftWrapper from "../../components/tables/tableLeftWrapper";
 import VerticalListTable from "../../components/tables/verticalListTable";
+import {getImageByDescription} from "../../components/listThumbnail";
+import HeadMeta from "../../components/headMeta";
 
 const Search = () => {
   const offset = useRecoilValue(offsetAtom);
@@ -22,17 +24,23 @@ const Search = () => {
   );
 
   return (
-    <TableLeftWrapper>
-      <SearchTitle keyword={searchKeyword} totalCount={data?.total} />
-      {!!data?.list && data.list.length !== 0 &&
-        <VerticalListTable
-          title='통합검색'
-          list={data.list}
-          showPagination={data.total > DEFAULT_LISTS_COUNT}
-          totalCount={data.total}
-        />
-      }
-    </TableLeftWrapper>
+    <>
+      <HeadMeta
+        title={`${searchKeyword}로 검색`}
+        description={`${searchKeyword}로 검색`}
+      />
+      <TableLeftWrapper>
+        <SearchTitle keyword={searchKeyword} totalCount={data?.total} />
+        {!!data?.list && data.list.length !== 0 &&
+          <VerticalListTable
+            title='통합검색'
+            list={data.list}
+            showPagination={data.total > DEFAULT_LISTS_COUNT}
+            totalCount={data.total}
+          />
+        }
+      </TableLeftWrapper>
+    </>
   );
 };
 

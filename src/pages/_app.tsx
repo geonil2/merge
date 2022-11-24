@@ -25,9 +25,9 @@ function MyApp({ Component, pageProps }: AppProps<{
         <QueryClientProvider client={queryClient.current}>
           <Hydrate state={pageProps.dehydratedState}>
             <Head>
-              <title key="title">Merge</title>
+              <title key="title">Merge: 개발자 커뮤니티 플랫폼</title>
               <meta name="viewport" content="initial-scale=1.0, width=device-width" key="viewport" />
-              <meta name="description" key="description" content="개발자 소통 커뮤니티" />
+              <meta name="description" key="description" content="개발자의, 개발자에 의한, 개발자를 위한 소통 커뮤니티 플랫폼" />
               <meta name="theme-color" content={COLORS.PRIMARY} />
               <meta property="og:image" content="/images/logo/merge.svg" />
               <meta property="og:image:alt" content="Merge" />

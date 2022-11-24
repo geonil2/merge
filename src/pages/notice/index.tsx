@@ -10,22 +10,29 @@ import useBoardByCategory from "../../hooks/useBoardListByCateogry";
 import {DEFAULT_LISTS_COUNT} from "../../components/pagination";
 import VerticalListTable from "../../components/tables/verticalListTable";
 import TableLeftWrapper from "../../components/tables/tableLeftWrapper";
+import HeadMeta from "../../components/headMeta";
 
 const Notice: NextPage = () => {
   const offset = useRecoilValue(offsetAtom);
   const { data } = useBoardByCategory({ category: 'notice', offset, limit: DEFAULT_LISTS_COUNT })
 
   return (
-    <Container>
-      {!!data?.list.length &&
-        <VerticalListTable
-          title='Q&A'
-          list={data.list}
-          showPagination={true}
-          totalCount={data.total}
-        />
-      }
-    </Container>
+    <>
+      <HeadMeta
+        title='공지사항'
+        description='공지사항'
+      />
+      <Container>
+        {!!data?.list.length &&
+          <VerticalListTable
+            title='Q&A'
+            list={data.list}
+            showPagination={true}
+            totalCount={data.total}
+          />
+        }
+      </Container>
+    </>
   );
 };
 

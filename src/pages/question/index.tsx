@@ -10,22 +10,29 @@ import useBoardByCategory from "../../hooks/useBoardListByCateogry";
 import TableLeftWrapper from "../../components/tables/tableLeftWrapper";
 import {DEFAULT_LISTS_COUNT} from "../../components/pagination";
 import VerticalListTable from "../../components/tables/verticalListTable";
+import HeadMeta from "../../components/headMeta";
 
 const Question: NextPage = () => {
   const offset = useRecoilValue(offsetAtom);
   const { data } = useBoardByCategory({ category: 'question', offset, limit: DEFAULT_LISTS_COUNT })
 
   return (
-    <Container>
-      {!!data?.list.length &&
-        <VerticalListTable
-          title='Q&A'
-          list={data.list}
-          showPagination={true}
-          totalCount={data.total}
-        />
-      }
-    </Container>
+    <>
+      <HeadMeta
+        title='Q&A'
+        description='Q&A'
+      />
+      <Container>
+        {!!data?.list.length &&
+          <VerticalListTable
+            title='Q&A'
+            list={data.list}
+            showPagination={true}
+            totalCount={data.total}
+          />
+        }
+      </Container>
+    </>
   );
 };
 

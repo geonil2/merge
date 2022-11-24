@@ -10,22 +10,29 @@ import useBoardByCategory from "../../hooks/useBoardListByCateogry";
 import VerticalListTable from "../../components/tables/verticalListTable";
 import {DEFAULT_LISTS_COUNT} from "../../components/pagination";
 import TableLeftWrapper from "../../components/tables/tableLeftWrapper";
+import HeadMeta from "../../components/headMeta";
 
 const Recruit: NextPage = () => {
   const offset = useRecoilValue(offsetAtom);
   const { data } = useBoardByCategory({ category: 'recruit', offset, limit: DEFAULT_LISTS_COUNT })
 
   return (
-    <Container>
-      {!!data?.list.length &&
-        <VerticalListTable
-          title='채용공고'
-          list={data.list}
-          showPagination={true}
-          totalCount={data.total}
-        />
-      }
-    </Container>
+    <>
+      <HeadMeta
+        title='구인구직'
+        description='구인구직'
+      />
+      <Container>
+        {!!data?.list.length &&
+          <VerticalListTable
+            title='채용공고'
+            list={data.list}
+            showPagination={true}
+            totalCount={data.total}
+          />
+        }
+      </Container>
+    </>
   );
 };
 

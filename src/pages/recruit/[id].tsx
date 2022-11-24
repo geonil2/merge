@@ -8,6 +8,7 @@ import {getBoardByIdApi} from "../../services/board/api";
 import {CommentByBoardIdQueryKey} from "../../services/comment/types";
 import {getCommentByBoardIdApi} from "../../services/comment/api";
 import BoardDetail from "../../components/boardDetail";
+import HeadMeta from "../../components/headMeta";
 
 interface Prop {
   id: string

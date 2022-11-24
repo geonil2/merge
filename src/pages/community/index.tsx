@@ -10,22 +10,29 @@ import useBoardByCategory from "../../hooks/useBoardListByCateogry";
 import {DEFAULT_LISTS_COUNT} from "../../components/pagination";
 import TableLeftWrapper from "../../components/tables/tableLeftWrapper";
 import VerticalListTable from "../../components/tables/verticalListTable";
+import HeadMeta from "../../components/headMeta";
 
 const Community: NextPage = () => {
   const offset = useRecoilValue(offsetAtom);
   const { data } = useBoardByCategory({ category: 'community', offset, limit: DEFAULT_LISTS_COUNT })
 
   return (
-    <Container>
-      {!!data?.list.length &&
-        <VerticalListTable
-          title='커뮤니티'
-          list={data.list}
-          showPagination={true}
-          totalCount={data.total}
-        />
-      }
-    </Container>
+    <>
+      <HeadMeta
+        title='커뮤니티'
+        description='커뮤니티'
+      />
+      <Container>
+        {!!data?.list.length &&
+          <VerticalListTable
+            title='커뮤니티'
+            list={data.list}
+            showPagination={true}
+            totalCount={data.total}
+          />
+        }
+      </Container>
+    </>
   );
 };
 
