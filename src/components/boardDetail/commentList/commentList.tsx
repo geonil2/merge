@@ -12,6 +12,7 @@ import {deleteCommentApi, updateCommentApi} from "../../../services/comment/api"
 import CommonButton from "../../commonButton";
 import DropdownMenu from "../../dropdownMenu";
 import {popupModalContents} from "../../../resources/types";
+import TextareaAutosize from "react-textarea-autosize";
 
 interface Prop {
   comment: Comment,
@@ -111,13 +112,15 @@ const CommentList: React.FC<Prop> = ({ comment, userId }) => {
           }
         </CommentInfo>
         <Commentarea>
-          <textarea
-            maxLength={200}
+          <TextareaAutosize
+            minRows={2}
+            maxRows={10}
+            maxLength={500}
             disabled={isDisabledTextarea}
             ref={textareaRef}
             onChange={(e) => setTextareaData(e.target.value)}
             value={textareaData}
-          ></textarea>
+          />
         </Commentarea>
         {userId === comment.owner._id && !isDisabledTextarea &&
           <UpdateButtonWrap>

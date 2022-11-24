@@ -62,9 +62,9 @@ const CommentWrite: React.FC<Prop> = ({ userId, boardId, name }) => {
       </CommentWriteHeader>
       <CommentWriteBody onSubmit={handleSubmit(onSubmit)}>
         <TextareaAutosize
-          minRows={3}
+          minRows={4}
           maxRows={6}
-          maxLength={400}
+          maxLength={500}
           placeholder="댓글을 입력해주세요."
           {...register("contents")}
         />
