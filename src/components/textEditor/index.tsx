@@ -36,7 +36,7 @@ const TextEditor: React.FC<Props> = ({editor, defaultValue, onChangeEditValue}) 
           formData.append("boardImage", blob);
           mutate(formData, {
             onSuccess: (data) => {
-              callback(`${process.env.NEXT_PUBLIC_API_HOST}/${data}`)
+              callback(data)
             }
           })
         }
