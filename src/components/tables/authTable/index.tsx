@@ -45,6 +45,7 @@ const AuthTable = () => {
 };
 
 const Container = styled.section`
+  width: 100%;
   box-shadow: ${SHADOWS.basic};
   padding: 24px;
   ${MEDIA.tablet} {

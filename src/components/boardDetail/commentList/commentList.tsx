@@ -84,7 +84,10 @@ const CommentList: React.FC<Prop> = ({ comment, userId }) => {
 
   return (
     <CommentWrap>
-      <Thumbnail src={comment.owner.image} />
+      <Thumbnail
+        // src={comment.owner.image}
+        src='/images/icons/profile.svg'
+      />
       <CommentInfoWrap>
         <CommentInfo>
           <CommentInfoLeft>

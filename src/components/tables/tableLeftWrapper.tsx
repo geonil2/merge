@@ -17,14 +17,13 @@ const TableLeftWrapper: React.FC<Props> = ({
 };
 
 const TableContainer = styled.div`
-  width: 766px;
+  //width: 766px; //
   display: grid;
   grid-template-columns: repeat(1, 1fr);
   grid-template-rows: auto;
   align-self: flex-start;
   gap: 14px 0px;
   ${MEDIA.tablet} {
-    width: 100%;
     order: 1;
   }
 `

@@ -5,8 +5,20 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="2eabddc1-1714-45aa-9a47-e3e67c011340" name="Changes" comment="Add middleware get secure token">
+      <change afterPath="$PROJECT_DIR$/src/components/tables/verticalListTable/errorVerticalList/index.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/boardDetail/boardContents/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/boardDetail/boardContents/index.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/asideBar/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/asideBar/index.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/boardDetail/commentList/commentList.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/boardDetail/commentList/commentList.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/tables/authTable/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/tables/authTable/index.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/tables/bannerTable/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/tables/bannerTable/index.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/tables/bigImageTable/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/tables/bigImageTable/index.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/tables/tableLeftWrapper.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/tables/tableLeftWrapper.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/tables/twoRowTable/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/tables/twoRowTable/index.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/tables/verticalListTable/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/tables/verticalListTable/index.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/tables/verticalListTable/loadingVerticalList/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/tables/verticalListTable/loadingVerticalList/index.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/tables/verticalListTable/verticalList.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/tables/verticalListTable/verticalList.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/tables/verticalSlideTable/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/tables/verticalSlideTable/index.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/middleware.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/middleware.ts" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -14,6 +26,11 @@
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
   <component name="Git.Settings">
+    <option name="RECENT_BRANCH_BY_REPOSITORY">
+      <map>
+        <entry key="$PROJECT_DIR$" value="main" />
+      </map>
+    </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="MarkdownSettingsMigration">
@@ -75,7 +92,7 @@
       <workItem from="1667958675689" duration="453000" />
       <workItem from="1667959260318" duration="21643000" />
       <workItem from="1668047539392" duration="122705000" />
-      <workItem from="1669191316085" duration="5876000" />
+      <workItem from="1669191316085" duration="14539000" />
     </task>
     <task id="LOCAL-00001" summary="Add middleware get secure token">
       <created>1669194296016</created>

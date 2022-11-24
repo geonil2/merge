@@ -29,8 +29,15 @@ const BigImageTable: React.FC<Props> = ({ list }) => {
 };
 
 const Container = styled.section`
+  width: 766px;
   background: ${COLORS.WHITE};
   box-shadow: ${SHADOWS.basic};
+  ${MEDIA.tablet} {
+    width: calc(100vw - 40px);
+  }
+  ${MEDIA.mobile} {
+    width: calc(100vw - 20px);
+  }
 `
 
 const BigImageTableBody = styled.div`

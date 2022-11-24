@@ -1,12 +1,10 @@
 import React, {FC} from 'react';
-import Image from "next/image";
+import Link from "next/link";
 import styled from "@emotion/styled";
 import ReactTimeago from "react-timeago";
-import Link from "next/link";
-import {Board} from "../../../services/board/types";
-import {COLORS} from "../../../config/styles";
 import {Interweave} from "interweave";
 import {polyfill} from "interweave-ssr";
+import {Board} from "../../../services/board/types";
 import ListThumbnail from "../../listThumbnail";
 
 /*
@@ -28,7 +26,7 @@ const VerticalList: React.FC<Prop> = ({ list }) => {
         <List>
           {/*{image && <Image src={image} alt="Contents thumbnail image"/>}*/}
           <ListThumbnail description={description} width={50} />
-          <div>
+          <div style={{ width : "100%" }}>
             <TextTopArea>
               <p><Interweave content={title} /></p>
             </TextTopArea>
@@ -46,9 +44,9 @@ const VerticalList: React.FC<Prop> = ({ list }) => {
 
 const List = styled.div`
   height: 100%;
-  display: flex;
-  justify-content: flex-start;
-  align-items: center;
+  display: flex; //
+  justify-content: flex-start; //
+  align-items: center; //
   img {
     width: 50px;
     height: 50px;
@@ -56,12 +54,20 @@ const List = styled.div`
 `
 
 const TextTopArea = styled.div`
-  display: flex;
+  width: 100%; //
+  display: flex; //
+  flex-direction: column; //
   font-weight: 700;
   font-size: 14px;
   line-height: 120%;
   padding: 3px 0px;
   margin-bottom: 8px;
+  & span {
+    display: block;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
 `
 
 const TextBotArea = styled.div`

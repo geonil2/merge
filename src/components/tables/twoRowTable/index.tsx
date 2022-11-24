@@ -27,8 +27,15 @@ const TwoRowTable: React.FC<Prop> = ({ list }) => {
 };
 
 const Container = styled.section`
+  width: 766px;
   background: ${COLORS.WHITE};
   box-shadow: ${SHADOWS.basic};
+  ${MEDIA.tablet} {
+    width: calc(100vw - 40px);
+  }
+  ${MEDIA.mobile} {
+    width: calc(100vw - 20px);
+  }
 `
 
 const TwoRowTableBody = styled.div`

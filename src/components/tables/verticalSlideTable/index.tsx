@@ -41,13 +41,18 @@ const VerticalSlideTable: React.FC<Prop> = ({ list }) => {
 };
 
 const SliderContainer = styled.section`
+  width: 766px;
   display: flex;
   justify-content: space-between;
   align-items: center;
   background-color: ${COLORS.WHITE};
   padding: 0px 24px;
   box-shadow: ${SHADOWS.basic};
+  ${MEDIA.tablet} {
+    width: calc(100vw - 40px);
+  }
   ${MEDIA.mobile} {
+    width: calc(100vw - 20px);
     padding: 0px 10px;
   }
 

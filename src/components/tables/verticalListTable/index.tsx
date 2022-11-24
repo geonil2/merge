@@ -12,7 +12,7 @@ interface Props {
   showPagination: boolean,
   totalCount?: number,
   tab?: string,
-  className?: string
+  className?: string,
 }
 
 const VerticalListTable: FC<Props> = ({
@@ -33,16 +33,24 @@ const VerticalListTable: FC<Props> = ({
 };
 
 const Container = styled.section`
+  width: 766px;
   background: ${COLORS.WHITE};
   box-shadow: ${SHADOWS.basic};
   padding-bottom: 22px;
+  &.newsList {
+    width: 420px;
+  }
   ${MEDIA.tablet} {
+    width: calc(100vw - 40px);
     &.newsList {
+      width: calc(100vw - 40px);
       grid-column-start: 1;
       grid-column-end: 3;
     }
   ${MEDIA.mobile} {
+    width: calc(100vw - 20px);
     &.newsList {
+      width: calc(100vw - 20px);
       grid-column-start: 1;
       grid-column-end: 2;
     }

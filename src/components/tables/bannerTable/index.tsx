@@ -34,16 +34,19 @@ const BannerTable = () => {
 };
 
 const Container = styled.section`
-  width: inherit;
+  width: 420px;
   display: flex;
   justify-content: flex-start;
   align-items: center;
+  ${MEDIA.tablet} {
+    display: none;
+  }
    .slick-slider {
      width: 100%;
      max-height: 223px;
      overflow: hidden;
      img {
-       width: 420px;
+       width: 420px !important;
        height: 223px;
      }
      ${MEDIA.tablet} {

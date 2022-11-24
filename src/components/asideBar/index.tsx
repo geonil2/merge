@@ -6,6 +6,7 @@ import AsyncBoundary from "../asyncBoundary";
 import AuthTable from "../tables/authTable";
 import BannerTable from "../tables/bannerTable";
 import LoadingVerticalList from "../tables/verticalListTable/loadingVerticalList";
+import ErrorVerticalList from "../tables/verticalListTable/errorVerticalList";
 
 const NewsListTable = dynamic(
   () => import('../tables/newsListTable'),
@@ -18,7 +19,7 @@ const AsideBar = () => {
       <AuthTable />
       <BannerTable />
       <AsyncBoundary
-        errorFallback={<ErrorElement></ErrorElement>}
+        errorFallback={<ErrorVerticalList />}
         suspenseFallback={<LoadingVerticalList />}
       >
         <NewsListTable />
@@ -30,7 +31,6 @@ const AsideBar = () => {
 const Aside = styled.aside`
   position: sticky;
   bottom: 0;
-  width: 420px;
   height: fit-content;
   display: grid;
   grid-template-columns: repeat(1, 1fr);
@@ -48,13 +48,6 @@ const Aside = styled.aside`
       order: 2;
     grid-template-columns: repeat(1, 1fr);
   }
-`
-
-const ErrorElement = styled.div`
-  width: 100%;
-  height: 720px;
-  background: ${COLORS.WHITE};
-  box-shadow: ${SHADOWS.basic};
 `
 
 export default AsideBar;
