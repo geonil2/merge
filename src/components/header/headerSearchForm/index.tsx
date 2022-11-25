@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useEffect} from 'react';
 import {useRouter} from "next/router";
 import {SubmitHandler, useForm} from "react-hook-form";
 import SearchInput from "../../searchInput";
@@ -18,6 +18,10 @@ const HeaderSearchForm = () => {
       reset()
     }
   }
+
+  useEffect(() => {
+    reset();
+  }, [router])
 
   return (
     <form onSubmit={handleSubmit(onSubmit)}>

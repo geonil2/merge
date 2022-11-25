@@ -11,7 +11,7 @@ const SearchInput: React.FC<Prop> = ({ register }) => {
 
   return (
     <InputField>
-      <StyledInput {...register('keyword')} />
+      <StyledInput {...register('keyword')} placeholder="검색" />
       <SubmitButton>
         <Icon src="/images/icons/search_icon.svg" alt="Search" />
       </SubmitButton>

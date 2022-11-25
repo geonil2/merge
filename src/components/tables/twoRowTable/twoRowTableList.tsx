@@ -66,6 +66,7 @@ const TextWrap = styled.div`
   align-items: center;
   font-weight: 700;
   font-size: 14px;
+  line-height: 120%;
   margin: 10px 10px 10px 0px;
   > p {
     max-width: 185px;
