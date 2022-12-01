@@ -6,7 +6,9 @@
   <component name="ChangeListManager">
     <list default="true" id="2eabddc1-1714-45aa-9a47-e3e67c011340" name="Changes" comment="Add middleware get secure token">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/boardDetail/boardContents/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/boardDetail/boardContents/index.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/boardForm/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/boardForm/index.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/tables/authTable/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/tables/authTable/index.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/services/auth/api.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/services/auth/api.ts" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -16,7 +18,7 @@
   <component name="Git.Settings">
     <option name="RECENT_BRANCH_BY_REPOSITORY">
       <map>
-        <entry key="$PROJECT_DIR$" value="development" />
+        <entry key="$PROJECT_DIR$" value="main" />
       </map>
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -117,6 +119,12 @@
           <url>file://$PROJECT_DIR$/src/hooks/useBoardListByCateogry.ts</url>
           <line>8</line>
           <option name="timeStamp" value="6" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="javascript">
+          <url>file://$PROJECT_DIR$/src/pages/api/auth/[...nextauth].ts</url>
+          <line>3</line>
+          <properties lambdaOrdinal="-1" />
+          <option name="timeStamp" value="8" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>

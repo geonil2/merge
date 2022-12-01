@@ -53,7 +53,7 @@ const BoardForm: React.FC<Prop> = ({ type, board }) => {
     setValue,
   } = useForm();
   const editor = useRef<Editor>(null);
-  const postBoard = useMutation(postBoardApi)
+  const createBoard = useMutation(postBoardApi)
   const updateBoard = useMutation(updateBoardByIdApi);
   const router = useRouter();
   const setToastPopupContents = useSetRecoilState(toastPopupContentsAtom);
@@ -93,7 +93,7 @@ const BoardForm: React.FC<Prop> = ({ type, board }) => {
     }
 
     if (type === 'create') {
-      postBoard.mutate({ ...data } as PostBoardRequestBody, mutateOption)
+      createBoard.mutate({ ...data } as PostBoardRequestBody, mutateOption)
     } else {
       updateBoard.mutate({
         boardId: board?.id,
