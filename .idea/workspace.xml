@@ -5,10 +5,15 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="2eabddc1-1714-45aa-9a47-e3e67c011340" name="Changes" comment="Add middleware get secure token">
+      <change afterPath="$PROJECT_DIR$/sentry.client.config.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/sentry.properties" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/sentry.server.config.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/boardForm/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/boardForm/index.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/tables/authTable/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/tables/authTable/index.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/services/auth/api.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/services/auth/api.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/next.config.js" beforeDir="false" afterPath="$PROJECT_DIR$/next.config.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/yarn.lock" beforeDir="false" afterPath="$PROJECT_DIR$/yarn.lock" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -96,6 +101,10 @@
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
+  </component>
+  <component name="UnknownFeatures">
+    <option featureType="com.intellij.fileTypeFactory" implementationName="next.config.js" />
+    <option featureType="com.intellij.fileTypeFactory" implementationName="*.properties" />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
     <option name="TAB_STATES">

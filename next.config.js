@@ -1,7 +1,14 @@
 /** @type {import('next').NextConfig} */
-const nextConfig = {
+const {withSentryConfig} = require("@sentry/nextjs");
+
+const moduleExports = {
   reactStrictMode: false,
   swcMinify: true,
 }
 
-module.exports = nextConfig
+const SentryWebpackPluginOptions = {
+  silent: true,
+}
+
+module.exports = withSentryConfig(moduleExports, SentryWebpackPluginOptions);
+
