@@ -29,11 +29,11 @@ const TwoRowTable: React.FC<Prop> = ({ list }) => {
 const Container = styled.section`
   width: 766px;
   background: ${COLORS.WHITE};
-  box-shadow: ${SHADOWS.basic};
-  ${MEDIA.tablet} {
+  box-shadow: ${SHADOWS.BASIC};
+  ${MEDIA.TABLET} {
     width: calc(100vw - 40px);
   }
-  ${MEDIA.mobile} {
+  ${MEDIA.MOBILE} {
     width: calc(100vw - 20px);
   }
 `
@@ -42,7 +42,7 @@ const TwoRowTableBody = styled.div`
   display: grid;
   grid-template-rows: repeat(5, 1fr);
   grid-template-columns: repeat(2, 1fr);
-  ${MEDIA.mobile} {
+  ${MEDIA.MOBILE} {
     grid-template-rows: repeat(10, 1fr);
     grid-template-columns: repeat(1, 1fr);
   }

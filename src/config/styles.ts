@@ -13,19 +13,19 @@ export const COLORS = {
 }
 
 export const MEDIA = {
-  desktop: '@media only screen and (min-width: 769px)',
-  tablet: '@media only screen and (max-width: 1280px)',
-  mobile: '@media only screen and (max-width: 768px)',
+  DESKTOP: '@media only screen and (min-width: 769px)',
+  TABLET: '@media only screen and (max-width: 1280px)',
+  MOBILE: '@media only screen and (max-width: 768px)',
 }
 
 export const SHADOWS = {
-  basic: 'rgba(60, 64, 67, 0.3) 0px 1px 2px 0px, rgba(60, 64, 67, 0.15) 0px 2px 6px 2px',
+  BASIC: 'rgba(60, 64, 67, 0.3) 0px 1px 2px 0px, rgba(60, 64, 67, 0.15) 0px 2px 6px 2px',
 }
 
 export const ANIMATIONS = {
-  fadeIn: keyframes`0% { opacity: 0; } 100% { opacity: 1; }`,
-  fadeOut: keyframes`0% { opacity: 1; } 100% { opacity: 0; }`,
-  fadeOutIn: keyframes`0% { opacity: 1;} 50% { opacity: 0;} 100% { opacity: 1 }`,
-  bounceDown: keyframes`0% { transform: translateY(0) } 50% { transform: translateY(8px) } 100% { transform: translateY(0) }`,
-  bounceUp: keyframes`0% { transform: translateY(0) } 50% { transform: translateY(-8px) } 100% { transform: translateY(0) }`
+  FADEIN: keyframes`0% { opacity: 0; } 100% { opacity: 1; }`,
+  FADEOUT: keyframes`0% { opacity: 1; } 100% { opacity: 0; }`,
+  FADEOUTIN: keyframes`0% { opacity: 1;} 50% { opacity: 0;} 100% { opacity: 1 }`,
+  BOUNCEDOWN: keyframes`0% { transform: translateY(0) } 50% { transform: translateY(8px) } 100% { transform: translateY(0) }`,
+  BOUNCEUP: keyframes`0% { transform: translateY(0) } 50% { transform: translateY(-8px) } 100% { transform: translateY(0) }`
 }

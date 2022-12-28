@@ -114,14 +114,14 @@ const BoardContents: React.FC<Props> = ({ contents, userId }) => {
 
 const Container = styled.div`
   padding: 0px 24px;
-  box-shadow: ${SHADOWS.basic};
+  box-shadow: ${SHADOWS.BASIC};
   > p {
     line-height: 40px;
     font-size: 14px;
     font-weight: 700;
     border-bottom: 1px solid ${COLORS.GRAY};
   }
-  ${MEDIA.mobile} {
+  ${MEDIA.MOBILE} {
     padding: 0px 12px;
   }
 `
@@ -168,7 +168,7 @@ const LikesCount = styled.div`
 //Body
 const ContentsBody = styled.div`
   padding: 24px;
-  ${MEDIA.mobile} {
+  ${MEDIA.MOBILE} {
     padding: 12px;
   }
 `

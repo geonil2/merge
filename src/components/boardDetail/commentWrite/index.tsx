@@ -77,7 +77,7 @@ const CommentWrite: React.FC<Prop> = ({ userId, boardId, name }) => {
 };
 
 const Container = styled.div`
-  box-shadow: ${SHADOWS.basic};
+  box-shadow: ${SHADOWS.BASIC};
   padding: 0px 24px;
   > p {
     font-weight: 700;
@@ -85,7 +85,7 @@ const Container = styled.div`
     line-height: 40px;
     border-bottom: 1px solid ${COLORS.GRAY};
   }
-  ${MEDIA.mobile} {
+  ${MEDIA.MOBILE} {
     padding: 0px 12px;
   }
 `
@@ -114,14 +114,14 @@ const ButtonWrap = styled.div`
   justify-content: flex-end;
   padding-bottom: 24px;
   margin-top: 20px;
-  ${MEDIA.mobile} {
+  ${MEDIA.MOBILE} {
     padding-bottom: 12px;
   }
 `
 
 const Button = styled(CommonButton)`
   width: 110px;
-  ${MEDIA.mobile} {
+  ${MEDIA.MOBILE} {
     width: 80px;
   }
 `

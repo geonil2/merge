@@ -31,7 +31,7 @@ const TableHeader = styled.div`
     color: ${COLORS.PRIMARY};
     font-weight: 800;
   }
-  ${MEDIA.mobile} {
+  ${MEDIA.MOBILE} {
     padding: 22px 10px;
   }
 `

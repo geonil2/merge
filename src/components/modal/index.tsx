@@ -58,11 +58,11 @@ const ModalWrap = styled.div<ModalWrapProp>`
   overflow-y: scroll;
   outline: 0;
   transform: translateY(0);
-  animation: ${({visibleModal}) => visibleModal === 'basic' ? ANIMATIONS.fadeIn : ANIMATIONS.bounceDown};
+  animation: ${({visibleModal}) => visibleModal === 'basic' ? ANIMATIONS.FADEIN : ANIMATIONS.BOUNCEDOWN};
   animation-duration: .3s;
   animation-fill-mode: forwards;
   &.disappear {
-    animation: ${({visibleModal}) => visibleModal === 'basic' ? ANIMATIONS.fadeOut : ANIMATIONS.bounceUp};
+    animation: ${({visibleModal}) => visibleModal === 'basic' ? ANIMATIONS.FADEOUT : ANIMATIONS.BOUNCEUP};
     animation-duration: .3s;
     animation-fill-mode: forwards;
   }

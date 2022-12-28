@@ -3,7 +3,7 @@ import DropdownMenu from "../dropdownMenu";
 import useOutsideClick from "../../hooks/useOutsideClick";
 import styled from "@emotion/styled";
 import {COLORS} from "../../config/styles";
-import {useSession} from "next-auth/react";
+import useUser from "../../hooks/useUser";
 
 interface Props {
   owner?: string,
@@ -16,14 +16,14 @@ const UpdateDeleteButtonWrapper: React.FC<Props> = ({
   onClickUpdateButton,
   onClickDeleteButton
 }) => {
-  const { data: session, status } = useSession();
+  const user = useUser();
   const dropdownMenuRef = useRef<HTMLUListElement>(null);
   const [isActive, setIsActive] = useOutsideClick(dropdownMenuRef, false);
   const dropdownMENU = [{title: '수정 하기', onClick: onClickUpdateButton}, {title: '삭제 하기', onClick: onClickDeleteButton}]
 
   return (
     <>
-      {session?.user._id === owner &&
+      {user._id === owner &&
         <ActiveButton
           isActive={isActive}
         >

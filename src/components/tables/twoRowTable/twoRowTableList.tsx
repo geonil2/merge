@@ -50,7 +50,7 @@ const Container = styled.li`
   display: flex;
   align-items: center;
   padding: 10px 24px;
-  ${MEDIA.mobile} {
+  ${MEDIA.MOBILE} {
     padding: 10px 10px;
   }
 `

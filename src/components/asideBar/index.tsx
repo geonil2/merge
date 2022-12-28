@@ -36,15 +36,15 @@ const Aside = styled.aside`
   grid-template-columns: repeat(1, 1fr);
   grid-auto-rows: max-content;
   gap: 14px 0px;
-  ${MEDIA.tablet} {
+  ${MEDIA.TABLET} {
     position: inherit;
     width: 100%;
     order: 2;
     grid-template-columns: auto 320px;
     gap: 14px 14px;
   }
-  ${MEDIA.mobile} {
-    ${MEDIA.mobile} {
+  ${MEDIA.MOBILE} {
+    ${MEDIA.MOBILE} {
       order: 2;
     grid-template-columns: repeat(1, 1fr);
   }

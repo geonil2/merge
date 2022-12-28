@@ -31,11 +31,11 @@ const BigImageTable: React.FC<Props> = ({ list }) => {
 const Container = styled.section`
   width: 766px;
   background: ${COLORS.WHITE};
-  box-shadow: ${SHADOWS.basic};
-  ${MEDIA.tablet} {
+  box-shadow: ${SHADOWS.BASIC};
+  ${MEDIA.TABLET} {
     width: calc(100vw - 40px);
   }
-  ${MEDIA.mobile} {
+  ${MEDIA.MOBILE} {
     width: calc(100vw - 20px);
   }
 `
@@ -45,7 +45,7 @@ const BigImageTableBody = styled.div`
   justify-content: space-between;
   margin: 0px 24px;
   padding-bottom: 24px;
-  ${MEDIA.mobile} {
+  ${MEDIA.MOBILE} {
     flex-wrap: wrap;
     margin: 0px 10px;
   }

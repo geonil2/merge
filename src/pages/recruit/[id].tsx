@@ -30,7 +30,7 @@ const Container = styled.div`
   grid-template-rows: auto;
   align-self: flex-start;
   gap: 14px 0px;
-  ${MEDIA.tablet} {
+  ${MEDIA.TABLET} {
     width: 100%;
   }
 `

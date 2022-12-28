@@ -32,7 +32,7 @@ const BasicPopup: React.FC<Props> = ({ visible, onClose }) => {
 const Popup = styled.div`
   width: 416px;
   background-color: ${COLORS.WHITE};
-  box-shadow: ${SHADOWS.basic};
+  box-shadow: ${SHADOWS.BASIC};
   border-radius: 5px;
   padding: 30px;
 `

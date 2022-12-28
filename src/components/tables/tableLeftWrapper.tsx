@@ -23,7 +23,7 @@ const TableContainer = styled.div`
   grid-template-rows: auto;
   align-self: flex-start;
   gap: 14px 0px;
-  ${MEDIA.tablet} {
+  ${MEDIA.TABLET} {
     order: 1;
   }
 `

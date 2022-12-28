@@ -30,7 +30,7 @@ const Container = styled.ul`
   line-height: 22px;
   font-weight: 700;
   background-color: ${COLORS.WHITE};
-  box-shadow: ${SHADOWS.basic};
+  box-shadow: ${SHADOWS.BASIC};
   border-radius: 5px;
   padding: 5px 12px;
   margin-top: 5px;
@@ -46,7 +46,7 @@ const Container = styled.ul`
       border: none; 
     }
   }
-  ${MEDIA.tablet} {
+  ${MEDIA.TABLET} {
     left: auto;
     right: 12px;
   }

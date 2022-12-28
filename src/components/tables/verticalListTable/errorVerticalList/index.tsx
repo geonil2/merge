@@ -26,7 +26,7 @@ const ErrorElement = styled.div`
   justify-content: center;
   align-items: center;
   background: ${COLORS.WHITE};
-  box-shadow: ${SHADOWS.basic};
+  box-shadow: ${SHADOWS.BASIC};
   
   p {
     text-decoration: underline;

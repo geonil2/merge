@@ -25,7 +25,7 @@ const CommentListContainer: React.FC<Prop> = ({ comments, userId }) => {
 };
 
 const Container = styled.div`
-  box-shadow: ${SHADOWS.basic};
+  box-shadow: ${SHADOWS.BASIC};
   padding: 0px 24px;
   > p {
     font-weight: 700;
@@ -33,7 +33,7 @@ const Container = styled.div`
     line-height: 40px;
     border-bottom: 1px solid ${COLORS.GRAY};
   }
-  ${MEDIA.mobile} {
+  ${MEDIA.MOBILE} {
     padding: 0px 12px;
   }
 `

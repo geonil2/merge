@@ -23,7 +23,7 @@ const Container = styled.div`
   font-size: 20px;
   padding: 30px 27px;
   background-color: white;
-  box-shadow: ${SHADOWS.basic};
+  box-shadow: ${SHADOWS.BASIC};
 `
 
 const InnerText = styled.div`
@@ -32,7 +32,7 @@ const InnerText = styled.div`
   font-weight: 700;
   line-height: 120%;
   
-  ${MEDIA.mobile} {
+  ${MEDIA.MOBILE} {
     justify-content: space-between;
     align-items: flex-start;
     font-size: 14px;
@@ -44,7 +44,7 @@ const SearchKeyword = styled.div`
   
   > span {
     color: ${COLORS.BLACK};
-    ${MEDIA.mobile} {
+    ${MEDIA.MOBILE} {
       display: block;
     }
   }

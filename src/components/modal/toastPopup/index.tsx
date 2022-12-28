@@ -37,7 +37,7 @@ const Popup = styled.div`
   justify-content: flex-start;
   align-items: center;
   background-color: ${COLORS.WHITE};
-  box-shadow: ${SHADOWS.basic};
+  box-shadow: ${SHADOWS.BASIC};
   padding: 10px 30px;
   
   > svg {

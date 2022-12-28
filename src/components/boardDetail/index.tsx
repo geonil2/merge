@@ -1,5 +1,4 @@
 import React from 'react';
-import {useSession} from "next-auth/react";
 import {useQuery} from "@tanstack/react-query";
 import {BoardByIdQueryKey} from "../../services/board/types";
 import {getBoardByIdApi} from "../../services/board/api";
@@ -8,13 +7,14 @@ import {CommentByBoardIdQueryKey} from "../../services/comment/types";
 import BoardContents from "./boardContents";
 import CommentWrite from "./commentWrite";
 import CommentListContainer from "./commentList/commentListContainer";
+import useUser from "../../hooks/useUser";
 
 interface Prop {
   boardId: string
 }
 
 const BoardDetail: React.FC<Prop> = ({ boardId }) => {
-  const { data: session } = useSession();
+  const user = useUser();
   const contents = useQuery([BoardByIdQueryKey, { boardId }], () => getBoardByIdApi(boardId));
   const comment = useQuery([CommentByBoardIdQueryKey, { boardId }], () => getCommentByBoardIdApi(boardId))
 
@@ -22,15 +22,15 @@ const BoardDetail: React.FC<Prop> = ({ boardId }) => {
     <>
       {contents.data && <BoardContents
         contents={contents.data}
-        userId={session?.user._id}
+        userId={user._id}
       />}
-      {session && <CommentWrite
-        userId={session?.user._id}
+      {user && <CommentWrite
+        userId={user._id}
         boardId={boardId}
-        name={session?.user.name}
+        name={user.name}
       />}
       {comment.data.length !== 0 && <CommentListContainer
-        userId={session?.user._id}
+        userId={user._id}
         comments={comment.data}
       />}
     </>

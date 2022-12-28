@@ -47,11 +47,11 @@ const SliderContainer = styled.section`
   align-items: center;
   background-color: ${COLORS.WHITE};
   padding: 0px 24px;
-  box-shadow: ${SHADOWS.basic};
-  ${MEDIA.tablet} {
+  box-shadow: ${SHADOWS.BASIC};
+  ${MEDIA.TABLET} {
     width: calc(100vw - 40px);
   }
-  ${MEDIA.mobile} {
+  ${MEDIA.MOBILE} {
     width: calc(100vw - 20px);
     padding: 0px 10px;
   }

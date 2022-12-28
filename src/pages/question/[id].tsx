@@ -8,6 +8,7 @@ import {getBoardByIdApi} from "../../services/board/api";
 import {CommentByBoardIdQueryKey} from "../../services/comment/types";
 import {getCommentByBoardIdApi} from "../../services/comment/api";
 import BoardDetail from "../../components/boardDetail";
+import MainLayout from "../../components/mainLayout";
 
 interface Prop {
   id: string
@@ -15,9 +16,11 @@ interface Prop {
 
 const QuestionDetailPage: NextPage<Prop> = ({ id }) => {
   return (
-    <Container>
-      <BoardDetail boardId={id} />
-    </Container>
+    <MainLayout hasAsideBar={true}>
+      <Container>
+        <BoardDetail boardId={id} />
+      </Container>
+    </MainLayout>
   );
 };
 
@@ -29,7 +32,7 @@ const Container = styled.div`
   grid-template-rows: auto;
   align-self: flex-start;
   gap: 14px 0px;
-  ${MEDIA.tablet} {
+  ${MEDIA.TABLET} {
     width: 100%;
   }
 `

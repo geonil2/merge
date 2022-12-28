@@ -9,11 +9,11 @@ interface Props {
 const MediaOnlyDiv = styled.div<Props>`
   justify-content: center;
   background-color: ${COLORS.WHITE};
-  box-shadow: ${SHADOWS.basic};
-${MEDIA.desktop} {
+  box-shadow: ${SHADOWS.BASIC};
+${MEDIA.DESKTOP} {
   display: ${({media}) => media === 'desktop' ? 'flex' : 'none'};
 }
-${MEDIA.mobile} {
+${MEDIA.MOBILE} {
   display: ${({ media }) => media === 'mobile' ? 'flex' : 'none'};
 }
 `

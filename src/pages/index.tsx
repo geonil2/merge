@@ -11,6 +11,7 @@ import TwoRowTable from "../components/tables/twoRowTable";
 import VerticalListTable from "../components/tables/verticalListTable";
 import BigImageTable from "../components/tables/bigImageTable";
 import TableLeftWrapper from "../components/tables/tableLeftWrapper";
+import MainLayout from "../components/mainLayout";
 
 const Home: NextPage = () => {
   const conference = useQuery([ConferenceListQueryKey], () => getConferenceListApi(), {
@@ -24,45 +25,47 @@ const Home: NextPage = () => {
   const noticeBoard = useBoardByCategory({ category: 'notice', limit: 3 });
 
   return (
-    <TableLeftWrapper>
-      {!!noticeBoard.data?.list && noticeBoard.data.list.length !== 0 &&
-        <VerticalSlideTable list={noticeBoard.data.list} />
-      }
-      {!!bestBoard.data && <TwoRowTable list={bestBoard.data} />}
-      {!!conference.data && <BigImageTable list={conference.data} />}
-      {!!questionBoard.data?.list && questionBoard.data.list.length !== 0 &&
-        <VerticalListTable
-          title='Q&A'
-          tab='/question'
-          list={questionBoard.data.list}
-          showPagination={false}
-        />
-      }
-      {!!infoBoard.data?.list && infoBoard.data.list.length !== 0 &&
-        <VerticalListTable
-          title='개발정보'
-          tab='/info'
-          list={infoBoard.data.list}
-          showPagination={false}
-        />
-      }
-      {!!communityBoard.data?.list && communityBoard.data.list.length !== 0 &&
-        <VerticalListTable
-          title='커뮤니티'
-          tab='/community'
-          list={communityBoard.data.list}
-          showPagination={false}
-        />
-      }
-      {!!recruitBoard.data?.list && recruitBoard.data.list.length !== 0 &&
-        <VerticalListTable
-          title='구인구직'
-          tab='/recruit'
-          list={recruitBoard.data.list}
-          showPagination={false}
-        />
-      }
-    </TableLeftWrapper>
+    <MainLayout hasAsideBar={true}>
+      <TableLeftWrapper>
+        {!!noticeBoard.data?.list && noticeBoard.data.list.length !== 0 &&
+          <VerticalSlideTable list={noticeBoard.data.list} />
+        }
+        {!!bestBoard.data && <TwoRowTable list={bestBoard.data} />}
+        {!!conference.data && <BigImageTable list={conference.data} />}
+        {!!questionBoard.data?.list && questionBoard.data.list.length !== 0 &&
+          <VerticalListTable
+            title='Q&A'
+            tab='/question'
+            list={questionBoard.data.list}
+            showPagination={false}
+          />
+        }
+        {!!infoBoard.data?.list && infoBoard.data.list.length !== 0 &&
+          <VerticalListTable
+            title='개발정보'
+            tab='/info'
+            list={infoBoard.data.list}
+            showPagination={false}
+          />
+        }
+        {!!communityBoard.data?.list && communityBoard.data.list.length !== 0 &&
+          <VerticalListTable
+            title='커뮤니티'
+            tab='/community'
+            list={communityBoard.data.list}
+            showPagination={false}
+          />
+        }
+        {!!recruitBoard.data?.list && recruitBoard.data.list.length !== 0 &&
+          <VerticalListTable
+            title='구인구직'
+            tab='/recruit'
+            list={recruitBoard.data.list}
+            showPagination={false}
+          />
+        }
+      </TableLeftWrapper>
+    </MainLayout>
   )
 }
 

@@ -1,16 +1,20 @@
-import React from 'react';
+import React, {useEffect} from 'react';
 import Link from "next/link";
 import {useRouter} from "next/router";
-import {signIn, useSession} from "next-auth/react";
 import styled from "@emotion/styled";
 import {COLORS, MEDIA, SHADOWS} from "../../../config/styles";
 import {menuList} from "../../../resources/types";
 import HeaderSearchForm from "../headerSearchForm";
 import CommonButton from "../../commonButton";
+import useUser from "../../../hooks/useUser";
 
 const DesktopHeader = () => {
-  const { data: session } = useSession();
+  const { data: user } = useUser();
   const router = useRouter();
+
+  useEffect(() => {
+    console.log(user, 'header user')
+  }, [user])
 
   return (
     <Header>
@@ -30,21 +34,20 @@ const DesktopHeader = () => {
           </Nav>
         </HeaderContentsContainer>
         <HeaderContentsContainer>
-          {session ?
+          {user ?
             <>
               <div
                 // onClick={() => signIn('google')}
               >
                 <ProfileThum
-                  // src={session?.user.image}
                   src='/images/icons/profile.svg'
-                  alt="Logo"
+                  alt="User profile"
                 />
               </div>
               <WriteButton title="글쓰기" onClick={() => router.push('/writing')} />
             </>
             :
-            <Button title="로그인" onClick={() => signIn('google')} />
+            <Button title="로그인" onClick={() => router.push('/signin')} />
           }
           <SearchInputContainer>
             <HeaderSearchForm />
@@ -60,7 +63,7 @@ const Header = styled.header`
   z-index: 30;
   width: 100%;
   background: ${COLORS.WHITE};
-  box-shadow: ${SHADOWS.basic};
+  box-shadow: ${SHADOWS.BASIC};
   margin-bottom: 80px;
 `
 
@@ -72,7 +75,7 @@ const HeaderWrapper = styled.div`
   align-items: center;
   padding: 0px 40px;
   margin: 0 auto;
-  ${MEDIA.tablet} {
+  ${MEDIA.TABLET} {
     width: 100%;
     padding: 0px 20px;
   }
@@ -86,14 +89,14 @@ const HeaderContentsContainer = styled.div`
 const Logo = styled.img`
   width: 120px;
   margin-right: 40px;
-  ${MEDIA.tablet} {
+  ${MEDIA.TABLET} {
     margin-right: 20px;
   }
 `
 
 const Nav = styled.nav`
   width: 500px;
-  ${MEDIA.tablet} {
+  ${MEDIA.TABLET} {
     width: 40vw;
     min-width: 310px;
   }
@@ -125,14 +128,14 @@ const Button = styled(CommonButton)`
 
 const WriteButton = styled(CommonButton)`
   display: none;
-  ${MEDIA.tablet} {
+  ${MEDIA.TABLET} {
     display: block;
   }
 `
 
 const SearchInputContainer = styled.div`
   width: 207px;
-  ${MEDIA.tablet} {
+  ${MEDIA.TABLET} {
     width: 120px;
   }
 `

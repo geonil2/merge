@@ -1,18 +1,16 @@
 import React, {HTMLAttributes} from 'react';
-import {useRouter} from "next/router";
 import styled from "@emotion/styled";
-import AsideBar from "../asideBar";
 import {MEDIA} from "../../config/styles";
+import AsideBar from "../asideBar";
 
 interface Props extends HTMLAttributes<HTMLDivElement> {
+  hasAsideBar: boolean
 }
 
-const TableLayout: React.FC<Props> = ({ children }) => {
-  const router = useRouter();
-
+const MainLayout: React.FC<Props> = ({ hasAsideBar, children }) => {
   return (
     <>
-      {router.pathname.includes('/writing' || '/signin') ? children :
+      {!hasAsideBar ? children :
         <Layout>
           {children}
           <AsideBar />
@@ -21,6 +19,7 @@ const TableLayout: React.FC<Props> = ({ children }) => {
     </>
   );
 };
+
 
 const Layout = styled.div`
   width: 1280px;
@@ -41,5 +40,4 @@ const Layout = styled.div`
   }
 `
 
-
-export default TableLayout;
+export default MainLayout;

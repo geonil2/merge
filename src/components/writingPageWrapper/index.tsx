@@ -16,17 +16,17 @@ const Layout = styled.div`
   width: 1280px;
   padding: 100px 40px 20px 40px;
   margin: 0px auto;
-  ${MEDIA.tablet} {
+  ${MEDIA.TABLET} {
     width: 100%;
     padding: 100px 20px 10px 20px;
   }
-  ${MEDIA.mobile} {
+  ${MEDIA.MOBILE} {
     padding: 100px 10px 10px 10px;
   }
 `
 
 const Container = styled.section`
-  box-shadow: ${SHADOWS.basic};
+  box-shadow: ${SHADOWS.BASIC};
   padding: 0px 24px;
   > p {
     font-weight: 700;

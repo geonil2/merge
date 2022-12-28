@@ -35,19 +35,19 @@ const VerticalListTable: FC<Props> = ({
 const Container = styled.section`
   width: 766px;
   background: ${COLORS.WHITE};
-  box-shadow: ${SHADOWS.basic};
+  box-shadow: ${SHADOWS.BASIC};
   padding-bottom: 22px;
   &.newsList {
     width: 420px;
   }
-  ${MEDIA.tablet} {
+  ${MEDIA.TABLET} {
     width: calc(100vw - 40px);
     &.newsList {
       width: calc(100vw - 40px);
       grid-column-start: 1;
       grid-column-end: 3;
     }
-  ${MEDIA.mobile} {
+  ${MEDIA.MOBILE} {
     width: calc(100vw - 20px);
     &.newsList {
       width: calc(100vw - 20px);
@@ -65,7 +65,7 @@ const ListLayout = styled.div`
   &:last-of-type {
     border: none;
   }
-  ${MEDIA.mobile} {
+  ${MEDIA.MOBILE} {
     margin: 0px 10px;
   }
 `

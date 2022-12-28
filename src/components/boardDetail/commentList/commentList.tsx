@@ -137,7 +137,7 @@ const CommentWrap = styled.div`
   display: flex;
   border-bottom: 1px solid ${COLORS.GRAY};
   padding: 20px 24px;
-  ${MEDIA.mobile} {
+  ${MEDIA.MOBILE} {
     padding: 10px 12px;
   }
 `

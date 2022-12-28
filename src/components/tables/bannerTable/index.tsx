@@ -38,7 +38,7 @@ const Container = styled.section`
   display: flex;
   justify-content: flex-start;
   align-items: center;
-  ${MEDIA.tablet} {
+  ${MEDIA.TABLET} {
     display: none;
   }
    .slick-slider {
@@ -49,7 +49,7 @@ const Container = styled.section`
        width: 420px !important;
        height: 223px;
      }
-     ${MEDIA.tablet} {
+     ${MEDIA.TABLET} {
        display: none;
      }
    }

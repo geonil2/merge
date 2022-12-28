@@ -24,15 +24,15 @@ const LoadingVerticalList = () => {
 const Container = styled.section`
   width: 420px;
   background: ${COLORS.WHITE};
-  box-shadow: ${SHADOWS.basic};
+  box-shadow: ${SHADOWS.BASIC};
   padding-bottom: 22px;
   > .title {
     height: 60px;  
   }
-  ${MEDIA.tablet} {
+  ${MEDIA.TABLET} {
     width: calc(100vw - 40px);
   }
-  ${MEDIA.mobile} {
+  ${MEDIA.MOBILE} {
     width: calc(100vw - 20px);
   }
 `

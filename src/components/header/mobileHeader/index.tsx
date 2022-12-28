@@ -1,15 +1,18 @@
 import React, {useEffect, useState} from "react";
 import Link from "next/link";
 import {useRouter} from "next/router";
-import {signIn, signOut, useSession} from "next-auth/react";
 import styled from "@emotion/styled";
 import {COLORS, MEDIA, SHADOWS} from "../../../config/styles";
 import HeaderSearchForm from "../headerSearchForm";
 import CommonButton from "../../commonButton";
 import {menuList} from "../../../resources/types";
+import useUser from "../../../hooks/useUser";
+import {useMutation} from "@tanstack/react-query";
+import {signOutAPI} from "../../../services/auth/api";
 
 const MobileHeader = () => {
-  const { data: session } = useSession();
+  const user = useUser();
+  const { mutate: signOut } = useMutation(signOutAPI);
   const [isShowNav, setIsShowNav] = useState(false);
   const router = useRouter()
 
@@ -23,10 +26,10 @@ const MobileHeader = () => {
           <Logo src="/images/logo/merge.svg" alt="Logo" />
       </a></Link>
       <HeaderContentsContainer>
-        {session ?
+        {user ?
           <Button title="글쓰기" onClick={() => router.push('/writing')} />
           :
-          <Button title="로그인" onClick={() => signIn('google')} />
+          <Button title="로그인" onClick={() => alert('로그인')} />
         }
         <ToggleButton onClick={() => setIsShowNav(!isShowNav)}>
           {isShowNav ?
@@ -44,17 +47,17 @@ const MobileHeader = () => {
       {isShowNav &&
         <Nav>
           <ul>
-            {session &&
+            {user &&
               <UserContainer>
                 <UserInfo>
-                  {/*<UserImage src={session.user?.image} alt="User image" />*/}
+                  {/*<UserImage src={user?.image} alt="User image" />*/}
                   <UserImage src='/images/icons/profile.svg' alt="User image" />
                   <UserText>
-                    <UserName>{session.user?.name}</UserName>
-                    <Email>{session.user?.email}</Email>
+                    <UserName>{user?.name}</UserName>
+                    <Email>{user?.email}</Email>
                   </UserText>
                 </UserInfo>
-                <LogoutButton onClick={() => (signOut({ redirect: false }), setIsShowNav(false))}>로그아웃</LogoutButton>
+                <LogoutButton onClick={() => (signOut(), setIsShowNav(false))}>로그아웃</LogoutButton>
               </UserContainer>
             }
             <SearchInputContainer>
@@ -79,7 +82,7 @@ const Header = styled.header`
   align-items: center;
   z-index: 30;
   background: ${COLORS.WHITE};
-  box-shadow: ${SHADOWS.basic};
+  box-shadow: ${SHADOWS.BASIC};
   padding: 0px 10px;
 `
 

@@ -27,7 +27,7 @@ const BigImageTableList: React.FC<Props> = ({ list }) => {
 const A = styled.a`
   width: 32%;
   display: block;
-  ${MEDIA.mobile} {
+  ${MEDIA.MOBILE} {
     width: 48%;
     &:nth-of-type(3) {
       margin-top: 20px;
