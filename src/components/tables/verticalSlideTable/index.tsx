@@ -6,6 +6,7 @@ import "slick-carousel/slick/slick-theme.css";
 import styled from "@emotion/styled";
 import {COLORS, MEDIA, SHADOWS} from "../../../config/styles";
 import {Board} from "../../../services/board/types";
+import {log} from "util";
 
 
 interface Prop {

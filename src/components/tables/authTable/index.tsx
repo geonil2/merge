@@ -4,14 +4,14 @@ import {COLORS, MEDIA, SHADOWS} from "../../../config/styles";
 import Link from "next/link";
 import {SubmitHandler, useForm} from "react-hook-form";
 import {useMutation} from "@tanstack/react-query";
-import {signoutAPI, updateNameAPI} from "../../../services/auth/api";
+import {signOutAPI, updateNameAPI} from "../../../services/auth/api";
 import useOutsideClick from "../../../hooks/useOutsideClick";
 import useUser from "../../../hooks/useUser";
-import {signoutQueryKey} from "../../../services/auth/types";
+import {signOutQueryKey} from "../../../services/auth/types";
 import {useRouter} from "next/router";
 import CommonButton from "../../commonButton";
 import commonButton from "../../commonButton";
-import SNSSignin from "../../../pages/signin/snsSignin";
+import SNSSignIn from "../../../pages/signin/snsSignIn";
 
 export type updateNameInputValue = {
   name?: string
@@ -19,7 +19,7 @@ export type updateNameInputValue = {
 
 const AuthTable = () => {
   const { data: user } = useUser();
-  const { mutate: signOut } = useMutation([signoutQueryKey]);
+  const { mutate: signOut } = useMutation([signOutQueryKey]);
   const [inputValue, setInputValue] = useState('');
   const formWrapRef = useRef<HTMLDivElement>(null);
   const [isActive, setIsActive] = useOutsideClick(formWrapRef, false);
@@ -314,7 +314,7 @@ const LoginButton = styled(commonButton)`
   width: 70%;
 `
 
-const SNS = styled(SNSSignin)`
+const SNS = styled(SNSSignIn)`
   box-shadow: none;
   
   li {

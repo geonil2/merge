@@ -1,5 +1,11 @@
 import {API} from "../../config/api";
-import {BoardByCategoryRequestQuery, PostBoardRequestBody, PutBoardRequestBody} from "./types";
+import {
+  Board,
+  BoardByCategoryRequestQuery, BoardByCategoryResponseData, BoardByIdResponseData,
+  BoardResponseData,
+  PostBoardRequestBody,
+  PutBoardRequestBody
+} from "./types";
 
 export const postBoardApi = async (body: PostBoardRequestBody) => {
   const { data } = await API.post('/api/boards', body)
@@ -16,17 +22,17 @@ export const postBoardImageApi = async (formData: FormData) => {
 }
 
 export const getBoardByCategoryApi = async ({ category, offset, limit }: BoardByCategoryRequestQuery) => {
-  const { data } = await API.get(`/api/boards`, { params: { category, offset, limit }})
+  const { data } = await API.get<BoardByCategoryResponseData>(`/api/boards`, { params: { category, offset, limit }})
   return data.data
 }
 
 export const getBoardByIdApi = async (id: string) => {
-  const { data } = await API.get(`/api/boards/${id}`)
+  const { data } = await API.get<BoardByIdResponseData>(`/api/boards/${id}`)
   return data.data
 }
 
 export const getBestBoard = async () => {
-  const { data } = await API.get(`/api/boards/all/best`)
+  const { data } = await API.get<BoardResponseData>(`/api/boards/all/best`)
   return data.data
 }
 

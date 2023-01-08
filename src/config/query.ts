@@ -1,5 +1,7 @@
 import {isAxiosError} from "./api";
 import {QueryCache, QueryClient} from "@tanstack/query-core";
+import {getUserAPI, signOutAPI} from "../services/auth/api";
+import {authenticateQueryKey, getUserQueryKey, signOutQueryKey} from "../services/auth/types";
 
 const retry = (failCount: number, error: unknown): boolean => {
     if (isAxiosError(error)) {
@@ -25,6 +27,19 @@ export const generateQueryClient = () => {
       retry: retry
     },
   })
-
+  queryClient.setQueryDefaults([getUserQueryKey], {
+    staleTime: Infinity,
+    queryFn: () => getUserAPI(),
+  })
+  queryClient.setMutationDefaults([signOutQueryKey], {
+    mutationFn: signOutAPI,
+    onMutate: () => {
+      queryClient.setQueryData([authenticateQueryKey], false)
+    },
+    onSettled: () => {
+      queryClient.setQueryData([getUserQueryKey], undefined)
+      queryClient.removeQueries([getUserQueryKey])
+    },
+  })
   return queryClient
 }

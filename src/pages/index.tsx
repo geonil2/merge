@@ -14,53 +14,53 @@ import TableLeftWrapper from "../components/tables/tableLeftWrapper";
 import MainLayout from "../components/mainLayout";
 
 const Home: NextPage = () => {
-  const conference = useQuery([ConferenceListQueryKey], () => getConferenceListApi(), {
+  const { data: conference } = useQuery([ConferenceListQueryKey], () => getConferenceListApi(), {
     staleTime: Infinity,
   });
-  const bestBoard = useQuery([BestBoardQueryKey], () => getBestBoard());
-  const questionBoard = useBoardByCategory({ category: 'question' });
-  const infoBoard = useBoardByCategory({ category: 'info' });
-  const communityBoard = useBoardByCategory({ category: 'community' });
-  const recruitBoard = useBoardByCategory({ category: 'recruit' });
-  const noticeBoard = useBoardByCategory({ category: 'notice', limit: 3 });
-
+  const { data: bestBoard } = useQuery([BestBoardQueryKey], () => getBestBoard());
+  const { data: questionBoard } = useBoardByCategory({ category: 'question' });
+  const { data: infoBoard } = useBoardByCategory({ category: 'info' });
+  const { data: communityBoard } = useBoardByCategory({ category: 'community' });
+  const { data: recruitBoard } = useBoardByCategory({ category: 'recruit' });
+  const { data: noticeBoard } = useBoardByCategory({ category: 'notice', limit: 3 });
+  console.log(noticeBoard, 'noticeBaord')
   return (
     <MainLayout hasAsideBar={true}>
       <TableLeftWrapper>
-        {!!noticeBoard.data?.list && noticeBoard.data.list.length !== 0 &&
-          <VerticalSlideTable list={noticeBoard.data.list} />
+        {!!noticeBoard?.list && noticeBoard.list.length !== 0 &&
+          <VerticalSlideTable list={noticeBoard.list} />
         }
-        {!!bestBoard.data && <TwoRowTable list={bestBoard.data} />}
-        {!!conference.data && <BigImageTable list={conference.data} />}
-        {!!questionBoard.data?.list && questionBoard.data.list.length !== 0 &&
+        {!!bestBoard && <TwoRowTable list={bestBoard} />}
+        {!!conference && <BigImageTable list={conference} />}
+        {!!questionBoard?.list && questionBoard.list.length !== 0 &&
           <VerticalListTable
             title='Q&A'
             tab='/question'
-            list={questionBoard.data.list}
+            list={questionBoard.list}
             showPagination={false}
           />
         }
-        {!!infoBoard.data?.list && infoBoard.data.list.length !== 0 &&
+        {!!infoBoard?.list && infoBoard.list.length !== 0 &&
           <VerticalListTable
             title='개발정보'
             tab='/info'
-            list={infoBoard.data.list}
+            list={infoBoard.list}
             showPagination={false}
           />
         }
-        {!!communityBoard.data?.list && communityBoard.data.list.length !== 0 &&
+        {!!communityBoard?.list && communityBoard.list.length !== 0 &&
           <VerticalListTable
             title='커뮤니티'
             tab='/community'
-            list={communityBoard.data.list}
+            list={communityBoard.list}
             showPagination={false}
           />
         }
-        {!!recruitBoard.data?.list && recruitBoard.data.list.length !== 0 &&
+        {!!recruitBoard?.list && recruitBoard.list.length !== 0 &&
           <VerticalListTable
             title='구인구직'
             tab='/recruit'
-            list={recruitBoard.data.list}
+            list={recruitBoard.list}
             showPagination={false}
           />
         }

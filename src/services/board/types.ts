@@ -39,3 +39,17 @@ export interface Board extends BaseBoard {
   updatedAt?: string,
 }
 
+export interface BoardByCategoryResponseData {
+  data: {
+    total: number,
+    list: Board[]
+  }
+}
+
+export interface BoardResponseData {
+  data: Board[]
+}
+
+export interface BoardByIdResponseData {
+  data: Board
+}

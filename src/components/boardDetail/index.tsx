@@ -14,24 +14,24 @@ interface Prop {
 }
 
 const BoardDetail: React.FC<Prop> = ({ boardId }) => {
-  const user = useUser();
-  const contents = useQuery([BoardByIdQueryKey, { boardId }], () => getBoardByIdApi(boardId));
-  const comment = useQuery([CommentByBoardIdQueryKey, { boardId }], () => getCommentByBoardIdApi(boardId))
-
+  const { data: user } = useUser();
+  const { data: contents } = useQuery([BoardByIdQueryKey, { boardId }], () => getBoardByIdApi(boardId));
+  const { data: comment} = useQuery([CommentByBoardIdQueryKey, { boardId }], () => getCommentByBoardIdApi(boardId))
+  console.log(comment, '123')
   return (
     <>
-      {contents.data && <BoardContents
-        contents={contents.data}
-        userId={user._id}
+      {contents && <BoardContents
+        contents={contents}
+        userId={user?._id}
       />}
       {user && <CommentWrite
         userId={user._id}
         boardId={boardId}
         name={user.name}
       />}
-      {comment.data.length !== 0 && <CommentListContainer
-        userId={user._id}
-        comments={comment.data}
+      {comment && comment.length !== 0 && <CommentListContainer
+        userId={user?._id}
+        comments={comment}
       />}
     </>
   );

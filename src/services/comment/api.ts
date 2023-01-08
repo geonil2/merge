@@ -1,4 +1,5 @@
 import {API} from "../../config/api";
+import {CommentResponseData} from "./types";
 
 export const postCommentApi = async ({ boardId, contents, userId }: { boardId: string, contents: string, userId: string }) => {
   const { data } = await API.post(`/api/comments/${boardId}`, { contents, userId })
@@ -6,7 +7,8 @@ export const postCommentApi = async ({ boardId, contents, userId }: { boardId: s
 }
 
 export const getCommentByBoardIdApi = async (boardId: string) => {
-  const { data } = await API.get(`/api/comments/${boardId}`)
+  const { data } = await API.get<CommentResponseData>(`/api/comments/${boardId}`)
+  console.log(data, '!!!!')
   return data.data
 }
 

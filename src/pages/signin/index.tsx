@@ -1,17 +1,17 @@
 import React from 'react';
 import MainLayout from "../../components/mainLayout";
-import SigninForm from "../../components/signinForm";
+import SignInForm from "../../components/signInForm";
 import styled from "@emotion/styled";
-import SNSSignin from "./snsSignin";
+import SNSSignIn from "./snsSignIn";
 
 const Signin = () => {
   return (
     <MainLayout hasAsideBar={false}>
       <Layout>
-          <SigninWrapper>
-          <SigninForm />
-          <SNSSignin text={true} />
-        </SigninWrapper>
+        <SignInWrapper>
+          <SignInForm />
+          <SNSSignIn text={true} />
+        </SignInWrapper>
       </Layout>
 
     </MainLayout>
@@ -28,7 +28,7 @@ const Layout = styled.div`
   //padding: 100px 0px 20px 0px
 `
 
-const SigninWrapper = styled.div`
+const SignInWrapper = styled.div`
   width: 420px;
   position: absolute;
   top: 50%;

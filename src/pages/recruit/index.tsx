@@ -11,13 +11,14 @@ import VerticalListTable from "../../components/tables/verticalListTable";
 import {DEFAULT_LISTS_COUNT} from "../../components/pagination";
 import TableLeftWrapper from "../../components/tables/tableLeftWrapper";
 import HeadMeta from "../../components/headMeta";
+import MainLayout from "../../components/mainLayout";
 
 const Recruit: NextPage = () => {
   const offset = useRecoilValue(offsetAtom);
   const { data } = useBoardByCategory({ category: 'recruit', offset, limit: DEFAULT_LISTS_COUNT })
 
   return (
-    <>
+    <MainLayout hasAsideBar={true}>
       <HeadMeta
         title='구인구직'
         description='구인구직'
@@ -32,7 +33,7 @@ const Recruit: NextPage = () => {
           />
         }
       </Container>
-    </>
+    </MainLayout>
   );
 };
 

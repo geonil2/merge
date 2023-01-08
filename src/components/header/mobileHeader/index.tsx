@@ -11,7 +11,7 @@ import {useMutation} from "@tanstack/react-query";
 import {signOutAPI} from "../../../services/auth/api";
 
 const MobileHeader = () => {
-  const user = useUser();
+  const { data: user } = useUser();
   const { mutate: signOut } = useMutation(signOutAPI);
   const [isShowNav, setIsShowNav] = useState(false);
   const router = useRouter()

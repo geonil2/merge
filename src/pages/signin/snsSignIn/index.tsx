@@ -1,29 +1,30 @@
 import React, {HTMLAttributes} from 'react';
 import styled from "@emotion/styled";
 import {COLORS, SHADOWS} from "../../../config/styles";
-import useGoogleSignin from "../../../hooks/useGoogleSignin";
-import useNaverSignin from "../../../hooks/useNaverSignin";
+import useGoogleSignIn from "../../../hooks/useGoogleSignIn";
+import useNaverSignIn from "../../../hooks/useNaverSignIn";
 
 interface Props extends HTMLAttributes<HTMLElement> {
   text: boolean
 }
 
 const SNSSignin: React.FC<Props> = ({ text, ...props }) => {
-  const { handleSignin: googleHandleSignin } = useGoogleSignin();
-  const { handleSignin: naverHandleSignin } = useNaverSignin();
+  const { handleSignIn: googleHandleSignIn } = useGoogleSignIn();
+  const { handleSignIn: kakaoHandleSignIn } = useNaverSignIn();
+  const { handleSignIn: naverHandleSignIn } = useNaverSignIn();
 
   return (
     <Container {...props}>
       <SNSList>
-        <li onClick={() => googleHandleSignin()}>
+        <li onClick={() => googleHandleSignIn()}>
           <img src="/images/auth/google.svg" alt="Google logo"/>
           {text && <p>구글로 로그인</p>}
         </li>
-        <li>
+        <li onClick={() => kakaoHandleSignIn()}>
           <img src="/images/auth/kakao.svg" alt="Kakao logo"/>
           {text && <p>카카오로 로그인</p>}
         </li>
-        <li onClick={() => naverHandleSignin()}>
+        <li onClick={() => naverHandleSignIn()}>
           <img src="/images/auth/naver.svg" alt="Naver logo"/>
           {text && <p>네이버로 로그인</p>}
         </li>

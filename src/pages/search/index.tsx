@@ -11,6 +11,7 @@ import TableLeftWrapper from "../../components/tables/tableLeftWrapper";
 import VerticalListTable from "../../components/tables/verticalListTable";
 import {getImageByDescription} from "../../components/listThumbnail";
 import HeadMeta from "../../components/headMeta";
+import MainLayout from "../../components/mainLayout";
 
 const Search = () => {
   const offset = useRecoilValue(offsetAtom);
@@ -24,7 +25,7 @@ const Search = () => {
   );
 
   return (
-    <>
+    <MainLayout hasAsideBar={true}>
       <HeadMeta
         title={`${searchKeyword}로 검색`}
         description={`${searchKeyword}로 검색`}
@@ -40,7 +41,7 @@ const Search = () => {
           />
         }
       </TableLeftWrapper>
-    </>
+    </MainLayout>
   );
 };
 

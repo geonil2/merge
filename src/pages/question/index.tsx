@@ -11,28 +11,29 @@ import TableLeftWrapper from "../../components/tables/tableLeftWrapper";
 import {DEFAULT_LISTS_COUNT} from "../../components/pagination";
 import VerticalListTable from "../../components/tables/verticalListTable";
 import HeadMeta from "../../components/headMeta";
+import MainLayout from "../../components/mainLayout";
 
 const Question: NextPage = () => {
   const offset = useRecoilValue(offsetAtom);
-  const { data } = useBoardByCategory({ category: 'question', offset, limit: DEFAULT_LISTS_COUNT })
+  const { data: questionList } = useBoardByCategory({ category: 'question', offset, limit: DEFAULT_LISTS_COUNT })
 
   return (
-    <>
+    <MainLayout hasAsideBar={true}>
       <HeadMeta
         title='Q&A'
         description='Q&A'
       />
       <Container>
-        {!!data?.list.length &&
+        {!!questionList?.list.length &&
           <VerticalListTable
             title='Q&A'
-            list={data.list}
+            list={questionList.list}
             showPagination={true}
-            totalCount={data.total}
+            totalCount={questionList.total}
           />
         }
       </Container>
-    </>
+    </MainLayout>
   );
 };
 

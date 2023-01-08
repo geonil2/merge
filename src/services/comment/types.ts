@@ -5,8 +5,12 @@ export const CommentByBoardIdQueryKey = 'getCommentByBoardId'
 export interface Comment {
   _id: string,
   owner: User,
-  board: string,
+  // board: string,
   contents: string,
   createdAt: string,
   updatedAt: string,
+}
+
+export interface CommentResponseData {
+  data: Comment[]
 }

@@ -11,13 +11,14 @@ import {DEFAULT_LISTS_COUNT} from "../../components/pagination";
 import VerticalListTable from "../../components/tables/verticalListTable";
 import TableLeftWrapper from "../../components/tables/tableLeftWrapper";
 import HeadMeta from "../../components/headMeta";
+import MainLayout from "../../components/mainLayout";
 
 const Notice: NextPage = () => {
   const offset = useRecoilValue(offsetAtom);
   const { data } = useBoardByCategory({ category: 'notice', offset, limit: DEFAULT_LISTS_COUNT })
 
   return (
-    <>
+    <MainLayout hasAsideBar={true}>
       <HeadMeta
         title='공지사항'
         description='공지사항'
@@ -32,7 +33,7 @@ const Notice: NextPage = () => {
           />
         }
       </Container>
-    </>
+    </MainLayout>
   );
 };
 

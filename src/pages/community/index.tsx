@@ -11,13 +11,14 @@ import {DEFAULT_LISTS_COUNT} from "../../components/pagination";
 import TableLeftWrapper from "../../components/tables/tableLeftWrapper";
 import VerticalListTable from "../../components/tables/verticalListTable";
 import HeadMeta from "../../components/headMeta";
+import MainLayout from "../../components/mainLayout";
 
 const Community: NextPage = () => {
   const offset = useRecoilValue(offsetAtom);
   const { data } = useBoardByCategory({ category: 'community', offset, limit: DEFAULT_LISTS_COUNT })
 
   return (
-    <>
+    <MainLayout hasAsideBar={true}>
       <HeadMeta
         title='커뮤니티'
         description='커뮤니티'
@@ -32,7 +33,7 @@ const Community: NextPage = () => {
           />
         }
       </Container>
-    </>
+    </MainLayout>
   );
 };
 
