@@ -7,12 +7,8 @@ const useSignUp = () => {
 
   return useMutation(signInAPI, {
     onSuccess: (user) => {
-      console.log(user)
       queryClient.setQueryData([getUserQueryKey], user)
-    },
-    onError: (error) => {
-      console.log(error)
-    },
+    }
   })
 }
 

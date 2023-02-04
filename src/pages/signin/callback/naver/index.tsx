@@ -8,7 +8,6 @@ const Naver = () => {
 
   useEffect(() => {
     if (router.query.code && typeof router.query.code === 'string'){
-      console.log(router.query.code, 'router.query.code')
       naverSignIn(router.query.code);
     }
   }, [router])

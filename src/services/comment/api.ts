@@ -8,7 +8,6 @@ export const postCommentApi = async ({ boardId, contents, userId }: { boardId: s
 
 export const getCommentByBoardIdApi = async (boardId: string) => {
   const { data } = await API.get<CommentResponseData>(`/api/comments/${boardId}`)
-  console.log(data, '!!!!')
   return data.data
 }
 

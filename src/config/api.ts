@@ -1,4 +1,5 @@
 import axios, {AxiosError, AxiosRequestConfig} from "axios";
+
 import {clearAuth, getTokenInLocalStorage, isServer} from "../services/utils";
 import {refreshTokenAPI} from "../services/auth/api";
 

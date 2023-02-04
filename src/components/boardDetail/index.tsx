@@ -17,7 +17,7 @@ const BoardDetail: React.FC<Prop> = ({ boardId }) => {
   const { data: user } = useUser();
   const { data: contents } = useQuery([BoardByIdQueryKey, { boardId }], () => getBoardByIdApi(boardId));
   const { data: comment} = useQuery([CommentByBoardIdQueryKey, { boardId }], () => getCommentByBoardIdApi(boardId))
-  console.log(comment, '123')
+  
   return (
     <>
       {contents && <BoardContents

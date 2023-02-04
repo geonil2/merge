@@ -16,14 +16,14 @@ const UpdateDeleteButtonWrapper: React.FC<Props> = ({
   onClickUpdateButton,
   onClickDeleteButton
 }) => {
-  const user = useUser();
+  const { data: user} = useUser();
   const dropdownMenuRef = useRef<HTMLUListElement>(null);
   const [isActive, setIsActive] = useOutsideClick(dropdownMenuRef, false);
   const dropdownMENU = [{title: '수정 하기', onClick: onClickUpdateButton}, {title: '삭제 하기', onClick: onClickDeleteButton}]
 
   return (
     <>
-      {user._id === owner &&
+      {user?._id === owner &&
         <ActiveButton
           isActive={isActive}
         >

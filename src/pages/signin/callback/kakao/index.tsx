@@ -7,7 +7,6 @@ const Kakao = () => {
   const { kakaoSignIn } = useKakaoSignIn();
 
   useEffect(() => {
-    console.log(router, 'router~!!!!!')
     console.log(location.search.split('=')[1], '!!')
     kakaoSignIn(location.search.split('=')[1]);
   }, [])

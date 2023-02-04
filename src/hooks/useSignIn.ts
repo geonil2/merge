@@ -9,7 +9,6 @@ const useSignIn = (api: (parameter: any) => Promise<any>) => {
   return useMutation<User, Error, SignInRequestBody | string>(api, {
     onSuccess: (user) => {
       queryClient.setQueryData([authenticateQueryKey], true);
-      console.log('authentidate를 true로 변경하겠습니다.')
       queryClient.invalidateQueries([getUserQueryKey]);
       router.push("/");
     }

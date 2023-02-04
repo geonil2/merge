@@ -12,11 +12,6 @@ const DesktopHeader = () => {
   const { data: user } = useUser();
   const router = useRouter();
 
-  useEffect(() => {
-    console.log(user, 'header user')
-    console.log(user, 'header user')
-  }, [user])
-
   return (
     <Header>
       <HeaderWrapper>

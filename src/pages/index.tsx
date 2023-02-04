@@ -1,69 +1,33 @@
 import type {NextPage, GetServerSidePropsContext} from 'next'
-import {useQuery} from "@tanstack/react-query";
+
 import {dehydrate, QueryClient} from "@tanstack/query-core";
-import useBoardByCategory from "../hooks/useBoardListByCateogry";
+
 import {getConferenceListApi} from "../services/conference/api";
 import {ConferenceListQueryKey} from "../services/conference/types";
 import {BestBoardQueryKey, BoardByCategoryQueryKey} from "../services/board/types";
 import {getBestBoard, getBoardByCategoryApi} from "../services/board/api";
-import VerticalSlideTable from "../components/tables/verticalSlideTable";
-import TwoRowTable from "../components/tables/twoRowTable";
-import VerticalListTable from "../components/tables/verticalListTable";
-import BigImageTable from "../components/tables/bigImageTable";
+
 import TableLeftWrapper from "../components/tables/tableLeftWrapper";
 import MainLayout from "../components/mainLayout";
+import Notice from '../components/main/notice';
+import Best from '../components/main/best';
+import Conference from '../components/main/conference';
+import Question from '../components/main/question';
+import Info from '../components/main/info';
+import Community from '../components/main/community';
+import Recruit from '../components/main/recruit';
 
 const Home: NextPage = () => {
-  const { data: conference } = useQuery([ConferenceListQueryKey], getConferenceListApi, {
-    staleTime: Infinity,
-  });
-  const { data: bestBoard } = useQuery([BestBoardQueryKey], getBestBoard);
-  const { data: questionBoard } = useBoardByCategory({ category: 'question' });
-  const { data: infoBoard } = useBoardByCategory({ category: 'info' });
-  const { data: communityBoard } = useBoardByCategory({ category: 'community' });
-  const { data: recruitBoard } = useBoardByCategory({ category: 'recruit' });
-  const { data: noticeBoard } = useBoardByCategory({ category: 'notice', limit: 3 });
-  
   return (
     <MainLayout hasAsideBar={true}>
       <TableLeftWrapper>
-        {!!noticeBoard?.list && noticeBoard.list.length !== 0 &&
-          <VerticalSlideTable list={noticeBoard.list} />
-        }
-        {!!bestBoard && <TwoRowTable list={bestBoard} />}
-        {!!conference && <BigImageTable list={conference} />}
-        {!!questionBoard?.list && questionBoard.list.length !== 0 &&
-          <VerticalListTable
-            title='Q&A'
-            tab='/question'
-            list={questionBoard.list}
-            showPagination={false}
-          />
-        }
-        {!!infoBoard?.list && infoBoard.list.length !== 0 &&
-          <VerticalListTable
-            title='개발정보'
-            tab='/info'
-            list={infoBoard.list}
-            showPagination={false}
-          />
-        }
-        {!!communityBoard?.list && communityBoard.list.length !== 0 &&
-          <VerticalListTable
-            title='커뮤니티'
-            tab='/community'
-            list={communityBoard.list}
-            showPagination={false}
-          />
-        }
-        {!!recruitBoard?.list && recruitBoard.list.length !== 0 &&
-          <VerticalListTable
-            title='구인구직'
-            tab='/recruit'
-            list={recruitBoard.list}
-            showPagination={false}
-          />
-        }
+        <Notice />
+        <Best />
+        <Conference />
+        <Question />
+        <Info />
+        <Community />
+        <Recruit />
       </TableLeftWrapper>
     </MainLayout>
   )

@@ -64,7 +64,6 @@ const AuthTable = () => {
   // }, [isActive])
 
   useEffect(() => {
-    console.log(user, 'table user')
     setInputValue('')
   }, [user])
 

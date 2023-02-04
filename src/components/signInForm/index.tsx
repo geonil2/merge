@@ -20,7 +20,6 @@ const SignInForm = () => {
   const { mutate: signIn } = useSignIn(signInAPI);
 
   const onSubmit: SubmitHandler<SignInRequestBody> = (data) => {
-    console.log(data)
     signIn(data);
   }
 

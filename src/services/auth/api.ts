@@ -14,7 +14,6 @@ export const signInAPI = async (body: SignInRequestBody) => {
 }
 
 export const signOutAPI = async () => {
-  console.log('로그아웃 api 호출')
   await API.post('/api/auth/signout');
   clearAuth();
 }
