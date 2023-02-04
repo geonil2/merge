@@ -14,6 +14,7 @@ const DesktopHeader = () => {
 
   useEffect(() => {
     console.log(user, 'header user')
+    console.log(user, 'header user')
   }, [user])
 
   return (

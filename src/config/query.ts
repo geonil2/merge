@@ -1,7 +1,7 @@
 import {isAxiosError} from "./api";
 import {QueryCache, QueryClient} from "@tanstack/query-core";
 import {getUserAPI, signOutAPI} from "../services/auth/api";
-import {authenticateQueryKey, getUserQueryKey, signOutQueryKey} from "../services/auth/types";
+import {getUserQueryKey, signOutQueryKey} from "../services/auth/types";
 
 const retry = (failCount: number, error: unknown): boolean => {
     if (isAxiosError(error)) {
@@ -17,9 +17,7 @@ const retry = (failCount: number, error: unknown): boolean => {
  */
 export const generateQueryClient = () => {
   const queryClient = new QueryClient({
-    queryCache: new QueryCache({
-      onError: (error) => {}
-    }),
+    queryCache: new QueryCache(),
   });
 
   queryClient.setDefaultOptions({
@@ -29,16 +27,12 @@ export const generateQueryClient = () => {
   })
   queryClient.setQueryDefaults([getUserQueryKey], {
     staleTime: Infinity,
-    queryFn: () => getUserAPI(),
+    queryFn: getUserAPI,
   })
   queryClient.setMutationDefaults([signOutQueryKey], {
     mutationFn: signOutAPI,
-    onMutate: () => {
-      queryClient.setQueryData([authenticateQueryKey], false)
-    },
     onSettled: () => {
-      queryClient.setQueryData([getUserQueryKey], undefined)
-      queryClient.removeQueries([getUserQueryKey])
+      queryClient.resetQueries()
     },
   })
   return queryClient

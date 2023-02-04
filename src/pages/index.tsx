@@ -14,16 +14,16 @@ import TableLeftWrapper from "../components/tables/tableLeftWrapper";
 import MainLayout from "../components/mainLayout";
 
 const Home: NextPage = () => {
-  const { data: conference } = useQuery([ConferenceListQueryKey], () => getConferenceListApi(), {
+  const { data: conference } = useQuery([ConferenceListQueryKey], getConferenceListApi, {
     staleTime: Infinity,
   });
-  const { data: bestBoard } = useQuery([BestBoardQueryKey], () => getBestBoard());
+  const { data: bestBoard } = useQuery([BestBoardQueryKey], getBestBoard);
   const { data: questionBoard } = useBoardByCategory({ category: 'question' });
   const { data: infoBoard } = useBoardByCategory({ category: 'info' });
   const { data: communityBoard } = useBoardByCategory({ category: 'community' });
   const { data: recruitBoard } = useBoardByCategory({ category: 'recruit' });
   const { data: noticeBoard } = useBoardByCategory({ category: 'notice', limit: 3 });
-  console.log(noticeBoard, 'noticeBaord')
+  
   return (
     <MainLayout hasAsideBar={true}>
       <TableLeftWrapper>

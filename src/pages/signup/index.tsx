@@ -1,17 +1,16 @@
 import React from 'react';
 import MainLayout from "../../components/mainLayout";
-import SignInForm from "../../components/signInForm";
-import styled from "@emotion/styled";
-import SNSSignIn from "./snsSignIn";
 
-const Signin = () => {
+import styled from "@emotion/styled";
+import SignupForm from "../../components/signUpForm";
+
+const Signup = () => {
   return (
     <MainLayout hasAsideBar={false}>
       <Layout>
-        <SignInWrapper>
-          <SignInForm />
-          <SNSSignIn text={true} />
-        </SignInWrapper>
+        <SigninWrapper>
+          <SignupForm />
+        </SigninWrapper>
       </Layout>
 
     </MainLayout>
@@ -24,7 +23,7 @@ const Layout = styled.div`
   min-height: 100vh;
 `
 
-const SignInWrapper = styled.div`
+const SigninWrapper = styled.div`
   width: 420px;
   position: absolute;
   top: 50%;
@@ -32,4 +31,4 @@ const SignInWrapper = styled.div`
   transform: translate(-50%, -50%);
 `
 
-export default Signin;
+export default Signup;

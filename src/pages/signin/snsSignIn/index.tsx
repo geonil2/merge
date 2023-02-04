@@ -16,15 +16,15 @@ const SNSSignin: React.FC<Props> = ({ text, ...props }) => {
   return (
     <Container {...props}>
       <SNSList>
-        <li onClick={() => googleHandleSignIn()}>
+        <li onClick={googleHandleSignIn}>
           <img src="/images/auth/google.svg" alt="Google logo"/>
           {text && <p>구글로 로그인</p>}
         </li>
-        <li onClick={() => kakaoHandleSignIn()}>
+        <li onClick={kakaoHandleSignIn}>
           <img src="/images/auth/kakao.svg" alt="Kakao logo"/>
           {text && <p>카카오로 로그인</p>}
         </li>
-        <li onClick={() => naverHandleSignIn()}>
+        <li onClick={naverHandleSignIn}>
           <img src="/images/auth/naver.svg" alt="Naver logo"/>
           {text && <p>네이버로 로그인</p>}
         </li>
