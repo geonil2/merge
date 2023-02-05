@@ -3,6 +3,7 @@ import styled from "@emotion/styled";
 import {COLORS, SHADOWS} from "../../../config/styles";
 import useGoogleSignIn from "../../../hooks/useGoogleSignIn";
 import useNaverSignIn from "../../../hooks/useNaverSignIn";
+import useKakaoSignIn from '../../../hooks/useKakaoSignIn';
 
 interface Props extends HTMLAttributes<HTMLElement> {
   text: boolean
@@ -10,7 +11,7 @@ interface Props extends HTMLAttributes<HTMLElement> {
 
 const SNSSignin: React.FC<Props> = ({ text, ...props }) => {
   const { handleSignIn: googleHandleSignIn } = useGoogleSignIn();
-  const { handleSignIn: kakaoHandleSignIn } = useNaverSignIn();
+  const { handleSignIn: kakaoHandleSignIn } = useKakaoSignIn();
   const { handleSignIn: naverHandleSignIn } = useNaverSignIn();
 
   return (
