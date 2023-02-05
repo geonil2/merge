@@ -7,7 +7,7 @@ on:
 env:
   AWS_ACCESS_KEY: ${{ secrets.AWS_ACCESS_KEY }}
   AWS_SECRET_KEY: ${{ secrets.AWS_SECRET_KEY }}
-  NEXT_PUBLIC_API_HOST: ${{ secrets.NEXT_PUBLIC_API_HOST }}
+  ENV: ${{ secrets.ENV }}
   DEPLOY_BUCKET: s3://merge.immmapp.com
   CACHE_DIR: ${{ github.workspace }}/node_modules
   CODE_DEPLOY_APPLICATION_NAME: Merge-code-deploy
@@ -56,9 +56,11 @@ jobs:
         run: npm install --force
 
       - name: Setting .env
+        working-directory: ./
         run: |
-          echo "NEXT_PUBLIC_API_HOST=${{ env.NEXT_PUBLIC_API_HOST }}" >> .env
-          cat .env
+          touch .env
+          cat << EOF >> .env
+          ${{ env.ENV }}
 
       - name: Run build
         run: npm run build
