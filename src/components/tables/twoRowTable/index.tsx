@@ -1,51 +1,27 @@
-import React from 'react';
-import styled from "@emotion/styled";
-import {Board} from "../../../services/board/types";
-import {COLORS, MEDIA, SHADOWS} from "../../../config/styles";
+import React from "react";
+
+import * as S from "./style";
+
+import { Board } from "../../../services/board/types";
+
 import TwoRowTableList from "./twoRowTableList";
 import TableHeaderLayout from "../tableHeaderLayout";
 
 interface Prop {
-  list: Board[]
+  list: Board[];
 }
 
 const TwoRowTable: React.FC<Prop> = ({ list }) => {
   return (
-    <Container>
+    <S.Container>
       <TableHeaderLayout title="인기글" />
-      <TwoRowTableBody>
+      <S.TwoRowTableBody>
         {list.map((board, index) => (
-          <TwoRowTableList
-            {...board}
-            key={board._id}
-            index={index}
-          />
+          <TwoRowTableList {...board} key={board._id} index={index} />
         ))}
-      </TwoRowTableBody>
-    </Container>
+      </S.TwoRowTableBody>
+    </S.Container>
   );
 };
-
-const Container = styled.section`
-  width: 766px;
-  background: ${COLORS.WHITE};
-  box-shadow: ${SHADOWS.BASIC};
-  ${MEDIA.TABLET} {
-    width: calc(100vw - 40px);
-  }
-  ${MEDIA.MOBILE} {
-    width: calc(100vw - 20px);
-  }
-`
-
-const TwoRowTableBody = styled.div`
-  display: grid;
-  grid-template-rows: repeat(5, 1fr);
-  grid-template-columns: repeat(2, 1fr);
-  ${MEDIA.MOBILE} {
-    grid-template-rows: repeat(10, 1fr);
-    grid-template-columns: repeat(1, 1fr);
-  }
-`
 
 export default TwoRowTable;

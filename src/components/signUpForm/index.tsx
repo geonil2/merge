@@ -1,17 +1,24 @@
-import React, {useEffect} from 'react';
-import {SubmitHandler, useForm} from "react-hook-form";
-import styled from "@emotion/styled";
-import {COLORS, SHADOWS} from "../../config/styles";
-import {authenticateQueryKey, getUserQueryKey, SignUpRequestBody} from "../../services/auth/types";
-import {useMutation, useQueryClient} from "@tanstack/react-query";
-import {signUpAPI} from "../../services/auth/api";
-import {useRouter} from "next/router";
+import React, { useEffect } from "react";
+import { SubmitHandler, useForm } from "react-hook-form";
+import { useRouter } from "next/router";
+
+import * as S from "./style";
+
+import {
+  authenticateQueryKey,
+  getUserQueryKey,
+  SignUpRequestBody,
+} from "../../services/auth/types";
+
+import { useMutation, useQueryClient } from "@tanstack/react-query";
+
+import { signUpAPI } from "../../services/auth/api";
 
 const SignupForm = () => {
   const {
     register,
     handleSubmit,
-    formState: { errors }
+    formState: { errors },
   } = useForm<SignUpRequestBody>({ mode: "onChange" });
   const queryClient = useQueryClient();
   const { mutate: signup } = useMutation(signUpAPI);
@@ -24,22 +31,20 @@ const SignupForm = () => {
         queryClient.invalidateQueries([getUserQueryKey]);
 
         // 팝업 열어서 푸쉬시키기
-        router.push('/')
+        router.push("/");
       },
-      onError: () => {
-
-      }
+      onError: () => {},
     });
   };
 
   return (
-    <Form onSubmit={handleSubmit(onSubmit)}>
-      <Logo>
-        <img src="/images/logo/merge.svg" alt="Merge logo image"/>
-      </Logo>
-      <InputContainer>
-        <Label htmlFor="email">Email *</Label>
-        <Input
+    <S.Form onSubmit={handleSubmit(onSubmit)}>
+      <S.Logo>
+        <img src="/images/logo/merge.svg" alt="Merge logo image" />
+      </S.Logo>
+      <S.InputContainer>
+        <S.Label htmlFor="email">Email *</S.Label>
+        <S.Input
           type="email"
           id="email"
           placeholder="example@example.com"
@@ -47,15 +52,15 @@ const SignupForm = () => {
             required: "이메일을 입력해주세요.",
             pattern: {
               value: /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/i,
-              message: "이메일 형식이 아닙니다."
-            }
+              message: "이메일 형식이 아닙니다.",
+            },
           })}
         />
-        <ErrorMsg>{errors.email && errors.email.message}</ErrorMsg>
-      </InputContainer>
-      <InputContainer>
-        <Label htmlFor="password">Password *</Label>
-        <Input
+        <S.ErrorMsg>{errors.email && errors.email.message}</S.ErrorMsg>
+      </S.InputContainer>
+      <S.InputContainer>
+        <S.Label htmlFor="password">Password *</S.Label>
+        <S.Input
           type="password"
           id="password"
           autoComplete="current-password"
@@ -63,19 +68,19 @@ const SignupForm = () => {
             required: "비밀번호를 입력해주세요.",
             minLength: {
               value: 8,
-              message: "비밀번호는 8자 이상이어야 합니다."
+              message: "비밀번호는 8자 이상이어야 합니다.",
             },
             maxLength: {
               value: 15,
-              message: "비밀번호는 15자 이하이어야 합니다."
-            }
+              message: "비밀번호는 15자 이하이어야 합니다.",
+            },
           })}
         />
-        <ErrorMsg>{errors.password && errors.password.message}</ErrorMsg>
-      </InputContainer>
-      <InputContainer>
-        <Label htmlFor="name">Name *</Label>
-        <Input
+        <S.ErrorMsg>{errors.password && errors.password.message}</S.ErrorMsg>
+      </S.InputContainer>
+      <S.InputContainer>
+        <S.Label htmlFor="name">Name *</S.Label>
+        <S.Input
           type="text"
           id="name"
           placeholder="홍길동"
@@ -83,15 +88,15 @@ const SignupForm = () => {
             required: "이름을 입력해주세요.",
             minLength: {
               value: 2,
-              message: "이름은 2자 이상이어야 합니다."
-            }
+              message: "이름은 2자 이상이어야 합니다.",
+            },
           })}
         />
-        <ErrorMsg>{errors.name && errors.name.message}</ErrorMsg>
-      </InputContainer>
-      <InputContainer>
-        <Label htmlFor="nickname">Nick name *</Label>
-        <Input
+        <S.ErrorMsg>{errors.name && errors.name.message}</S.ErrorMsg>
+      </S.InputContainer>
+      <S.InputContainer>
+        <S.Label htmlFor="nickname">Nick name *</S.Label>
+        <S.Input
           type="text"
           id="nickName"
           placeholder="머지 개발자"
@@ -99,77 +104,19 @@ const SignupForm = () => {
             required: "닉네임을 입력해주세요.",
             minLength: {
               value: 2,
-              message: "닉네은 2자 이상이어야 합니다."
+              message: "닉네은 2자 이상이어야 합니다.",
             },
             maxLength: {
               value: 15,
-              message: "닉네임은 15자 이하이어야 합니다."
-            }
+              message: "닉네임은 15자 이하이어야 합니다.",
+            },
           })}
         />
-        <ErrorMsg>{errors.nickname && errors.nickname.message}</ErrorMsg>
-      </InputContainer>
-      <SubmitBtn type="submit">회원가입</SubmitBtn>
-    </Form>
+        <S.ErrorMsg>{errors.nickname && errors.nickname.message}</S.ErrorMsg>
+      </S.InputContainer>
+      <S.SubmitBtn type="submit">회원가입</S.SubmitBtn>
+    </S.Form>
   );
 };
-
-const Form = styled.form`
-  width: 100%;
-  padding: 24px;
-  box-shadow: ${SHADOWS.BASIC};
-`
-
-const Logo = styled.div`
-  width: 50%;
-  margin: 0 auto;
-  
-  img {
-    width: 100%;
-  }
-`
-
-const Label = styled.label`
-  font-weight: 700;
-`
-
-const Input = styled.input`
-  width: 100%;
-  font-size: 14px;
-  border: 1px solid ${COLORS.GRAY};
-  border-radius: 5px;
-  padding: 13px;
-  margin-top: 10px;
-`
-
-const InputContainer = styled.div`
-  position: relative;
-  width: 100%;
-  margin-top: 40px;
-`
-
-const ErrorMsg = styled.p`
-  position: absolute;
-  top: calc(100% + 6px);
-  font-size: 12px;
-  color: ${COLORS.RED};
-`
-
-const SubmitBtn = styled.button`
-  width: 100%;
-  color: ${COLORS.WHITE};
-  text-align: center;
-  background-color: ${COLORS.PRIMARY};
-  border-radius: 5px;
-  opacity: 80%;
-  transition-duration: .2s;
-  padding: 13px;
-  margin-top: 40px;
-  cursor: pointer;
-  
-  &:hover {
-    opacity: 100%;
-  }
-`
 
 export default SignupForm;

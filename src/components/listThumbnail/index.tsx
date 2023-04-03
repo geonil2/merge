@@ -1,48 +1,33 @@
-import React from 'react';
-import {Interweave} from "interweave";
-import styled from "@emotion/styled";
+import React from "react";
+import { Interweave } from "interweave";
+
+import * as S from "./style";
 
 interface Prop {
-  description: string,
-  width: number
+  description: string;
+  width: number;
 }
 
 export const getImageByDescription = (description: string) => {
-  const hasImage = description.indexOf('<img') !== -1
+  const hasImage = description.indexOf("<img") !== -1;
 
   if (hasImage) {
-    const imageTagStart = description.substring(description.indexOf('<img'))
-    return imageTagStart.substring(0, imageTagStart.indexOf('>')+1)
+    const imageTagStart = description.substring(description.indexOf("<img"));
+    return imageTagStart.substring(0, imageTagStart.indexOf(">") + 1);
   }
   return;
-}
+};
 
 const ListThumbnail: React.FC<Prop> = ({ description, width }) => {
   return (
     <>
-      {getImageByDescription(description) &&
-        <ThumbnailWrap width={width}>
+      {getImageByDescription(description) && (
+        <S.ThumbnailWrap width={width}>
           <Interweave content={getImageByDescription(description)} />
-        </ThumbnailWrap>
-      }
+        </S.ThumbnailWrap>
+      )}
     </>
   );
 };
-
-const ThumbnailWrap = styled.div`
-  width: ${(prop: { width: number}) => `${prop.width}px`};
-  max-height: ${(prop: { width: number}) => `${prop.width}px`};
-  border-radius: 6px;
-  margin-right: 10px;
-  overflow: hidden;
-  span {
-    display: flex;
-
-    img {
-      width: 100%;
-      height: 100%;
-    }
-  }
-`
 
 export default ListThumbnail;

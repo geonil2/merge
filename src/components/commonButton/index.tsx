@@ -1,44 +1,26 @@
-import React, {HTMLAttributes} from 'react';
-import styled from "@emotion/styled";
-import {COLORS} from "../../config/styles";
+import React, { HTMLAttributes } from "react";
+
+import * as S from "./style";
+
 import useUser from "../../hooks/useUser";
 
 interface Props extends HTMLAttributes<HTMLButtonElement> {
-  title: string,
-  onClick?: any,
+  title: string;
+  onClick?: any;
 }
 
-const CommonButton: React.FC<Props> = ({
-  title,
-  onClick,
-  ...props
-}) => {
+const CommonButton: React.FC<Props> = ({ title, onClick, ...props }) => {
   const user = useUser();
 
   return (
-    <Button
+    <S.Button
       {...props}
       onClick={onClick}
       // disabled={!session}
-    >{title}</Button>
+    >
+      {title}
+    </S.Button>
   );
 };
-
-const Button = styled.button`
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 40px;
-  background-color: ${COLORS.PRIMARY};
-  color: ${COLORS.WHITE};
-  border-radius: 4px;
-  padding: 0px 20px;
-  margin-right: 10px;
-  transition-duration: 0.3s;
-  cursor: pointer;
-  &:hover {
-    background-color: ${COLORS.SUB};
-  }
-`
 
 export default CommonButton;

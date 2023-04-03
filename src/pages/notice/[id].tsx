@@ -1,17 +1,17 @@
 import React from "react";
-import {GetServerSidePropsContext, NextPage} from "next";
+import { GetServerSidePropsContext, NextPage } from "next";
 import styled from "@emotion/styled";
-import {dehydrate, QueryClient} from "@tanstack/query-core";
-import {MEDIA} from "../../config/styles";
-import {BoardByIdQueryKey} from "../../services/board/types";
-import {getBoardByIdApi} from "../../services/board/api";
-import {CommentByBoardIdQueryKey} from "../../services/comment/types";
-import {getCommentByBoardIdApi} from "../../services/comment/api";
+import { dehydrate, QueryClient } from "@tanstack/query-core";
+import { MEDIA } from "../../config/styles";
+import { BoardByIdQueryKey } from "../../services/board/types";
+import { getBoardByIdApi } from "../../services/board/api";
+import { CommentByBoardIdQueryKey } from "../../services/comment/types";
+import { getCommentByBoardIdApi } from "../../services/comment/api";
 import BoardDetail from "../../components/boardDetail";
 import MainLayout from "../../components/mainLayout";
 
 interface Prop {
-  id: string
+  id: string;
 }
 
 const QuestionDetailPage: NextPage<Prop> = ({ id }) => {
@@ -35,26 +35,29 @@ const Container = styled.div`
   ${MEDIA.TABLET} {
     width: 100%;
   }
-`
+`;
 
-export default QuestionDetailPage
+export default QuestionDetailPage;
 
-export const getServerSideProps = async (context: GetServerSidePropsContext) => {
+export const getServerSideProps = async (
+  context: GetServerSidePropsContext
+) => {
   const { query } = context;
   const { id } = query;
-  const queryClient = new QueryClient()
+  const queryClient = new QueryClient();
 
-  await queryClient.prefetchQuery([BoardByIdQueryKey, { boardId: id }], () => getBoardByIdApi(id as string))
-  await queryClient.prefetchQuery([CommentByBoardIdQueryKey, { boardId: id }], () => getCommentByBoardIdApi(id as string))
+  await queryClient.prefetchQuery([BoardByIdQueryKey, { boardId: id }], () =>
+    getBoardByIdApi(id as string)
+  );
+  await queryClient.prefetchQuery(
+    [CommentByBoardIdQueryKey, { boardId: id }],
+    () => getCommentByBoardIdApi(id as string)
+  );
 
   return {
     props: {
       id,
       dehydratedState: dehydrate(queryClient),
-    }
+    },
   };
 };
-
-interface Prop {
-  Id: string;
-}

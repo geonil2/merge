@@ -1,54 +1,34 @@
-import React from 'react';
+import React from "react";
+
+import * as S from "./style";
+
 import TableHeaderLayout from "../tableHeaderLayout";
-import styled from "@emotion/styled";
-import {COLORS, MEDIA, SHADOWS} from "../../../config/styles";
 import BigImageTableList from "./bigImageTableList";
 
 interface Props {
-  list: BigImageTableListType[]
+  list: BigImageTableListType[];
 }
 
 export type BigImageTableListType = {
-  id: string,
-  date: string,
-  tag: string[],
-  title: string,
-  image: string
-  url: string
-}
+  id: string;
+  date: string;
+  tag: string[];
+  title: string;
+  image: string;
+  url: string;
+};
 
 const BigImageTable: React.FC<Props> = ({ list }) => {
   return (
-    <Container>
+    <S.Container>
       <TableHeaderLayout title="컨퍼런스" />
-      <BigImageTableBody>
-        {list.map(list => <BigImageTableList key={list.id} list={list} />)}
-      </BigImageTableBody>
-    </Container>
+      <S.BigImageTableBody>
+        {list.map((list) => (
+          <BigImageTableList key={list.id} list={list} />
+        ))}
+      </S.BigImageTableBody>
+    </S.Container>
   );
 };
-
-const Container = styled.section`
-  width: 766px;
-  background: ${COLORS.WHITE};
-  box-shadow: ${SHADOWS.BASIC};
-  ${MEDIA.TABLET} {
-    width: calc(100vw - 40px);
-  }
-  ${MEDIA.MOBILE} {
-    width: calc(100vw - 20px);
-  }
-`
-
-const BigImageTableBody = styled.div`
-  display: flex;
-  justify-content: space-between;
-  margin: 0px 24px;
-  padding-bottom: 24px;
-  ${MEDIA.MOBILE} {
-    flex-wrap: wrap;
-    margin: 0px 10px;
-  }
-`
 
 export default BigImageTable;
